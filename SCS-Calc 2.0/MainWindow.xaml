@@ -6,26 +6,55 @@
         xmlns:local="clr-namespace:SCS_Calc_2._0"
         mc:Ignorable="d"
         Title="SCS-Calc 2.0" Height="700" Width="800" ResizeMode="CanMinimize">
+    
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="3.2*"/>
         </Grid.ColumnDefinitions>
+        
         <StackPanel Grid.Column="0" Background="Gainsboro">
+            
             <StackPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#CFCFD6"/>
                     <Setter Property="Height" Value="40"/>
                     <Setter Property="Margin" Value="5"/>
                 </Style>
+                <Style TargetType="ToolTip">
+                    <Setter Property="MaxWidth" Value="500"/>
+                </Style>
             </StackPanel.Resources>
-            <Button Content="Расчёт конфигурации"/>
+
+            <Button Content="Расчёт конфигурации">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Text="Расчитать конфигурацию необходимого количества кабеля для построения СКС и получить рекомендации по подбору кабеля для инсталляции СКС, если такая функция выбрана в Дополнительных параметрах"/>
+                </Button.ToolTip>
+            </Button>
+
             <Button>
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Дополнительные параметры расчёта конфигурации"/>
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Text="Установить дополнительные параметры для расчёта конфигураций, например учет метража кабеля в 1-й кабельной катушке (бухте) или добавить рекомендации по побдору кабеля"/>
+                </Button.ToolTip>
             </Button>
-            <Button Content="История" />
-            <Button Content="Информация" />
+            
+            <Button Content="История">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Text="Просмотреть историю расчётов конфигураций. В режиме истории вы сможете просматривать или удалять предыдущие конфигурации, а так же сохранять в TXT любую выбранную предыдущую конфигурацию"/>
+                </Button.ToolTip>
+            </Button>
+
+            <Button Content="Информация">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Text="Просмотреть информацию о приложении и получить помощь в работе с приложением"/>
+                </Button.ToolTip>
+            </Button>
         </StackPanel>
+        
         <Frame Grid.Column="1" Background="#FBFBFB" NavigationUIVisibility = "Hidden"/>
+        
     </Grid>
+    
 </Window>
