@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCS_Calc_2._0"
         mc:Ignorable="d"
-        Title="SCS-Calc 2.0" Height="700" Width="800" ResizeMode="CanMinimize">
+        Title="SCS-Calc 2.0" Height="700" Width="800" Loaded="Window_Loaded">
     
     <Grid>
         
@@ -51,9 +51,10 @@
                     <TextBlock TextWrapping="Wrap" Text="Просмотреть информацию о приложении и получить помощь в работе с приложением"/>
                 </Button.ToolTip>
             </Button>
+            
         </StackPanel>
         
-        <Frame Grid.Column="1" Background="#FBFBFB" NavigationUIVisibility = "Hidden"/>
+        <Frame x:Name="pageFrame" Grid.Column="1" Background="WhiteSmoke" NavigationUIVisibility = "Hidden"/>
         
     </Grid>
     
