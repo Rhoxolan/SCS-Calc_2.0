@@ -15,6 +15,7 @@
         </Grid.RowDefinitions>
         
         <Grid.Resources>
+            
             <Style TargetType="ToolTip">
                 <Setter Property="MaxWidth" Value="500"/>
                 <Style.Resources>
@@ -23,6 +24,15 @@
                     </DataTemplate>
                 </Style.Resources>
             </Style>
+
+            <Style TargetType="Button">
+                <Style.Resources>
+                    <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center"/>
+                    </DataTemplate>
+                </Style.Resources>
+            </Style>
+
         </Grid.Resources>
         
         <StackPanel Grid.Row="0">
@@ -44,7 +54,7 @@
 
         </StackPanel>
 
-        <Button Margin="5,0,5,8" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Восстановить настройки по умолчанию" ToolTip="Нажмите, если хотите воостановить настройки по умолчанию"/>
+        <Button Margin="5,0,5,8" MinWidth="150" MaxWidth="150" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Восстановить настройки по умолчанию" ToolTip="Нажмите, если хотите воостановить настройки по умолчанию"/>
 
     </Grid>
 
