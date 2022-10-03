@@ -1,0 +1,51 @@
+﻿<Page x:Class="SCS_Calc_2._0.AdvancedParametersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SCS_Calc_2._0"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="600">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.Resources>
+            <Style TargetType="ToolTip">
+                <Setter Property="MaxWidth" Value="500"/>
+                <Style.Resources>
+                    <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </Style.Resources>
+            </Style>
+        </Grid.Resources>
+        
+        <StackPanel Grid.Row="0">
+
+            <StackPanel.Resources>
+                <Style TargetType="CheckBox">
+                    <Style.Resources>
+                        <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </Style.Resources>
+                </Style>
+            </StackPanel.Resources>
+
+            <CheckBox Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801" ToolTip="Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру, согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м."/>
+            <CheckBox Margin="5" Content="Разрешить произвольное количество портов на 1 рабочее место" ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801"/>
+            <CheckBox Margin="5" Content="Учитывать коэффициент технологического запаса" ToolTip="Отметьте, если хотите учитывать коэффициент технологического запаса при расчёте конфигурации СКС"/>
+            <TextBox Margin="5" MaxWidth="130" MinWidth="130" HorizontalAlignment="Left" FontSize="14" Text="1.10" ToolTip="Введите значение коэффициента технологического запаса"/>
+
+        </StackPanel>
+
+        <Button Margin="5,0,5,8" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Восстановить настройки по умолчанию" ToolTip="Нажмите, если хотите воостановить настройки по умолчанию"/>
+
+    </Grid>
+
+</Page>

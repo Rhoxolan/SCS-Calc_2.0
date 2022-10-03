@@ -10,25 +10,11 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="60"></RowDefinition>
-            <RowDefinition MaxHeight="60"></RowDefinition>
-            <RowDefinition MaxHeight="60"></RowDefinition>
-            <RowDefinition MaxHeight="60"></RowDefinition>
-            <RowDefinition MaxHeight="35"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" MinWidth="250" MaxWidth="250"></ColumnDefinition>
-            <ColumnDefinition Width="4*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
 
         <Grid.Resources>
-            
-            <Style TargetType="TextBox">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="FontSize" Value="14"/>
-            </Style>
-            
             <Style TargetType="ToolTip">
                 <Setter Property="MaxWidth" Value="500"/>
                 <Style.Resources>
@@ -37,32 +23,34 @@
                     </DataTemplate>
                 </Style.Resources>
             </Style>
-
         </Grid.Resources>
 
-        <DockPanel Grid.Row="0" LastChildFill="True" Margin="3,3,0,3" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м.">
-            <TextBlock Margin="3" DockPanel.Dock="Top" Text="Наименьшая длина постоянного линка (м.):"/>
-            <TextBox Margin="3,3,100,3" DockPanel.Dock="Top" Text="0"/>
-        </DockPanel>
+        <StackPanel Grid.Row="0">
 
-        <DockPanel Grid.Row="1" LastChildFill="True" Margin="3,3,0,3" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м.">
-            <TextBlock Margin="3" DockPanel.Dock="Top" Text="Наибольшая длина постоянного линка (м.):"/>
-            <TextBox Margin="3,3,100,3" DockPanel.Dock="Top" Text="0"/>
-        </DockPanel>
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="MaxWidth" Value="130"/>
+                    <Setter Property="MinWidth" Value="130"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                </Style>
+            </StackPanel.Resources>
 
-        <DockPanel Grid.Row="2" LastChildFill="True" Margin="3,3,0,3" ToolTip="Пожалуйста, введите количество рабочих мест">
-            <TextBlock Margin="3" DockPanel.Dock="Top" Text="Количество рабочих мест:"/>
-            <TextBox Margin="3,3,100,3" DockPanel.Dock="Top" Text="0"/>
-        </DockPanel>
+            <TextBlock Margin="5" Text="Наименьшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
+            <TextBox Margin="5" Text="0" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
+            <TextBlock Margin="5" Text="Наибольшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
+            <TextBox Margin="5" Text="0" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
+            <TextBlock Margin="5" Text="Количество рабочих мест:" ToolTip="Пожалуйста, введите количество рабочих мест" />
+            <TextBox Margin="5" Text="0" ToolTip="Пожалуйста, введите количество рабочих мест"/>
+            <TextBlock Margin="5" Text="Количество портов на 1 рабочее место:" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" />
+            <TextBox Margin="5" Text="0" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов"/>
+            <CheckBox Margin="5" Content="Учитывать метраж кабеля в бухте" ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
+            <TextBox Margin="5" Text="305" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
+            <Button Margin="5" MaxWidth="105" MinWidth="105" HorizontalAlignment="Left" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
+        </StackPanel>
 
-        <DockPanel Grid.Row="3" LastChildFill="True" Margin="3,3,0,3" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов">
-            <TextBlock Margin="3" DockPanel.Dock="Top" Text="Количество портов на 1 рабочее место:"/>
-            <TextBox Margin="3,3,100,3" DockPanel.Dock="Top" Text="0"/>
-        </DockPanel>
-
-        <Button Grid.Row="4" Margin="6,5,130,5" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
-
-        <Border Grid.ColumnSpan="2" SnapsToDevicePixels="True" Margin="5,5,5,5" Grid.Row="5" BorderThickness="1" BorderBrush="SlateGray" ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам ">
+        <Border SnapsToDevicePixels="True" Margin="5" Grid.Row="1" BorderThickness="1" BorderBrush="SlateGray" ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам ">
             <TextBlock Background="White"/>
         </Border>
 
