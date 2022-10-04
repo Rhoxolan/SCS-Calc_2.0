@@ -7,20 +7,23 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
 
-    <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition MaxHeight="50"></RowDefinition>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
 
-        <Border SnapsToDevicePixels="True" Margin="5" Grid.Row="0" BorderThickness="1" BorderBrush="SlateGray">
-            <TextBlock Background="White"/>
-        </Border>
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition MaxHeight="50"></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Label Margin="0,-8,7,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" MouseDoubleClick="LabelAuthor_MouseDoubleClick"
+            <Border MinHeight="350" MinWidth="150" SnapsToDevicePixels="True" Margin="5" Grid.Row="0" BorderThickness="1" BorderBrush="SlateGray">
+
+                <TextBlock TextWrapping="Wrap" Background="White" Text="aaaaaaaaaaaaaaaaegewgew;lmgwklmgerwngrwihwngkrbguoiwngiuebwoginewiogewnpofnewiogewiongewioubgioewngaaaa"/>
+
+            </Border>
+
+            <Label Margin="0,-8,7,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" MouseDoubleClick="LabelAuthor_MouseDoubleClick"
                Content="Павел Бацемакин, 2022 г." FontSize="17" ToolTip="Кликните два раза, чтобы перейти на профиль разработчика в GitHub"/>
 
-    </Grid>
-    
+        </Grid>
+    </ScrollViewer>
 </Page>

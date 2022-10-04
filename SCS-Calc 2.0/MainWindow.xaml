@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCS_Calc_2._0"
         mc:Ignorable="d"
-        Title="SCS-Calc 2.0" Height="750" Width="750" MinHeight="600" MinWidth="500" Loaded="Window_Loaded">
-    
+        Title="SCS-Calc 2.0" Height="750" Width="750" MinHeight="1" MinWidth="1" Loaded="Window_Loaded">
+    <!--MinHeight="600" MinWidth="500"-->
+
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="175" MaxWidth="195"/>
             <ColumnDefinition Width="3.2*"/>
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel Grid.Column="0" Background="Gainsboro">
 
             <StackPanel.Resources>
-                
+
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#CFCFD6"/>
                     <Setter Property="Height" Value="40"/>
@@ -28,7 +29,7 @@
                         </DataTemplate>
                     </Style.Resources>
                 </Style>
-                
+
                 <Style TargetType="ToolTip">
                     <Setter Property="MaxWidth" Value="500"/>
                     <Style.Resources>
@@ -37,7 +38,7 @@
                         </DataTemplate>
                     </Style.Resources>
                 </Style>
-                
+
             </StackPanel.Resources>
 
             <Button Click="CalculateButton_Click" Content="Расчёт конфигурации" ToolTip="Расчитать конфигурацию необходимого количества кабеля для построения СКС и получить рекомендации по подбору кабеля для инсталляции СКС, если такая функция выбрана в Дополнительных параметрах"/>
@@ -49,9 +50,9 @@
             <Button Click="InformationButton_Click" Content="Информация" ToolTip="Просмотреть информацию о приложении и получить помощь в работе с приложением"/>
 
         </StackPanel>
-        
+
         <Frame x:Name="pageFrame" Grid.Column="1" Background="WhiteSmoke" NavigationUIVisibility = "Hidden"/>
-        
+
     </Grid>
-    
+
 </Window>
