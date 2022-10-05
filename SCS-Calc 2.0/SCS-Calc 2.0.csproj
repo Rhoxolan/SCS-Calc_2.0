@@ -6,7 +6,12 @@
     <RootNamespace>SCS_Calc_2._0</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SCSCalcClassLibrary\SCSCalcClassLibrary.csproj" />
