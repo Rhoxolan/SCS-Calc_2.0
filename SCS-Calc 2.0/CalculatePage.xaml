@@ -7,13 +7,30 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600" >
 
-    <ScrollViewer VerticalScrollBarVisibility="Disabled">
+    <ScrollViewer>
+
+        <ScrollViewer.Resources>
+            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
+            <Style TargetType="ScrollViewer">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxConfigurationOutput, Mode=OneWay}" Value="250">
+                        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxConfigurationOutput, Mode=OneWay}" Value="300">
+                        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ScrollViewer.Resources>
 
         <Grid>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.Resources>
@@ -67,8 +84,15 @@
 
             </StackPanel>
 
-            <TextBox MinHeight="350" MinWidth="150" VerticalScrollBarVisibility="Auto" Margin="5" Grid.Row="1" Background="White" TextWrapping="Wrap" FontSize="14" ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам" Text="wrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereher"/>
-
+            <Grid x:Name="gridTextBoxConfigurationOutput" Grid.Row="1" MinHeight="300" MinWidth="250" Margin="5">
+                <TextBox x:Name="textBoxConfigurationOutput" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
+                         Width="{Binding ActualWidth, ElementName=gridTextBoxConfigurationOutput, Mode=OneWay}"
+                         Height="{Binding ActualHeight, ElementName=gridTextBoxConfigurationOutput, Mode=OneWay}"
+                         ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам" Text="wrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereher"/>
+            </Grid>
+            
+            <Button Margin="5,5,5,8" MinWidth="105" MaxWidth="105" Grid.Row="2" HorizontalAlignment="Left" Content="Сохранить в TXT" ToolTip="Нажмите, чтобы сохранить конфигурацию в текстовый документ (.txt)"/>
+            
         </Grid>
 
     </ScrollViewer>
