@@ -47,7 +47,6 @@
             <StackPanel Grid.Row="0" MinWidth="150">
 
                 <StackPanel.Resources>
-
                     <Style TargetType="TextBox">
                         <Setter Property="MaxWidth" Value="130"/>
                         <Setter Property="MinWidth" Value="130"/>
@@ -55,19 +54,6 @@
                         <Setter Property="FontSize" Value="14"/>
                         <Setter Property="HorizontalAlignment" Value="Left"/>
                     </Style>
-
-                    <Style TargetType="CheckBox">
-                        <Style.Resources>
-                            <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-                            </DataTemplate>
-                        </Style.Resources>
-                    </Style>
-
-                    <Style TargetType="TextBlock">
-                        <Setter Property="TextWrapping" Value="Wrap"/>
-                    </Style>
-
                 </StackPanel.Resources>
 
                 <TextBlock Margin="5" Text="Наименьшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
