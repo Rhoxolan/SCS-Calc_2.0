@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600" >
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Disabled">
 
         <Grid>
 
@@ -64,14 +64,10 @@
                 <CheckBox Margin="5" Content="Учитывать метраж кабеля в бухте" ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
                 <TextBox Margin="5" Text="305" MaxHeight="23" MinHeight="23" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
                 <Button Margin="5" MaxWidth="105" MinWidth="105" MaxHeight="23" MinHeight="23" HorizontalAlignment="Left" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
-            
+
             </StackPanel>
 
-            <Border SnapsToDevicePixels="True" MinHeight="350" MinWidth="150" Margin="5" Grid.Row="1" BorderThickness="1" BorderBrush="SlateGray" ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам ">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                    <TextBlock Background="White" TextWrapping="Wrap"/>
-                </ScrollViewer>
-            </Border>
+            <TextBox MinHeight="350" MinWidth="150" VerticalScrollBarVisibility="Auto" Margin="5" Grid.Row="1" Background="White" TextWrapping="Wrap" FontSize="14" ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам" Text="wrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehreherewrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrwrehrwrehwrehrwrehwrehrwrehwrehrwrehreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereherherehrehereherreherwrehreherwrehreherwrehrehereherreherwrehreherwrehreherwrehrehereher"/>
 
         </Grid>
 
