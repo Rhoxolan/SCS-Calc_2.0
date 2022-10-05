@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Disabled">
 
         <!--Необходимо для корректного отображения горизонтальной полосы прокрутки при уменьшении размера страницы-->
         <ScrollViewer.Resources>
