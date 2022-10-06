@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="600" x:Name="advancedParametersPage">
+      d:DesignHeight="700" d:DesignWidth="600">
     
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
