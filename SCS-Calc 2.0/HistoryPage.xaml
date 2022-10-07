@@ -7,8 +7,45 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer>
+
+        <ScrollViewer.Resources>
+            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
+            <Style TargetType="ScrollViewer">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="350">
+                        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="300">
+                        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ScrollViewer.Resources>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.ColumnSpan="2" MinHeight="300" MinWidth="350" Margin="5">
+                <TextBox x:Name="textBoxShowConfiguration" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
+                         Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
+                         Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
+                         ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"/>
+            </Grid>
+
+        </Grid>
+
+    </ScrollViewer>
     
 </Page>
