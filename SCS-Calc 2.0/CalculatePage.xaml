@@ -90,10 +90,12 @@
                         <TextBlock MaxWidth="170" TextWrapping="Wrap" Text="Стандартные значения метража кабеля в бухте" FontSize="11.5"/>
                     </Expander.Header>
                     <Border BorderThickness="1" BorderBrush="SlateGray" SnapsToDevicePixels="True" VerticalAlignment="Top">
-                        <StackPanel Background="White">
-                            <RadioButton Margin="5"/>
-                            <RadioButton Margin="5"/>
-                            <RadioButton Margin="5"/>
+                        <StackPanel Background="WhiteSmoke">
+                            <RadioButton Margin="5" Content="50 м."/>
+                            <RadioButton Margin="5" Content="100 м."/>
+                            <RadioButton Margin="5" Content="305 м."/>
+                            <RadioButton Margin="5" Content="500 м."/>
+                            <RadioButton Margin="5" Content="1000 м."/>
                         </StackPanel>
                     </Border>
                 </Expander>
