@@ -29,8 +29,11 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition MaxHeight="45" MinHeight="45"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.Resources>
@@ -73,34 +76,40 @@
                 <TextBox Margin="5" Text="0" MaxHeight="23" MinHeight="23" ToolTip="Пожалуйста, введите количество рабочих мест"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Количество портов на 1 рабочее место:" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" />
                 <TextBox Margin="5" Text="0" MaxHeight="23" MinHeight="23" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов"/>
-                <CheckBox HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте" ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
 
+            </StackPanel>
 
-                <StackPanel Margin="5" HorizontalAlignment="Left" Orientation="Horizontal">
-                    <TextBox Text="305" MaxHeight="23" MinHeight="23" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
-                    <Expander Margin="5,0,0,0" HorizontalAlignment="Left">
-                        <Expander.Header>
-                            <TextBlock MaxWidth="170" TextWrapping="Wrap" Text="Стандартные значения метража кабеля в бухте" FontSize="11.5"/>
-                        </Expander.Header>
-                        <StackPanel>
+            <CheckBox Grid.Row="1" HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте" ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
+
+            <StackPanel Grid.Row="2" Grid.RowSpan="3" Margin="5" Panel.ZIndex="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                
+                <TextBox Text="305" MaxHeight="23" MinHeight="23" MaxWidth="130" MinWidth="130" Background="White" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
+
+                <Expander Margin="5,0,0,0" HorizontalAlignment="Left">
+                    <Expander.Header>
+                        <TextBlock MaxWidth="170" TextWrapping="Wrap" Text="Стандартные значения метража кабеля в бухте" FontSize="11.5"/>
+                    </Expander.Header>
+                    <Border BorderThickness="1" BorderBrush="SlateGray" SnapsToDevicePixels="True" VerticalAlignment="Top">
+                        <StackPanel Background="White">
                             <RadioButton Margin="5"/>
                             <RadioButton Margin="5"/>
                             <RadioButton Margin="5"/>
                         </StackPanel>
-                    </Expander>
-                </StackPanel>
-                <Button Margin="5" HorizontalAlignment="Left" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
-
+                    </Border>
+                </Expander>
+            
             </StackPanel>
+            
+            <Button  Grid.Row="3" Margin="5" HorizontalAlignment="Left" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
 
-            <Grid x:Name="gridTextBoxConfigurationOutput" Grid.Row="1" MinHeight="300" MinWidth="350" Margin="5">
+            <Grid x:Name="gridTextBoxConfigurationOutput" Grid.Row="4" MinHeight="300" MinWidth="350" Margin="5">
                 <TextBox x:Name="textBoxConfigurationOutput" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxConfigurationOutput, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxConfigurationOutput, Mode=OneWay}"
                          ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам"/>
             </Grid>
 
-            <Button Margin="5,5,5,8" Grid.Row="2" HorizontalAlignment="Left" Content="Сохранить в TXT" ToolTip="Нажмите, чтобы сохранить конфигурацию в текстовый документ (.txt)"/>
+            <Button Margin="5,5,5,8" Grid.Row="5" HorizontalAlignment="Left" Content="Сохранить в TXT" ToolTip="Нажмите, чтобы сохранить конфигурацию в текстовый документ (.txt)"/>
 
         </Grid>
 
