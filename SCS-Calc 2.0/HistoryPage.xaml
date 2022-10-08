@@ -37,49 +37,19 @@
                 <ColumnDefinition Width="0.3*" MinWidth="128" MaxWidth="128"/>
             </Grid.ColumnDefinitions>
 
-            <ListBox Margin="5" Grid.Row="0" Grid.Column="0" MinWidth="350" MinHeight="250" MaxHeight="350">
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>r</ListBoxItem>
-                <ListBoxItem>a</ListBoxItem>
-                <ListBoxItem>a</ListBoxItem>
-                <ListBoxItem>a</ListBoxItem>
-                    <ListBoxItem>a</ListBoxItem>
-            </ListBox>
+            <ListBox Margin="5" Grid.Row="0" Grid.Column="0" MinWidth="350" MinHeight="310" MaxHeight="310"/>
 
             <StackPanel Grid.Row="0" Grid.Column="1">
-                <Button Margin="5" Content="Сохранить в TXT"/>
-                <Button Margin="5" Content="Удалить"/>
-                <Button Margin="5" Content="Удалить всё"/>
+                <Button Margin="5" Content="Сохранить в TXT" ToolTip="Сохранить конфигурацию в текстовый документ (.txt)"/>
+                <Button Margin="5" Content="Удалить" ToolTip="Удалить выбранную конфигурацию"/>
+                <Button Margin="5" Content="Удалить всё" ToolTip="Удалить ВСЕ конфигурации"/>
             </StackPanel>
 
             <Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
                 <TextBox x:Name="textBoxShowConfiguration" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
-                         ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"
-                         Text="gegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwggegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"/>
+                         ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"/>
             </Grid>
 
         </Grid>
