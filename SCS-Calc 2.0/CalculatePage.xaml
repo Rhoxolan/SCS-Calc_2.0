@@ -81,11 +81,11 @@
 
             <CheckBox Grid.Row="1" HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте" ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
 
-            <StackPanel Grid.Row="2" Grid.RowSpan="3" Margin="5" Panel.ZIndex="1" HorizontalAlignment="Left" Orientation="Horizontal">
-                
-                <TextBox Text="305" MaxHeight="23" MinHeight="23" MaxWidth="130" MinWidth="130" Background="White" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
+            <StackPanel Grid.Row="2" Grid.RowSpan="3" Margin="0" Panel.ZIndex="1" HorizontalAlignment="Left" Orientation="Horizontal">
 
-                <Expander Margin="5,0,0,0" HorizontalAlignment="Left" ToolTip="Вы можете выбрать одно из предложенных стандартных значений метража кабеля в бухтах">
+                <TextBox Margin="5,8,5,5"  Text="305" MaxHeight="23" MinHeight="23" MaxWidth="130" MinWidth="130" Background="White" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
+
+                <Expander Margin="5,2,0,0" HorizontalAlignment="Left" ToolTip="Вы можете выбрать одно из предложенных стандартных значений метража кабеля в бухтах">
                     <Expander.Header>
                         <TextBlock MaxWidth="170" TextWrapping="Wrap" Text="Стандартные значения метража кабеля в бухте" FontSize="11.5"/>
                     </Expander.Header>
