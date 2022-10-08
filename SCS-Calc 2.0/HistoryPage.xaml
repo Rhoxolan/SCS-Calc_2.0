@@ -15,7 +15,7 @@
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="350">
+                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="500">
                         <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="300">
@@ -28,20 +28,58 @@
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.3*" MinWidth="128" MaxWidth="128"/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.ColumnSpan="2" MinHeight="300" MinWidth="350" Margin="5">
+            <ListBox Margin="5" Grid.Row="0" Grid.Column="0" MinWidth="350" MinHeight="250" MaxHeight="350">
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>r</ListBoxItem>
+                <ListBoxItem>a</ListBoxItem>
+                <ListBoxItem>a</ListBoxItem>
+                <ListBoxItem>a</ListBoxItem>
+                    <ListBoxItem>a</ListBoxItem>
+            </ListBox>
+
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Button Margin="5" Content="Сохранить в TXT"/>
+                <Button Margin="5" Content="Удалить"/>
+                <Button Margin="5" Content="Удалить всё"/>
+            </StackPanel>
+
+            <Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
                 <TextBox x:Name="textBoxShowConfiguration" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
-                         ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"/>
+                         ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"
+                         Text="gegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwggegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwgegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwegewwehehewhwehegewgewgewgwewcgwecwwcwefewdfewfewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"/>
             </Grid>
 
         </Grid>
