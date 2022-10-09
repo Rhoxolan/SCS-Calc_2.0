@@ -6,7 +6,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:SCS_Calc_2._0"
         mc:Ignorable="d"
-        Title="SCS-Calc 2.0" Height="750" Width="750" MinHeight="1" MinWidth="1" Loaded="Window_Loaded">
+        Title="SCS-Calc 2.0" Height="800" Width="750" MinHeight="1" MinWidth="1" Loaded="Window_Loaded">
 
     <Grid>
 
@@ -20,25 +20,32 @@
             <StackPanel.Resources>
 
                 <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}">
+                    
                     <Setter Property="Background" Value="#BED5E8"/>
                     <Setter Property="Foreground" Value="#19001F"/>
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
                     <Setter Property="Height" Value="45"/>
                     <Setter Property="Margin" Value="5"/>
+                    <Setter Property="BorderThickness" Value="0.1"/>
+                    
                     <Style.Resources>
                         <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center"/>
+                            <TextBlock Text="{Binding}" MaxWidth="155" MinWidth="150" TextWrapping="Wrap" TextAlignment="Center"/>
                         </DataTemplate>
                     </Style.Resources>
+                    
                 </Style>
 
-                <Style TargetType="ToolTip">
+                <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
+                    
                     <Setter Property="MaxWidth" Value="500"/>
+                    
                     <Style.Resources>
                         <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                             <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
                         </DataTemplate>
                     </Style.Resources>
+                    
                 </Style>
 
             </StackPanel.Resources>
