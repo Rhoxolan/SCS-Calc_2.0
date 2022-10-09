@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:SCS_Calc_2._0"
         mc:Ignorable="d"
         Title="SCS-Calc 2.0" Height="750" Width="750" MinHeight="1" MinWidth="1" Loaded="Window_Loaded">
@@ -14,13 +15,15 @@
             <ColumnDefinition Width="3.2*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="Gainsboro">
+        <StackPanel Grid.Column="0" Background="#CEF0FA">
 
             <StackPanel.Resources>
 
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="#CFCFD6"/>
-                    <Setter Property="Height" Value="40"/>
+                <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}">
+                    <Setter Property="Background" Value="#BED5E8"/>
+                    <Setter Property="Foreground" Value="#19001F"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Height" Value="45"/>
                     <Setter Property="Margin" Value="5"/>
                     <Style.Resources>
                         <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -50,7 +53,7 @@
 
         </StackPanel>
 
-        <Frame x:Name="pageFrame" Grid.Column="1" Background="WhiteSmoke" NavigationUIVisibility = "Hidden"/>
+        <Frame x:Name="pageFrame" Grid.Column="1" Background="#F7FEFF" NavigationUIVisibility = "Hidden"/>
 
     </Grid>
 
