@@ -87,6 +87,22 @@
                     <Setter Property="BorderBrush" Value="SteelBlue"/>
                 </Style>
 
+                <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}">
+                    <Setter Property="BorderBrush" Value="SteelBlue"/>
+                    <Setter Property="Background" Value="#FDFEFE"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                </Style>
+
+                <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockDefault}">
+                    <Setter Property="FontSize" Value="12.5"/>
+                </Style>
+
+                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
+                    <Setter Property="FontSize" Value="12.5"></Setter>
+                </Style>
+
             </Grid.Resources>
 
             <StackPanel Grid.Row="0" MinWidth="150">
@@ -138,10 +154,10 @@
 
             </StackPanel>
 
-            <Button  Grid.Row="3" Margin="5" HorizontalAlignment="Left" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
+            <Button Grid.Row="3" Margin="5" HorizontalAlignment="Left" Content="Рассчитать" ToolTip="Рассчитать конфигурацию необходимого количества кабеля для построения СКС. Расчёт будет автоматически сохранен в истории расчётов. Вы в любой момент сможете посмотреть или удалить его"/>
 
             <Grid x:Name="gridTextBoxConfigurationOutput" Grid.Row="4" MinHeight="300" MinWidth="350" Margin="5">
-                <TextBox x:Name="textBoxConfigurationOutput" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
+                <TextBox x:Name="textBoxConfigurationOutput" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxConfigurationOutput, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxConfigurationOutput, Mode=OneWay}"
                          ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам"/>
