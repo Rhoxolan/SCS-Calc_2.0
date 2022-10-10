@@ -12,6 +12,11 @@
         </Style.Resources>
     </Style>
 
+    <Style TargetType="Label" BasedOn="{StaticResource LabelBaseStyle}">
+        <Setter Property="Foreground" Value="#FF212121"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
     <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}" x:Key="styleViewButtonWindow">
         <Setter Property="Background" Value="#BED5E8"/>
         <Setter Property="Foreground" Value="#19001F"/>
@@ -33,6 +38,18 @@
         <Setter Property="HideUpDownButtons" Value="True"/>
         <Setter Property="Background" Value="#FDFEFE"/>
         <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="styleViewBorderNumericUpDown">
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="BorderBrush" Value="SteelBlue"/>
+        <Setter Property="BorderThickness" Value="0.3"/>
+    </Style>
+
+    <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}" x:Key="styleViewExpander">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="SteelBlue"/>
     </Style>
 
 </ResourceDictionary>

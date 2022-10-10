@@ -8,9 +8,4 @@
         <Setter Property="VerticalContentAlignment" Value="Top"/>
     </Style>
 
-    <Style TargetType="Label" BasedOn="{StaticResource LabelBaseStyle}">
-        <Setter Property="Foreground" Value="#FF212121"/>
-        <Setter Property="Background" Value="Transparent"/>
-    </Style>
-
 </ResourceDictionary>

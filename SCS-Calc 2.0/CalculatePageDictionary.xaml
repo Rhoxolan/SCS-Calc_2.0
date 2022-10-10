@@ -10,23 +10,17 @@
         <Setter Property="MinHeight" Value="29"/>
     </Style>
 
-    <Style TargetType="Border" x:Key="styleBorderNumericUpDown">
+    <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleBorderNumericUpDown">
         <Setter Property="MaxWidth" Value="130"/>
         <Setter Property="MinWidth" Value="130"/>
-        <Setter Property="CornerRadius" Value="3"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="BorderBrush" Value="SteelBlue"/>
-        <Setter Property="BorderThickness" Value="0.3"/>
     </Style>
 
     <Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource styleViewNumericUpDown}">
         <Setter Property="FontSize" Value="14"/>
     </Style>
 
-    <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}">
-        <Setter Property="Background" Value="Transparent"/>
+    <Style TargetType="Expander" BasedOn="{StaticResource styleViewExpander}">
         <Setter Property="BorderThickness" Value="0.5"/>
-        <Setter Property="BorderBrush" Value="SteelBlue"/>
     </Style>
 
     <Style TargetType="TextBox" BasedOn="{StaticResource styleViewTextBox}">
