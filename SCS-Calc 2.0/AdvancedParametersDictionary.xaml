@@ -5,15 +5,6 @@
 
     <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
 
-    <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
-        <Setter Property="MaxWidth" Value="500"/>
-        <Style.Resources>
-            <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-            </DataTemplate>
-        </Style.Resources>
-    </Style>
-
     <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}">
         <Setter Property="MaxWidth" Value="175"/>
         <Setter Property="MinWidth" Value="150"/>
@@ -38,11 +29,8 @@
         <Setter Property="BorderThickness" Value="0.3"/>
     </Style>
 
-    <Style TargetType="mah:NumericUpDown">
-        <Setter Property="HideUpDownButtons" Value="True"/>
+    <Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource styleViewNumericUpDown}">
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Background" Value="#FDFEFE"/>
-        <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
     <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}">

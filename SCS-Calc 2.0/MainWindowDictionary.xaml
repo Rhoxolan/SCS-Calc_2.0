@@ -13,13 +13,4 @@
         </Style.Resources>
     </Style>
 
-    <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
-        <Setter Property="MaxWidth" Value="500"/>
-        <Style.Resources>
-            <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-            </DataTemplate>
-        </Style.Resources>
-    </Style>
-
 </ResourceDictionary>
