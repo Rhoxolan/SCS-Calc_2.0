@@ -14,13 +14,10 @@
         </Style.Resources>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}">
+    <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}">
         <Setter Property="MaxWidth" Value="175"/>
         <Setter Property="MinWidth" Value="150"/>
         <Setter Property="Height" Value="45"/>
-        <Setter Property="Background" Value="#DDF0FB"/>
-        <Setter Property="Foreground" Value="#080055"/>
-        <Setter Property="BorderThickness" Value="0.3"/>
         <Style.Resources>
             <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                 <TextBlock Text="{Binding}" MaxWidth="170" MinWidth="150" TextWrapping="Wrap" TextAlignment="Center"/>

@@ -11,11 +11,7 @@
         </Style.Resources>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonPrimary}">
-        <Setter Property="Background" Value="#DDF0FB"/>
-        <Setter Property="Foreground" Value="#080055"/>
-        <Setter Property="BorderThickness" Value="0.3"/>
-    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}"/>
 
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}">
         <Setter Property="BorderBrush" Value="SteelBlue"/>

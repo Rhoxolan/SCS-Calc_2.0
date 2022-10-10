@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:hc="https://handyorg.github.io/handycontrol">
+
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}" x:Key="styleViewButtonWindow">
+        <Setter Property="Background" Value="#BED5E8"/>
+        <Setter Property="Foreground" Value="#19001F"/>
+        <Setter Property="BorderThickness" Value="0.1"/>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonPrimary}" x:Key="styleViewButtonPage">
+        <Setter Property="Background" Value="#DDF0FB"/>
+        <Setter Property="Foreground" Value="#080055"/>
+        <Setter Property="BorderThickness" Value="0.3"/>
+    </Style>
+
+</ResourceDictionary>
