@@ -17,39 +17,41 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}" x:Key="styleViewButtonWindow">
-        <Setter Property="Background" Value="#BED5E8"/>
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonPrimary}" x:Key="styleViewButtonWindow">
+        <Setter Property="Background" Value="WhiteSmoke"/>
         <Setter Property="Foreground" Value="#19001F"/>
-        <Setter Property="BorderThickness" Value="0.1"/>
+        <Setter Property="BorderThickness" Value="1.2"/>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonPrimary}" x:Key="styleViewButtonPage">
-        <Setter Property="Background" Value="#DDF0FB"/>
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonPrimary }" x:Key="styleViewButtonPage">
+        <Setter Property="Background" Value="WhiteSmoke"/>
         <Setter Property="Foreground" Value="#080055"/>
-        <Setter Property="BorderThickness" Value="0.3"/>
+        <Setter Property="BorderThickness" Value="1.1"/>
     </Style>
 
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}" x:Key="styleViewTextBox">
-        <Setter Property="BorderBrush" Value="SteelBlue"/>
-        <Setter Property="Background" Value="#FDFEFE"/>
+        <Setter Property="BorderBrush" Value="DarkBlue"/>
+        <Setter Property="Background" Value="#FFFEFD"/>
+        <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
     <Style TargetType="mah:NumericUpDown" x:Key="styleViewNumericUpDown">
         <Setter Property="HideUpDownButtons" Value="True"/>
-        <Setter Property="Background" Value="#FDFEFE"/>
+        <Setter Property="Background" Value="#FFFEFD"/>
         <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
     <Style TargetType="Border" x:Key="styleViewBorderNumericUpDown">
         <Setter Property="CornerRadius" Value="3"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="BorderBrush" Value="SteelBlue"/>
-        <Setter Property="BorderThickness" Value="0.3"/>
+        <Setter Property="BorderBrush" Value="MediumBlue"/>
+        <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
     <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}" x:Key="styleViewExpander">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="SteelBlue"/>
+        <Setter Property="BorderBrush" Value="MediumBlue"/>
+        <Setter Property="BorderThickness" Value="0.8"/>
     </Style>
 
 </ResourceDictionary>

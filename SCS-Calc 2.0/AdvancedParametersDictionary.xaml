@@ -17,12 +17,14 @@
     </Style>
 
     <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
-        <Setter Property="FontSize" Value="12.3"></Setter>
+        <Setter Property="FontSize" Value="12.8"></Setter>
     </Style>
 
     <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleBorderNumericUpDown">
         <Setter Property="MaxWidth" Value="130"/>
         <Setter Property="MinWidth" Value="130"/>
+        <Setter Property="BorderBrush" Value="#FF212121"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
     </Style>
 
     <Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource styleViewNumericUpDown}">

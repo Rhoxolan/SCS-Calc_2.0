@@ -78,8 +78,8 @@
                     <Expander.Header>
                         <TextBlock MaxWidth="170" TextWrapping="Wrap" Text="Стандартные значения метража кабеля в бухте" FontSize="11.5"/>
                     </Expander.Header>
-                    <Border BorderThickness="1" VerticalAlignment="Top">
-                        <StackPanel Background="#F7FEFF">
+                    <Border BorderThickness="0.8" BorderBrush="MediumBlue" VerticalAlignment="Top">
+                        <StackPanel Background="#FFFEFD">
                             <RadioButton Margin="30,5,5,5" HorizontalAlignment="Left" Content="50 м."/>
                             <RadioButton Margin="30,5,5,5" HorizontalAlignment="Left" Content="100 м."/>
                             <RadioButton Margin="30,5,5,5" HorizontalAlignment="Left" Content="305 м."/>

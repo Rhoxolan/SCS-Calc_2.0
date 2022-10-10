@@ -51,7 +51,7 @@
             </StackPanel>
 
             <Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
-                <TextBox x:Name="textBoxShowConfiguration" Background="White" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontSize="14" TextWrapping="Wrap"
+                <TextBox x:Name="textBoxShowConfiguration" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"/>
