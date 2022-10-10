@@ -9,12 +9,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
 
+    <Page.Resources>
+        <ResourceDictionary Source="AdvancedParametersDictionary.xaml"/>
+    </Page.Resources>
+
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-        <ScrollViewer.Resources>
-            <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
-        </ScrollViewer.Resources>
-        
         <Grid>
 
             <Grid.RowDefinitions>
@@ -22,69 +22,12 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Grid.Resources>
-
-                <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
-
-                    <Setter Property="MaxWidth" Value="500"/>
-
-                    <Style.Resources>
-                        <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </Style.Resources>
-
-                </Style>
-
-                <Style TargetType="Button" BasedOn="{StaticResource ButtonInfo}">
-                    <Setter Property="MaxWidth" Value="175"/>
-                    <Setter Property="MinWidth" Value="150"/>
-                    <Setter Property="Height" Value="45"/>
-                    <Setter Property="Background" Value="#DDF0FB"/>
-                    <Setter Property="Foreground" Value="#080055"/>
-                    <Setter Property="BorderThickness" Value="0.3"/>
-
-                    <Style.Resources>
-                        <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <TextBlock Text="{Binding}" MaxWidth="170" MinWidth="150" TextWrapping="Wrap" TextAlignment="Center"/>
-                        </DataTemplate>
-                    </Style.Resources>
-
-                </Style>
-
-                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
-                    <Setter Property="FontSize" Value="12.3"></Setter>
-                </Style>
-
-                <Style TargetType="Border">
-                    <Setter Property="MaxWidth" Value="130"/>
-                    <Setter Property="MinWidth" Value="130"/>
-                    <Setter Property="CornerRadius" Value="3"/>
-                    <Setter Property="SnapsToDevicePixels" Value="True"/>
-                    <Setter Property="BorderBrush" Value="SteelBlue"/>
-                    <Setter Property="BorderThickness" Value="0.3"/>
-                </Style>
-
-                <Style TargetType="mah:NumericUpDown">
-                    <Setter Property="HideUpDownButtons" Value="True"/>
-                    <Setter Property="FontSize" Value="14"/>
-                    <Setter Property="Background" Value="#FDFEFE"/>
-                    <Setter Property="TextAlignment" Value="Left"/>
-                </Style>
-
-                <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                </Style>
-
-            </Grid.Resources>
-
             <StackPanel Grid.Row="0">
 
                 <CheckBox HorizontalAlignment="Left" Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801" ToolTip="Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру, согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м."/>
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5" Content="Разрешить произвольное количество портов на 1 рабочее место" ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801"/>
                 <CheckBox HorizontalAlignment="Left" Margin="5,10,5,5" Content="Учитывать коэффициент технологического запаса:" ToolTip="Отметьте, если хотите учитывать коэффициент технологического запаса при расчёте конфигурации СКС"/>
-                <Border HorizontalAlignment="Left" Margin="15,5,5,5" ToolTip="Введите значение коэффициента технологического запаса" >
+                <Border Style="{StaticResource usedBorder}" HorizontalAlignment="Left" Margin="15,5,5,5" ToolTip="Введите значение коэффициента технологического запаса" >
                     <mah:NumericUpDown Value="1.10"/>
                 </Border>
                 <CheckBox HorizontalAlignment="Left" Margin="5,10,5,5" Content="Добавить рекомендации по подбору кабеля" ToolTip="Получить рекомендации по подбору кабеля, например о типе или категории кабеля"/>

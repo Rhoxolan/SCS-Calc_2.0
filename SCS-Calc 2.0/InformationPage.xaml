@@ -8,23 +8,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
 
-    <ScrollViewer>
+    <Page.Resources>
+        <ResourceDictionary Source="InformationPageDictionary.xaml"/>
+    </Page.Resources>
 
-        <ScrollViewer.Resources>
-            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
-            <Style TargetType="ScrollViewer">
-                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
-                <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxInformation, Mode=OneWay}" Value="350">
-                        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxInformation, Mode=OneWay}" Value="350">
-                        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </ScrollViewer.Resources>
+    <ScrollViewer>
 
         <Grid>
 
@@ -32,35 +20,6 @@
                 <RowDefinition ></RowDefinition>
                 <RowDefinition MinHeight="50" MaxHeight="50"></RowDefinition>
             </Grid.RowDefinitions>
-
-            <Grid.Resources>
-
-                <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
-
-                    <Setter Property="MaxWidth" Value="500"/>
-
-                    <Style.Resources>
-                        <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </Style.Resources>
-
-                </Style>
-
-                <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}">
-                    <Setter Property="BorderBrush" Value="SteelBlue"/>
-                    <Setter Property="Background" Value="#FDFEFE"/>
-                    <Setter Property="FontSize" Value="14"/>
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                    <Setter Property="VerticalContentAlignment" Value="Top"/>
-                </Style>
-
-                <Style TargetType="Label" BasedOn="{StaticResource LabelBaseStyle}">
-                    <Setter Property="Foreground" Value="#FF212121"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                </Style>
-
-            </Grid.Resources>
 
             <Grid x:Name="gridTextBoxInformation" MinHeight="350" MinWidth="350" Grid.Row="0" Margin="5">
                 <TextBox x:Name="textBoxInformation" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
