@@ -2,20 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
-    <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
-    <Style TargetType="ScrollViewer">
-        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="500">
-                <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="300">
-                <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-
     <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
         <Setter Property="MaxWidth" Value="500"/>
         <Style.Resources>

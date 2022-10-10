@@ -7,17 +7,19 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="600" >
+      d:DesignHeight="700" d:DesignWidth="600">
+
+    <Page.Resources>
+        <ResourceDictionary Source="CalculatePageDictionary.xaml"/>
+    </Page.Resources>
 
     <ScrollViewer>
 
         <ScrollViewer.Resources>
             <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
             <Style TargetType="ScrollViewer">
-
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
-
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxConfigurationOutput, Mode=OneWay}" Value="350">
                         <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
@@ -26,7 +28,6 @@
                         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
                     </DataTrigger>
                 </Style.Triggers>
-
             </Style>
         </ScrollViewer.Resources>
 
@@ -41,89 +42,25 @@
                 <RowDefinition Height="Auto" ></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Grid.Resources>
-
-                <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
-
-                    <Setter Property="MaxWidth" Value="500"/>
-
-                    <Style.Resources>
-                        <DataTemplate DataType="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </Style.Resources>
-
-                </Style>
-
-                <Style TargetType="Button" BasedOn="{StaticResource ButtonPrimary}">
-                    <Setter Property="MaxWidth" Value="115"/>
-                    <Setter Property="MinWidth" Value="115"/>
-                    <Setter Property="MaxHeight" Value="29"/>
-                    <Setter Property="MinHeight" Value="29"/>
-                    <Setter Property="Background" Value="#DDF0FB"/>
-                    <Setter Property="Foreground" Value="#080055"/>
-                    <Setter Property="BorderThickness" Value="0.3"/>
-                </Style>
-
-                <Style TargetType="Border">
-                    <Setter Property="MaxWidth" Value="130"/>
-                    <Setter Property="MinWidth" Value="130"/>
-                    <Setter Property="CornerRadius" Value="3"/>
-                    <Setter Property="SnapsToDevicePixels" Value="True"/>
-                    <Setter Property="BorderBrush" Value="SteelBlue"/>
-                    <Setter Property="BorderThickness" Value="0.3"/>
-                </Style>
-
-                <Style TargetType="mah:NumericUpDown">
-                    <Setter Property="HideUpDownButtons" Value="True"/>
-                    <Setter Property="FontSize" Value="14"/>
-                    <Setter Property="Background" Value="#FDFEFE"/>
-                    <Setter Property="TextAlignment" Value="Left"/>
-                </Style>
-
-                <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="BorderThickness" Value="0.5"/>
-                    <Setter Property="BorderBrush" Value="SteelBlue"/>
-                </Style>
-
-                <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}">
-                    <Setter Property="BorderBrush" Value="SteelBlue"/>
-                    <Setter Property="Background" Value="#FDFEFE"/>
-                    <Setter Property="FontSize" Value="14"/>
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                    <Setter Property="VerticalContentAlignment" Value="Top"/>
-                </Style>
-
-                <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockDefault}">
-                    <Setter Property="FontSize" Value="12.5"/>
-                </Style>
-
-                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
-                    <Setter Property="FontSize" Value="12.5"></Setter>
-                </Style>
-
-            </Grid.Resources>
-
             <StackPanel Grid.Row="0" MinWidth="150">
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Наименьшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
-                <Border HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
+                <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
                     <mah:NumericUpDown Value="0"/>
                 </Border>
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Наибольшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
-                <Border HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
+                <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
                     <mah:NumericUpDown Value="0"/>
                 </Border>
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Количество рабочих мест:" ToolTip="Пожалуйста, введите количество рабочих мест" />
-                <Border HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите количество рабочих мест" >
+                <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите количество рабочих мест" >
                     <mah:NumericUpDown Value="0"/>
                 </Border>
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Количество портов на 1 рабочее место:" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" />
-                <Border HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" >
+                <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" >
                     <mah:NumericUpDown Value="0"/>
                 </Border>
 
@@ -133,7 +70,7 @@
 
             <StackPanel Grid.Row="2" Grid.RowSpan="3" Margin="0" Panel.ZIndex="1" HorizontalAlignment="Left" Orientation="Horizontal">
 
-                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,5,5" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты">
+                <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,5,5" ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты">
                     <mah:NumericUpDown Value="305"/>
                 </Border>
 

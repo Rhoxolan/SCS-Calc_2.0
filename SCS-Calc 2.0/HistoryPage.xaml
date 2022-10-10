@@ -14,6 +14,22 @@
 
     <ScrollViewer>
 
+        <ScrollViewer.Resources>
+            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
+            <Style TargetType="ScrollViewer">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="500">
+                        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="300">
+                        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ScrollViewer.Resources>
+        
         <Grid>
 
             <Grid.RowDefinitions>

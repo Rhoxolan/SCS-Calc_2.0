@@ -27,7 +27,7 @@
                 <CheckBox HorizontalAlignment="Left" Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801" ToolTip="Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру, согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м."/>
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5" Content="Разрешить произвольное количество портов на 1 рабочее место" ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801"/>
                 <CheckBox HorizontalAlignment="Left" Margin="5,10,5,5" Content="Учитывать коэффициент технологического запаса:" ToolTip="Отметьте, если хотите учитывать коэффициент технологического запаса при расчёте конфигурации СКС"/>
-                <Border Style="{StaticResource usedBorder}" HorizontalAlignment="Left" Margin="15,5,5,5" ToolTip="Введите значение коэффициента технологического запаса" >
+                <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" Margin="15,5,5,5" ToolTip="Введите значение коэффициента технологического запаса" >
                     <mah:NumericUpDown Value="1.10"/>
                 </Border>
                 <CheckBox HorizontalAlignment="Left" Margin="5,10,5,5" Content="Добавить рекомендации по подбору кабеля" ToolTip="Получить рекомендации по подбору кабеля, например о типе или категории кабеля"/>
