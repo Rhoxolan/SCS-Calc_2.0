@@ -31,13 +31,13 @@
 
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}" x:Key="styleViewTextBox">
         <Setter Property="BorderBrush" Value="DarkBlue"/>
-        <Setter Property="Background" Value="#FFFEFD"/>
+        <Setter Property="Background" Value="#FFFFFD"/>
         <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
     <Style TargetType="mah:NumericUpDown" x:Key="styleViewNumericUpDown">
         <Setter Property="HideUpDownButtons" Value="True"/>
-        <Setter Property="Background" Value="#FFFEFD"/>
+        <Setter Property="Background" Value="#FFFFFD"/>
         <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
