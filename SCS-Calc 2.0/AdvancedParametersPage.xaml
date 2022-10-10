@@ -8,9 +8,13 @@
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
-    
+
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
+        <ScrollViewer.Resources>
+            <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
+        </ScrollViewer.Resources>
+        
         <Grid>
 
             <Grid.RowDefinitions>
@@ -48,6 +52,31 @@
 
                 </Style>
 
+                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
+                    <Setter Property="FontSize" Value="12.3"></Setter>
+                </Style>
+
+                <Style TargetType="Border">
+                    <Setter Property="MaxWidth" Value="130"/>
+                    <Setter Property="MinWidth" Value="130"/>
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                    <Setter Property="BorderBrush" Value="SteelBlue"/>
+                    <Setter Property="BorderThickness" Value="0.3"/>
+                </Style>
+
+                <Style TargetType="mah:NumericUpDown">
+                    <Setter Property="HideUpDownButtons" Value="True"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Background" Value="#FDFEFE"/>
+                    <Setter Property="TextAlignment" Value="Left"/>
+                </Style>
+
+                <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Style>
+
             </Grid.Resources>
 
             <StackPanel Grid.Row="0">
@@ -55,11 +84,16 @@
                 <CheckBox HorizontalAlignment="Left" Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801" ToolTip="Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру, согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м."/>
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5" Content="Разрешить произвольное количество портов на 1 рабочее место" ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801"/>
                 <CheckBox HorizontalAlignment="Left" Margin="5,10,5,5" Content="Учитывать коэффициент технологического запаса:" ToolTip="Отметьте, если хотите учитывать коэффициент технологического запаса при расчёте конфигурации СКС"/>
-                <TextBox HorizontalAlignment="Left" Margin="15,5,5,5" MaxWidth="130" MinWidth="130" FontSize="14" Text="1.10" ToolTip="Введите значение коэффициента технологического запаса"/>
+                <Border HorizontalAlignment="Left" Margin="15,5,5,5" ToolTip="Введите значение коэффициента технологического запаса" >
+                    <mah:NumericUpDown Value="1.10"/>
+                </Border>
                 <CheckBox HorizontalAlignment="Left" Margin="5,10,5,5" Content="Добавить рекомендации по подбору кабеля" ToolTip="Получить рекомендации по подбору кабеля, например о типе или категории кабеля"/>
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5" Content="Будут ли участки кабельной трассы проходить вне помещения" ToolTip="Укажите, если участки кабельной трассы будут проходить на на улице, например по фасаду здания, либо же в помещениях с нестандартными климатическими условиями, например на чердаках или в подвалах. Вы получите рекомендацию о необходимым типе кабеля."/>
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5" Content="Учитывать стандартные требования к пожарной безопасности" ToolTip="Получить рекомендацию о необходимым типе изоляции для кабеля"/>
-                <Expander HorizontalAlignment="Left" Margin="15,5,5,5" Header="Используемые интерфейсы подключений" IsExpanded="True" ToolTip="Отметьте, какие интерфейсы подключений предполагаются к использованию, например Fast Ethernet или Gigabit Ethernet. Вы получите рекомендацию о необходимой категории кабеля.">
+                <Expander HorizontalAlignment="Left" Margin="15,5,5,5" IsExpanded="True" ToolTip="Отметьте, какие интерфейсы подключений предполагаются к использованию, например Fast Ethernet или Gigabit Ethernet. Вы получите рекомендацию о необходимой категории кабеля.">
+                    <Expander.Header>
+                        <TextBlock TextWrapping="Wrap" Text="Используемые интерфейсы подключений" FontSize="12.5"/>
+                    </Expander.Header>
                     <StackPanel>
                         <CheckBox Margin="5" Content="10BASE-T" ToolTip="Отметьте, если предполагается использование интерфейса подключений 10BASE-T. Вы получите рекомендацию о необходимой категории кабеля."/>
                         <CheckBox Margin="5" Content="Fast Ethernet (100BASE-T)" ToolTip="Отметьте, если предполагается использование интерфейса подключений Fast Ethernet (100BASE-T). Вы получите рекомендацию о необходимой категории кабеля."/>
