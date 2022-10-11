@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCS-Calc 2.0", "SCS-Calc 2.0\SCS-Calc 2.0.csproj", "{5697D655-F6B7-4460-BCCB-F8FD6EA60FBF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCSCalcClassLibrary", "SCSCalcClassLibrary\SCSCalcClassLibrary.csproj", "{EE32AF43-A527-4541-BB9B-02331FE84F58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCS-Calc 2.0", "SCS-Calc 2.0\SCS-Calc 2.0.csproj", "{5697D655-F6B7-4460-BCCB-F8FD6EA60FBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{5697D655-F6B7-4460-BCCB-F8FD6EA60FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5697D655-F6B7-4460-BCCB-F8FD6EA60FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5697D655-F6B7-4460-BCCB-F8FD6EA60FBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE32AF43-A527-4541-BB9B-02331FE84F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE32AF43-A527-4541-BB9B-02331FE84F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE32AF43-A527-4541-BB9B-02331FE84F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE32AF43-A527-4541-BB9B-02331FE84F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
