@@ -12,6 +12,14 @@
         </Style.Resources>
     </Style>
 
+    <Style TargetType="Frame" BasedOn="{x:Null}" x:Key="styleViewFrameForMainWindow">
+        <Setter Property="Background" Value="#FFFEFD"/>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="styleViewStackPanelForMainWindow">
+        <Setter Property="Background" Value="#C0DCFF"/>
+    </Style>
+
     <Style TargetType="Label" BasedOn="{StaticResource LabelBaseStyle}">
         <Setter Property="Foreground" Value="#FF212121"/>
         <Setter Property="Background" Value="Transparent"/>

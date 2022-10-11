@@ -19,7 +19,7 @@
             <ColumnDefinition Width="3.2*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="#C0DCFF">
+        <StackPanel Grid.Column="0" Style="{StaticResource styleViewStackPanelForMainWindow}">
 
             <Button Click="CalculateButton_Click" Content="Расчёт конфигурации" ToolTip="Расчитать конфигурацию необходимого количества кабеля для построения СКС и получить рекомендации по подбору кабеля для инсталляции СКС, если такая функция выбрана в Дополнительных параметрах"/>
 
@@ -31,7 +31,7 @@
 
         </StackPanel>
 
-        <Frame x:Name="pageFrame" Grid.Column="1" Background="#FFFEFD" NavigationUIVisibility = "Hidden"/>
+        <Frame x:Name="pageFrame" Style="{StaticResource styleViewFrameForMainWindow}" Grid.Column="1" NavigationUIVisibility = "Hidden"/>
 
     </Grid>
 

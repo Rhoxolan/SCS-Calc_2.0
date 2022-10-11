@@ -13,6 +13,4 @@
         </Style.Resources>
     </Style>
 
-    <Style TargetType="Frame" BasedOn="{x:Null}"/>
-
 </ResourceDictionary>
