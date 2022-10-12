@@ -1,0 +1,21 @@
+﻿namespace SCSCalc.Parameters
+{
+    //Интерфейс для работы с допустимыми рамками вводимых значений параметров расчёта конфигураций в
+    //соответствии стандарту ISO/IEC 11801. Инкапсулирован в DiapasonLocator.
+
+    /// <summary>
+    /// Интерфейс для работы с допустимыми рамками вводимых значений параметров расчёта конфигураций в соответствии стандарту ISO/IEC 11801.
+    /// </summary>
+    internal interface IStrictСomplianceWithTheStandart
+    {
+        /// <summary>
+        /// Определяет диапазон вводимых значений минимальной длины постоянного линка
+        /// </summary>
+        public (decimal Min, decimal Max) MinPermanentLinkDiapason { get; }
+
+        /// <summary>
+        /// Определяет диапазон вводимых значений максималньой длины постоянного линка
+        /// </summary>
+        public (decimal Min, decimal Max) MaxPermanentLinkDiapason { get; }
+    }
+}

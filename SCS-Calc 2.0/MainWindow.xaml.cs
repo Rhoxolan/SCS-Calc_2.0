@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SCSCalc.Parameters;
+using System.Windows;
 
 namespace SCS_Calc_2._0
 {
