@@ -61,6 +61,24 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 100.
+        /// </summary>
+        internal static string AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max {
+            get {
+                return ResourceManager.GetString("AnArbitraryNumberOfPorts.NumberOfPortsDiapason.Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.
+        /// </summary>
+        internal static string AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min {
+            get {
+                return ResourceManager.GetString("AnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 1000.
         /// </summary>
         internal static string NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max {

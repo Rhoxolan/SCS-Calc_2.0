@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnArbitraryNumberOfPorts.NumberOfPortsDiapason.Max" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="AnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
     <value>1000</value>
   </data>
