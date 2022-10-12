@@ -115,6 +115,78 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 100.
+        /// </summary>
+        internal static string NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max {
+            get {
+                return ResourceManager.GetString("NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 2.
+        /// </summary>
+        internal static string NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min {
+            get {
+                return ResourceManager.GetString("NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 10000.
+        /// </summary>
+        internal static string StandartValues_CableHankMeterageDiapason_Max {
+            get {
+                return ResourceManager.GetString("StandartValues.CableHankMeterageDiapason.Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.01.
+        /// </summary>
+        internal static string StandartValues_CableHankMeterageDiapason_Min {
+            get {
+                return ResourceManager.GetString("StandartValues.CableHankMeterageDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 10000.
+        /// </summary>
+        internal static string StandartValues_NumberOfWorkplacesDiapason_Max {
+            get {
+                return ResourceManager.GetString("StandartValues.NumberOfWorkplacesDiapason.Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.
+        /// </summary>
+        internal static string StandartValues_NumberOfWorkplacesDiapason_Min {
+            get {
+                return ResourceManager.GetString("StandartValues.NumberOfWorkplacesDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 2.
+        /// </summary>
+        internal static string StandartValues_TechnologicalReserveDiapason_Max {
+            get {
+                return ResourceManager.GetString("StandartValues.TechnologicalReserveDiapason.Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.
+        /// </summary>
+        internal static string StandartValues_TechnologicalReserveDiapason_Min {
+            get {
+                return ResourceManager.GetString("StandartValues.TechnologicalReserveDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 90.
         /// </summary>
         internal static string StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max {

@@ -15,7 +15,9 @@
         {
             get
             {
-                return (1M, 100M);
+                decimal min = Convert.ToDecimal(Properties.Resources.AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min);
+                decimal max = Convert.ToDecimal(Properties.Resources.AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max);
+                return (min, max);
             }
         }
     }

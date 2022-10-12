@@ -135,6 +135,30 @@
   <data name="NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
     <value>0.01</value>
   </data>
+  <data name="NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Max" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="StandartValues.CableHankMeterageDiapason.Max" xml:space="preserve">
+    <value>10000</value>
+  </data>
+  <data name="StandartValues.CableHankMeterageDiapason.Min" xml:space="preserve">
+    <value>0.01</value>
+  </data>
+  <data name="StandartValues.NumberOfWorkplacesDiapason.Max" xml:space="preserve">
+    <value>10000</value>
+  </data>
+  <data name="StandartValues.NumberOfWorkplacesDiapason.Min" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="StandartValues.TechnologicalReserveDiapason.Max" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="StandartValues.TechnologicalReserveDiapason.Min" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="StrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
     <value>90</value>
   </data>
