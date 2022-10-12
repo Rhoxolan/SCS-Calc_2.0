@@ -118,5 +118,75 @@
                 throw new SCSCalcException("Ошибка инициализации параметров значений конфигураций");
             }
         }
+
+        /// <summary>
+        /// Устанавливает соответствие вводимых значений стандарту ISO/IEC 11801
+        /// </summary>
+        public void SetStrictСomplianceWithTheStandart()
+        {
+            complianceWithTheStandart = new StrictСomplianceWithTheStandart();
+        }
+
+        /// <summary>
+        /// Разрешает ввод значений без соответствия стандарту ISO/IEC 11801
+        /// </summary>
+        public void SetNonStrictСomplianceWithTheStandart()
+        {
+            complianceWithTheStandart = new NonStrictСomplianceWithTheStandart();
+        }
+
+        /// <summary>
+        /// Устанавливает ввод значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801
+        /// </summary>
+        public void SetNotAnArbitraryNumberOfPorts()
+        {
+            numberOfPorts = new NotAnArbitraryNumberOfPorts();
+        }
+
+        /// <summary>
+        /// Разрешает произвольный ввод значения количества портов на 1 рабочее место без соответствия стандарту ISO/IEC 11801
+        /// </summary>
+        public void SetAnArbitraryNumberOfPorts()
+        {
+            numberOfPorts = new AnArbitraryNumberOfPorts();
+        }
+
+        /// <summary>
+        /// Разрешен или нет ввод значений в соответствии стандарту ISO/IEC 11801
+        /// </summary>
+        public bool IsStrictСomplianceWithTheStandart
+        {
+            get
+            {
+                if (complianceWithTheStandart is StrictСomplianceWithTheStandart)
+                {
+                    return true;
+                }
+                if (complianceWithTheStandart is NonStrictСomplianceWithTheStandart)
+                {
+                    return false;
+                }
+                throw new SCSCalcException("Значение соответствия стандарту ISO/IEC 11801 не инициализировано. Пожалуйста, проверьте настройки.");
+            }
+        }
+
+        /// <summary>
+        /// Разрешен или нет произвольный ввод значений количества портов на 1 рабочее место
+        /// </summary>
+        public bool IsAnArbitraryNumberOfPorts
+        {
+            get
+            {
+                if (numberOfPorts is AnArbitraryNumberOfPorts)
+                {
+                    return true;
+                }
+                if (numberOfPorts is NotAnArbitraryNumberOfPorts)
+                {
+                    return false;
+                }
+                throw new SCSCalcException("Значение соответствия стандарту ISO/IEC 11801 не инициализировано. Пожалуйста, проверьте настройки.");
+            }
+        }
     }
 }
