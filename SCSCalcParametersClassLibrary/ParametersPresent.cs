@@ -6,10 +6,12 @@
     public class ParametersPresent
     {
         private DiapasonLocator diapasonLocator;
+        private ValueLocator valueLocator;
 
         public ParametersPresent()
         {
             diapasonLocator = new();
+            valueLocator = new();
         }
 
         /// <summary>
@@ -23,6 +25,15 @@
                 return (diapasonLocator.MinPermanentLinkDiapason, diapasonLocator.MaxPermanentLinkDiapason, diapasonLocator.NumberOfPortsDiapason,
                     diapasonLocator.NumberOfWorkplacesDiapason, diapasonLocator.CableHankMeterageDiapason, diapasonLocator.TechnologicalReserveDiapason);
             }
+        }
+
+        /// <summary>
+        /// Значение коэффициента технологического запаса
+        /// </summary>
+        public double TechnologicalReserve
+        {
+            get => valueLocator.TechnologicalReserve;
+            set => valueLocator.TechnologicalReserve = value;
         }
 
         /// <summary>
@@ -46,6 +57,16 @@
         public void SetAnArbitraryNumberOfPorts() => diapasonLocator.SetAnArbitraryNumberOfPorts();
 
         /// <summary>
+        /// Устанавливает учёт технологического запаса
+        /// </summary>
+        public void SetTechnologicalReserveAvailability() => valueLocator.SetTechnologicalReserveAvailability();
+
+        /// <summary>
+        /// Расчёт без учёта технологического запаса
+        /// </summary>
+        public void SetNonTechnologicalReserve() => valueLocator.SetNonTechnologicalReserve();
+
+        /// <summary>
         /// Разрешен или нет ввод значений в соответствии стандарту ISO/IEC 11801
         /// </summary>
         public bool IsStrictСomplianceWithTheStandart
@@ -59,6 +80,14 @@
         public bool IsAnArbitraryNumberOfPorts
         {
             get => diapasonLocator.IsAnArbitraryNumberOfPorts;
+        }
+
+        /// <summary>
+        /// Учитывается или нет коэффициент технологического запаса
+        /// </summary>
+        public bool IsTechnologicalReserveAvailability
+        {
+            get => valueLocator.IsTechnologicalReserveAvailability;
         }
     }
 }

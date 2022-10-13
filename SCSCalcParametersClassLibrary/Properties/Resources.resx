@@ -135,6 +135,9 @@
   <data name="NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
     <value>0.01</value>
   </data>
+  <data name="NonTechnologicalReserve.TechnologicalReserve" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Max" xml:space="preserve">
     <value>100</value>
   </data>
@@ -170,5 +173,8 @@
   </data>
   <data name="StrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="TechnologicalReserveAvailability.TechnologicalReserve.Default" xml:space="preserve">
+    <value>1.10</value>
   </data>
 </root>

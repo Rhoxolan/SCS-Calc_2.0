@@ -115,6 +115,15 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.
+        /// </summary>
+        internal static string NonTechnologicalReserve_TechnologicalReserve {
+            get {
+                return ResourceManager.GetString("NonTechnologicalReserve.TechnologicalReserve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 100.
         /// </summary>
         internal static string NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max {
@@ -219,6 +228,15 @@ namespace SCSCalc.Parameters.Properties {
         internal static string StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min {
             get {
                 return ResourceManager.GetString("StrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.10.
+        /// </summary>
+        internal static string TechnologicalReserveAvailability_TechnologicalReserve_Default {
+            get {
+                return ResourceManager.GetString("TechnologicalReserveAvailability.TechnologicalReserve.Default", resourceCulture);
             }
         }
     }
