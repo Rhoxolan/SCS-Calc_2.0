@@ -81,27 +81,36 @@ namespace SCSCalc.Parameters.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string NonRecommendations_RecommendationFTPCable {
+        internal static string NonRecommendations_RecommendationCableStandart {
             get {
-                return ResourceManager.GetString("NonRecommendations.RecommendationFTPCable", resourceCulture);
+                return ResourceManager.GetString("NonRecommendations.RecommendationCableStandart", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string NonRecommendations_RecommendationLSZHCables {
+        internal static string NonRecommendations_RecommendationIsolationMaterial {
             get {
-                return ResourceManager.GetString("NonRecommendations.RecommendationLSZHCables", resourceCulture);
+                return ResourceManager.GetString("NonRecommendations.RecommendationIsolationMaterial", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string NonRecommendations_RecommendationOutdoorCables {
+        internal static string NonRecommendations_RecommendationIsolationType {
             get {
-                return ResourceManager.GetString("NonRecommendations.RecommendationOutdoorCables", resourceCulture);
+                return ResourceManager.GetString("NonRecommendations.RecommendationIsolationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string NonRecommendations_RecommendationShieldedType {
+            get {
+                return ResourceManager.GetString("NonRecommendations.RecommendationShieldedType", resourceCulture);
             }
         }
         
@@ -165,6 +174,159 @@ namespace SCSCalc.Parameters.Properties {
         internal static string NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min {
             get {
                 return ResourceManager.GetString("NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на LSZH (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationIsolationMaterial_LSZH {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationIsolationMaterial.LSZH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationIsolationMaterial_None {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationIsolationMaterial.None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на PVC (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationIsolationMaterial_PVC {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationIsolationMaterial.PVC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Indoor.
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationIsolationType_Indoor {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationIsolationType.Indoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationIsolationType_None {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationIsolationType.None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Outdoor.
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationIsolationType_Outdoor {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationIsolationType.Outdoor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на FTP (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationShieldedType_FTP {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationShieldedType.FTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationShieldedType_None {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationShieldedType.None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на UTP.
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationShieldedType_UTP {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationShieldedType.UTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_FastEthernet {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.FastEthernet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_FiveGBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.FiveGBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.GigabitBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_TX {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.GigabitBASE_TX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_None {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_TenBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.TenBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_TenGE {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.TenGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (Дополнить).
+        /// </summary>
+        internal static string RecommendationsAvailabilityRecommendationCableStandart_TwoPointFiveGBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.TwoPointFiveGBASE_T", resourceCulture);
             }
         }
         

@@ -123,13 +123,16 @@
   <data name="AnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="NonRecommendations.RecommendationFTPCable" xml:space="preserve">
+  <data name="NonRecommendations.RecommendationCableStandart" xml:space="preserve">
     <value />
   </data>
-  <data name="NonRecommendations.RecommendationLSZHCables" xml:space="preserve">
+  <data name="NonRecommendations.RecommendationIsolationMaterial" xml:space="preserve">
     <value />
   </data>
-  <data name="NonRecommendations.RecommendationOutdoorCables" xml:space="preserve">
+  <data name="NonRecommendations.RecommendationIsolationType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NonRecommendations.RecommendationShieldedType" xml:space="preserve">
     <value />
   </data>
   <data name="NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
@@ -152,6 +155,57 @@
   </data>
   <data name="NotAnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="RecommendationsAvailability.RecommendationIsolationMaterial.LSZH" xml:space="preserve">
+    <value>LSZH (Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailability.RecommendationIsolationMaterial.None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RecommendationsAvailability.RecommendationIsolationMaterial.PVC" xml:space="preserve">
+    <value>PVC (Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailability.RecommendationIsolationType.Indoor" xml:space="preserve">
+    <value>Indoor</value>
+  </data>
+  <data name="RecommendationsAvailability.RecommendationIsolationType.None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RecommendationsAvailability.RecommendationIsolationType.Outdoor" xml:space="preserve">
+    <value>Outdoor</value>
+  </data>
+  <data name="RecommendationsAvailability.RecommendationShieldedType.FTP" xml:space="preserve">
+    <value>FTP (Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailability.RecommendationShieldedType.None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RecommendationsAvailability.RecommendationShieldedType.UTP" xml:space="preserve">
+    <value>UTP</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.FastEthernet" xml:space="preserve">
+    <value>(Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.FiveGBASE_T" xml:space="preserve">
+    <value>(Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.GigabitBASE_T" xml:space="preserve">
+    <value>(Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.GigabitBASE_TX" xml:space="preserve">
+    <value>(Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.TenBASE_T" xml:space="preserve">
+    <value>(Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.TenGE" xml:space="preserve">
+    <value>(Дополнить)</value>
+  </data>
+  <data name="RecommendationsAvailabilityRecommendationCableStandart.TwoPointFiveGBASE_T" xml:space="preserve">
+    <value>(Дополнить)</value>
   </data>
   <data name="StandartValues.CableHankMeterageDiapason.Max" xml:space="preserve">
     <value>10000</value>
