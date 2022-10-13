@@ -35,6 +35,10 @@
 
     internal interface IRecommendations
     {
+        public IsolationType IsolationType { get; set; }
+        public IsolationMaterial IsolationMaterial { get; set; }
+        public ShieldedType ShieldedType { get; set; }
+        public List<ConnectionInterfaceStandard> ConnectionInterfaces { get; set; }
         string RecommendationIsolationType { get; }
         string RecommendationIsolationMaterial { get; }
         string RecommendationShieldedType { get; }
@@ -55,7 +59,6 @@
                 ConnectionInterfaceStandard.None
             };
         }
-
 
         public string RecommendationIsolationType
         {
@@ -162,6 +165,19 @@
 
     internal class NonRecommendations : IRecommendations
     {
+        public IsolationType IsolationType { get; set; }
+        public IsolationMaterial IsolationMaterial { get; set; }
+        public ShieldedType ShieldedType { get; set; }
+        public List<ConnectionInterfaceStandard> ConnectionInterfaces { get; set; }
+
+        public NonRecommendations()
+        {
+            ConnectionInterfaces = new()
+            {
+                ConnectionInterfaceStandard.None
+            };
+        }
+
         public string RecommendationIsolationType
         {
             get
@@ -199,34 +215,111 @@
 
     internal class RecommendationLocator
     {
+        private IRecommendations? recommendations;
+
+        public RecommendationLocator()
+        {
+            recommendations = null;
+        }
+
         public void SetRecommendationsAvailability()
         {
-
+            recommendations = new RecommendationsAvailability();
         }
 
         public void SetNonRecommendations()
         {
-
+            recommendations = new NonRecommendations();
         }
 
         public void SetRecommendationIndoorCable()
         {
-
+            if (recommendations != null)
+            {
+                recommendations.IsolationType = IsolationType.Indoor;
+            }
+            else
+            {
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
         }
 
         public void SetRecommendationOutdoorCable()
         {
-
+            if (recommendations != null)
+            {
+                recommendations.IsolationType = IsolationType.Outdoor;
+            }
+            else
+            {
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
         }
 
         public void SetRecommendationNonLSZHCable()
         {
-
+            if (recommendations != null)
+            {
+                recommendations.IsolationMaterial = IsolationMaterial.PVC;
+            }
+            else
+            {
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
         }
 
         public void SetRecommendationLSZHCable()
         {
+            if (recommendations != null)
+            {
+                recommendations.IsolationMaterial = IsolationMaterial.LSZH;
+            }
+            else
+            {
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
+        }
 
+        public void SetRecommendationShieldedCable()
+        {
+            if (recommendations != null)
+            {
+                recommendations.ShieldedType = ShieldedType.FTP;
+            }
+            else
+            {
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
+        }
+
+        public void SetRecommendationNonShieldedCable()
+        {
+            if (recommendations != null)
+            {
+                recommendations.ShieldedType = ShieldedType.UTP;
+            }
+            else
+            {
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
+        }
+
+        //Ты тут. Реализовать фурнкции добавления в лист ConnectionInterfaces и удаление из него. Подумать, как сделать лучше.
+
+        public bool IsRecommendationsAvailability
+        {
+            get
+            {
+                if(recommendations is RecommendationsAvailability)
+                {
+                    return true;
+                }
+                if(recommendations is NonRecommendations)
+                {
+                    return false;
+                }
+                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
         }
     }
 }
