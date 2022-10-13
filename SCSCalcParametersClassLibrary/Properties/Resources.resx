@@ -123,6 +123,15 @@
   <data name="AnArbitraryNumberOfPorts.NumberOfPortsDiapason.Min" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="NonRecommendations.RecommendationFTPCable" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NonRecommendations.RecommendationLSZHCables" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NonRecommendations.RecommendationOutdoorCables" xml:space="preserve">
+    <value />
+  </data>
   <data name="NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
     <value>1000</value>
   </data>

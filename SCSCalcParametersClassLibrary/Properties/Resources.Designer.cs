@@ -79,6 +79,33 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string NonRecommendations_RecommendationFTPCable {
+            get {
+                return ResourceManager.GetString("NonRecommendations.RecommendationFTPCable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string NonRecommendations_RecommendationLSZHCables {
+            get {
+                return ResourceManager.GetString("NonRecommendations.RecommendationLSZHCables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string NonRecommendations_RecommendationOutdoorCables {
+            get {
+                return ResourceManager.GetString("NonRecommendations.RecommendationOutdoorCables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 1000.
         /// </summary>
         internal static string NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max {
