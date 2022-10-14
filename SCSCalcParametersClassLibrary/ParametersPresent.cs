@@ -172,7 +172,6 @@
         /// <summary>
         /// Удаление из списка планируемых подключений значение стандарта 1000BASE-TX
         /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
         public void RemoveConnectionInterfaceStandardGigabitBASE_TX() => recommendationLocator.RemoveConnectionInterfaceStandardGigabitBASE_TX();
 
         /// <summary>
