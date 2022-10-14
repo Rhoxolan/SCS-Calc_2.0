@@ -16,6 +16,11 @@
             recommendationLocator = new();
         }
 
+        public static void ParametersSerializer(ParametersPresent parametersPresent, string ParametersDocPath)
+        {
+
+        }
+
         /// <summary>
         /// Диапазоны вводимых значений параметров расчёта конфигураций СКС
         /// </summary>
