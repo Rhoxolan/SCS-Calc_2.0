@@ -8,17 +8,17 @@
     internal class RecommendationsAvailability : IRecommendations
     {
         /// <summary>
-        /// Тип изоляции
+        /// Тип изоляции рекомендуемого кабеля
         /// </summary>
         public IsolationType IsolationType { get; set; }
 
         /// <summary>
-        /// Материал изоляции
+        /// Материал изоляции рекомендуемого кабеля
         /// </summary>
         public IsolationMaterial IsolationMaterial { get; set; }
 
         /// <summary>
-        /// Тип экранизации
+        /// Тип экранизации рекомендуемого кабеля
         /// </summary>
         public ShieldedType ShieldedType { get; set; }
 

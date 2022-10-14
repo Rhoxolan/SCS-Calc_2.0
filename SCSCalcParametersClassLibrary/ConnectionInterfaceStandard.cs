@@ -3,7 +3,7 @@
     /// <summary>
     /// Стандарты интерфейсов подключений
     /// </summary>
-    internal enum ConnectionInterfaceStandard
+    public enum ConnectionInterfaceStandard
     {
         None = 0,
         TenBASE_T = 1,

@@ -31,354 +31,94 @@
         }
 
         /// <summary>
-        /// Устанавливает значение получения рекомендации для кабеля внутреннего применения
+        /// Тип изоляции рекомендуемого кабеля
         /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void SetRecommendationIndoorCable()
+        public IsolationType IsolationType
         {
-            if (recommendations != null)
+            get
             {
-                recommendations.IsolationType = IsolationType.Indoor;
-            }
-            else
-            {
+                if(recommendations != null)
+                {
+                    return recommendations.IsolationType;
+                }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
+            set
+            {
+                if(recommendations == null)
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+                recommendations.IsolationType = value;
             }
         }
 
         /// <summary>
-        /// Устанавливает значение получения рекомендации для кабеля наружного применения
+        /// Материал изоляции рекомендуемого кабеля
         /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void SetRecommendationOutdoorCable()
+        public IsolationMaterial IsolationMaterial
         {
-            if (recommendations != null)
+            get
             {
-                recommendations.IsolationType = IsolationType.Outdoor;
-            }
-            else
-            {
+                if (recommendations != null)
+                {
+                    return recommendations.IsolationMaterial;
+                }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
+            set
+            {
+                if (recommendations == null)
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+                recommendations.IsolationMaterial = value;
             }
         }
 
         /// <summary>
-        /// Устанавливает значение получения рекомендации без учета норм пожарной безопасности
+        /// Тип экранизации рекомендуемого кабеля
         /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void SetRecommendationNonLSZHCable()
+        public ShieldedType ShieldedType
         {
-            if (recommendations != null)
+            get
             {
-                recommendations.IsolationMaterial = IsolationMaterial.PVC;
-            }
-            else
-            {
+                if (recommendations != null)
+                {
+                    return recommendations.ShieldedType;
+                }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+            }
+            set
+            {
+                if (recommendations == null)
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+                recommendations.ShieldedType = value;
             }
         }
 
         /// <summary>
-        /// Устанавливает значение получения рекомендации для учета норм пожарной безопасности
+        /// Список планируемых интерфейсов подключений
         /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void SetRecommendationLSZHCable()
+        public List<ConnectionInterfaceStandard> ConnectionInterfaces
         {
-            if (recommendations != null)
+            get
             {
-                recommendations.IsolationMaterial = IsolationMaterial.LSZH;
-            }
-            else
-            {
+                if (recommendations != null)
+                {
+                    return recommendations.ConnectionInterfaces;
+                }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
             }
-        }
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для экранированного кабеля
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void SetRecommendationShieldedCable()
-        {
-            if (recommendations != null)
+            set
             {
-                recommendations.ShieldedType = ShieldedType.FTP;
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для неэкранированного кабеля
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void SetRecommendationNonShieldedCable()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ShieldedType = ShieldedType.UTP;
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет отсутствующее значение интерфейса подключения
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardNone()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.None);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 10BASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardTenBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.TenBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта Fast Ethernet
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardFastEthernet()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.FastEthernet);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 1000BASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardGigabitBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.GigabitBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 1000BASE-TX 
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardGigabitBASE_TX()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.GigabitBASE_TX);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 2.5GBASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardTwoPointFiveGBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.TwoPointFiveGBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 5GBASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardFiveGBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.FiveGBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 10GBASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void AddConnectionInterfaceStandardTenGE()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.Add(ConnectionInterfaceStandard.TenGE);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений отстуствующее значение
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardNone()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.None);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 10BASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardTenBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.TenBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта Fast Ethernet
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardFastEthernet()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.FastEthernet);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 1000BASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardGigabitBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.GigabitBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 1000BASE-TX
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardGigabitBASE_TX()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.GigabitBASE_TX);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 2.5GBASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardTwoPointFiveGBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.TwoPointFiveGBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 5GBASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardFiveGBASE_T()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.FiveGBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-            }
-        }
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 10GBASE-T
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public void RemoveConnectionInterfaceStandardTenGE()
-        {
-            if (recommendations != null)
-            {
-                recommendations.ConnectionInterfaces.RemoveAll(t => t == ConnectionInterfaceStandard.FiveGBASE_T);
-            }
-            else
-            {
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                if (recommendations == null)
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+                recommendations.ConnectionInterfaces = value;
             }
         }
 

@@ -1,9 +1,9 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Тип экранизации
+    /// Тип экранизации рекомендуемого кабеля
     /// </summary>
-    internal enum ShieldedType
+    public enum ShieldedType
     {
         None = 0,
         UTP = 1,

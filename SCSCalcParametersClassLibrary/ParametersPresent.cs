@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using System.Text.Json;
+
+namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
@@ -16,9 +18,98 @@
             recommendationLocator = new();
         }
 
-        public static void ParametersSerializer(ParametersPresent parametersPresent, string ParametersDocPath)
+        /// <summary>
+        /// Сериализация настраеваемых параметров расчёта конфигураций СКС
+        /// </summary>
+        /// <param name="parametersPresent"></param>
+        /// <param name="parametersDocPath"></param>
+        public static void ParametersSerializer(ParametersPresent parametersPresent, string parametersDocPath)
         {
+            (bool IsStrictСomplianceWithTheStandart, bool IsAnArbitraryNumberOfPorts, bool IsTechnologicalReserveAvailability,
+                bool IsRecommendationsAvailability, double TechnologicalReserve, IsolationType IsolationType, IsolationMaterial IsolationMaterial,
+                ShieldedType ShieldedType, List<ConnectionInterfaceStandard> ConnectionInterfaces) parameters = new()
+                {
+                    IsStrictСomplianceWithTheStandart = parametersPresent.IsStrictСomplianceWithTheStandart,
+                    IsAnArbitraryNumberOfPorts = parametersPresent.IsAnArbitraryNumberOfPorts,
+                    IsTechnologicalReserveAvailability = parametersPresent.IsTechnologicalReserveAvailability,
+                    IsRecommendationsAvailability = parametersPresent.IsRecommendationsAvailability,
+                    TechnologicalReserve = parametersPresent.TechnologicalReserve,
+                    IsolationType = parametersPresent.IsolationType,
+                    IsolationMaterial = parametersPresent.IsolationMaterial,
+                    ShieldedType = parametersPresent.ShieldedType,
+                    ConnectionInterfaces = parametersPresent.ConnectionInterfaces
+                };
+            using FileStream fs = new(parametersDocPath, FileMode.Create);
+            JsonSerializerOptions options = new()
+            {
+                IncludeFields = true
+            };
+            JsonSerializer.Serialize(fs, parameters, options);
+        }
 
+        /// <summary>
+        /// Десериализация настраеваемых параметров расчёта конфигураций СКС
+        /// </summary>
+        /// <param name="parametersDocPath"></param>
+        /// <returns></returns>
+        public static ParametersPresent ParametersDeserializer(string parametersDocPath)
+        {
+            (bool IsStrictСomplianceWithTheStandart, bool IsAnArbitraryNumberOfPorts, bool IsTechnologicalReserveAvailability,
+                bool IsRecommendationsAvailability, double TechnologicalReserve, IsolationType IsolationType, IsolationMaterial IsolationMaterial,
+                ShieldedType ShieldedType, List<ConnectionInterfaceStandard> ConnectionInterfaces) parameters;
+
+            ParametersPresent parametersPresent = new();
+
+            using FileStream fs = new(parametersDocPath, FileMode.Open);
+            JsonSerializerOptions options = new()
+            {
+                IncludeFields = true
+            };
+            parameters = JsonSerializer.Deserialize<(bool, bool, bool, bool, double,
+                IsolationType, IsolationMaterial, ShieldedType, List<ConnectionInterfaceStandard>)>(fs, options);
+
+            if (parameters.IsStrictСomplianceWithTheStandart)
+            {
+                parametersPresent.SetStrictСomplianceWithTheStandart();
+            }
+            else
+            {
+                parametersPresent.SetNonStrictСomplianceWithTheStandart();
+            }
+
+            if (parameters.IsAnArbitraryNumberOfPorts)
+            {
+                parametersPresent.SetAnArbitraryNumberOfPorts();
+            }
+            else
+            {
+                parametersPresent.SetNotAnArbitraryNumberOfPorts();
+            }
+
+            if (parameters.IsTechnologicalReserveAvailability)
+            {
+                parametersPresent.SetTechnologicalReserveAvailability();
+                parametersPresent.TechnologicalReserve = parameters.TechnologicalReserve;
+            }
+            else
+            {
+                parametersPresent.SetNonTechnologicalReserve();
+            }
+
+            if(parameters.IsRecommendationsAvailability)
+            {
+                parametersPresent.SetRecommendationsAvailability();
+                parametersPresent.IsolationType = parameters.IsolationType;
+                parametersPresent.IsolationMaterial = parameters.IsolationMaterial;
+                parametersPresent.ShieldedType = parameters.ShieldedType;
+                parametersPresent.ConnectionInterfaces = parameters.ConnectionInterfaces;
+            }
+            else
+            {
+                parametersPresent.SetNonRecommendations();
+            }
+
+            return parametersPresent;
         }
 
         /// <summary>
@@ -41,6 +132,42 @@
         {
             get => valueLocator.TechnologicalReserve;
             set => valueLocator.TechnologicalReserve = value;
+        }
+
+        /// <summary>
+        /// Тип изоляции рекомендуемого кабеля
+        /// </summary>
+        public IsolationType IsolationType
+        {
+            get => recommendationLocator.IsolationType;
+            set => recommendationLocator.IsolationType = value;
+        }
+
+        /// <summary>
+        /// Материал изоляции рекомендуемого кабеля
+        /// </summary>
+        public IsolationMaterial IsolationMaterial
+        {
+            get => recommendationLocator.IsolationMaterial;
+            set => recommendationLocator.IsolationMaterial = value;
+        }
+
+        /// <summary>
+        /// Тип экранизации рекомендуемого кабеля
+        /// </summary>
+        public ShieldedType ShieldedType
+        {
+            get => recommendationLocator.ShieldedType;
+            set => recommendationLocator.ShieldedType = value;
+        }
+
+        /// <summary>
+        /// Cписок планируемых интерфейсов подключений
+        /// </summary>
+        public List<ConnectionInterfaceStandard> ConnectionInterfaces
+        {
+            get => recommendationLocator.ConnectionInterfaces;
+            set => recommendationLocator.ConnectionInterfaces = value;
         }
 
         /// <summary>
@@ -82,117 +209,6 @@
         /// Отключает получение рекомендаций
         /// </summary>
         public void SetNonRecommendations() => recommendationLocator.SetNonRecommendations();
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для кабеля внутреннего применения
-        /// </summary>
-        public void SetRecommendationIndoorCable() => recommendationLocator.SetRecommendationIndoorCable();
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для кабеля наружного применения
-        /// </summary>
-        public void SetRecommendationOutdoorCable() => recommendationLocator.SetRecommendationOutdoorCable();
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации без учета норм пожарной безопасности
-        /// </summary>
-        public void SetRecommendationNonLSZHCable() => recommendationLocator.SetRecommendationNonLSZHCable();
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для учета норм пожарной безопасности
-        /// </summary>
-        public void SetRecommendationLSZHCable() => recommendationLocator.SetRecommendationLSZHCable();
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для экранированного кабеля
-        /// </summary>
-        public void SetRecommendationShieldedCable() => recommendationLocator.SetRecommendationShieldedCable();
-
-        /// <summary>
-        /// Устанавливает значение получения рекомендации для неэкранированного кабеля
-        /// </summary>
-        public void SetRecommendationNonShieldedCable() => recommendationLocator.SetRecommendationNonShieldedCable();
-
-        /// <summary>
-        /// Добавляет отсутствующее значение интерфейса подключения
-        /// </summary>
-        public void AddConnectionInterfaceStandardNone() => recommendationLocator.AddConnectionInterfaceStandardNone();
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 10BASE-T
-        /// </summary>
-        public void AddConnectionInterfaceStandardTenBASE_T() => recommendationLocator.AddConnectionInterfaceStandardTenBASE_T();
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта Fast Ethernet
-        /// </summary>
-        public void AddConnectionInterfaceStandardFastEthernet() => recommendationLocator.AddConnectionInterfaceStandardFastEthernet();
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 1000BASE-T
-        /// </summary>
-        public void AddConnectionInterfaceStandardGigabitBASE_T() => recommendationLocator.AddConnectionInterfaceStandardGigabitBASE_T();
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 1000BASE-TX 
-        /// </summary>
-        public void AddConnectionInterfaceStandardGigabitBASE_TX() => recommendationLocator.AddConnectionInterfaceStandardGigabitBASE_TX();
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 2.5GBASE-T
-        /// </summary>
-        public void AddConnectionInterfaceStandardTwoPointFiveGBASE_T() => recommendationLocator.AddConnectionInterfaceStandardTwoPointFiveGBASE_T();
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 5GBASE-T
-        /// </summary>
-        public void AddConnectionInterfaceStandardFiveGBASE_T() => recommendationLocator.AddConnectionInterfaceStandardFiveGBASE_T();
-
-
-        /// <summary>
-        /// Добавляет значение планируемого интерфейса подключения стандарта 10GBASE-T
-        /// </summary>
-        public void AddConnectionInterfaceStandardTenGE() => recommendationLocator.AddConnectionInterfaceStandardTenGE();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений отстуствующее значение
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardNone() => recommendationLocator.AddConnectionInterfaceStandardTenGE();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 10BASE-T
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardTenBASE_T() => recommendationLocator.RemoveConnectionInterfaceStandardTenBASE_T();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта Fast Ethernet
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardFastEthernet() => recommendationLocator.RemoveConnectionInterfaceStandardFastEthernet();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 1000BASE-T
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardGigabitBASE_T() => recommendationLocator.RemoveConnectionInterfaceStandardTenBASE_T();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 1000BASE-TX
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardGigabitBASE_TX() => recommendationLocator.RemoveConnectionInterfaceStandardGigabitBASE_TX();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 2.5GBASE-T
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardTwoPointFiveGBASE_T() => recommendationLocator.RemoveConnectionInterfaceStandardTwoPointFiveGBASE_T();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 5GBASE-T
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardFiveGBASE_T() => recommendationLocator.RemoveConnectionInterfaceStandardFiveGBASE_T();
-
-        /// <summary>
-        /// Удаление из списка планируемых подключений значение стандарта 10GBASE-T
-        /// </summary>
-        public void RemoveConnectionInterfaceStandardTenGE() => recommendationLocator.RemoveConnectionInterfaceStandardTenGE();
 
         /// <summary>
         /// Включено или выключено получение рекомендаций по побдору кабеля
