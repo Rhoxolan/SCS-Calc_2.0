@@ -31,6 +31,78 @@
         }
 
         /// <summary>
+        /// Рекомендация по типу изоляции кабеля
+        /// </summary>
+        public string RecommendationIsolationType
+        {
+            get
+            {
+                if (recommendations != null)
+                {
+                    return recommendations.RecommendationIsolationType;
+                }
+                else
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Рекомендация по материалу изоляции кабеля
+        /// </summary>
+        public string RecommendationIsolationMaterial
+        {
+            get
+            {
+                if (recommendations != null)
+                {
+                    return recommendations.RecommendationIsolationMaterial;
+                }
+                else
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Рекомендация по типу экранизации кабеля
+        /// </summary>
+        public string RecommendationShieldedType
+        {
+            get
+            {
+                if (recommendations != null)
+                {
+                    return recommendations.RecommendationShieldedType;
+                }
+                else
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Рекомендация по стандарту кабеля
+        /// </summary>
+        public string RecommendationCableStandart
+        {
+            get
+            {
+                if (recommendations != null)
+                {
+                    return recommendations.RecommendationCableStandart;
+                }
+                else
+                {
+                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                }
+            }
+        }
+
+        /// <summary>
         /// Тип изоляции рекомендуемого кабеля
         /// </summary>
         public IsolationType IsolationType

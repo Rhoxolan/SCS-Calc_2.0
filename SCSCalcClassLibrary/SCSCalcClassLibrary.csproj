@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SCSCalc</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SCSCalcExceptionClassLibrary\SCSCalcExceptionClassLibrary.csproj" />
+    <ProjectReference Include="..\SCSCalcParametersClassLibrary\SCSCalcParametersClassLibrary.csproj" />
+  </ItemGroup>
+
+</Project>

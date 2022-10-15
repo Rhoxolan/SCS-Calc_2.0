@@ -126,6 +126,18 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
+        /// Рекомендации по подбору кабеля
+        /// </summary>
+        public (string RecommendationIsolationType, string RecommendationIsolationMaterial, string RecommendationShieldedType, string RecommendationCableStandart) Recommendations
+        {
+            get
+            {
+                return (recommendationLocator.RecommendationIsolationType, recommendationLocator.RecommendationIsolationMaterial, recommendationLocator.RecommendationShieldedType,
+                    recommendationLocator.RecommendationCableStandart);
+            }
+        }
+
+        /// <summary>
         /// Значение коэффициента технологического запаса
         /// </summary>
         public double TechnologicalReserve
