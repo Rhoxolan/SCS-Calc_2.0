@@ -113,35 +113,35 @@
             {
                 if(ConnectionInterfaces.Max() == ConnectionInterfaceStandard.None)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_None;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_None;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.TenBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_TenBASE_T;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_TenBASE_T;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.FastEthernet)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_FastEthernet;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_FastEthernet;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.GigabitBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_T;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_T;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.GigabitBASE_TX)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_TX;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_TX;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.TwoPointFiveGBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_TwoPointFiveGBASE_T;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_TwoPointFiveGBASE_T;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.FiveGBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_FiveGBASE_T;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_FiveGBASE_T;
                 }
                 if (ConnectionInterfaces.Max() == ConnectionInterfaceStandard.TenGE)
                 {
-                    return Properties.Resources.RecommendationsAvailabilityRecommendationCableStandart_TenGE;
+                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_TenGE;
                 }
                 throw new SCSCalcException("Значение интерфейса подключения не инициализировано. Пожалуйста, проверьте настройки.");
             }

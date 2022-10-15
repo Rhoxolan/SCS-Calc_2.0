@@ -178,6 +178,78 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 5 (Cat 5), 5e (Cat 5e).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_FastEthernet {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.FastEthernet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 6 (Cat 6).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_FiveGBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.FiveGBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 5e (Cat 5e).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.GigabitBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 6 (Cat 6).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_TX {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.GigabitBASE_TX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_None {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 3 (Cat 3), 5 (Cat 5), 5e (Cat 5e).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_TenBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.TenBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 6 (Cat 6), 7 (Cat 7) ,7a (Cat 7a).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_TenGE {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.TenGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 5e (Cat 5e).
+        /// </summary>
+        internal static string RecommendationsAvailability_RecommendationCableStandart_TwoPointFiveGBASE_T {
+            get {
+                return ResourceManager.GetString("RecommendationsAvailability.RecommendationCableStandart.TwoPointFiveGBASE_T", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на LSZH, LSOH, LSHF, LSNH, NHFR, HFFR, FRZH, LSFRZH.
         /// </summary>
         internal static string RecommendationsAvailability_RecommendationIsolationMaterial_LSZH {
@@ -255,78 +327,6 @@ namespace SCSCalc.Parameters.Properties {
         internal static string RecommendationsAvailability_RecommendationShieldedType_UTP {
             get {
                 return ResourceManager.GetString("RecommendationsAvailability.RecommendationShieldedType.UTP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 5 (Cat 5), 5e (Cat 5e).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_FastEthernet {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.FastEthernet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 6 (Cat 6).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_FiveGBASE_T {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.FiveGBASE_T", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 5e (Cat 5e).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_T {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.GigabitBASE_T", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 6 (Cat 6).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_TX {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.GigabitBASE_TX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на .
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_None {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 3 (Cat 3), 5 (Cat 5), 5e (Cat 5e).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_TenBASE_T {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.TenBASE_T", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_TenGE {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.TenGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 5e (Cat 5e).
-        /// </summary>
-        internal static string RecommendationsAvailabilityRecommendationCableStandart_TwoPointFiveGBASE_T {
-            get {
-                return ResourceManager.GetString("RecommendationsAvailabilityRecommendationCableStandart.TwoPointFiveGBASE_T", resourceCulture);
             }
         }
         
