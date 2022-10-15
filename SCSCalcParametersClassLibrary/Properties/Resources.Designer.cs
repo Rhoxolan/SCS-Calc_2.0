@@ -178,7 +178,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на LSZH (Дополнить).
+        ///   Ищет локализованную строку, похожую на LSZH, LSOH, LSHF, LSNH, NHFR, HFFR, FRZH, LSFRZH.
         /// </summary>
         internal static string RecommendationsAvailability_RecommendationIsolationMaterial_LSZH {
             get {
@@ -196,7 +196,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PVC (Дополнить).
+        ///   Ищет локализованную строку, похожую на PVC, PP, PE.
         /// </summary>
         internal static string RecommendationsAvailability_RecommendationIsolationMaterial_PVC {
             get {
@@ -232,7 +232,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на FTP (Дополнить).
+        ///   Ищет локализованную строку, похожую на FTP, STP, F/UTP, S/UTP, U/FTP, SF/UTP, F/FTP, S/FTP, SF/FTP.
         /// </summary>
         internal static string RecommendationsAvailability_RecommendationShieldedType_FTP {
             get {
@@ -250,7 +250,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на UTP.
+        ///   Ищет локализованную строку, похожую на UTP (U/UTP).
         /// </summary>
         internal static string RecommendationsAvailability_RecommendationShieldedType_UTP {
             get {
@@ -259,7 +259,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
+        ///   Ищет локализованную строку, похожую на 5 (Cat 5), 5e (Cat 5e).
         /// </summary>
         internal static string RecommendationsAvailabilityRecommendationCableStandart_FastEthernet {
             get {
@@ -268,7 +268,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
+        ///   Ищет локализованную строку, похожую на 6 (Cat 6).
         /// </summary>
         internal static string RecommendationsAvailabilityRecommendationCableStandart_FiveGBASE_T {
             get {
@@ -277,7 +277,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
+        ///   Ищет локализованную строку, похожую на 5e (Cat 5e).
         /// </summary>
         internal static string RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_T {
             get {
@@ -286,7 +286,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
+        ///   Ищет локализованную строку, похожую на 6 (Cat 6).
         /// </summary>
         internal static string RecommendationsAvailabilityRecommendationCableStandart_GigabitBASE_TX {
             get {
@@ -304,7 +304,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
+        ///   Ищет локализованную строку, похожую на 3 (Cat 3), 5 (Cat 5), 5e (Cat 5e).
         /// </summary>
         internal static string RecommendationsAvailabilityRecommendationCableStandart_TenBASE_T {
             get {
@@ -322,7 +322,7 @@ namespace SCSCalc.Parameters.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на (Дополнить).
+        ///   Ищет локализованную строку, похожую на 5e (Cat 5e).
         /// </summary>
         internal static string RecommendationsAvailabilityRecommendationCableStandart_TwoPointFiveGBASE_T {
             get {
