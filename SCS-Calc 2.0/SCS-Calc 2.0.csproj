@@ -18,8 +18,4 @@
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SCSCalcParametersClassLibrary\SCSCalcClassLibrary.csproj" />
-  </ItemGroup>
-
 </Project>

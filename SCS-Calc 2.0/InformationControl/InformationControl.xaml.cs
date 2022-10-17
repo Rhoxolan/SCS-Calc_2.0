@@ -7,11 +7,11 @@ using System.Windows.Input;
 namespace SCS_Calc_2._0
 {
     /// <summary>
-    /// Логика взаимодействия для InformationPage.xaml
+    /// Логика взаимодействия для InformationControl.xaml
     /// </summary>
-    public partial class InformationPage : Page
+    public partial class InformationControl : UserControl
     {
-        public InformationPage()
+        public InformationControl()
         {
             InitializeComponent();
         }

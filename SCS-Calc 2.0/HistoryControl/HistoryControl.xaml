@@ -1,4 +1,4 @@
-﻿<Page x:Class="SCS_Calc_2._0.HistoryPage"
+﻿<UserControl x:Class="SCS_Calc_2._0.HistoryControl"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,9 +8,9 @@
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="600">
 
-    <Page.Resources>
-        <ResourceDictionary Source="HistoryPageDictionary.xaml"/>
-    </Page.Resources>
+    <UserControl.Resources>
+        <ResourceDictionary Source="HistoryControlDictionary.xaml"/>
+    </UserControl.Resources>
 
     <ScrollViewer>
 
@@ -61,4 +61,4 @@
 
     </ScrollViewer>
     
-</Page>
+</UserControl>

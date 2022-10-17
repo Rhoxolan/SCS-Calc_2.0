@@ -7,10 +7,10 @@ namespace SCS_Calc_2._0
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CalculatePage calculatePage;
-        private InformationPage informationPage;
-        private AdvancedParametersPage advancedParametersPage;
-        private HistoryPage historyPage;
+        private CalculateControl calculatePage;
+        private InformationControl informationPage;
+        private AdvancedParametersControl advancedParametersPage;
+        private HistoryControl historyPage;
 
         public MainWindow()
         {
@@ -21,14 +21,14 @@ namespace SCS_Calc_2._0
             historyPage = new();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) => pageFrame.Content = calculatePage;
+        private void Window_Loaded(object sender, RoutedEventArgs e) => controlsContentControl.Content = calculatePage;
 
-        private void CalculateButton_Click(object sender, RoutedEventArgs e) => pageFrame.Content = calculatePage;
+        private void CalculateButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = calculatePage;
 
-        private void InformationButton_Click(object sender, RoutedEventArgs e) => pageFrame.Content = informationPage;
+        private void InformationButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = informationPage;
 
-        private void AdvancedParametersButton_Click(object sender, RoutedEventArgs e) => pageFrame.Content = advancedParametersPage;
+        private void AdvancedParametersButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = advancedParametersPage;
 
-        private void HistoryButton_Click(object sender, RoutedEventArgs e) => pageFrame.Content = historyPage;
+        private void HistoryButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = historyPage;
     }
 }

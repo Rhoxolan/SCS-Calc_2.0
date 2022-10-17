@@ -1,4 +1,4 @@
-﻿<Page x:Class="SCS_Calc_2._0.CalculatePage"
+﻿<UserControl x:Class="SCS_Calc_2._0.CalculateControl"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,9 +9,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600">
 
-    <Page.Resources>
-        <ResourceDictionary Source="CalculatePageDictionary.xaml"/>
-    </Page.Resources>
+    <UserControl.Resources>
+        <ResourceDictionary Source="CalculateDictionary.xaml"/>
+    </UserControl.Resources>
 
     <ScrollViewer>
 
@@ -106,4 +106,4 @@
 
     </ScrollViewer>
 
-</Page>
+</UserControl>

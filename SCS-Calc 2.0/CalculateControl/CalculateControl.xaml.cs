@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SCS_Calc_2._0
 {
     /// <summary>
-    /// Логика взаимодействия для CalculatePage.xaml
+    /// Логика взаимодействия для CalculateControl.xaml
     /// </summary>
-    public partial class CalculatePage : Page
+    public partial class CalculateControl : UserControl
     {
-        public CalculatePage()
+        public CalculateControl()
         {
             InitializeComponent();
         }
