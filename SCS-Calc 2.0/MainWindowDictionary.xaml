@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:hc="https://handyorg.github.io/handycontrol">
+                    xmlns:hc="https://handyorg.github.io/handycontrol"
+                    xmlns:local="clr-namespace:SCS_Calc_2._0">
 
     <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonWindow}">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -12,5 +13,13 @@
             </DataTemplate>
         </Style.Resources>
     </Style>
+
+    <local:CalculatePage x:Key="calculatePage"/>
+    
+    <local:AdvancedParametersPage x:Key="advancedParametersPage"/>
+    
+    <local:HistoryPage x:Key="historyPage"/>
+    
+    <local:InformationPage x:Key="informationPage"/>
 
 </ResourceDictionary>

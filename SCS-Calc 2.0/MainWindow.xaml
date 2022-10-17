@@ -31,7 +31,7 @@
 
         </StackPanel>
 
-        <Frame x:Name="controlsContentControl" Style="{StaticResource styleViewFrameForMainWindow}" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="pageFrame" Style="{StaticResource styleViewFrameForMainWindow}" Grid.Column="1" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 

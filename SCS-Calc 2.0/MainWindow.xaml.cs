@@ -7,28 +7,34 @@ namespace SCS_Calc_2._0
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CalculatePage calculatePage;
-        private InformationPage informationPage;
-        private AdvancedParametersPage advancedParametersPage;
-        private HistoryPage historyPage;
-
         public MainWindow()
         {
             InitializeComponent();
-            calculatePage = new();
-            informationPage = new();
-            advancedParametersPage = new();
-            historyPage = new();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) => controlsContentControl.Content = calculatePage;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Content = Resources["calculatePage"];
+        }
 
-        private void CalculateButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = calculatePage;
+        private void CalculateButton_Click(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Content = Resources["calculatePage"];
+        }
 
-        private void InformationButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = informationPage;
+        private void InformationButton_Click(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Content = Resources["informationPage"];
+        }
 
-        private void AdvancedParametersButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = advancedParametersPage;
+        private void AdvancedParametersButton_Click(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Content = Resources["advancedParametersPage"];
+        }
 
-        private void HistoryButton_Click(object sender, RoutedEventArgs e) => controlsContentControl.Content = historyPage;
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Content = Resources["historyPage"];
+        }
     }
 }
