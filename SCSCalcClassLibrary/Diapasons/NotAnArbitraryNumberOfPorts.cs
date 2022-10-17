@@ -1,4 +1,4 @@
-﻿namespace SCSCalc.Parameters
+﻿namespace SCSCalc
 {
     //Класс для определения диапазона ввода значения количества портов на 1 рабочее место с учетом требований стандарта ISO/IEC 11801.
     //Инкапсулирован в DiapasonLocator.

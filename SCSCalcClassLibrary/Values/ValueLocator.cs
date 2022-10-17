@@ -1,4 +1,4 @@
-﻿namespace SCSCalc.Parameters
+﻿namespace SCSCalc
 {
     //Класс, инкапсулирующий объекты для работы со значениями расчета конфигкраций СКС.
 

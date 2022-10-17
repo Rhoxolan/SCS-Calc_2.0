@@ -1,5 +1,4 @@
-﻿using SCSCalc.Parameters;
-using System.Text;
+﻿using System.Text;
 
 namespace SCSCalc
 {
@@ -102,7 +101,7 @@ namespace SCSCalc
         /// <param name="cableHankMeterage"></param>
         /// <returns></returns>
         /// <exception cref="SCSCalcException"></exception>
-        public static Configuration Calculate(List<Configuration> configurations, ParametersPresent parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+        public static Configuration Calculate(List<Configuration> configurations, SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
             if (cableHankMeterage != null)

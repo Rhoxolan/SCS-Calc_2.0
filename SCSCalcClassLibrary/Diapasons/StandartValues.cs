@@ -1,4 +1,4 @@
-﻿namespace SCSCalc.Parameters
+﻿namespace SCSCalc
 {
     //Класс для определения диапазона стандартных вводимых параметров конфигураций СКС.
     //Инкапсулирован в класс SettingsLocator.

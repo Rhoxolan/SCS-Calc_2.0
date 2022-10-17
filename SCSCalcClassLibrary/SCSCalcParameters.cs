@@ -1,17 +1,17 @@
 ﻿using System.Text.Json;
 
-namespace SCSCalc.Parameters
+namespace SCSCalc
 {
     /// <summary>
     /// Класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
     /// </summary>
-    public class ParametersPresent
+    public class SCSCalcParameters
     {
         private DiapasonLocator diapasonLocator;
         private ValueLocator valueLocator;
         private RecommendationLocator recommendationLocator;
 
-        public ParametersPresent()
+        public SCSCalcParameters()
         {
             diapasonLocator = new();
             valueLocator = new();
@@ -23,7 +23,7 @@ namespace SCSCalc.Parameters
         /// </summary>
         /// <param name="parametersPresent"></param>
         /// <param name="parametersDocPath"></param>
-        public static void ParametersSerializer(ParametersPresent parametersPresent, string parametersDocPath)
+        public static void ParametersSerializer(SCSCalcParameters parametersPresent, string parametersDocPath)
         {
             (bool IsStrictСomplianceWithTheStandart, bool IsAnArbitraryNumberOfPorts, bool IsTechnologicalReserveAvailability,
                 bool IsRecommendationsAvailability, double TechnologicalReserve, IsolationType IsolationType, IsolationMaterial IsolationMaterial,
@@ -52,13 +52,13 @@ namespace SCSCalc.Parameters
         /// </summary>
         /// <param name="parametersDocPath"></param>
         /// <returns></returns>
-        public static ParametersPresent ParametersDeserializer(string parametersDocPath)
+        public static SCSCalcParameters ParametersDeserializer(string parametersDocPath)
         {
             (bool IsStrictСomplianceWithTheStandart, bool IsAnArbitraryNumberOfPorts, bool IsTechnologicalReserveAvailability,
                 bool IsRecommendationsAvailability, double TechnologicalReserve, IsolationType IsolationType, IsolationMaterial IsolationMaterial,
                 ShieldedType ShieldedType, List<ConnectionInterfaceStandard> ConnectionInterfaces) parameters;
 
-            ParametersPresent parametersPresent = new();
+            SCSCalcParameters parametersPresent = new();
 
             using FileStream fs = new(parametersDocPath, FileMode.Open);
             JsonSerializerOptions options = new()

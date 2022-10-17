@@ -1,4 +1,4 @@
-﻿namespace SCSCalc.Parameters
+﻿namespace SCSCalc
 {
     /// <summary>
     /// Тип изоляции рекомендуемого кабеля

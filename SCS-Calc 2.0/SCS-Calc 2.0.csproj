@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SCSCalcParametersClassLibrary\SCSCalcParametersClassLibrary.csproj" />
+    <ProjectReference Include="..\SCSCalcParametersClassLibrary\SCSCalcClassLibrary.csproj" />
   </ItemGroup>
 
 </Project>
