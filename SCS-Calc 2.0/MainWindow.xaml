@@ -31,7 +31,7 @@
 
         </StackPanel>
 
-        <ContentControl x:Name="controlsContentControl" Style="{StaticResource styleViewContentControlForMainWindow}" Grid.Column="1"/>
+        <Frame x:Name="controlsContentControl" Style="{StaticResource styleViewFrameForMainWindow}" Grid.Column="1" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 

@@ -18,9 +18,9 @@ namespace SCS_Calc_2._0
     /// <summary>
     /// Логика взаимодействия для HistoryPage.xaml
     /// </summary>
-    public partial class HistoryControl : UserControl
+    public partial class HistoryPage : Page
     {
-        public HistoryControl()
+        public HistoryPage()
         {
             InitializeComponent();
         }

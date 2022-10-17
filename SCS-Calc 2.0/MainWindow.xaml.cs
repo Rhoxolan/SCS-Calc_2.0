@@ -7,10 +7,10 @@ namespace SCS_Calc_2._0
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CalculateControl calculatePage;
-        private InformationControl informationPage;
-        private AdvancedParametersControl advancedParametersPage;
-        private HistoryControl historyPage;
+        private CalculatePage calculatePage;
+        private InformationPage informationPage;
+        private AdvancedParametersPage advancedParametersPage;
+        private HistoryPage historyPage;
 
         public MainWindow()
         {

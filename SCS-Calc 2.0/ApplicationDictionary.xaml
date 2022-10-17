@@ -12,7 +12,7 @@
         </Style.Resources>
     </Style>
 
-    <Style TargetType="ContentControl" BasedOn="{x:Null}" x:Key="styleViewContentControlForMainWindow">
+    <Style TargetType="Frame" BasedOn="{x:Null}" x:Key="styleViewFrameForMainWindow">
         <Setter Property="Background" Value="#FFFEFD"/>
     </Style>
 

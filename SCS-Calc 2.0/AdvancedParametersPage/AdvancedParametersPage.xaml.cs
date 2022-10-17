@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SCS_Calc_2._0
 {
     /// <summary>
-    /// Логика взаимодействия для AdvancedParametersControl.xaml
+    /// Логика взаимодействия для AdvancedParametersPage.xaml
     /// </summary>
-    public partial class AdvancedParametersControl : UserControl
+    public partial class AdvancedParametersPage : Page
     {
-        public AdvancedParametersControl()
+        public AdvancedParametersPage()
         {
             InitializeComponent();
         }
