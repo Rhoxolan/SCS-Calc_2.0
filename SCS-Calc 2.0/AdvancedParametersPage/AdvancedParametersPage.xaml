@@ -7,7 +7,7 @@
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="600">
+      d:DesignHeight="700" d:DesignWidth="600" DataContext="{DynamicResource advancedParametersPageViewModel}">
 
     <Page.Resources>
         <ResourceDictionary Source="AdvancedParametersPageDictionary.xaml"/>

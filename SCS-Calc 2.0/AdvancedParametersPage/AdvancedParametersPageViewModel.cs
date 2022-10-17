@@ -2,6 +2,11 @@
 {
     public class AdvancedParametersPageViewModel
     {
-        
+        private readonly ApplicationModel model;
+
+        public AdvancedParametersPageViewModel(ApplicationModel model)
+        {
+            this.model = model;
+        }
     }
 }

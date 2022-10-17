@@ -6,7 +6,7 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       mc:Ignorable="d"
-      d:DesignHeight="700" d:DesignWidth="600">
+      d:DesignHeight="700" d:DesignWidth="600" DataContext="{DynamicResource historyPageViewModel}">
 
     <Page.Resources>
         <ResourceDictionary Source="HistoryPageDictionary.xaml"/>

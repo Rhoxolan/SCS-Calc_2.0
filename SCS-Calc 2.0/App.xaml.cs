@@ -13,5 +13,27 @@ namespace SCS_Calc_2._0
     /// </summary>
     public partial class App : Application
     {
+        private readonly ApplicationModel applicationModel;
+        private readonly InformationPageViewModel informationPageViewModel;
+        private readonly HistoryPageViewModel historyPageViewModel;
+        private readonly CalculatePageViewModel calculatePageViewModel;
+        private readonly AdvancedParametersPageViewModel advancedParametersPageViewModel;
+
+        public App()
+        {
+            applicationModel = new();
+            informationPageViewModel = new(applicationModel);
+            historyPageViewModel = new(applicationModel);
+            calculatePageViewModel = new(applicationModel);
+            advancedParametersPageViewModel = new(applicationModel);
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Resources["informationPageViewModel"] = informationPageViewModel;
+            Resources["historyPageViewModel"] = historyPageViewModel;
+            Resources["calculatePageViewModel"] = calculatePageViewModel;
+            Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
+        }
     }
 }
