@@ -14,5 +14,11 @@ namespace SCS_Calc_2._0
         }
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
+
+        public void AddConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+            int numberOfPorts, double? cableHankMeterage)
+        {
+
+        }
     }
 }
