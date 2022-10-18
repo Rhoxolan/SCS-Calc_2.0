@@ -13,6 +13,20 @@
     <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleBorderNumericUpDown">
         <Setter Property="MaxWidth" Value="130"/>
         <Setter Property="MinWidth" Value="130"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.4"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleViewBorderForExpander">
+        <Setter Property="BorderBrush" Value="MediumBlue"/>
+        <Setter Property="BorderThickness" Value="0.8"/>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="styleViewStackPanelForExpander">
+        <Setter Property="Background" Value="#FFFEFD"/>
     </Style>
 
     <Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource styleViewNumericUpDown}">
@@ -21,6 +35,11 @@
 
     <Style TargetType="Expander" BasedOn="{StaticResource styleViewExpander}">
         <Setter Property="BorderThickness" Value="0.5"/>
+        <!--<Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="IsExpanded" Value="False"/>
+            </Trigger>
+        </Style.Triggers>-->
     </Style>
 
     <Style TargetType="TextBox" BasedOn="{StaticResource styleViewTextBox}">
