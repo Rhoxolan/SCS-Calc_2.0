@@ -77,7 +77,7 @@ namespace SCSCalc
         /// <param name="configurations"></param>
         /// <returns></returns>
         /// <exception cref="SCSCalcException"></exception>
-        public static ushort GetId(List<Configuration> configurations)
+        private static ushort GetId(List<Configuration> configurations)
         {
             for(ushort i = 0; i < ushort.MaxValue; i++)
             {

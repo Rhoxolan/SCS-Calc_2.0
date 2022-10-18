@@ -24,5 +24,14 @@ namespace SCS_Calc_2._0
         {
             InitializeComponent();
         }
+
+        private void checkBoxCableHankMeterage_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if(checkBoxCableHankMeterage.IsChecked == false)
+            {
+                numericUpDownCableHankMeterage.Value = null;
+                expanderCableHankMeterageStandartValues.IsExpanded = false;
+            }
+        }
     }
 }

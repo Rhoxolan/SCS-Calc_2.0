@@ -11,12 +11,9 @@ namespace SCS_Calc_2._0
     {
         private readonly ApplicationModel model;
 
-        public ObservableCollection<Configuration> Configurations { get; }
-
         public CalculatePageViewModel(ApplicationModel model)
         {
             this.model = model;
-            Configurations = new(model.Configurations);
         }
 
         public double MinPermanentLink { get; set; } = 1;
@@ -27,10 +24,10 @@ namespace SCS_Calc_2._0
 
         public int NumberOfPorts { get; set; } = 1;
 
-        public double? CableHankMeterage { get; set; } = 305;
+        public double? CableHankMeterage { get; set; } = null;
 
         [RelayCommand]
-        private void AddConfiguration() => model.AddConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
+        private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
 
         [RelayCommand]
         private void SetCableHankMeterage(string value)
