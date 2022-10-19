@@ -34,6 +34,22 @@ namespace SCS_Calc_2._0
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
 
+        public double TechnologicalReserve
+        {
+            get
+            {
+                return parameters.TechnologicalReserve;
+            }
+            set
+            {
+                parameters.TechnologicalReserve = value;
+                TechnologicalReserveChanged.Invoke(null!, null!);
+            }
+        }
+
+        //Изменение значения коэффициента технологического запаса
+        public event EventHandler TechnologicalReserveChanged;
+
         public (
             (decimal Min, decimal Max) MinPermanentLinkDiapason,
             (decimal Min, decimal Max) MaxPermanentLinkDiapason,
@@ -50,14 +66,13 @@ namespace SCS_Calc_2._0
             }
         }
 
+        //Изменение значения даипазонов вводимых параметров расчёта конфигураций
+        public event EventHandler DiapasonsChanged;
+
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
-
         }
-
-        //Изменение значения даипазонов вводимых параметров расчёта конфигураций
-        public event EventHandler DiapasonsChanged;
 
         //Метод для загрузки параметров расчёта конфигураций
         private void Loader()

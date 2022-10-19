@@ -19,6 +19,7 @@ namespace SCS_Calc_2._0
         {
             this.model = model;
             model.DiapasonsChanged += DiapasonsChanged;
+            model.TechnologicalReserveChanged += TechnologicalReserveChanged;
         }
 
         //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
@@ -26,7 +27,7 @@ namespace SCS_Calc_2._0
         {
             get
             {
-                return (int)((minPermanentLink + maxPermanentLink) / 2 * 1.1); //Заменить на значение технологического запаса!
+                return (int)((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve); //Заменить на значение технологического запаса!
             }
         }
 
@@ -73,6 +74,12 @@ namespace SCS_Calc_2._0
             }
         }
 
+        public double TechnologicalReserve
+        {
+            get => model.TechnologicalReserve;
+            set => model.TechnologicalReserve = value;
+        }
+
         public decimal MinPermanentLinkDiapasonMin => model.Diapasons.MinPermanentLinkDiapason.Min;
 
         public decimal MinPermanentLinkDiapasonMax => model.Diapasons.MinPermanentLinkDiapason.Max;
@@ -106,6 +113,12 @@ namespace SCS_Calc_2._0
             OnPropertyChanged(nameof(NumberOfPortsDiapasonMax));
             OnPropertyChanged(nameof(CableHankMeterageDiapasonMin));
             OnPropertyChanged(nameof(CableHankMeterageDiapasonMax));
+        }
+
+        private void TechnologicalReserveChanged(object? sender = null, object? args = null)
+        {
+            OnPropertyChanged(nameof(TechnologicalReserve));
+            OnPropertyChanged(nameof(AveragePermanentLink));
         }
 
         [RelayCommand]
