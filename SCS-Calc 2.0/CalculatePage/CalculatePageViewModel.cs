@@ -11,6 +11,8 @@ namespace SCS_Calc_2._0
     public partial class CalculatePageViewModel
     {
         private readonly ApplicationModel model;
+        private double minPermanentLink;
+        private double maxPermanentLink;
         private double? cableHankMeterage;
 
         public CalculatePageViewModel(ApplicationModel model)
@@ -19,13 +21,44 @@ namespace SCS_Calc_2._0
             model.DiapasonsChanged += DiapasonsChanged;
         }
 
-        public double MinPermanentLink { get; set; } = 1;
+        //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
+        public int AveragePermanentLink
+        {
+            get
+            {
+                return (int)((minPermanentLink + maxPermanentLink) / 2 * 1.1); //Заменить на значение технологического запаса!
+            }
+        }
 
-        public double MaxPermanentLink { get; set; } = 1;
+        public double MinPermanentLink
+        {
+            get
+            {
+                return minPermanentLink;
+            }
+            set
+            {
+                minPermanentLink = value;
+                OnPropertyChanged(nameof(AveragePermanentLink));
+            }
+        }
 
-        public int NumberOfWorkplaces { get; set; } = 1;
+        public double MaxPermanentLink
+        {
+            get
+            {
+                return maxPermanentLink;
+            }
+            set
+            {
+                maxPermanentLink = value;
+                OnPropertyChanged(nameof(AveragePermanentLink));
+            }
+        }
 
-        public int NumberOfPorts { get; set; } = 1;
+        public int NumberOfWorkplaces { get; set; }
+
+        public int NumberOfPorts { get; set; }
 
         public double? CableHankMeterage
         {

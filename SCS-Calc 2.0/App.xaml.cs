@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Text;
+using System.Windows;
 
 namespace SCS_Calc_2._0
 {
@@ -28,6 +30,17 @@ namespace SCS_Calc_2._0
             Resources["historyPageViewModel"] = historyPageViewModel;
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
+            
+            if(applicationModel.InitializeExceptions.Length > 0)
+            {
+                StringBuilder stringBuilder = new();
+                stringBuilder.AppendLine($"Внимание! При запуске приложения SCS-Calc 2.0 произошли следующие ошибки:{Environment.NewLine}");
+                foreach (var exception in applicationModel.InitializeExceptions)
+                {
+                    stringBuilder.AppendLine(exception);
+                }
+                MessageBox.Show(stringBuilder.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

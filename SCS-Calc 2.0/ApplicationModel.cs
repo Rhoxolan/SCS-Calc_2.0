@@ -1,6 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using SCSCalc;
+﻿using SCSCalc;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
@@ -13,13 +13,23 @@ namespace SCS_Calc_2._0
         private ObservableCollection<Configuration> configurations;
         private string settingsDocPath;
         private SCSCalcParameters parameters;
+        private List<string> initializeExceptions;
 
         public ApplicationModel()
         {
             configurations = new();
             Configurations = new(configurations);
             settingsDocPath = "SCS-CalcParametersData.json";
+            initializeExceptions = new();
             Loader();
+        }
+
+        public string[] InitializeExceptions
+        {
+            get
+            {
+                return initializeExceptions.ToArray();
+            }
         }
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
@@ -60,9 +70,7 @@ namespace SCS_Calc_2._0
                 }
                 catch (Exception ex)
                 {
-                    Task.Run(() => MessageBox.Show($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}" +
-                        $"Настройки сброшены до стандартных значений.", "Внимание!",
-                        MessageBoxButton.OK, MessageBoxImage.Warning));
+                    initializeExceptions.Add($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
                     parameters = new();
                     parameters.SetStrictСomplianceWithTheStandart();
                     parameters.SetAnArbitraryNumberOfPorts();
