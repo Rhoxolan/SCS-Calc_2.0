@@ -340,7 +340,7 @@ namespace SCSCalc.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0.01.
+        ///   Ищет локализованную строку, похожую на 0,01.
         /// </summary>
         internal static string StandartValues_CableHankMeterageDiapason_Min {
             get {
@@ -421,7 +421,7 @@ namespace SCSCalc.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 1.10.
+        ///   Ищет локализованную строку, похожую на 1,10.
         /// </summary>
         internal static string TechnologicalReserveAvailability_TechnologicalReserve_Default {
             get {
