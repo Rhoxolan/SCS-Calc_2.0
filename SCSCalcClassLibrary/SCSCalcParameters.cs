@@ -25,9 +25,17 @@ namespace SCSCalc
         /// <param name="parametersDocPath"></param>
         public static void ParametersSerializer(SCSCalcParameters parametersPresent, string parametersDocPath)
         {
-            (bool IsStrictСomplianceWithTheStandart, bool IsAnArbitraryNumberOfPorts, bool IsTechnologicalReserveAvailability,
-                bool IsRecommendationsAvailability, double TechnologicalReserve, IsolationType IsolationType, IsolationMaterial IsolationMaterial,
-                ShieldedType ShieldedType, List<ConnectionInterfaceStandard> ConnectionInterfaces) parameters = new()
+            (
+                bool IsStrictСomplianceWithTheStandart,
+                bool IsAnArbitraryNumberOfPorts,
+                bool IsTechnologicalReserveAvailability,
+                bool IsRecommendationsAvailability,
+                double TechnologicalReserve,
+                IsolationType IsolationType,
+                IsolationMaterial IsolationMaterial,
+                ShieldedType ShieldedType,
+                List<ConnectionInterfaceStandard> ConnectionInterfaces
+                ) parameters = new()
                 {
                     IsStrictСomplianceWithTheStandart = parametersPresent.IsStrictСomplianceWithTheStandart,
                     IsAnArbitraryNumberOfPorts = parametersPresent.IsAnArbitraryNumberOfPorts,
@@ -54,12 +62,18 @@ namespace SCSCalc
         /// <returns></returns>
         public static SCSCalcParameters ParametersDeserializer(string parametersDocPath)
         {
-            (bool IsStrictСomplianceWithTheStandart, bool IsAnArbitraryNumberOfPorts, bool IsTechnologicalReserveAvailability,
-                bool IsRecommendationsAvailability, double TechnologicalReserve, IsolationType IsolationType, IsolationMaterial IsolationMaterial,
-                ShieldedType ShieldedType, List<ConnectionInterfaceStandard> ConnectionInterfaces) parameters;
-
+            (
+                bool IsStrictСomplianceWithTheStandart,
+                bool IsAnArbitraryNumberOfPorts,
+                bool IsTechnologicalReserveAvailability,
+                bool IsRecommendationsAvailability,
+                double TechnologicalReserve,
+                IsolationType IsolationType,
+                IsolationMaterial IsolationMaterial,
+                ShieldedType ShieldedType,
+                List<ConnectionInterfaceStandard> ConnectionInterfaces
+                ) parameters;
             SCSCalcParameters parametersPresent = new();
-
             using FileStream fs = new(parametersDocPath, FileMode.Open);
             JsonSerializerOptions options = new()
             {
@@ -96,7 +110,7 @@ namespace SCSCalc
                 parametersPresent.SetNonTechnologicalReserve();
             }
 
-            if(parameters.IsRecommendationsAvailability)
+            if (parameters.IsRecommendationsAvailability)
             {
                 parametersPresent.SetRecommendationsAvailability();
                 parametersPresent.IsolationType = parameters.IsolationType;
@@ -115,24 +129,43 @@ namespace SCSCalc
         /// <summary>
         /// Диапазоны вводимых значений параметров расчёта конфигураций СКС
         /// </summary>
-        public ((decimal Min, decimal Max) MinPermanentLinkDiapason, (decimal Min, decimal Max) MaxPermanentLinkDiapason, (decimal Min, decimal Max) NumberOfPortsDiapason,
-            (decimal Min, decimal Max) NumberOfWorkplacesDiapason, (decimal Min, decimal Max) CableHankMeterageDiapason, (decimal Min, decimal Max) TechnologicalReserveDiapason) Diapasons
+        public (
+            (decimal Min, decimal Max) MinPermanentLinkDiapason,
+            (decimal Min, decimal Max) MaxPermanentLinkDiapason,
+            (decimal Min, decimal Max) NumberOfPortsDiapason,
+            (decimal Min, decimal Max) NumberOfWorkplacesDiapason,
+            (decimal Min, decimal Max) CableHankMeterageDiapason,
+            (decimal Min, decimal Max) TechnologicalReserveDiapason
+            )
+            Diapasons
         {
             get
             {
-                return (diapasonLocator.MinPermanentLinkDiapason, diapasonLocator.MaxPermanentLinkDiapason, diapasonLocator.NumberOfPortsDiapason,
-                    diapasonLocator.NumberOfWorkplacesDiapason, diapasonLocator.CableHankMeterageDiapason, diapasonLocator.TechnologicalReserveDiapason);
+                return (diapasonLocator.MinPermanentLinkDiapason,
+                    diapasonLocator.MaxPermanentLinkDiapason,
+                    diapasonLocator.NumberOfPortsDiapason,
+                    diapasonLocator.NumberOfWorkplacesDiapason,
+                    diapasonLocator.CableHankMeterageDiapason,
+                    diapasonLocator.TechnologicalReserveDiapason);
             }
         }
 
         /// <summary>
         /// Рекомендации по подбору кабеля
         /// </summary>
-        public (string RecommendationIsolationType, string RecommendationIsolationMaterial, string RecommendationShieldedType, string RecommendationCableStandart) Recommendations
+        public (
+            string RecommendationIsolationType,
+            string RecommendationIsolationMaterial,
+            string RecommendationShieldedType,
+            string RecommendationCableStandart
+            )
+            Recommendations
         {
             get
             {
-                return (recommendationLocator.RecommendationIsolationType, recommendationLocator.RecommendationIsolationMaterial, recommendationLocator.RecommendationShieldedType,
+                return (recommendationLocator.RecommendationIsolationType,
+                    recommendationLocator.RecommendationIsolationMaterial,
+                    recommendationLocator.RecommendationShieldedType,
                     recommendationLocator.RecommendationCableStandart);
             }
         }

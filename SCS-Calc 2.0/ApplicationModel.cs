@@ -1,4 +1,5 @@
-﻿using SCSCalc;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SCSCalc;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -7,7 +8,7 @@ using System.Windows;
 
 namespace SCS_Calc_2._0
 {
-    public class ApplicationModel
+    public partial class ApplicationModel
     {
         private ObservableCollection<Configuration> configurations;
         private string settingsDocPath;
@@ -45,7 +46,11 @@ namespace SCS_Calc_2._0
 
         }
 
-        private void Loader() //Метод для загрузки параметров расчёта конфигураций
+        //Изменение значения даипазонов вводимых параметров расчёта конфигураций
+        public event EventHandler DiapasonsChanged;
+
+        //Метод для загрузки параметров расчёта конфигураций
+        private void Loader()
         {
             if (File.Exists(settingsDocPath))
             {

@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using SCSCalc;
 using System;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 
 namespace SCS_Calc_2._0
 {
@@ -15,6 +16,7 @@ namespace SCS_Calc_2._0
         public CalculatePageViewModel(ApplicationModel model)
         {
             this.model = model;
+            model.DiapasonsChanged += DiapasonsChanged;
         }
 
         public double MinPermanentLink { get; set; } = 1;
@@ -57,6 +59,21 @@ namespace SCS_Calc_2._0
         public decimal CableHankMeterageDiapasonMin => model.Diapasons.CableHankMeterageDiapason.Min;
 
         public decimal CableHankMeterageDiapasonMax => model.Diapasons.CableHankMeterageDiapason.Max;
+
+        //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций
+        private void DiapasonsChanged(object? sender = null, object? args = null)
+        {
+            OnPropertyChanged(nameof(MinPermanentLinkDiapasonMin));
+            OnPropertyChanged(nameof(MinPermanentLinkDiapasonMax));
+            OnPropertyChanged(nameof(MaxPermanentLinkDiapasonMin));
+            OnPropertyChanged(nameof(MaxPermanentLinkDiapasonMax));
+            OnPropertyChanged(nameof(NumberOfWorkplacesDiapasonMin));
+            OnPropertyChanged(nameof(NumberOfWorkplacesDiapasonMax));
+            OnPropertyChanged(nameof(NumberOfPortsDiapasonMin));
+            OnPropertyChanged(nameof(NumberOfPortsDiapasonMax));
+            OnPropertyChanged(nameof(CableHankMeterageDiapasonMin));
+            OnPropertyChanged(nameof(CableHankMeterageDiapasonMax));
+        }
 
         [RelayCommand]
         private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
