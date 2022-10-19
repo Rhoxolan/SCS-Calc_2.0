@@ -16,7 +16,7 @@
         {
             complianceWithTheStandart = null;
             numberOfPorts = null;
-            standartValues = null;
+            standartValues = new StandartValues();
         }
 
         /// <summary>

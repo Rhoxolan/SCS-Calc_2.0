@@ -16,7 +16,7 @@
             get
             {
                 decimal min = Convert.ToDecimal(Properties.Resources.NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min);
-                decimal max = Convert.ToDecimal(Properties.Resources.NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min);
+                decimal max = Convert.ToDecimal(Properties.Resources.NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Max);
                 return (min, max);
             }
         }
@@ -29,7 +29,7 @@
             get
             {
                 decimal min = Convert.ToDecimal(Properties.Resources.NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min);
-                decimal max = Convert.ToDecimal(Properties.Resources.NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min);
+                decimal max = Convert.ToDecimal(Properties.Resources.NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max);
                 return (min, max);
             }
         }

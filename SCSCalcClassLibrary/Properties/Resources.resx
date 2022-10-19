@@ -139,13 +139,13 @@
     <value>1000</value>
   </data>
   <data name="NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Min" xml:space="preserve">
-    <value>0.01</value>
+    <value>0,01</value>
   </data>
   <data name="NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Max" xml:space="preserve">
     <value>1000</value>
   </data>
   <data name="NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
-    <value>0.01</value>
+    <value>0,01</value>
   </data>
   <data name="NonTechnologicalReserve.TechnologicalReserve" xml:space="preserve">
     <value>1</value>

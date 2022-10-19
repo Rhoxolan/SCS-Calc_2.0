@@ -124,7 +124,7 @@ namespace SCSCalc.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0.01.
+        ///   Ищет локализованную строку, похожую на 0,01.
         /// </summary>
         internal static string NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min {
             get {
@@ -142,7 +142,7 @@ namespace SCSCalc.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0.01.
+        ///   Ищет локализованную строку, похожую на 0,01.
         /// </summary>
         internal static string NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min {
             get {
