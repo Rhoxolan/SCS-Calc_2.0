@@ -115,6 +115,7 @@ namespace SCS_Calc_2._0
             OnPropertyChanged(nameof(CableHankMeterageDiapasonMax));
         }
 
+        //Обработчик для изменения значения коэффициента технологического запаса
         private void TechnologicalReserveChanged(object? sender = null, object? args = null)
         {
             OnPropertyChanged(nameof(TechnologicalReserve));
