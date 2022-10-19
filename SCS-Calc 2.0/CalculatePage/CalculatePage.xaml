@@ -46,7 +46,7 @@
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Наименьшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
                 <Border Style="{StaticResource styleBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5" ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
-                    <mah:NumericUpDown StringFormat="F2" Value="{Binding MaxPermanentLink, Mode=TwoWay}"/>
+                    <mah:NumericUpDown StringFormat="F2" Maximum="{Binding Diapasons.MinPermanentLinkDiapason.Max}" Value="{Binding MaxPermanentLink, Mode=TwoWay}"/>
                 </Border>
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Наибольшая длина постоянного линка (м.):" ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />

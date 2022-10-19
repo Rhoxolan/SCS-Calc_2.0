@@ -1,8 +1,9 @@
-﻿using HandyControl.Controls;
-using SCSCalc;
+﻿using SCSCalc;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace SCS_Calc_2._0
 {
@@ -22,6 +23,22 @@ namespace SCS_Calc_2._0
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
 
+        public (
+            (decimal Min, decimal Max) MinPermanentLinkDiapason,
+            (decimal Min, decimal Max) MaxPermanentLinkDiapason,
+            (decimal Min, decimal Max) NumberOfPortsDiapason,
+            (decimal Min, decimal Max) NumberOfWorkplacesDiapason,
+            (decimal Min, decimal Max) CableHankMeterageDiapason,
+            (decimal Min, decimal Max) TechnologicalReserveDiapason
+            )
+            Diapasons
+        {
+            get
+            {
+                return parameters.Diapasons;
+            }
+        }
+
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
@@ -38,9 +55,9 @@ namespace SCS_Calc_2._0
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}" +
-                    //    $"Настройки сброшены до стандартных значений.", "Внимание!",
-                    //    MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Task.Run(() => MessageBox.Show($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}" +
+                        $"Настройки сброшены до стандартных значений.", "Внимание!",
+                        MessageBoxButton.OK, MessageBoxImage.Warning));
                     parameters = new();
                     parameters.SetStrictСomplianceWithTheStandart();
                     parameters.SetAnArbitraryNumberOfPorts();

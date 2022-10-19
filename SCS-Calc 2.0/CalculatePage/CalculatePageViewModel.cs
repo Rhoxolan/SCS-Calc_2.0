@@ -10,6 +10,7 @@ namespace SCS_Calc_2._0
     public partial class CalculatePageViewModel
     {
         private readonly ApplicationModel model;
+        private double? cableHankMeterage;
 
         public CalculatePageViewModel(ApplicationModel model)
         {
@@ -24,8 +25,6 @@ namespace SCS_Calc_2._0
 
         public int NumberOfPorts { get; set; } = 1;
 
-        private double? cableHankMeterage;
-
         public double? CableHankMeterage
         {
             get
@@ -36,6 +35,22 @@ namespace SCS_Calc_2._0
             {
                 cableHankMeterage = value;
                 OnPropertyChanged(nameof(CableHankMeterage));
+            }
+        }
+
+        public (
+            (decimal Min, decimal Max) MinPermanentLinkDiapason,
+            (decimal Min, decimal Max) MaxPermanentLinkDiapason,
+            (decimal Min, decimal Max) NumberOfPortsDiapason,
+            (decimal Min, decimal Max) NumberOfWorkplacesDiapason,
+            (decimal Min, decimal Max) CableHankMeterageDiapason,
+            (decimal Min, decimal Max) TechnologicalReserveDiapason
+            )
+            Diapasons
+        {
+            get
+            {
+                return model.Diapasons; //Запустить в отлпдчике и разобраться с ошибкой. Походу нет инициализации IStandartValues
             }
         }
 
