@@ -24,7 +24,20 @@ namespace SCS_Calc_2._0
 
         public int NumberOfPorts { get; set; } = 1;
 
-        public double? CableHankMeterage { get; set; } = null;
+        private double? cableHankMeterage;
+
+        public double? CableHankMeterage
+        {
+            get
+            {
+                return cableHankMeterage;
+            }
+            set
+            {
+                cableHankMeterage = value;
+                OnPropertyChanged(nameof(CableHankMeterage));
+            }
+        }
 
         [RelayCommand]
         private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);

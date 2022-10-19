@@ -54,4 +54,6 @@
 
     <converters:TextLengthToBooleanConverter x:Key="textLengthToBooleanConverter"/>
 
+    <converters:BooleanToNullableDoubleConverter x:Key="booleanToNullableDoubleConverter"/>
+
 </ResourceDictionary>
