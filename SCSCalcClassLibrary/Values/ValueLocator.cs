@@ -11,6 +11,7 @@
 
         public ValueLocator()
         {
+            IsTechnologicalReserveAvailability = null;
             technologicalReserve = null;
         }
 
@@ -41,25 +42,9 @@
         }
 
         /// <summary>
-        /// Устанавливает учёт технологического запаса
-        /// </summary>
-        public void SetTechnologicalReserveAvailability()
-        {
-            technologicalReserve = new TechnologicalReserveAvailability();
-        }
-
-        /// <summary>
-        /// Расчёт без учёта технологического запаса
-        /// </summary>
-        public void SetNonTechnologicalReserve()
-        {
-            technologicalReserve = new NonTechnologicalReserve();
-        }
-
-        /// <summary>
         /// Учитывается или нет коэффициент технологического запаса
         /// </summary>
-        public bool IsTechnologicalReserveAvailability
+        public bool? IsTechnologicalReserveAvailability
         {
             get
             {
@@ -72,6 +57,17 @@
                     return false;
                 }
                 throw new SCSCalcException("Значение необходимости учёта технологического запаса не инициализировано. Пожалуйста, проверьте настройки.");
+            }
+            set
+            {
+                if(Equals(value, true))
+                {
+                    technologicalReserve = new TechnologicalReserveAvailability();
+                }
+                else
+                {
+                    technologicalReserve = new NonTechnologicalReserve();
+                }
             }
         }
     }

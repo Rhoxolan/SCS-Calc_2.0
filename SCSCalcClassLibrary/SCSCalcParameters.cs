@@ -25,27 +25,19 @@ namespace SCSCalc
         /// <param name="parametersDocPath"></param>
         public static void ParametersSerializer(SCSCalcParameters parametersPresent, string parametersDocPath)
         {
-            (
-                bool IsStrictСomplianceWithTheStandart,
-                bool IsAnArbitraryNumberOfPorts,
-                bool IsTechnologicalReserveAvailability,
-                bool IsRecommendationsAvailability,
+            (bool? IsStrictСomplianceWithTheStandart,
+                bool? IsAnArbitraryNumberOfPorts,
+                bool? IsTechnologicalReserveAvailability,
+                bool? IsRecommendationsAvailability,
                 double TechnologicalReserve,
-                IsolationType IsolationType,
-                IsolationMaterial IsolationMaterial,
-                ShieldedType ShieldedType,
-                List<ConnectionInterfaceStandard> ConnectionInterfaces
-                ) parameters = new()
+                RecommendationsArguments RecommendationsArguments) parameters = new()
                 {
                     IsStrictСomplianceWithTheStandart = parametersPresent.IsStrictСomplianceWithTheStandart,
                     IsAnArbitraryNumberOfPorts = parametersPresent.IsAnArbitraryNumberOfPorts,
                     IsTechnologicalReserveAvailability = parametersPresent.IsTechnologicalReserveAvailability,
                     IsRecommendationsAvailability = parametersPresent.IsRecommendationsAvailability,
                     TechnologicalReserve = parametersPresent.TechnologicalReserve,
-                    IsolationType = parametersPresent.IsolationType,
-                    IsolationMaterial = parametersPresent.IsolationMaterial,
-                    ShieldedType = parametersPresent.ShieldedType,
-                    ConnectionInterfaces = parametersPresent.ConnectionInterfaces
+                    RecommendationsArguments = parametersPresent.RecommendationsArguments
                 };
             using FileStream fs = new(parametersDocPath, FileMode.Create);
             JsonSerializerOptions options = new()
@@ -62,67 +54,32 @@ namespace SCSCalc
         /// <returns></returns>
         public static SCSCalcParameters ParametersDeserializer(string parametersDocPath)
         {
-            (
-                bool IsStrictСomplianceWithTheStandart,
-                bool IsAnArbitraryNumberOfPorts,
-                bool IsTechnologicalReserveAvailability,
-                bool IsRecommendationsAvailability,
+            (bool? IsStrictСomplianceWithTheStandart,
+                bool? IsAnArbitraryNumberOfPorts,
+                bool? IsTechnologicalReserveAvailability,
+                bool? IsRecommendationsAvailability,
                 double TechnologicalReserve,
-                IsolationType IsolationType,
-                IsolationMaterial IsolationMaterial,
-                ShieldedType ShieldedType,
-                List<ConnectionInterfaceStandard> ConnectionInterfaces
-                ) parameters;
+                RecommendationsArguments RecommendationsArguments) parameters;
             SCSCalcParameters parametersPresent = new();
             using FileStream fs = new(parametersDocPath, FileMode.Open);
             JsonSerializerOptions options = new()
             {
                 IncludeFields = true
             };
-            parameters = JsonSerializer.Deserialize<(bool, bool, bool, bool, double,
-                IsolationType, IsolationMaterial, ShieldedType, List<ConnectionInterfaceStandard>)>(fs, options);
-
-            if (parameters.IsStrictСomplianceWithTheStandart)
+            parameters = JsonSerializer.Deserialize<(bool?, bool?, bool?, bool?, double, RecommendationsArguments)>(fs, options);
+            parametersPresent.IsStrictСomplianceWithTheStandart = parameters.IsStrictСomplianceWithTheStandart;
+            parametersPresent.IsAnArbitraryNumberOfPorts = parameters.IsAnArbitraryNumberOfPorts;
+            parametersPresent.IsTechnologicalReserveAvailability = parameters.IsTechnologicalReserveAvailability;
+            parametersPresent.TechnologicalReserve = parameters.TechnologicalReserve;
+            if (Equals(parameters.IsRecommendationsAvailability, true))
             {
-                parametersPresent.SetStrictСomplianceWithTheStandart();
+                parametersPresent.IsRecommendationsAvailability = true;
+                parametersPresent.RecommendationsArguments = parameters.RecommendationsArguments;
             }
             else
             {
-                parametersPresent.SetNonStrictСomplianceWithTheStandart();
+                parametersPresent.IsRecommendationsAvailability = false;
             }
-
-            if (parameters.IsAnArbitraryNumberOfPorts)
-            {
-                parametersPresent.SetAnArbitraryNumberOfPorts();
-            }
-            else
-            {
-                parametersPresent.SetNotAnArbitraryNumberOfPorts();
-            }
-
-            if (parameters.IsTechnologicalReserveAvailability)
-            {
-                parametersPresent.SetTechnologicalReserveAvailability();
-                parametersPresent.TechnologicalReserve = parameters.TechnologicalReserve;
-            }
-            else
-            {
-                parametersPresent.SetNonTechnologicalReserve();
-            }
-
-            if (parameters.IsRecommendationsAvailability)
-            {
-                parametersPresent.SetRecommendationsAvailability();
-                parametersPresent.IsolationType = parameters.IsolationType;
-                parametersPresent.IsolationMaterial = parameters.IsolationMaterial;
-                parametersPresent.ShieldedType = parameters.ShieldedType;
-                parametersPresent.ConnectionInterfaces = parameters.ConnectionInterfaces;
-            }
-            else
-            {
-                parametersPresent.SetNonRecommendations();
-            }
-
             return parametersPresent;
         }
 
@@ -153,21 +110,9 @@ namespace SCSCalc
         /// <summary>
         /// Рекомендации по подбору кабеля
         /// </summary>
-        public (
-            string RecommendationIsolationType,
-            string RecommendationIsolationMaterial,
-            string RecommendationShieldedType,
-            string RecommendationCableStandart
-            )
-            Recommendations
+        public CableSelectionRecommendations CableSelectionRecommendations
         {
-            get
-            {
-                return (recommendationLocator.RecommendationIsolationType,
-                    recommendationLocator.RecommendationIsolationMaterial,
-                    recommendationLocator.RecommendationShieldedType,
-                    recommendationLocator.RecommendationCableStandart);
-            }
+            get => recommendationLocator.CableSelectionRecommendations;
         }
 
         /// <summary>
@@ -180,111 +125,48 @@ namespace SCSCalc
         }
 
         /// <summary>
-        /// Тип изоляции рекомендуемого кабеля
+        /// Аргументы для получения рекомендаций по побдору кабеля
         /// </summary>
-        public IsolationType IsolationType
+        public RecommendationsArguments RecommendationsArguments
         {
-            get => recommendationLocator.IsolationType;
-            set => recommendationLocator.IsolationType = value;
+            get => recommendationLocator.RecommendationsArguments;
+            private set => recommendationLocator.RecommendationsArguments = value;
         }
-
-        /// <summary>
-        /// Материал изоляции рекомендуемого кабеля
-        /// </summary>
-        public IsolationMaterial IsolationMaterial
-        {
-            get => recommendationLocator.IsolationMaterial;
-            set => recommendationLocator.IsolationMaterial = value;
-        }
-
-        /// <summary>
-        /// Тип экранизации рекомендуемого кабеля
-        /// </summary>
-        public ShieldedType ShieldedType
-        {
-            get => recommendationLocator.ShieldedType;
-            set => recommendationLocator.ShieldedType = value;
-        }
-
-        /// <summary>
-        /// Cписок планируемых интерфейсов подключений
-        /// </summary>
-        public List<ConnectionInterfaceStandard> ConnectionInterfaces
-        {
-            get => recommendationLocator.ConnectionInterfaces;
-            set => recommendationLocator.ConnectionInterfaces = value;
-        }
-
-        /// <summary>
-        /// Устанавливает соответствие вводимых значений стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetStrictСomplianceWithTheStandart() => diapasonLocator.SetStrictСomplianceWithTheStandart();
-
-        /// <summary>
-        /// Разрешает ввод значений без соответствия стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetNonStrictСomplianceWithTheStandart() => diapasonLocator.SetNonStrictСomplianceWithTheStandart();
-
-        /// <summary>
-        /// Устанавливает ввод значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetNotAnArbitraryNumberOfPorts() => diapasonLocator.SetNotAnArbitraryNumberOfPorts();
-
-        /// <summary>
-        /// Разрешает произвольный ввод значения количества портов на 1 рабочее место без соответствия стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetAnArbitraryNumberOfPorts() => diapasonLocator.SetAnArbitraryNumberOfPorts();
-
-        /// <summary>
-        /// Устанавливает учёт технологического запаса
-        /// </summary>
-        public void SetTechnologicalReserveAvailability() => valueLocator.SetTechnologicalReserveAvailability();
-
-        /// <summary>
-        /// Расчёт без учёта технологического запаса
-        /// </summary>
-        public void SetNonTechnologicalReserve() => valueLocator.SetNonTechnologicalReserve();
-
-        /// <summary>
-        /// Устанавливает получение рекомендаций
-        /// </summary>
-        public void SetRecommendationsAvailability() => recommendationLocator.SetRecommendationsAvailability();
-
-        /// <summary>
-        /// Отключает получение рекомендаций
-        /// </summary>
-        public void SetNonRecommendations() => recommendationLocator.SetNonRecommendations();
 
         /// <summary>
         /// Включено или выключено получение рекомендаций по побдору кабеля
         /// </summary>
-        public bool IsRecommendationsAvailability
+        public bool? IsRecommendationsAvailability
         {
             get => recommendationLocator.IsRecommendationsAvailability;
+            set => recommendationLocator.IsRecommendationsAvailability = value;
         }
 
         /// <summary>
         /// Разрешен или нет ввод значений в соответствии стандарту ISO/IEC 11801
         /// </summary>
-        public bool IsStrictСomplianceWithTheStandart
+        public bool? IsStrictСomplianceWithTheStandart
         {
             get => diapasonLocator.IsStrictСomplianceWithTheStandart;
+            set => diapasonLocator.IsStrictСomplianceWithTheStandart = value;
         }
 
         /// <summary>
         /// Разрешен или нет произвольный ввод значений количества портов на 1 рабочее место
         /// </summary>
-        public bool IsAnArbitraryNumberOfPorts
+        public bool? IsAnArbitraryNumberOfPorts
         {
             get => diapasonLocator.IsAnArbitraryNumberOfPorts;
+            set => diapasonLocator.IsAnArbitraryNumberOfPorts = value;
         }
 
         /// <summary>
         /// Учитывается или нет коэффициент технологического запаса
         /// </summary>
-        public bool IsTechnologicalReserveAvailability
+        public bool? IsTechnologicalReserveAvailability
         {
             get => valueLocator.IsTechnologicalReserveAvailability;
+            set => valueLocator.IsTechnologicalReserveAvailability = value;
         }
     }
 }

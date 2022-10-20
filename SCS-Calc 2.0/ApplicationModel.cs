@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace SCS_Calc_2._0
 {
@@ -33,6 +31,7 @@ namespace SCS_Calc_2._0
         //Изменение значения коэффициента технологического запаса
         public event EventHandler TechnologicalReserveChanged;
 
+        //Ошибки, произошедшие при инициализации модели
         public string[] InitializeExceptions
         {
             get
@@ -52,6 +51,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.TechnologicalReserve = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 TechnologicalReserveChanged.Invoke(null!, null!);
             }
         }
@@ -72,43 +72,73 @@ namespace SCS_Calc_2._0
             }
         }
 
+        public RecommendationsArguments RecommendationsArguments
+        {
+            get => parameters.RecommendationsArguments;
+        }
 
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
         }
 
-        public void SetTechnologicalReserveAvailability()
+        public bool? IsStrictСomplianceWithTheStandart
         {
-            parameters.SetTechnologicalReserveAvailability();
-            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-            ParametersChanged.Invoke(null!, null!);
+            get
+            {
+                return parameters.IsStrictСomplianceWithTheStandart;
+            }
+            set
+            {
+                parameters.IsStrictСomplianceWithTheStandart = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersChanged.Invoke(null!, null!);
+                DiapasonsChanged.Invoke(null!, null!);
+            }
         }
 
-        public void SetNonTechnologicalReserve()
+        public bool? IsRecommendationsAvailability
         {
-            parameters.SetNonTechnologicalReserve();
-            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-            ParametersChanged.Invoke(null!, null!);
+            get
+            {
+                return parameters.IsRecommendationsAvailability;
+            }
+            set
+            {
+                parameters.IsRecommendationsAvailability = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersChanged.Invoke(null!, null!);
+            }
         }
 
-        public void SetRecommendationsAvailability()
+        public bool? IsAnArbitraryNumberOfPorts
         {
-            parameters.SetRecommendationsAvailability();
-            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-            ParametersChanged.Invoke(null!, null!);
+            get
+            {
+                return parameters.IsAnArbitraryNumberOfPorts;
+            }
+            set
+            {
+                parameters.IsAnArbitraryNumberOfPorts = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersChanged.Invoke(null!, null!);
+                DiapasonsChanged.Invoke(null!, null!);
+            }
         }
 
-        public void SetNonRecommendations()
+        public bool? IsTechnologicalReserveAvailability
         {
-            parameters.SetNonRecommendations();
-            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-            ParametersChanged.Invoke(null!, null!);
-        }
-
-        public bool IsTechnologicalReserveAvailability
-        {
-            get => parameters.IsTechnologicalReserveAvailability;
+            get
+            {
+                return parameters.IsTechnologicalReserveAvailability;
+            }
+            set
+            {
+                parameters.IsTechnologicalReserveAvailability = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersChanged.Invoke(null!, null!);
+                TechnologicalReserveChanged.Invoke(null!, null!);
+            }
         }
 
         //Метод для загрузки параметров расчёта конфигураций СКС
@@ -123,22 +153,26 @@ namespace SCS_Calc_2._0
                 catch (Exception ex)
                 {
                     initializeExceptions.Add($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
-                    parameters = new();
-                    parameters.SetStrictСomplianceWithTheStandart();
-                    parameters.SetAnArbitraryNumberOfPorts();
-                    parameters.SetTechnologicalReserveAvailability();
-                    parameters.SetNonRecommendations();
+                    parameters = new()
+                    {
+                        IsStrictСomplianceWithTheStandart = true,
+                        IsAnArbitraryNumberOfPorts = true,
+                        IsTechnologicalReserveAvailability = true,
+                        IsRecommendationsAvailability = false
+                    };
                     SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 }
             }
             else
             {
                 //Первичная настройка
-                parameters = new();
-                parameters.SetStrictСomplianceWithTheStandart();
-                parameters.SetAnArbitraryNumberOfPorts();
-                parameters.SetTechnologicalReserveAvailability();
-                parameters.SetNonRecommendations();
+                parameters = new()
+                {
+                    IsStrictСomplianceWithTheStandart = true,
+                    IsAnArbitraryNumberOfPorts = true,
+                    IsTechnologicalReserveAvailability = true,
+                    IsRecommendationsAvailability = false
+                };
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
             }
         }

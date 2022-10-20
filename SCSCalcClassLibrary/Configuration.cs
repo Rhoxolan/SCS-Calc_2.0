@@ -10,7 +10,7 @@ namespace SCSCalc
         /// <summary>
         /// Id текущей записи конфигурации СКС
         /// </summary>
-        public ushort Id { get; init; }
+        private ushort Id { get; init; }
 
         /// <summary>
         /// Дата записи конфигурации СКС
@@ -115,24 +115,24 @@ namespace SCSCalc
                 int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)(cableHankMeterage / averagePermanentLink)));
                 double totalСableQuantity = (double)(hankQuantity * cableHankMeterage);
                 string? recommendations = null;
-                if(parameters.IsRecommendationsAvailability)
+                if(Equals(parameters.IsRecommendationsAvailability, true))
                 {
                     StringBuilder recommendationsBuilder = new();
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationIsolationType))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.Recommendations.RecommendationIsolationType}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationType}");
                     }
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationIsolationMaterial))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.Recommendations.RecommendationIsolationMaterial}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
                     }
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationCableStandart))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.Recommendations.RecommendationCableStandart}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
                     }
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationShieldedType))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.Recommendations.RecommendationCableStandart}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
                     }
                     recommendations = recommendationsBuilder.ToString();
                 }
@@ -157,24 +157,24 @@ namespace SCSCalc
                 double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
                 double totalСableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
                 string? recommendations = null;
-                if (parameters.IsRecommendationsAvailability)
+                if (Equals(parameters.IsRecommendationsAvailability, true))
                 {
                     StringBuilder recommendationsBuilder = new();
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationIsolationType))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.Recommendations.RecommendationIsolationType}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationType}");
                     }
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationIsolationMaterial))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.Recommendations.RecommendationIsolationMaterial}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
                     }
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationCableStandart))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.Recommendations.RecommendationCableStandart}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
                     }
-                    if (!String.IsNullOrEmpty(parameters.Recommendations.RecommendationShieldedType))
+                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.Recommendations.RecommendationCableStandart}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
                     }
                     recommendations = recommendationsBuilder.ToString();
                 }

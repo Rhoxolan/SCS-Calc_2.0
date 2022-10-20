@@ -1,39 +1,14 @@
 ﻿namespace SCSCalc
 {
-    // Класс для получения рекомендаций по побдору кабеля при отключенном получении рекомендаций
-
     /// <summary>
     /// Класс для получения рекомендаций по побдору кабеля при отключенном получении рекомендаций
     /// </summary>
     internal class NonRecommendations : IRecommendations
     {
         /// <summary>
-        /// Тип изоляции рекомендуемого кабеля
+        /// Аргументы для получения рекомендаций по побдору кабеля
         /// </summary>
-        public IsolationType IsolationType { get; set; }
-
-        /// <summary>
-        /// Материал изоляции рекомендуемого кабеля
-        /// </summary>
-        public IsolationMaterial IsolationMaterial { get; set; }
-
-        /// <summary>
-        /// Тип экранизации рекомендуемого кабеля
-        /// </summary>
-        public ShieldedType ShieldedType { get; set; }
-
-        /// <summary>
-        /// Список планируемых интерфейсов подключений
-        /// </summary>
-        public List<ConnectionInterfaceStandard> ConnectionInterfaces { get; set; }
-
-        public NonRecommendations()
-        {
-            ConnectionInterfaces = new()
-            {
-                ConnectionInterfaceStandard.None
-            };
-        }
+        public RecommendationsArguments RecommendationsArguments { get; set; } = new();
 
         /// <summary>
         /// Рекомендация по типу изоляции кабеля

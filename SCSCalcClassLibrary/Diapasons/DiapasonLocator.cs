@@ -14,6 +14,8 @@
 
         public DiapasonLocator()
         {
+            IsStrictСomplianceWithTheStandart = null;
+            IsAnArbitraryNumberOfPorts = null;
             complianceWithTheStandart = null;
             numberOfPorts = null;
             standartValues = new StandartValues();
@@ -120,41 +122,9 @@
         }
 
         /// <summary>
-        /// Устанавливает соответствие вводимых значений стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetStrictСomplianceWithTheStandart()
-        {
-            complianceWithTheStandart = new StrictСomplianceWithTheStandart();
-        }
-
-        /// <summary>
-        /// Разрешает ввод значений без соответствия стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetNonStrictСomplianceWithTheStandart()
-        {
-            complianceWithTheStandart = new NonStrictСomplianceWithTheStandart();
-        }
-
-        /// <summary>
-        /// Устанавливает ввод значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetNotAnArbitraryNumberOfPorts()
-        {
-            numberOfPorts = new NotAnArbitraryNumberOfPorts();
-        }
-
-        /// <summary>
-        /// Разрешает произвольный ввод значения количества портов на 1 рабочее место без соответствия стандарту ISO/IEC 11801
-        /// </summary>
-        public void SetAnArbitraryNumberOfPorts()
-        {
-            numberOfPorts = new AnArbitraryNumberOfPorts();
-        }
-
-        /// <summary>
         /// Разрешен или нет ввод значений в соответствии стандарту ISO/IEC 11801
         /// </summary>
-        public bool IsStrictСomplianceWithTheStandart
+        public bool? IsStrictСomplianceWithTheStandart
         {
             get
             {
@@ -168,12 +138,23 @@
                 }
                 throw new SCSCalcException("Значение соответствия стандарту ISO/IEC 11801 не инициализировано. Пожалуйста, проверьте настройки.");
             }
+            set
+            {
+                if(Equals(value, true))
+                {
+                    complianceWithTheStandart = new StrictСomplianceWithTheStandart();
+                }
+                else
+                {
+                    complianceWithTheStandart = new NonStrictСomplianceWithTheStandart();
+                }
+            }
         }
 
         /// <summary>
         /// Разрешен или нет произвольный ввод значений количества портов на 1 рабочее место
         /// </summary>
-        public bool IsAnArbitraryNumberOfPorts
+        public bool? IsAnArbitraryNumberOfPorts
         {
             get
             {
@@ -186,6 +167,17 @@
                     return false;
                 }
                 throw new SCSCalcException("Значение соответствия стандарту ISO/IEC 11801 не инициализировано. Пожалуйста, проверьте настройки.");
+            }
+            set
+            {
+                if (Equals(value, true))
+                {
+                    numberOfPorts = new AnArbitraryNumberOfPorts();
+                }
+                else
+                {
+                    numberOfPorts = new NotAnArbitraryNumberOfPorts();
+                }
             }
         }
     }

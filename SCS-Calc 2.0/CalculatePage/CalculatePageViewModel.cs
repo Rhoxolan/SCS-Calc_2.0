@@ -27,7 +27,7 @@ namespace SCS_Calc_2._0
         {
             get
             {
-                return (int)((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve); //Заменить на значение технологического запаса!
+                return (int)((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve);
             }
         }
 
@@ -100,6 +100,16 @@ namespace SCS_Calc_2._0
 
         public decimal CableHankMeterageDiapasonMax => model.Diapasons.CableHankMeterageDiapason.Max;
 
+        [RelayCommand]
+        private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
+
+        [RelayCommand]
+        private void SetCableHankMeterage(string value)
+        {
+            CableHankMeterage = Convert.ToDouble(value);
+            OnPropertyChanged(nameof(CableHankMeterage));
+        }
+
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
         private void DiapasonsChanged(object? sender = null, object? args = null)
         {
@@ -120,16 +130,6 @@ namespace SCS_Calc_2._0
         {
             OnPropertyChanged(nameof(TechnologicalReserve));
             OnPropertyChanged(nameof(AveragePermanentLink));
-        }
-
-        [RelayCommand]
-        private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
-
-        [RelayCommand]
-        private void SetCableHankMeterage(string value)
-        {
-            CableHankMeterage = Convert.ToDouble(value);
-            OnPropertyChanged(nameof(CableHankMeterage));
         }
     }
 }

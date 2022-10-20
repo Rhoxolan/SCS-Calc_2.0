@@ -1,31 +1,14 @@
 ﻿namespace SCSCalc
 {
-    //Интерфейс для получения рекомендаций по побдору кабеля
-
     /// <summary>
     /// Интерфейс для получения рекомендаций по побдору кабеля
     /// </summary>
     internal interface IRecommendations
     {
         /// <summary>
-        /// Тип изоляции рекомендуемого кабеля
+        /// Аргументы для получения рекомендаций по побдору кабеля
         /// </summary>
-        public IsolationType IsolationType { get; set; }
-
-        /// <summary>
-        /// Материал изоляции рекомендуемого кабеля
-        /// </summary>
-        public IsolationMaterial IsolationMaterial { get; set; }
-
-        /// <summary>
-        /// Тип экранизации рекомендуемого кабеля
-        /// </summary>
-        public ShieldedType ShieldedType { get; set; }
-
-        /// <summary>
-        /// Список планируемых интерфейсов подключений
-        /// </summary>
-        public List<ConnectionInterfaceStandard> ConnectionInterfaces { get; set; }
+        RecommendationsArguments RecommendationsArguments { get; set; }
 
         /// <summary>
         /// Рекомендация по типу изоляции кабеля

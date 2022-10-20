@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SCSCalc;
 
 namespace SCS_Calc_2._0
 {
@@ -26,21 +27,71 @@ namespace SCS_Calc_2._0
 
         public decimal TechnologicalReserveDiapasonMax => model.Diapasons.TechnologicalReserveDiapason.Max;
 
-        public bool IsTechnologicalReserveAvailability
+        public RecommendationsArguments RecommendationsArguments
+        {
+            get => model.RecommendationsArguments;
+        }
+
+        public bool? IsTechnologicalReserveAvailability
         {
             get => model.IsTechnologicalReserveAvailability;
+            set => model.IsTechnologicalReserveAvailability = value;
+        }
+
+        public bool? IsRecommendationsAvailability
+        {
+            get => model.IsRecommendationsAvailability;
+            set => model.IsRecommendationsAvailability = value;
         }
 
         [RelayCommand]
-        private void TechnologicalReserveAvailabilityChange()
+        private void SetRecommendationArgument(string arg)
         {
-            if(!IsTechnologicalReserveAvailability)
+            switch (arg)
             {
-                model.SetTechnologicalReserveAvailability();
-            }
-            else
-            {
-                model.SetNonTechnologicalReserve();
+                case "IsolationType":
+                    if (RecommendationsArguments.IsolationType == IsolationType.Outdoor)
+                    {
+                        RecommendationsArguments.IsolationType = IsolationType.Indoor;
+                    }
+                    else
+                    {
+                        RecommendationsArguments.IsolationType = IsolationType.Outdoor;
+                    }
+                    break;
+
+                case "IsolationMaterial":
+                    if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.PVC)
+                    {
+                        RecommendationsArguments.IsolationMaterial = IsolationMaterial.LSZH;
+                    }
+                    else
+                    {
+                        RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
+                    }
+                    break;
+
+                case "10BASE-T":
+                    if (RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.TenBASE_T))
+                    {
+                        RecommendationsArguments.ConnectionInterfaces.Remove(ConnectionInterfaceStandard.TenBASE_T);
+                    }
+                    else
+                    {
+                        RecommendationsArguments.ConnectionInterfaces.Add(ConnectionInterfaceStandard.TenBASE_T);
+                    }
+                    break;
+
+                case "100BASE-T":
+                    if (RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.FastEthernet))
+                    {
+                        RecommendationsArguments.ConnectionInterfaces.Remove(ConnectionInterfaceStandard.FastEthernet);
+                    }
+                    else
+                    {
+                        RecommendationsArguments.ConnectionInterfaces.Add(ConnectionInterfaceStandard.FastEthernet);
+                    }
+                    break;
             }
         }
 
