@@ -24,6 +24,15 @@ namespace SCS_Calc_2._0
             Loader();
         }
 
+        //Изменение параметров расчёта конфигураций СКС
+        public event EventHandler ParametersChanged;
+
+        //Изменение значения даипазонов вводимых параметров расчёта конфигураций СКС
+        public event EventHandler DiapasonsChanged;
+
+        //Изменение значения коэффициента технологического запаса
+        public event EventHandler TechnologicalReserveChanged;
+
         public string[] InitializeExceptions
         {
             get
@@ -47,9 +56,6 @@ namespace SCS_Calc_2._0
             }
         }
 
-        //Изменение значения коэффициента технологического запаса
-        public event EventHandler TechnologicalReserveChanged;
-
         public (
             (decimal Min, decimal Max) MinPermanentLinkDiapason,
             (decimal Min, decimal Max) MaxPermanentLinkDiapason,
@@ -66,15 +72,46 @@ namespace SCS_Calc_2._0
             }
         }
 
-        //Изменение значения даипазонов вводимых параметров расчёта конфигураций
-        public event EventHandler DiapasonsChanged;
 
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
         }
 
-        //Метод для загрузки параметров расчёта конфигураций
+        public void SetTechnologicalReserveAvailability()
+        {
+            parameters.SetTechnologicalReserveAvailability();
+            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+            ParametersChanged.Invoke(null!, null!);
+        }
+
+        public void SetNonTechnologicalReserve()
+        {
+            parameters.SetNonTechnologicalReserve();
+            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+            ParametersChanged.Invoke(null!, null!);
+        }
+
+        public void SetRecommendationsAvailability()
+        {
+            parameters.SetRecommendationsAvailability();
+            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+            ParametersChanged.Invoke(null!, null!);
+        }
+
+        public void SetNonRecommendations()
+        {
+            parameters.SetNonRecommendations();
+            SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+            ParametersChanged.Invoke(null!, null!);
+        }
+
+        public bool IsTechnologicalReserveAvailability
+        {
+            get => parameters.IsTechnologicalReserveAvailability;
+        }
+
+        //Метод для загрузки параметров расчёта конфигураций СКС
         private void Loader()
         {
             if (File.Exists(settingsDocPath))

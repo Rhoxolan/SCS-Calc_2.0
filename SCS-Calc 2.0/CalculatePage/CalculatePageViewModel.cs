@@ -100,7 +100,7 @@ namespace SCS_Calc_2._0
 
         public decimal CableHankMeterageDiapasonMax => model.Diapasons.CableHankMeterageDiapason.Max;
 
-        //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций
+        //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
         private void DiapasonsChanged(object? sender = null, object? args = null)
         {
             OnPropertyChanged(nameof(MinPermanentLinkDiapasonMin));
