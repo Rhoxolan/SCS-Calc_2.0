@@ -4,20 +4,16 @@ using System.Windows.Data;
 
 namespace SCS_Calc_2._0.Converters
 {
-    public class BooleanToNullableDoubleConverter : IValueConverter
+    public class BooleanInverseConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Binding.DoNothing;
+            return !(bool)value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if ((bool)value == false)
-            {
-                return null!;
-            }
-            return Binding.DoNothing;
+            return !(bool)value;
         }
     }
 }
