@@ -6,7 +6,7 @@ using System.Windows.Data;
 
 namespace SCS_Calc_2._0.Converters
 {
-    public class ConnectionInterfaceStandartToBooleanConverter : IValueConverter
+    public class RecommendationToBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
