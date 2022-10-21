@@ -10,9 +10,9 @@ namespace SCS_Calc_2._0.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is List<ConnectionInterfaceStandard>)
+            if (value is ICollection<ConnectionInterfaceStandard>)
             {
-                return (value as List<ConnectionInterfaceStandard>)!.Contains((ConnectionInterfaceStandard)parameter);
+                return (value as ICollection<ConnectionInterfaceStandard>)!.Contains((ConnectionInterfaceStandard)parameter);
             }
             return Equals(value, parameter);
         }

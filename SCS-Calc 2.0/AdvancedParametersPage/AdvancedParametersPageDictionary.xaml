@@ -32,8 +32,13 @@
         <Setter Property="FontSize" Value="14"/>
     </Style>
 
-    <Style TargetType="Expander" BasedOn="{StaticResource styleViewExpander}">
+    <Style TargetType="Expander" BasedOn="{StaticResource styleViewExpander}" x:Key="styleViewExpanderForAdvancedParametersPage">
         <Setter Property="BorderThickness" Value="0"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="1"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <converters:BooleanInverseConverter x:Key="booleanInverseConverter"/>
