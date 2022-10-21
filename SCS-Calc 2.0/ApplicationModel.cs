@@ -31,9 +31,6 @@ namespace SCS_Calc_2._0
         //Изменение значения коэффициента технологического запаса
         public event EventHandler TechnologicalReserveChanged;
 
-        //Изменение аргументов для получения рекоммендаций по подбору кабеля
-        public event EventHandler RecommendationsArgumentsChanged;
-
         //Ошибки, произошедшие при инициализации модели
         public string[] InitializeExceptions
         {
@@ -67,9 +64,15 @@ namespace SCS_Calc_2._0
             }
             set
             {
-                parameters.RecommendationsArguments.IsolationType = value;
+                if(parameters.RecommendationsArguments.IsolationType == IsolationType.Indoor)
+                {
+                    parameters.RecommendationsArguments.IsolationType = IsolationType.Outdoor;
+                }
+                else
+                {
+                    parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
+                }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
@@ -81,9 +84,15 @@ namespace SCS_Calc_2._0
             }
             set
             {
-                parameters.RecommendationsArguments.IsolationMaterial = value;
+                if (parameters.RecommendationsArguments.IsolationMaterial == IsolationMaterial.PVC)
+                {
+                    parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.LSZH;
+                }
+                else
+                {
+                    parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
+                }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
@@ -95,9 +104,15 @@ namespace SCS_Calc_2._0
             }
             set
             {
-                parameters.RecommendationsArguments.ShieldedType = value;
+                if (parameters.RecommendationsArguments.ShieldedType == ShieldedType.UTP)
+                {
+                    parameters.RecommendationsArguments.ShieldedType = ShieldedType.FTP;
+                }
+                else
+                {
+                    parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
+                }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
@@ -109,7 +124,15 @@ namespace SCS_Calc_2._0
             }
             set
             {
-                parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
+                if (parameters.RecommendationsArguments.ConnectionInterfaces.Contains((ConnectionInterfaceStandard)value))
+                {
+                    parameters.RecommendationsArguments.ConnectionInterfaces.Remove((ConnectionInterfaceStandard)value);
+                }
+                else
+                {
+                    parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
+                }
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
             }
         }
 
