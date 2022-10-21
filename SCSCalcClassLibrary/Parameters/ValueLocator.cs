@@ -1,7 +1,5 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
-    //Класс, инкапсулирующий объекты для работы со значениями расчета конфигкраций СКС.
-
     /// <summary>
     /// //Класс, инкапсулирующий объекты для работы со значениями расчета конфигураций СКС
     /// </summary>
@@ -60,7 +58,7 @@
             }
             set
             {
-                if(Equals(value, true))
+                if (Equals(value, true))
                 {
                     technologicalReserve = new TechnologicalReserveAvailability();
                 }

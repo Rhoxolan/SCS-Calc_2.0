@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Класс для получения рекомендаций по побдору кабеля при отключенном получении рекомендаций

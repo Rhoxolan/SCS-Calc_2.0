@@ -1,9 +1,9 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     //Класс для работы со значением коэффициента технологического запаса без его учёта. Инкапсулирован в класс SettingsLocator.
 
     /// <summary>
-    /// Класс для работы со значением коэффициента технологического запаса без его учёта. Инкапсулирован в класс SettingsLocator.
+    /// Класс для работы со значением коэффициента технологического запаса без его учёта
     /// </summary>
     internal class NonTechnologicalReserve : ITechnologicalReserve
     {

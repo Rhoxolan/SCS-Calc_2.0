@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     //Интерфейс для определения диапазона вводимых значений параметров расчёта конфигураций в
     //соответствии стандарту ISO/IEC 11801. Инкапсулирован в DiapasonLocator.

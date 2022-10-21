@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Стандарты интерфейсов подключений

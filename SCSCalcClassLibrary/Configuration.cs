@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using SCSCalc.Parameters;
 
 namespace SCSCalc
 {

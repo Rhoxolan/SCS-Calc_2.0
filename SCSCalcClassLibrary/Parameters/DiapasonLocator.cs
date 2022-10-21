@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     //Класс, инкапсулирующий объекты, предназначенные для определения диапазона вводимых значений параметров конфигураций СКС, реализующие
     //интерфейсы IStrictСomplianceWithTheStandart, IAnArbitraryNumberOfPorts и IStandartValues.
@@ -28,7 +28,7 @@
         {
             get
             {
-                if(standartValues == null || complianceWithTheStandart == null || numberOfPorts == null)
+                if (standartValues == null || complianceWithTheStandart == null || numberOfPorts == null)
                 {
                     throw new SCSCalcException("Ошибка инициализации параметров значений конфигураций");
                 }
@@ -39,7 +39,7 @@
                     NumberOfPortsDiapason = new(numberOfPorts.NumberOfPortsDiapason),
                     NumberOfWorkplacesDiapason = new(standartValues.NumberOfWorkplacesDiapason),
                     CableHankMeterageDiapason = new(standartValues.CableHankMeterageDiapason),
-                    TechnologicalReserveDiapason = new(standartValues.TechnologicalReserveDiapason) 
+                    TechnologicalReserveDiapason = new(standartValues.TechnologicalReserveDiapason)
                 };
             }
         }
@@ -63,7 +63,7 @@
             }
             set
             {
-                if(Equals(value, true))
+                if (Equals(value, true))
                 {
                     complianceWithTheStandart = new StrictСomplianceWithTheStandart();
                 }

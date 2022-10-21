@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using SCSCalc;
+using SCSCalc.Parameters;
 
 namespace SCS_Calc_2._0
 {

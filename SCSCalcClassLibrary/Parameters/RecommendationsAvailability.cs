@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Класс для получения рекомендаций по побдору кабеля при включенном получении рекомендаций
@@ -40,11 +40,11 @@
         {
             get
             {
-                if(RecommendationsArguments.IsolationMaterial == IsolationMaterial.None)
+                if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.None)
                 {
                     return Properties.Resources.RecommendationsAvailability_RecommendationIsolationMaterial_None;
                 }
-                if(RecommendationsArguments.IsolationMaterial == IsolationMaterial.LSZH)
+                if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.LSZH)
                 {
                     return Properties.Resources.RecommendationsAvailability_RecommendationIsolationMaterial_LSZH;
                 }
@@ -63,7 +63,7 @@
         {
             get
             {
-                if(RecommendationsArguments.ShieldedType == ShieldedType.None)
+                if (RecommendationsArguments.ShieldedType == ShieldedType.None)
                 {
                     return Properties.Resources.RecommendationsAvailability_RecommendationShieldedType_None;
                 }
@@ -86,7 +86,7 @@
         {
             get
             {
-                if(RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.None)
+                if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.None)
                 {
                     return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_None;
                 }

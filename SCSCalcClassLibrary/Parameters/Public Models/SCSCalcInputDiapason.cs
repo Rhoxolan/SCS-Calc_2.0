@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Класс, определяющий диапазон ввода определённого параметра расчёта конфигурации СКС

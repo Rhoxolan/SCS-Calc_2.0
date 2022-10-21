@@ -1,4 +1,4 @@
-﻿namespace SCSCalc
+﻿namespace SCSCalc.Parameters
 {
     //Класс для работы со значением коэффициента технологического запаса с его учётом. Инкапсулирован в класс SettingsLocator.
 
