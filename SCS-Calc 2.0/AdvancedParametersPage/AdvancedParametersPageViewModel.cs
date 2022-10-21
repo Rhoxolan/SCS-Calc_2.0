@@ -23,14 +23,33 @@ namespace SCS_Calc_2._0
             set => model.TechnologicalReserve = value;
         }
 
+        public IsolationType IsolationType
+        {
+            get => model.IsolationType;
+            set => model.IsolationType = value;
+        }
+
+        public IsolationMaterial IsolationMaterial
+        {
+            get => model.IsolationMaterial;
+            set => model.IsolationMaterial = value;
+        }
+
+        public ShieldedType ShieldedType
+        {
+            get => model.ShieldedType;
+            set => model.ShieldedType = value;
+        }
+
+        public object ConnectionInterfaceStandard
+        {
+            get => model.ConnectionInterfaceStandard;
+            set => model.ConnectionInterfaceStandard = value;
+        }
+
         public decimal TechnologicalReserveDiapasonMin => model.Diapasons.TechnologicalReserveDiapason.Min;
 
         public decimal TechnologicalReserveDiapasonMax => model.Diapasons.TechnologicalReserveDiapason.Max;
-
-        public RecommendationsArguments RecommendationsArguments
-        {
-            get => model.RecommendationsArguments;
-        }
 
         public bool? IsTechnologicalReserveAvailability
         {
@@ -42,57 +61,6 @@ namespace SCS_Calc_2._0
         {
             get => model.IsRecommendationsAvailability;
             set => model.IsRecommendationsAvailability = value;
-        }
-
-        [RelayCommand]
-        private void SetRecommendationArgument(string arg)
-        {
-            switch (arg)
-            {
-                case "IsolationType":
-                    if (RecommendationsArguments.IsolationType == IsolationType.Outdoor)
-                    {
-                        RecommendationsArguments.IsolationType = IsolationType.Indoor;
-                    }
-                    else
-                    {
-                        RecommendationsArguments.IsolationType = IsolationType.Outdoor;
-                    }
-                    break;
-
-                case "IsolationMaterial":
-                    if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.PVC)
-                    {
-                        RecommendationsArguments.IsolationMaterial = IsolationMaterial.LSZH;
-                    }
-                    else
-                    {
-                        RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
-                    }
-                    break;
-
-                case "10BASE-T":
-                    if (RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.TenBASE_T))
-                    {
-                        RecommendationsArguments.ConnectionInterfaces.Remove(ConnectionInterfaceStandard.TenBASE_T);
-                    }
-                    else
-                    {
-                        RecommendationsArguments.ConnectionInterfaces.Add(ConnectionInterfaceStandard.TenBASE_T);
-                    }
-                    break;
-
-                case "100BASE-T":
-                    if (RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.FastEthernet))
-                    {
-                        RecommendationsArguments.ConnectionInterfaces.Remove(ConnectionInterfaceStandard.FastEthernet);
-                    }
-                    else
-                    {
-                        RecommendationsArguments.ConnectionInterfaces.Add(ConnectionInterfaceStandard.FastEthernet);
-                    }
-                    break;
-            }
         }
 
         //Обработчик для изменения значения коэффициента технологического запаса

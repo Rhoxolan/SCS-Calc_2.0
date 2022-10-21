@@ -38,4 +38,6 @@
 
     <converters:BooleanInverseConverter x:Key="booleanInverseConverter"/>
 
+    <converters:ConnectionInterfaceStandartToBooleanConverter x:Key="connectionInterfaceStandartToBooleanConverter"/>
+
 </ResourceDictionary>

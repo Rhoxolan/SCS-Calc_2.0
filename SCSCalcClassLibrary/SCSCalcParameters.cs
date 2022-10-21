@@ -130,7 +130,7 @@ namespace SCSCalc
         public RecommendationsArguments RecommendationsArguments
         {
             get => recommendationLocator.RecommendationsArguments;
-            private set => recommendationLocator.RecommendationsArguments = value;
+            private set => recommendationLocator.RecommendationsArguments = value; //Попробовать убрать сеттер
         }
 
         /// <summary>

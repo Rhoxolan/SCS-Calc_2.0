@@ -31,6 +31,9 @@ namespace SCS_Calc_2._0
         //Изменение значения коэффициента технологического запаса
         public event EventHandler TechnologicalReserveChanged;
 
+        //Изменение аргументов для получения рекоммендаций по подбору кабеля
+        public event EventHandler RecommendationsArgumentsChanged;
+
         //Ошибки, произошедшие при инициализации модели
         public string[] InitializeExceptions
         {
@@ -56,6 +59,61 @@ namespace SCS_Calc_2._0
             }
         }
 
+        public IsolationType IsolationType
+        {
+            get
+            {
+                return parameters.RecommendationsArguments.IsolationType;
+            }
+            set
+            {
+                parameters.RecommendationsArguments.IsolationType = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
+            }
+        }
+
+        public IsolationMaterial IsolationMaterial
+        {
+            get
+            {
+                return parameters.RecommendationsArguments.IsolationMaterial;
+            }
+            set
+            {
+                parameters.RecommendationsArguments.IsolationMaterial = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
+            }
+        }
+
+        public ShieldedType ShieldedType
+        {
+            get
+            {
+                return parameters.RecommendationsArguments.ShieldedType;
+            }
+            set
+            {
+                parameters.RecommendationsArguments.ShieldedType = value;
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
+            }
+        }
+
+        public object ConnectionInterfaceStandard
+        {
+            get
+            {
+                return parameters.RecommendationsArguments.ConnectionInterfaces;
+            }
+            set
+            {
+                parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
+            }
+        }
+
+
         public (
             (decimal Min, decimal Max) MinPermanentLinkDiapason,
             (decimal Min, decimal Max) MaxPermanentLinkDiapason,
@@ -70,11 +128,6 @@ namespace SCS_Calc_2._0
             {
                 return parameters.Diapasons;
             }
-        }
-
-        public RecommendationsArguments RecommendationsArguments
-        {
-            get => parameters.RecommendationsArguments;
         }
 
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
