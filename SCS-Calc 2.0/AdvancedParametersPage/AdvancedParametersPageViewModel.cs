@@ -15,6 +15,7 @@ namespace SCS_Calc_2._0
             model.TechnologicalReserveChanged += TechnologicalReserveChanged;
             model.DiapasonsChanged += DiapasonsChanged;
             model.ParametersChanged += ParametersChanged;
+            model.RecommendationsArgumentsChanged += RecommendationsArgumentsChanged;
         }
 
         public double TechnologicalReserve
@@ -47,9 +48,10 @@ namespace SCS_Calc_2._0
             set => model.ConnectionInterfaceStandard = value;
         }
 
-        public decimal TechnologicalReserveDiapasonMin => model.Diapasons.TechnologicalReserveDiapason.Min;
-
-        public decimal TechnologicalReserveDiapasonMax => model.Diapasons.TechnologicalReserveDiapason.Max;
+        public SCSCalcDiapasons Diapasons
+        {
+            get => model.Diapasons;
+        }
 
         public bool? IsTechnologicalReserveAvailability
         {
@@ -72,14 +74,23 @@ namespace SCS_Calc_2._0
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
         private void DiapasonsChanged(object? sender = null, object? args = null)
         {
-            OnPropertyChanged(nameof(TechnologicalReserveDiapasonMin));
-            OnPropertyChanged(nameof(TechnologicalReserveDiapasonMax));
+            OnPropertyChanged(nameof(Diapasons));
+            OnPropertyChanged(nameof(Diapasons));
         }
 
         //Обработчик для изменения параметров расчёта конфигураций СКС
         private void ParametersChanged(object? sender = null, object? args = null)
         {
             OnPropertyChanged(nameof(IsTechnologicalReserveAvailability));
+        }
+
+        //Обработчик для изменения аргументов получения рекомендаций по побдору кабеля
+        private void RecommendationsArgumentsChanged(object? sender = null, object? args = null)
+        {
+            OnPropertyChanged(nameof(IsolationType));
+            OnPropertyChanged(nameof(IsolationMaterial));
+            OnPropertyChanged(nameof(ShieldedType));
+            OnPropertyChanged(nameof(ConnectionInterfaceStandard));
         }
     }
 }

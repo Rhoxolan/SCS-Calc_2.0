@@ -47,14 +47,6 @@
                 }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
             }
-            set
-            {
-                if (recommendations == null)
-                {
-                    throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
-                }
-                recommendations.RecommendationsArguments = value;
-            }
         }
 
         /// <summary>

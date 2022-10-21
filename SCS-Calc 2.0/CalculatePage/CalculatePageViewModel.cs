@@ -2,8 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using SCSCalc;
 using System;
-using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 
 namespace SCS_Calc_2._0
 {
@@ -80,25 +78,10 @@ namespace SCS_Calc_2._0
             set => model.TechnologicalReserve = value;
         }
 
-        public decimal MinPermanentLinkDiapasonMin => model.Diapasons.MinPermanentLinkDiapason.Min;
-
-        public decimal MinPermanentLinkDiapasonMax => model.Diapasons.MinPermanentLinkDiapason.Max;
-
-        public decimal MaxPermanentLinkDiapasonMin => model.Diapasons.MaxPermanentLinkDiapason.Min;
-
-        public decimal MaxPermanentLinkDiapasonMax => model.Diapasons.MaxPermanentLinkDiapason.Max;
-
-        public decimal NumberOfWorkplacesDiapasonMin => model.Diapasons.NumberOfWorkplacesDiapason.Min;
-
-        public decimal NumberOfWorkplacesDiapasonMax => model.Diapasons.NumberOfWorkplacesDiapason.Max;
-
-        public decimal NumberOfPortsDiapasonMin => model.Diapasons.NumberOfPortsDiapason.Min;
-
-        public decimal NumberOfPortsDiapasonMax => model.Diapasons.NumberOfPortsDiapason.Max;
-
-        public decimal CableHankMeterageDiapasonMin => model.Diapasons.CableHankMeterageDiapason.Min;
-
-        public decimal CableHankMeterageDiapasonMax => model.Diapasons.CableHankMeterageDiapason.Max;
+        public SCSCalcDiapasons Diapasons
+        {
+            get => model.Diapasons;
+        }
 
         [RelayCommand]
         private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
@@ -113,16 +96,7 @@ namespace SCS_Calc_2._0
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
         private void DiapasonsChanged(object? sender = null, object? args = null)
         {
-            OnPropertyChanged(nameof(MinPermanentLinkDiapasonMin));
-            OnPropertyChanged(nameof(MinPermanentLinkDiapasonMax));
-            OnPropertyChanged(nameof(MaxPermanentLinkDiapasonMin));
-            OnPropertyChanged(nameof(MaxPermanentLinkDiapasonMax));
-            OnPropertyChanged(nameof(NumberOfWorkplacesDiapasonMin));
-            OnPropertyChanged(nameof(NumberOfWorkplacesDiapasonMax));
-            OnPropertyChanged(nameof(NumberOfPortsDiapasonMin));
-            OnPropertyChanged(nameof(NumberOfPortsDiapasonMax));
-            OnPropertyChanged(nameof(CableHankMeterageDiapasonMin));
-            OnPropertyChanged(nameof(CableHankMeterageDiapasonMax));
+            OnPropertyChanged(nameof(Diapasons));
         }
 
         //Обработчик для изменения значения коэффициента технологического запаса

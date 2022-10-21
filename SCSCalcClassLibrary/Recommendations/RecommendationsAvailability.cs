@@ -8,7 +8,7 @@
         /// <summary>
         /// Аргументы для получения рекомендаций по побдору кабеля
         /// </summary>
-        public RecommendationsArguments RecommendationsArguments { get; set; } = new();
+        public RecommendationsArguments RecommendationsArguments { get; } = new();
 
         /// <summary>
         /// Рекомендация по типу изоляции кабеля

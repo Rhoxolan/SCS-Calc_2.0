@@ -31,6 +31,9 @@ namespace SCS_Calc_2._0
         //Изменение значения коэффициента технологического запаса
         public event EventHandler TechnologicalReserveChanged;
 
+        //Изменение значения аргументов получения рекомендаций по побдору кабеля
+        public event EventHandler RecommendationsArgumentsChanged;
+
         //Ошибки, произошедшие при инициализации модели
         public string[] InitializeExceptions
         {
@@ -64,7 +67,7 @@ namespace SCS_Calc_2._0
             }
             set
             {
-                if(parameters.RecommendationsArguments.IsolationType == IsolationType.Indoor)
+                if (parameters.RecommendationsArguments.IsolationType == IsolationType.Indoor)
                 {
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Outdoor;
                 }
@@ -73,6 +76,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
                 }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
@@ -93,6 +97,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
                 }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
@@ -113,6 +118,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
                 }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
@@ -133,29 +139,14 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
                 }
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+                RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
 
 
-        public (
-            (decimal Min, decimal Max) MinPermanentLinkDiapason,
-            (decimal Min, decimal Max) MaxPermanentLinkDiapason,
-            (decimal Min, decimal Max) NumberOfPortsDiapason,
-            (decimal Min, decimal Max) NumberOfWorkplacesDiapason,
-            (decimal Min, decimal Max) CableHankMeterageDiapason,
-            (decimal Min, decimal Max) TechnologicalReserveDiapason
-            )
-            Diapasons
+        public SCSCalcDiapasons Diapasons
         {
-            get
-            {
-                return parameters.Diapasons;
-            }
-        }
-
-        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage)
-        {
+            get => parameters.Diapasons;
         }
 
         public bool? IsStrictСomplianceWithTheStandart
@@ -184,6 +175,7 @@ namespace SCS_Calc_2._0
                 parameters.IsRecommendationsAvailability = value;
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 ParametersChanged.Invoke(null!, null!);
+                RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -215,6 +207,11 @@ namespace SCS_Calc_2._0
                 ParametersChanged.Invoke(null!, null!);
                 TechnologicalReserveChanged.Invoke(null!, null!);
             }
+        }
+
+        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
+            int numberOfPorts, double? cableHankMeterage)
+        {
         }
 
         //Метод для загрузки параметров расчёта конфигураций СКС

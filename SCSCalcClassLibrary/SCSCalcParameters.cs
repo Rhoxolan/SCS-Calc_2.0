@@ -74,7 +74,10 @@ namespace SCSCalc
             if (Equals(parameters.IsRecommendationsAvailability, true))
             {
                 parametersPresent.IsRecommendationsAvailability = true;
-                parametersPresent.RecommendationsArguments = parameters.RecommendationsArguments;
+                parametersPresent.RecommendationsArguments.IsolationType = parameters.RecommendationsArguments.IsolationType;
+                parametersPresent.RecommendationsArguments.IsolationMaterial = parameters.RecommendationsArguments.IsolationMaterial;
+                parametersPresent.RecommendationsArguments.ConnectionInterfaces = parameters.RecommendationsArguments.ConnectionInterfaces;
+                parametersPresent.RecommendationsArguments.ShieldedType = parameters.RecommendationsArguments.ShieldedType;
             }
             else
             {
@@ -86,25 +89,9 @@ namespace SCSCalc
         /// <summary>
         /// Диапазоны вводимых значений параметров расчёта конфигураций СКС
         /// </summary>
-        public (
-            (decimal Min, decimal Max) MinPermanentLinkDiapason,
-            (decimal Min, decimal Max) MaxPermanentLinkDiapason,
-            (decimal Min, decimal Max) NumberOfPortsDiapason,
-            (decimal Min, decimal Max) NumberOfWorkplacesDiapason,
-            (decimal Min, decimal Max) CableHankMeterageDiapason,
-            (decimal Min, decimal Max) TechnologicalReserveDiapason
-            )
-            Diapasons
+        public SCSCalcDiapasons Diapasons
         {
-            get
-            {
-                return (diapasonLocator.MinPermanentLinkDiapason,
-                    diapasonLocator.MaxPermanentLinkDiapason,
-                    diapasonLocator.NumberOfPortsDiapason,
-                    diapasonLocator.NumberOfWorkplacesDiapason,
-                    diapasonLocator.CableHankMeterageDiapason,
-                    diapasonLocator.TechnologicalReserveDiapason);
-            }
+            get => diapasonLocator.Diapasons;
         }
 
         /// <summary>
@@ -130,7 +117,6 @@ namespace SCSCalc
         public RecommendationsArguments RecommendationsArguments
         {
             get => recommendationLocator.RecommendationsArguments;
-            private set => recommendationLocator.RecommendationsArguments = value; //Попробовать убрать сеттер
         }
 
         /// <summary>
