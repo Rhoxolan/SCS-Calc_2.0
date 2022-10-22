@@ -60,8 +60,15 @@ namespace SCSCalc.Parameters.WindowsDesktop
             parameters = JsonSerializer.Deserialize<(bool?, bool?, bool?, bool?, double, RecommendationsArguments)>(fs, options);
             parametersPresent.IsStrictСomplianceWithTheStandart = parameters.IsStrictСomplianceWithTheStandart;
             parametersPresent.IsAnArbitraryNumberOfPorts = parameters.IsAnArbitraryNumberOfPorts;
-            parametersPresent.IsTechnologicalReserveAvailability = parameters.IsTechnologicalReserveAvailability;
-            parametersPresent.TechnologicalReserve = parameters.TechnologicalReserve;
+            if(Equals(parameters.IsTechnologicalReserveAvailability, true))
+            {
+                parametersPresent.IsTechnologicalReserveAvailability = true;
+                parametersPresent.TechnologicalReserve = parameters.TechnologicalReserve;
+            }
+            else
+            {
+                parametersPresent.IsTechnologicalReserveAvailability = false;
+            }
             if (Equals(parameters.IsRecommendationsAvailability, true))
             {
                 parametersPresent.IsRecommendationsAvailability = true;

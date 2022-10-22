@@ -17,7 +17,7 @@
         </Style.Resources>
     </Style>
 
-    <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
+    <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}" x:Key="styleViewCheckBox">
         <Setter Property="FontSize" Value="12.8"></Setter>
     </Style>
 

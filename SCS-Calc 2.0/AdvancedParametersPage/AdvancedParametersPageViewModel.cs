@@ -52,6 +52,18 @@ namespace SCS_Calc_2._0
             get => model.Diapasons;
         }
 
+        public bool? IsStrictСomplianceWithTheStandart
+        {
+            get => model.IsStrictСomplianceWithTheStandart;
+            set => model.IsStrictСomplianceWithTheStandart = value;
+        }
+
+        public bool? IsAnArbitraryNumberOfPorts
+        {
+            get => model.IsAnArbitraryNumberOfPorts;
+            set => model.IsAnArbitraryNumberOfPorts = value;
+        }
+
         public bool? IsTechnologicalReserveAvailability
         {
             get => model.IsTechnologicalReserveAvailability;
