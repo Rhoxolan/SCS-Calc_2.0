@@ -216,6 +216,25 @@ namespace SCS_Calc_2._0
         {
         }
 
+        //Сброс до заводских параметров расчёта конфигураций скс
+        public void SetDefaultsParameters()
+        {
+
+            //parameters.IsStrictСomplianceWithTheStandart = true;
+            //parameters.IsAnArbitraryNumberOfPorts = true;
+            //parameters.IsTechnologicalReserveAvailability = true;
+            //parameters.IsRecommendationsAvailability = false;
+            //SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+            //DiapasonsChanged.Invoke(null!, null!);
+            //ParametersChanged.Invoke(null!, null!);
+            //TechnologicalReserveChanged.Invoke(null!, null!);
+            //RecommendationsArgumentsChanged.Invoke(null!, null!);
+            IsStrictСomplianceWithTheStandart = true;
+            IsAnArbitraryNumberOfPorts = true;
+            IsTechnologicalReserveAvailability = true;
+            IsRecommendationsAvailability = false;
+        }
+
         //Метод для загрузки параметров расчёта конфигураций СКС
         private void Loader()
         {

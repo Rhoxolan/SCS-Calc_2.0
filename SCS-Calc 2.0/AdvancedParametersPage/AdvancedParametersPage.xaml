@@ -59,7 +59,7 @@
 
             </StackPanel>
 
-            <Button Margin="5,5,5,8" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Восстановить настройки по умолчанию" ToolTip="Нажмите, если хотите воостановить настройки по умолчанию"/>
+            <Button Command="{Binding SetDefaultsParametersCommand}" Margin="5,5,5,8" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Восстановить настройки по умолчанию" ToolTip="Нажмите, если хотите воостановить настройки по умолчанию"/>
 
         </Grid>
 

@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SCSCalc.Parameters;
+using System.Windows;
 
 namespace SCS_Calc_2._0
 {
@@ -76,6 +78,14 @@ namespace SCS_Calc_2._0
             set => model.IsRecommendationsAvailability = value;
         }
 
+        [RelayCommand]
+        private void SetDefaultsParameters()
+        {
+            if(MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
+                MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            model.SetDefaultsParameters();
+        }
+
         //Обработчик для изменения значения коэффициента технологического запаса
         private void TechnologicalReserveChanged(object? sender = null, object? args = null)
         {
@@ -92,7 +102,9 @@ namespace SCS_Calc_2._0
         //Обработчик для изменения параметров расчёта конфигураций СКС
         private void ParametersChanged(object? sender = null, object? args = null)
         {
+            OnPropertyChanged(nameof(IsStrictСomplianceWithTheStandart));
             OnPropertyChanged(nameof(IsTechnologicalReserveAvailability));
+            OnPropertyChanged(nameof(IsAnArbitraryNumberOfPorts));
         }
 
         //Обработчик для изменения аргументов получения рекомендаций по побдору кабеля
@@ -102,6 +114,7 @@ namespace SCS_Calc_2._0
             OnPropertyChanged(nameof(IsolationMaterial));
             OnPropertyChanged(nameof(ShieldedType));
             OnPropertyChanged(nameof(ConnectionInterfaceStandard));
+            OnPropertyChanged(nameof(IsRecommendationsAvailability));
         }
     }
 }

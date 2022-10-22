@@ -11,5 +11,10 @@ namespace SCS_Calc_2._0
         {
             InitializeComponent();
         }
+
+        private void checkBoxCableHankMeterage_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            expanderCableHankMeterageStandartValues.IsExpanded = false;
+        }
     }
 }
