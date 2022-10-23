@@ -7,14 +7,14 @@ namespace SCSCalc.Parameters.WindowsDesktop
     /// <summary>
     /// Класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
     /// </summary>
-    public class SCSCalcParametersWindowsDesktop : SCSCalcParameters
+    public class SCSCalcParameters : SCSCalcParametersBase
     {
         /// <summary>
         /// Сериализация настраеваемых параметров расчёта конфигураций СКС
         /// </summary>
         /// <param name="parametersPresent"></param>
         /// <param name="parametersDocPath"></param>
-        public static void ParametersSerializer(SCSCalcParametersWindowsDesktop parametersPresent, string parametersDocPath)
+        public static void ParametersSerializer(SCSCalcParameters parametersPresent, string parametersDocPath)
         {
             (bool? IsStrictСomplianceWithTheStandart,
                 bool? IsAnArbitraryNumberOfPorts,
@@ -43,7 +43,7 @@ namespace SCSCalc.Parameters.WindowsDesktop
         /// </summary>
         /// <param name="parametersDocPath"></param>
         /// <returns></returns>
-        public static SCSCalcParametersWindowsDesktop ParametersDeserializer(string parametersDocPath)
+        public static SCSCalcParameters ParametersDeserializer(string parametersDocPath)
         {
             (bool? IsStrictСomplianceWithTheStandart,
                 bool? IsAnArbitraryNumberOfPorts,
@@ -51,7 +51,7 @@ namespace SCSCalc.Parameters.WindowsDesktop
                 bool? IsRecommendationsAvailability,
                 double TechnologicalReserve,
                 RecommendationsArguments RecommendationsArguments) parameters;
-            SCSCalcParametersWindowsDesktop parametersPresent = new();
+            SCSCalcParameters parametersPresent = new();
             using FileStream fs = new(parametersDocPath, FileMode.Open);
             JsonSerializerOptions options = new()
             {

@@ -6,13 +6,13 @@
     /// <summary>
     /// Абстрактный класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
     /// </summary>
-    public abstract class SCSCalcParameters
+    public abstract class SCSCalcParametersBase
     {
         private DiapasonLocator diapasonLocator;
         private ValueLocator valueLocator;
         private RecommendationLocator recommendationLocator;
 
-        public SCSCalcParameters()
+        public SCSCalcParametersBase()
         {
             diapasonLocator = new();
             valueLocator = new();

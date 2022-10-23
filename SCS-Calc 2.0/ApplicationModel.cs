@@ -1,6 +1,6 @@
-﻿using SCSCalc;
-using SCSCalc.Parameters;
+﻿using SCSCalc.Parameters;
 using SCSCalc.Parameters.WindowsDesktop;
+using SCSCalc.WindowsDesktop;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +12,7 @@ namespace SCS_Calc_2._0
     {
         private ObservableCollection<Configuration> configurations;
         private string settingsDocPath;
-        private SCSCalcParametersWindowsDesktop parameters;
+        private SCSCalcParameters parameters;
         private List<string> initializeExceptions;
 
         public ApplicationModel()
@@ -56,7 +56,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.TechnologicalReserve = value;
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 TechnologicalReserveChanged.Invoke(null!, null!);
             }
         }
@@ -77,7 +77,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
                 }
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
@@ -98,7 +98,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
                 }
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
@@ -119,7 +119,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
                 }
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
@@ -140,7 +140,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
                 }
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 RecommendationsArgumentsChanged.Invoke(null!, null!);
             }
         }
@@ -160,7 +160,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsStrictСomplianceWithTheStandart = value;
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 ParametersChanged.Invoke(null!, null!);
                 DiapasonsChanged.Invoke(null!, null!);
             }
@@ -175,7 +175,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsRecommendationsAvailability = value;
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 ParametersChanged.Invoke(null!, null!);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
@@ -190,7 +190,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsAnArbitraryNumberOfPorts = value;
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 ParametersChanged.Invoke(null!, null!);
                 DiapasonsChanged.Invoke(null!, null!);
             }
@@ -205,7 +205,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsTechnologicalReserveAvailability = value;
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 ParametersChanged.Invoke(null!, null!);
                 TechnologicalReserveChanged.Invoke(null!, null!);
             }
@@ -214,21 +214,12 @@ namespace SCS_Calc_2._0
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
             int numberOfPorts, double? cableHankMeterage)
         {
+
         }
 
         //Сброс до заводских параметров расчёта конфигураций скс
         public void SetDefaultsParameters()
         {
-
-            //parameters.IsStrictСomplianceWithTheStandart = true;
-            //parameters.IsAnArbitraryNumberOfPorts = true;
-            //parameters.IsTechnologicalReserveAvailability = true;
-            //parameters.IsRecommendationsAvailability = false;
-            //SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
-            //DiapasonsChanged.Invoke(null!, null!);
-            //ParametersChanged.Invoke(null!, null!);
-            //TechnologicalReserveChanged.Invoke(null!, null!);
-            //RecommendationsArgumentsChanged.Invoke(null!, null!);
             IsStrictСomplianceWithTheStandart = true;
             IsAnArbitraryNumberOfPorts = true;
             IsTechnologicalReserveAvailability = true;
@@ -242,7 +233,7 @@ namespace SCS_Calc_2._0
             {
                 try
                 {
-                    parameters = SCSCalcParametersWindowsDesktop.ParametersDeserializer(settingsDocPath);
+                    parameters = SCSCalcParameters.ParametersDeserializer(settingsDocPath);
                 }
                 catch (Exception ex)
                 {
@@ -254,7 +245,7 @@ namespace SCS_Calc_2._0
                         IsTechnologicalReserveAvailability = true,
                         IsRecommendationsAvailability = false
                     };
-                    SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                    SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
                 }
             }
             else
@@ -267,7 +258,7 @@ namespace SCS_Calc_2._0
                     IsTechnologicalReserveAvailability = true,
                     IsRecommendationsAvailability = false
                 };
-                SCSCalcParametersWindowsDesktop.ParametersSerializer(parameters, settingsDocPath);
+                SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
             }
         }
     }
