@@ -1,9 +1,10 @@
 ﻿using SCSCalc.Parameters;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace SCSCalc.WindowsDesktop
 {
-    //Реализация записи содержит методы для расчёта конфигураций и  
+    //Реализация записи содержит методы для расчёта конфигураций и загрузе/выгрузке БД конфигураций 
 
     /// <summary>
     /// Запись конфигурации СКС
@@ -22,7 +23,7 @@ namespace SCSCalc.WindowsDesktop
         /// <param name="cableHankMeterage"></param>
         /// <returns></returns>
         /// <exception cref="SCSCalcException"></exception>
-        public static Configuration Calculate(ICollection<ConfigurationBase> configurations, SCSCalcParametersBase parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+        public static Configuration Calculate(ICollection<Configuration> configurations, SCSCalcParametersBase parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
             if (cableHankMeterage != null)
@@ -59,7 +60,7 @@ namespace SCSCalc.WindowsDesktop
                 }
                 return new Configuration()
                 {
-                    Id = GetId(configurations),
+                    Id = GetId(new ObservableCollection<ConfigurationBase>(configurations)),
                     RecordTime = DateTime.Now,
                     MinPermanentLink = minPermanentLink,
                     MaxPermanentLink = maxPermanentLink,
@@ -101,7 +102,7 @@ namespace SCSCalc.WindowsDesktop
                 }
                 return new Configuration()
                 {
-                    Id = GetId(configurations),
+                    Id = GetId(new ObservableCollection<ConfigurationBase>(configurations)),
                     RecordTime = DateTime.Now,
                     MinPermanentLink = minPermanentLink,
                     MaxPermanentLink = maxPermanentLink,

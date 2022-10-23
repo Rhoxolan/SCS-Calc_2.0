@@ -84,7 +84,10 @@ namespace SCS_Calc_2._0
         }
 
         [RelayCommand]
-        private void СalculateConfiguration() => model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
+        private void СalculateConfiguration()
+        {
+            model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
+        }
 
         [RelayCommand]
         private void SetCableHankMeterage(string value)

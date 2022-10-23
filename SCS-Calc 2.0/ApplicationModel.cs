@@ -214,7 +214,7 @@ namespace SCS_Calc_2._0
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
             int numberOfPorts, double? cableHankMeterage)
         {
-
+            configurations.Add(Configuration.Calculate(configurations, parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
         }
 
         //Сброс до заводских параметров расчёта конфигураций скс
