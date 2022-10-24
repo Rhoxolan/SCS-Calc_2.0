@@ -55,9 +55,9 @@ namespace SCS_Calc_2._0
             }
         }
 
-        public int NumberOfWorkplaces { get; set; }
+        public double NumberOfWorkplaces { get; set; }
 
-        public int NumberOfPorts { get; set; }
+        public double NumberOfPorts { get; set; }
 
         public double? CableHankMeterage
         {
@@ -86,7 +86,7 @@ namespace SCS_Calc_2._0
         [RelayCommand]
         private void СalculateConfiguration()
         {
-            model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, NumberOfWorkplaces, NumberOfPorts, CableHankMeterage);
+            model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
         }
 
         [RelayCommand]
