@@ -1,4 +1,7 @@
-﻿namespace SCS_Calc_2._0
+﻿using SCSCalc.WindowsDesktop;
+using System.Collections.ObjectModel;
+
+namespace SCS_Calc_2._0
 {
     public class HistoryPageViewModel
     {
@@ -7,6 +10,11 @@
         public HistoryPageViewModel(ApplicationModel model)
         {
             this.model = model;
+        }
+
+        public ReadOnlyObservableCollection<Configuration> Configurations
+        {
+            get => model.Configurations;
         }
     }
 }
