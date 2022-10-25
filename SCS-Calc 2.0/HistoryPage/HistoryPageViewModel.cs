@@ -16,5 +16,7 @@ namespace SCS_Calc_2._0
         {
             get => model.Configurations;
         }
+
+        public Configuration? SelectedConfiguration { get; set; }
     }
 }

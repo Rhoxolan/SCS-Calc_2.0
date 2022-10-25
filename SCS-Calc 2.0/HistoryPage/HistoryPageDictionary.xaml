@@ -4,18 +4,10 @@
 
     <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}"/>
 
-    <Style TargetType="TextBox" BasedOn="{StaticResource styleViewTextBox}">
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="VerticalContentAlignment" Value="Top"/>
-    </Style>
-
     <Style TargetType="ListBox" BasedOn="{StaticResource ListBoxBaseStyle}">
         <Setter Property="BorderBrush" Value="DarkBlue"/>
         <Setter Property="Background" Value="#FFFFFD"/>
         <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
-
-    <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
 
 </ResourceDictionary>

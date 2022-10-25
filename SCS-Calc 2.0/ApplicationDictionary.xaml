@@ -43,6 +43,12 @@
         <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
+    <Style TargetType="FlowDocumentScrollViewer" BasedOn="{x:Null}">
+        <Setter Property="BorderBrush" Value="DarkBlue"/>
+        <Setter Property="Background" Value="#FFFFFD"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
+    </Style>
+
     <Style TargetType="mah:NumericUpDown" x:Key="styleViewNumericUpDown">
         <Setter Property="HideUpDownButtons" Value="True"/>
         <Setter Property="Background" Value="#FFFFFD"/>
@@ -53,14 +59,6 @@
         <Setter Property="CornerRadius" Value="3"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="BorderBrush" Value="MediumBlue"/>
-        <Setter Property="BorderThickness" Value="0.7"/>
-    </Style>
-
-    <Style TargetType="Border" x:Key="styleViewBorder">
-        <Setter Property="CornerRadius" Value="3"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="BorderBrush" Value="DarkBlue"/>
-        <Setter Property="Background" Value="#FFFFFD"/>
         <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 

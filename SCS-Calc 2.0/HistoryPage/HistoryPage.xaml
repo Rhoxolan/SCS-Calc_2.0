@@ -12,7 +12,7 @@
         <ResourceDictionary Source="HistoryPageDictionary.xaml"/>
     </Page.Resources>
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{x:Null}">
 
         <!--<ScrollViewer.Resources>
             --><!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы--><!--
@@ -42,7 +42,7 @@
                 <ColumnDefinition Width="0.3*" MinWidth="128" MaxWidth="128"/>
             </Grid.ColumnDefinitions>
 
-            <ListBox Margin="5" ItemsSource="{Binding Configurations}" Grid.Row="0" Grid.Column="0" MinWidth="350" MinHeight="310" MaxHeight="310">
+            <ListBox Margin="5" ItemsSource="{Binding Configurations}" SelectedItem="{Binding SelectedConfiguration}" Grid.Row="0" Grid.Column="0" MinWidth="350" MinHeight="310" MaxHeight="310">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="0.5, 0.5, 0.5, 5">
@@ -73,18 +73,21 @@
             </StackPanel>
 
             <!--<Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
-                <TextBox x:Name="textBoxShowConfiguration" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                <TextBox Style="{StaticResource styleViewTextBox}" x:Name="textBoxShowConfiguration" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
-                         ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"/>
+                         ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС"/>
             </Grid>-->
 
-            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5" Style="{StaticResource styleViewBorder}">
-                <StackPanel>
-                    <TextBox IsReadOnly="True" Text="Текст1"/>
-                    <TextBox IsReadOnly="True" Text="Текст2"/>
-                </StackPanel>
-            </Border>
+            <FlowDocumentScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5" >
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="{Binding StringFormat=Наименьшая длина постоянного линка: {0} м., Path=SelectedConfiguration.MinPermanentLink}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0} м., Path=SelectedConfiguration.MaxPermanentLink}"/>
+                    </Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
 
         </Grid>
 
