@@ -15,7 +15,9 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{x:Null}">
 
         <!--<ScrollViewer.Resources>
-            --><!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы--><!--
+            -->
+        <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
+        <!--
             <Style TargetType="ScrollViewer">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
@@ -29,7 +31,7 @@
                 </Style.Triggers>
             </Style>
         </ScrollViewer.Resources>-->
-        
+
         <Grid>
 
             <Grid.RowDefinitions>
@@ -79,12 +81,33 @@
                          ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС"/>
             </Grid>-->
 
-            <FlowDocumentScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5" >
+            <FlowDocumentScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5"
+                                      ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС">
                 <FlowDocument>
                     <Paragraph>
+                        <Run Text="{Binding StringFormat=Дата и время записи конфигурации СКС: {0}, Path=SelectedConfiguration.RecordTime}"/>
+                        <LineBreak/>
+                        <LineBreak/>
                         <Run Text="{Binding StringFormat=Наименьшая длина постоянного линка: {0} м., Path=SelectedConfiguration.MinPermanentLink}"/>
                         <LineBreak/>
                         <Run Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0} м., Path=SelectedConfiguration.MaxPermanentLink}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Средняя длина постоянного линка: {0} м., Path=SelectedConfiguration.AveragePermanentLink}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Количество рабочих мест: {0}, Path=SelectedConfiguration.NumberOfWorkplaces}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Количество портов на 1 рабочее место: {0}, Path=SelectedConfiguration.NumberOfPorts}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Необходимое количество кабеля: {0}, Path=SelectedConfiguration.CableHankMeterage}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0}, Path=SelectedConfiguration.HankQuantity}"/>
+                        <LineBreak/>
+                        <Run Text="{Binding StringFormat=Итоговое необходимое количество кабеля: {0}, Path=SelectedConfiguration.TotalСableQuantity}"/>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run Text="Рекомендации по побдору кабеля:"/>
+                        <LineBreak/>
+                        <Run Text="{Binding SelectedConfiguration.Recommendations}"/>
                     </Paragraph>
                 </FlowDocument>
             </FlowDocumentScrollViewer>
@@ -92,5 +115,5 @@
         </Grid>
 
     </ScrollViewer>
-    
+
 </Page>
