@@ -12,10 +12,10 @@
         <ResourceDictionary Source="HistoryPageDictionary.xaml"/>
     </Page.Resources>
 
-    <ScrollViewer>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-        <ScrollViewer.Resources>
-            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
+        <!--<ScrollViewer.Resources>
+            --><!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы--><!--
             <Style TargetType="ScrollViewer">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
@@ -28,7 +28,7 @@
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
-        </ScrollViewer.Resources>
+        </ScrollViewer.Resources>-->
         
         <Grid>
 
@@ -45,11 +45,11 @@
             <ListBox Margin="5" ItemsSource="{Binding Configurations}" Grid.Row="0" Grid.Column="0" MinWidth="350" MinHeight="310" MaxHeight="310">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="0.5, 0.5, 0.5, 3">
+                        <StackPanel Margin="0.5, 0.5, 0.5, 5">
                             <TextBlock FontSize="14" Text="{Binding RecordTime}"/>
                             <TextBlock FontSize="13" Text="{Binding StringFormat=Наименьшая длина постоянного линка: {0} м., Path=MinPermanentLink}"/>
                             <TextBlock FontSize="13" Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0} м., Path=MaxPermanentLink}"/>
-                            <TextBlock x:Name="textBlockOutputCableHankMeterage" FontSize="13" Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0} м., Path=CableHankMeterage}">
+                            <TextBlock FontSize="13" Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0} м., Path=CableHankMeterage}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Style.Triggers>
@@ -60,6 +60,7 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
+                            <TextBlock  FontSize="13" FontWeight="Medium" Text="{Binding StringFormat=Необходимое количество кабеля: {0} м., Path=TotalСableQuantity}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -71,12 +72,19 @@
                 <Button Margin="5" HorizontalAlignment="Stretch" Content="Удалить всё" ToolTip="Удалить ВСЕ конфигурации"/>
             </StackPanel>
 
-            <Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
+            <!--<Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
                 <TextBox x:Name="textBoxShowConfiguration" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
                          ToolTip="Подбробный вывод конфигурации конфигурации необходимого количества кабеля для построения СКС"/>
-            </Grid>
+            </Grid>-->
+
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5" Style="{StaticResource styleViewBorder}">
+                <StackPanel>
+                    <TextBox IsReadOnly="True" Text="Текст1"/>
+                    <TextBox IsReadOnly="True" Text="Текст2"/>
+                </StackPanel>
+            </Border>
 
         </Grid>
 

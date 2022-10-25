@@ -56,6 +56,14 @@
         <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
+    <Style TargetType="Border" x:Key="styleViewBorder">
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="BorderBrush" Value="DarkBlue"/>
+        <Setter Property="Background" Value="#FFFFFD"/>
+        <Setter Property="BorderThickness" Value="0.7"/>
+    </Style>
+
     <Style TargetType="Expander" BasedOn="{StaticResource ExpanderBaseStyle}" x:Key="styleViewExpander">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="MediumBlue"/>
