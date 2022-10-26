@@ -51,7 +51,7 @@
 
     <Style TargetType="Run">
         <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="14.5"/>
+        <Setter Property="FontSize" Value="14"/>
     </Style>
 
     <Style TargetType="mah:NumericUpDown" x:Key="styleViewNumericUpDown">
@@ -60,7 +60,7 @@
         <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
-    <Style TargetType="Border" x:Key="styleViewBorderNumericUpDown">
+    <Style TargetType="Border" x:Key="styleViewElementBorder">
         <Setter Property="CornerRadius" Value="3"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="BorderBrush" Value="MediumBlue"/>

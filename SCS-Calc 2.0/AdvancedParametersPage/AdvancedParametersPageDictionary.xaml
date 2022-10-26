@@ -21,7 +21,7 @@
         <Setter Property="FontSize" Value="12.8"></Setter>
     </Style>
 
-    <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleBorderNumericUpDown">
+    <Style TargetType="Border" BasedOn="{StaticResource styleViewElementBorder}" x:Key="styleBorderNumericUpDown">
         <Setter Property="MaxWidth" Value="130"/>
         <Setter Property="MinWidth" Value="130"/>
         <Setter Property="BorderBrush" Value="#FF212121"/>

@@ -11,7 +11,7 @@
         <Setter Property="MinHeight" Value="29"/>
     </Style>
 
-    <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleBorderNumericUpDown">
+    <Style TargetType="Border" BasedOn="{StaticResource styleViewElementBorder}" x:Key="styleViewBorderNumericUpDown">
         <Setter Property="MaxWidth" Value="130"/>
         <Setter Property="MinWidth" Value="130"/>
         <Style.Triggers>
@@ -21,7 +21,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="Border" BasedOn="{StaticResource styleViewBorderNumericUpDown}" x:Key="styleViewBorderForExpander">
+    <Style TargetType="Border" BasedOn="{StaticResource styleViewElementBorder}" x:Key="styleViewBorderForExpander">
         <Setter Property="BorderBrush" Value="MediumBlue"/>
         <Setter Property="BorderThickness" Value="0.8"/>
     </Style>
@@ -45,8 +45,6 @@
     <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
         <Setter Property="FontSize" Value="12.5"></Setter>
     </Style>
-
-    <converters:TextLengthToBooleanConverter x:Key="textLengthToBooleanConverter"/>
 
     <converters:BooleanToNullableDoubleConverter x:Key="booleanToNullableDoubleConverter"/>
 

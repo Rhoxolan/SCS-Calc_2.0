@@ -16,7 +16,7 @@
     <ScrollViewer>
 
         <ScrollViewer.Resources>
-            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->       
+            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
             <Style TargetType="ScrollViewer">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
@@ -80,8 +80,8 @@
                                           Width="{Binding ActualWidth, ElementName=gridFlowDocumentScrollViewerShowConfiguration, Mode=OneWay}"
                                           Height="{Binding ActualHeight, ElementName=gridFlowDocumentScrollViewerShowConfiguration, Mode=OneWay}"
                                           ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС"/>
-            </Grid>
 
+            </Grid>
 
         </Grid>
 

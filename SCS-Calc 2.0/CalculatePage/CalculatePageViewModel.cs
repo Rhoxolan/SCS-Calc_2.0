@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SCSCalc.Parameters;
+using SCSCalc.WindowsDesktop;
 using System;
 
 namespace SCS_Calc_2._0
@@ -18,6 +19,14 @@ namespace SCS_Calc_2._0
             this.model = model;
             model.DiapasonsChanged += DiapasonsChanged;
             model.TechnologicalReserveChanged += TechnologicalReserveChanged;
+        }
+
+        public Configuration LatestConfiguration
+        {
+            get
+            {
+                return model.Configurations[^1];
+            }
         }
 
         //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
@@ -87,6 +96,7 @@ namespace SCS_Calc_2._0
         private void СalculateConfiguration()
         {
             model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
+            OnPropertyChanged(nameof(LatestConfiguration));
         }
 
         [RelayCommand]
