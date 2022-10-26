@@ -21,14 +21,6 @@ namespace SCS_Calc_2._0
             model.TechnologicalReserveChanged += TechnologicalReserveChanged;
         }
 
-        public Configuration LatestConfiguration
-        {
-            get
-            {
-                return model.Configurations[^1];
-            }
-        }
-
         //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
         public int AveragePermanentLink
         {
@@ -96,7 +88,6 @@ namespace SCS_Calc_2._0
         private void СalculateConfiguration()
         {
             model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
-            OnPropertyChanged(nameof(LatestConfiguration));
         }
 
         [RelayCommand]
@@ -104,6 +95,12 @@ namespace SCS_Calc_2._0
         {
             CableHankMeterage = Convert.ToDouble(value);
             OnPropertyChanged(nameof(CableHankMeterage));
+        }
+
+        [RelayCommand]
+        private void SaveToTXT()
+        {
+
         }
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС

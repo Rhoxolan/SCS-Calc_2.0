@@ -25,7 +25,7 @@ namespace SCS_Calc_2._0.Converters
                 paragraph.Inlines.Add(new LineBreak());
                 paragraph.Inlines.Add(new Run($"Наибольшая длина постоянного линка: {configuration.MaxPermanentLink} м."));
                 paragraph.Inlines.Add(new LineBreak());
-                paragraph.Inlines.Add(new Run($"Средняя длина постоянного линка: {configuration.MaxPermanentLink} м."));
+                paragraph.Inlines.Add(new Run($"Средняя длина постоянного линка: {configuration.AveragePermanentLink} м."));
                 paragraph.Inlines.Add(new LineBreak());
                 paragraph.Inlines.Add(new Run($"Количество рабочих мест: {configuration.NumberOfWorkplaces}"));
                 paragraph.Inlines.Add(new LineBreak());
