@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SCSCalc.WindowsDesktop;
 using System.Collections.ObjectModel;
 
@@ -30,6 +31,15 @@ namespace SCS_Calc_2._0
             {
                 selectedConfiguration = value;
                 OnPropertyChanged();
+            }
+        }
+
+        [RelayCommand]
+        private void SaveToTXT()
+        {
+            if (SelectedConfiguration != null)
+            {
+                SelectedConfiguration.SaveToTXT();
             }
         }
     }

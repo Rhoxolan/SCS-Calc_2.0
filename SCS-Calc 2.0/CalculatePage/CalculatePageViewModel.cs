@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using SCSCalc.Parameters;
 using SCSCalc.WindowsDesktop;
 using System;
+using System.Collections.ObjectModel;
 
 namespace SCS_Calc_2._0
 {
@@ -20,6 +21,13 @@ namespace SCS_Calc_2._0
             model.DiapasonsChanged += DiapasonsChanged;
             model.TechnologicalReserveChanged += TechnologicalReserveChanged;
         }
+
+        public ReadOnlyObservableCollection<Configuration> Configurations
+        {
+            get => model.Configurations;
+        }
+
+        public Configuration? LatestConfiguration { get; set; } = null;
 
         //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
         public int AveragePermanentLink
@@ -88,6 +96,8 @@ namespace SCS_Calc_2._0
         private void СalculateConfiguration()
         {
             model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
+            LatestConfiguration = Configurations[^1];
+            OnPropertyChanged(nameof(LatestConfiguration));
         }
 
         [RelayCommand]
@@ -100,7 +110,17 @@ namespace SCS_Calc_2._0
         [RelayCommand]
         private void SaveToTXT()
         {
+            if(LatestConfiguration != null)
+            {
+                LatestConfiguration.SaveToTXT();
+            }
+        }
 
+        [RelayCommand]
+        private void CleanOutputBlock()
+        {
+            LatestConfiguration = null;
+            OnPropertyChanged(nameof(LatestConfiguration));
         }
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС

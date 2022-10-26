@@ -1,5 +1,4 @@
-﻿using HandyControl.Tools.Extension;
-using SCSCalc.WindowsDesktop;
+﻿using SCSCalc.WindowsDesktop;
 using System;
 using System.Globalization;
 using System.Windows;
@@ -54,7 +53,7 @@ namespace SCS_Calc_2._0.Converters
                 flowDocument.Blocks.Add(paragraph);
                 return flowDocument;
             }
-            return Binding.DoNothing;
+            return default!;
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
