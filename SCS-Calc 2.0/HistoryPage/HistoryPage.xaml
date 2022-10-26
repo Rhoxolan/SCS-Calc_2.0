@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:local="clr-namespace:SCS_Calc_2._0"
+      xmlns:converters="clr-namespace:SCS_Calc_2._0.Converters"
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="600" DataContext="{DynamicResource historyPageViewModel}">
 
@@ -12,25 +13,23 @@
         <ResourceDictionary Source="HistoryPageDictionary.xaml"/>
     </Page.Resources>
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{x:Null}">
+    <ScrollViewer>
 
-        <!--<ScrollViewer.Resources>
-            -->
-        <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
-        <!--
+        <ScrollViewer.Resources>
+            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->       
             <Style TargetType="ScrollViewer">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding ActualWidth, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="500">
+                    <DataTrigger Binding="{Binding ActualWidth, ElementName=flowDocumentScrollViewerShowConfiguration, Mode=OneWay}" Value="500">
                         <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
                     </DataTrigger>
-                    <DataTrigger Binding="{Binding ActualHeight, ElementName=textBoxShowConfiguration, Mode=OneWay}" Value="300">
+                    <DataTrigger Binding="{Binding ActualHeight, ElementName=flowDocumentScrollViewerShowConfiguration, Mode=OneWay}" Value="300">
                         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
-        </ScrollViewer.Resources>-->
+        </ScrollViewer.Resources>
 
         <Grid>
 
@@ -74,43 +73,15 @@
                 <Button Margin="5" HorizontalAlignment="Stretch" Content="Удалить всё" ToolTip="Удалить ВСЕ конфигурации"/>
             </StackPanel>
 
-            <!--<Grid x:Name="gridTextBoxShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
-                <TextBox Style="{StaticResource styleViewTextBox}" x:Name="textBoxShowConfiguration" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
-                         Width="{Binding ActualWidth, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
-                         Height="{Binding ActualHeight, ElementName=gridTextBoxShowConfiguration, Mode=OneWay}"
-                         ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС"/>
-            </Grid>-->
+            <Grid x:Name="gridFlowDocumentScrollViewerShowConfiguration" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5">
+                <FlowDocumentScrollViewer Document="{Binding SelectedConfiguration, Converter={x:Static converters:ConfigurationToFlowDocumentConverter.Instance}, Mode=OneWay}"
+                                          x:Name="flowDocumentScrollViewerShowConfiguration"
+                                          VerticalScrollBarVisibility="Auto"
+                                          Width="{Binding ActualWidth, ElementName=gridFlowDocumentScrollViewerShowConfiguration, Mode=OneWay}"
+                                          Height="{Binding ActualHeight, ElementName=gridFlowDocumentScrollViewerShowConfiguration, Mode=OneWay}"
+                                          ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС"/>
+            </Grid>
 
-            <FlowDocumentScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="300" MinWidth="500" Margin="5"
-                                      ToolTip="Подробный вывод конфигурации необходимого количества кабеля для построения СКС">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="{Binding StringFormat=Дата и время записи конфигурации СКС: {0}, Path=SelectedConfiguration.RecordTime}"/>
-                        <LineBreak/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Наименьшая длина постоянного линка: {0} м., Path=SelectedConfiguration.MinPermanentLink}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0} м., Path=SelectedConfiguration.MaxPermanentLink}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Средняя длина постоянного линка: {0} м., Path=SelectedConfiguration.AveragePermanentLink}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Количество рабочих мест: {0}, Path=SelectedConfiguration.NumberOfWorkplaces}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Количество портов на 1 рабочее место: {0}, Path=SelectedConfiguration.NumberOfPorts}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Необходимое количество кабеля: {0}, Path=SelectedConfiguration.CableHankMeterage}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0}, Path=SelectedConfiguration.HankQuantity}"/>
-                        <LineBreak/>
-                        <Run Text="{Binding StringFormat=Итоговое необходимое количество кабеля: {0}, Path=SelectedConfiguration.TotalСableQuantity}"/>
-                        <LineBreak/>
-                        <LineBreak/>
-                        <Run Text="Рекомендации по побдору кабеля:"/>
-                        <LineBreak/>
-                        <Run Text="{Binding SelectedConfiguration.Recommendations}"/>
-                    </Paragraph>
-                </FlowDocument>
-            </FlowDocumentScrollViewer>
 
         </Grid>
 

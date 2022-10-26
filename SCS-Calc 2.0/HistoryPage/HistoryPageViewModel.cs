@@ -1,11 +1,14 @@
-﻿using SCSCalc.WindowsDesktop;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SCSCalc.WindowsDesktop;
 using System.Collections.ObjectModel;
 
 namespace SCS_Calc_2._0
 {
-    public class HistoryPageViewModel
+    [INotifyPropertyChanged]
+    public partial class HistoryPageViewModel
     {
         private readonly ApplicationModel model;
+        private Configuration? selectedConfiguration;
 
         public HistoryPageViewModel(ApplicationModel model)
         {
@@ -17,6 +20,17 @@ namespace SCS_Calc_2._0
             get => model.Configurations;
         }
 
-        public Configuration? SelectedConfiguration { get; set; }
+        public Configuration? SelectedConfiguration
+        {
+            get
+            {
+                return selectedConfiguration;
+            }
+            set
+            {
+                selectedConfiguration = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
