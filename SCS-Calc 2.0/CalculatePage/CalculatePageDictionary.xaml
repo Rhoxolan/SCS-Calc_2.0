@@ -33,7 +33,7 @@
         <Setter Property="FontSize" Value="14"/>
     </Style>
 
-    <Style TargetType="Expander" BasedOn="{StaticResource styleViewExpander}" >
+    <Style TargetType="Expander" BasedOn="{StaticResource styleViewExpander}">
         <Setter Property="BorderThickness" Value="0.5"/>
     </Style>
 
