@@ -56,7 +56,7 @@
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Наименьшая длина постоянного линка (м.):"
                            ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
-                
+
                 <Border Style="{StaticResource styleViewBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5"
                         ToolTip="Пожалуйста, введите значение наименьшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
                     <mah:NumericUpDown x:Name="numericUpDownMinPermanentLink" StringFormat="F2"
@@ -67,7 +67,7 @@
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Наибольшая длина постоянного линка (м.):"
                            ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." />
-                
+
                 <Border Style="{StaticResource styleViewBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5"
                         ToolTip="Пожалуйста, введите значение наибольшей длины постоянного линка (Permanent Link) в метрах. Напоминаем, что согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м." >
                     <mah:NumericUpDown x:Name="numericUpDownMaxPermanentLink" StringFormat="F2"
@@ -78,7 +78,7 @@
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Количество рабочих мест:"
                            ToolTip="Пожалуйста, введите количество рабочих мест" />
-                
+
                 <Border Style="{StaticResource styleViewBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5"
                         ToolTip="Пожалуйста, введите количество рабочих мест" >
                     <mah:NumericUpDown x:Name="numericUpDownNumberOfWorkplaces" NumericInputMode="Numbers"
@@ -89,7 +89,7 @@
 
                 <TextBlock HorizontalAlignment="Left" Margin="5" Text="Количество портов на 1 рабочее место:"
                            ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" />
-                
+
                 <Border Style="{StaticResource styleViewBorderNumericUpDown}" HorizontalAlignment="Left" Margin="5"
                         ToolTip="Пожалуйста, введите количество портов на 1 рабочее место. Напоминаем, что согласно стандарту ISO/IEC 11801 на 1 рабочее место должно быть выделено не менее 2-х портов" >
                     <mah:NumericUpDown x:Name="numericUpDownNumberOfPorts" NumericInputMode="Numbers"
@@ -100,7 +100,7 @@
 
             </StackPanel>
 
-            <CheckBox Grid.Row="1" x:Name="checkBoxCableHankMeterage" Unchecked="checkBoxCableHankMeterage_Unchecked"
+            <CheckBox Grid.Row="1" x:Name="checkBoxCableHankMeterage"
                       IsChecked="{Binding CableHankMeterage, Mode=TwoWay, Converter={x:Static converters:BooleanToNullableDoubleConverter.Instance}}"
                       HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте"
                       ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
@@ -117,12 +117,14 @@
                                        Value="{Binding Target, Source={StaticResource bridgeCableHankMeterage}}"/>
                 </Border>
 
-                <Expander Margin="5,7,0,0" Name="expanderCableHankMeterageStandartValues"
-                          IsEnabled="{Binding ElementName=checkBoxCableHankMeterage, Path=IsChecked}" HorizontalAlignment="Left"
+                <Expander Margin="5,7,0,0" HorizontalAlignment="Left" IsEnabledChanged="OnIsEnabledChanged"
+                          IsEnabled="{Binding ElementName=checkBoxCableHankMeterage, Path=IsChecked}"
                           ToolTip="Вы можете выбрать одно из предложенных стандартных значений метража кабеля в бухтах">
+
                     <Expander.Header>
                         <TextBlock MaxWidth="170" TextWrapping="Wrap" Text="Стандартные значения метража кабеля в бухте" FontSize="11.5"/>
                     </Expander.Header>
+
                     <Border VerticalAlignment="Top" Style="{StaticResource styleViewBorderForExpander}">
                         <StackPanel Style="{StaticResource styleViewStackPanelForExpander}">
                             <RadioButton Margin="50,5,5,5" HorizontalAlignment="Left" Command="{Binding SetCableHankMeterageCommand}" CommandParameter="50" Content="50 м."/>
@@ -132,6 +134,18 @@
                             <RadioButton Margin="50,5,5,5" HorizontalAlignment="Left" Command="{Binding SetCableHankMeterageCommand}" CommandParameter="1000" Content="1000 м."/>
                         </StackPanel>
                     </Border>
+
+                    <x:Code>
+                        <![CDATA[
+                        private void OnIsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                        {
+                            if (Equals(e.NewValue, false))
+                            {
+                                ((Expander)sender).IsExpanded = false;
+                            }
+                        }]]>
+                    </x:Code>
+
                 </Expander>
 
             </StackPanel>
@@ -142,14 +156,14 @@
 
             <Grid x:Name="gridFlowDocumentScrollViewerShowConfiguration"
                   Grid.Row="4" MinHeight="300" MinWidth="350" Margin="5">
-                
+
                 <FlowDocumentScrollViewer Document="{Binding LatestConfiguration, Converter={x:Static converters:ConfigurationToFlowDocumentConverter.Instance}, Mode=OneWay}"
                                           x:Name="flowDocumentScrollViewerShowConfiguration"
                                           VerticalScrollBarVisibility="Auto"
                                           Width="{Binding ActualWidth, ElementName=gridFlowDocumentScrollViewerShowConfiguration, Mode=OneWay}"
                                           Height="{Binding ActualHeight, ElementName=gridFlowDocumentScrollViewerShowConfiguration, Mode=OneWay}"
                                           ToolTip="Вывод рассчитанной конфигурации необходимого количества кабеля для построения СКС и рекомендаций по выбору кабеля согласно указанным параметрам"/>
-            
+
             </Grid>
 
             <StackPanel Margin="5,5,5,8" Grid.Row="5" Orientation="Horizontal">
