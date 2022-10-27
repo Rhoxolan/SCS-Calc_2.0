@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:hc="https://handyorg.github.io/handycontrol"
-                    xmlns:converters="clr-namespace:SCS_Calc_2._0.Converters">
+                    xmlns:hc="https://handyorg.github.io/handycontrol">
 
     <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}">
         <Setter Property="MaxWidth" Value="115"/>
@@ -45,7 +44,5 @@
     <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBaseStyle}">
         <Setter Property="FontSize" Value="12.5"></Setter>
     </Style>
-
-    <converters:BooleanToNullableDoubleConverter x:Key="booleanToNullableDoubleConverter"/>
 
 </ResourceDictionary>

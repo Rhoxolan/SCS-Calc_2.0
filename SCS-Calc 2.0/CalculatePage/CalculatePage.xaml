@@ -101,7 +101,7 @@
             </StackPanel>
 
             <CheckBox Grid.Row="1" x:Name="checkBoxCableHankMeterage" Unchecked="checkBoxCableHankMeterage_Unchecked"
-                      IsChecked="{Binding CableHankMeterage, Mode=TwoWay, Converter={StaticResource booleanToNullableDoubleConverter}}"
+                      IsChecked="{Binding CableHankMeterage, Mode=TwoWay, Converter={x:Static converters:BooleanToNullableDoubleConverter.Instance}}"
                       HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте"
                       ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
 

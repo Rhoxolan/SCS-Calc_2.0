@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol"
-                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:converters="clr-namespace:SCS_Calc_2._0.Converters">
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
 
     <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
 
@@ -40,9 +39,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
-    <converters:BooleanInverseConverter x:Key="booleanInverseConverter"/>
-
-    <converters:RecommendationToBooleanConverter x:Key="recommendationToBooleanConverter"/>
 
 </ResourceDictionary>

@@ -8,7 +8,7 @@ using System.IO;
 
 namespace SCS_Calc_2._0
 {
-    public partial class ApplicationModel
+    public class ApplicationModel
     {
         private ObservableCollection<Configuration> configurations;
         private string settingsDocPath;

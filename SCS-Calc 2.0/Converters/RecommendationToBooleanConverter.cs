@@ -21,5 +21,7 @@ namespace SCS_Calc_2._0.Converters
         {
             return parameter;
         }
+
+        public static RecommendationToBooleanConverter Instance { get; } = new();
     }
 }

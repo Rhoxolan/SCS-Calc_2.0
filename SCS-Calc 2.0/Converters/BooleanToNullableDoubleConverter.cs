@@ -19,5 +19,7 @@ namespace SCS_Calc_2._0.Converters
             }
             return Binding.DoNothing;
         }
+
+        public static BooleanToNullableDoubleConverter Instance { get; } = new();
     }
 }
