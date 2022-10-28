@@ -7,22 +7,22 @@ namespace SCS_Calc_2._0.UINavigators
     [INotifyPropertyChanged]
     public partial class UINavigator
     {
-        private UIElement? currentViewelElement;
+        private UIElement? currentViewElement;
         
         public UINavigator()
         {
-            currentViewelElement = null;
+            currentViewElement = null;
         }
 
         public UIElement? CurrentView
         {
             get
             {
-                return currentViewelElement;
+                return currentViewElement;
             }
             set
             {
-                currentViewelElement = value;
+                currentViewElement = value;
                 OnPropertyChanged();
             }
         }
