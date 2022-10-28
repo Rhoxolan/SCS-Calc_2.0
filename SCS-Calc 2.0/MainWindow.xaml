@@ -6,7 +6,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:SCS_Calc_2._0"
         mc:Ignorable="d"
-        Title="SCS-Calc 2.0" Height="800" Width="750" MinHeight="1" MinWidth="1" Loaded="Window_Loaded">
+        Title="SCS-Calc 2.0" Height="800" Width="750" MinHeight="1" MinWidth="1">
 
     <Window.Resources>
         <ResourceDictionary Source="MainWindowDictionary.xaml"/>
@@ -21,21 +21,30 @@
 
         <StackPanel Grid.Column="0" Style="{StaticResource styleViewStackPanelForMainWindow}">
 
-            <Button Click="CalculateButton_Click" Content="Расчёт конфигурации"
+            <Button Content="Расчёт конфигурации"
+                    Command="{Binding SetCurrentViewCommand, Source={StaticResource navigator}}"
+                    CommandParameter="{StaticResource calculatePage}"
                     ToolTip="Расчитать конфигурацию необходимого количества кабеля для построения СКС и получить рекомендации по подбору кабеля для инсталляции СКС, если такая функция выбрана в Дополнительных параметрах"/>
 
-            <Button Click="AdvancedParametersButton_Click" Content="Дополнительные параметры расчёта конфигурации"
+            <Button Content="Дополнительные параметры расчёта конфигурации"
+                    Command="{Binding SetCurrentViewCommand, Source={StaticResource navigator}}"
+                    CommandParameter="{StaticResource advancedParametersPage}"
                     ToolTip="Установить дополнительные параметры для расчёта конфигураций, например учет метража кабеля в 1-й кабельной катушке (бухте) или добавить рекомендации по побдору кабеля"/>
 
-            <Button Click="HistoryButton_Click" Content="История"
+            <Button Content="История"
+                    Command="{Binding SetCurrentViewCommand, Source={StaticResource navigator}}"
+                    CommandParameter="{StaticResource historyPage}"
                     ToolTip="Просмотреть историю расчётов конфигураций. В режиме истории вы сможете просматривать или удалять предыдущие конфигурации, а так же сохранять в TXT любую выбранную предыдущую конфигурацию"/>
 
-            <Button Click="InformationButton_Click" Content="Информация"
+            <Button Content="Информация"
+                    Command="{Binding SetCurrentViewCommand, Source={StaticResource navigator}}"
+                    CommandParameter="{StaticResource informationPage}"
                     ToolTip="Просмотреть информацию о приложении и получить помощь в работе с приложением"/>
 
         </StackPanel>
 
-        <Frame x:Name="pageFrame" Style="{StaticResource styleViewFrameForMainWindow}" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        <Frame Style="{StaticResource styleViewFrameForMainWindow}" Grid.Column="1" NavigationUIVisibility="Hidden"
+               Content="{Binding CurrentView, Source={StaticResource navigator}}"/>
 
     </Grid>
 

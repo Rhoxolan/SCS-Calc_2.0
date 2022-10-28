@@ -30,11 +30,11 @@ namespace SCS_Calc_2._0
         public Configuration? LatestConfiguration { get; set; } = null;
 
         //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
-        public int AveragePermanentLink
+        public int CeiledAveragePermanentLink
         {
             get
             {
-                return (int)((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve);
+                return Convert.ToInt32(Math.Ceiling((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve));
             }
         }
 
@@ -47,7 +47,7 @@ namespace SCS_Calc_2._0
             set
             {
                 minPermanentLink = value;
-                OnPropertyChanged(nameof(AveragePermanentLink));
+                OnPropertyChanged(nameof(CeiledAveragePermanentLink));
             }
         }
 
@@ -60,7 +60,7 @@ namespace SCS_Calc_2._0
             set
             {
                 maxPermanentLink = value;
-                OnPropertyChanged(nameof(AveragePermanentLink));
+                OnPropertyChanged(nameof(CeiledAveragePermanentLink));
             }
         }
 
@@ -133,7 +133,7 @@ namespace SCS_Calc_2._0
         private void TechnologicalReserveChanged(object? sender = null, object? args = null)
         {
             OnPropertyChanged(nameof(TechnologicalReserve));
-            OnPropertyChanged(nameof(AveragePermanentLink));
+            OnPropertyChanged(nameof(CeiledAveragePermanentLink));
         }
     }
 }

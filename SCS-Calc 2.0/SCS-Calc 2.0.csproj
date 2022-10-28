@@ -24,8 +24,4 @@
     <ProjectReference Include="..\SCSCalcClassLibrary\SCSCalcClassLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UINavigators\" />
-  </ItemGroup>
-
 </Project>

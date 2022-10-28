@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol"
-                    xmlns:local="clr-namespace:SCS_Calc_2._0">
+                    xmlns:local="clr-namespace:SCS_Calc_2._0"
+                    xmlns:navigators="clr-namespace:SCS_Calc_2._0.UINavigators">
 
     <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonWindow}">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -21,5 +22,7 @@
     <local:HistoryPage x:Key="historyPage"/>
     
     <local:InformationPage x:Key="informationPage"/>
+
+    <navigators:UINavigator CurrentView="{StaticResource calculatePage}" x:Key="navigator"/>
 
 </ResourceDictionary>

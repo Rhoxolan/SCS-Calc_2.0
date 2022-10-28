@@ -112,7 +112,7 @@
                         ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты">
                     <mah:NumericUpDown StringFormat="F0" NumericInputMode="Numbers"
                                        IsEnabledChanged="numericUpDownCableHankMeterageEnabledChanged"
-                                       Minimum="{Binding AveragePermanentLink}"
+                                       Minimum="{Binding CeiledAveragePermanentLink}"
                                        Maximum="{Binding Diapasons.CableHankMeterageDiapason.Max}"
                                        Value="{Binding Target, Source={StaticResource bridgeCableHankMeterage}}">
 
