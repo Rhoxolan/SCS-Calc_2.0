@@ -30,8 +30,8 @@ namespace SCS_Calc_2._0
             Resources["historyPageViewModel"] = historyPageViewModel;
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
-            
-            if(applicationModel.InitializeExceptions.Length > 0)
+
+            if (applicationModel.InitializeExceptions.Length > 0)
             {
                 StringBuilder stringBuilder = new();
                 stringBuilder.AppendLine($"Внимание! При запуске приложения SCS-Calc 2.0 произошли следующие ошибки:{Environment.NewLine}");
