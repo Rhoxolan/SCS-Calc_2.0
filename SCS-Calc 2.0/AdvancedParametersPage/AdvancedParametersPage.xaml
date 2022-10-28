@@ -27,17 +27,30 @@
             <StackPanel Grid.Row="0">
 
                 <CheckBox Style="{StaticResource styleViewCheckBox}" x:Name="checkBoxStrictСomplianceWithTheStandart"
-                          Unchecked="checkBoxStrictСomplianceWithTheStandart_Unchecked"
                           IsChecked="{Binding IsStrictСomplianceWithTheStandart}" HorizontalAlignment="Left"
                           Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801"
                           ToolTip="Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру, согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м."/>
 
-                <CheckBox HorizontalAlignment="Left" x:Name="checkBoxAnArbitraryNumberOfPorts"
+                <CheckBox HorizontalAlignment="Left"
                           Style="{StaticResource styleViewCheckBox}"
                           IsEnabled="{Binding ElementName=checkBoxStrictСomplianceWithTheStandart, Path=IsChecked}"
+                          IsEnabledChanged="checkBoxAnArbitraryNumberOfPortsEnabledChanged"
                           IsChecked="{Binding IsAnArbitraryNumberOfPorts}" Margin="15,5,5,5"
                           Content="Разрешить произвольное количество портов на 1 рабочее место"
-                          ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801"/>
+                          ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801">
+
+                    <x:Code>
+                        <![CDATA[
+                        private void checkBoxAnArbitraryNumberOfPortsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                        {
+                            if (Equals(e.NewValue, false))
+                            {
+                                ((CheckBox)sender).IsChecked = true;
+                            }
+                        }]]>
+                    </x:Code>
+                    
+                </CheckBox>
 
                 <CheckBox x:Name="checkBoxTechnologicalReserve" IsChecked="{Binding IsTechnologicalReserveAvailability}"
                           Style="{StaticResource styleViewCheckBox}" HorizontalAlignment="Left" Margin="5,10,5,5"

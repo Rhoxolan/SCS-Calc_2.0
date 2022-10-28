@@ -117,7 +117,8 @@
                                        Value="{Binding Target, Source={StaticResource bridgeCableHankMeterage}}"/>
                 </Border>
 
-                <Expander Margin="5,7,0,0" HorizontalAlignment="Left" IsEnabledChanged="OnIsEnabledChanged"
+                <Expander Margin="5,7,0,0" HorizontalAlignment="Left"
+                          IsEnabledChanged="expanderCableHankMeterageStandartValuesEnabledChanged"
                           IsEnabled="{Binding ElementName=checkBoxCableHankMeterage, Path=IsChecked}"
                           ToolTip="Вы можете выбрать одно из предложенных стандартных значений метража кабеля в бухтах">
 
@@ -137,7 +138,7 @@
 
                     <x:Code>
                         <![CDATA[
-                        private void OnIsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                        private void expanderCableHankMeterageStandartValuesEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
                         {
                             if (Equals(e.NewValue, false))
                             {

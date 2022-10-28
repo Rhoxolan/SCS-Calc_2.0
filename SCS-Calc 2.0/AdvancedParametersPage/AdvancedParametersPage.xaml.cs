@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace SCS_Calc_2._0
 {
@@ -11,11 +10,6 @@ namespace SCS_Calc_2._0
         public AdvancedParametersPage()
         {
             InitializeComponent();
-        }
-
-        private void checkBoxStrictСomplianceWithTheStandart_Unchecked(object sender, RoutedEventArgs e)
-        {
-            checkBoxAnArbitraryNumberOfPorts.IsChecked = true;
         }
     }
 }
