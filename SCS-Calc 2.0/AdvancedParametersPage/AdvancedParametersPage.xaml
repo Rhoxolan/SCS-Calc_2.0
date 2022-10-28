@@ -52,7 +52,8 @@
                     
                 </CheckBox>
 
-                <CheckBox x:Name="checkBoxTechnologicalReserve" IsChecked="{Binding IsTechnologicalReserveAvailability}"
+                <CheckBox x:Name="checkBoxTechnologicalReserve"
+                          IsChecked="{Binding IsTechnologicalReserveAvailability}"
                           Style="{StaticResource styleViewCheckBox}" HorizontalAlignment="Left" Margin="5,10,5,5"
                           Content="Учитывать коэффициент технологического запаса:"
                           ToolTip="Отметьте, если хотите учитывать коэффициент технологического запаса при расчёте конфигурации СКС"/>
@@ -105,7 +106,7 @@
                         
                         <CheckBox Margin="5" Content="Fast Ethernet (100BASE-T)"
                                   Style="{StaticResource styleViewCheckBox}"
-                                  IsChecked="{Binding ConnectionInterfaceStandard, Converter={x:Static converters:BooleanToNullableDoubleConverter.Instance}, ConverterParameter={x:Static scscalcparams:ConnectionInterfaceStandard.FastEthernet}}"
+                                  IsChecked="{Binding ConnectionInterfaceStandard, Converter={x:Static converters:RecommendationToBooleanConverter.Instance}, ConverterParameter={x:Static scscalcparams:ConnectionInterfaceStandard.FastEthernet}}"
                                   ToolTip="Отметьте, если предполагается использование интерфейса подключений Fast Ethernet (100BASE-T). Вы получите рекомендацию о необходимой категории кабеля."/>
                         
                         <CheckBox Margin="5" Content="Gigabit Ethernet (1000BASE-T)"

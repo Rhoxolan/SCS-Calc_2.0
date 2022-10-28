@@ -101,7 +101,6 @@
             </StackPanel>
 
             <CheckBox Grid.Row="1" x:Name="checkBoxCableHankMeterage"
-                      IsChecked="{Binding CableHankMeterage, Mode=TwoWay, Converter={x:Static converters:BooleanToNullableDoubleConverter.Instance}}"
                       HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте"
                       ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
 
@@ -111,10 +110,24 @@
                         IsEnabled="{Binding ElementName=checkBoxCableHankMeterage, Path=IsChecked}"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,5,5"
                         ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты">
-                    <mah:NumericUpDown x:Name="styleViewBorderNumericUpDown" StringFormat="F0" NumericInputMode="Numbers"
+                    <mah:NumericUpDown StringFormat="F0" NumericInputMode="Numbers"
+                                       IsEnabledChanged="numericUpDownCableHankMeterageEnabledChanged"
                                        Minimum="{Binding AveragePermanentLink}"
                                        Maximum="{Binding Diapasons.CableHankMeterageDiapason.Max}"
-                                       Value="{Binding Target, Source={StaticResource bridgeCableHankMeterage}}"/>
+                                       Value="{Binding Target, Source={StaticResource bridgeCableHankMeterage}}">
+
+                        <x:Code>
+                            <![CDATA[
+                            private void numericUpDownCableHankMeterageEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                            {
+                                if (Equals(e.NewValue, false))
+                                {
+                                    ((MahApps.Metro.Controls.NumericUpDown)sender).Value = null;
+                                }
+                            }]]>
+                        </x:Code>
+                        
+                    </mah:NumericUpDown>
                 </Border>
 
                 <Expander Margin="5,7,0,0" HorizontalAlignment="Left"
