@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace SCS_Calc_2._0
 {
     public class ApplicationModel
     {
-        ApplicationContext db;
+        ApplicationContext applicationContext;
         private ObservableCollection<Configuration> configurations;
         private string settingsDocPath;
         private SCSCalcParameters parameters;
@@ -19,13 +20,10 @@ namespace SCS_Calc_2._0
 
         public ApplicationModel()
         {
-            db = new();
-            db.Database.EnsureCreated();
-            db.Configurations.Load();
-            configurations = db.Configurations.Local.ToObservableCollection();
-            Configurations = new(configurations);
             settingsDocPath = "SCS-CalcParametersData.json";
             initializeExceptions = new();
+            DBLoad();
+            Configurations = new(configurations);
             Loader();
         }
 
@@ -218,8 +216,19 @@ namespace SCS_Calc_2._0
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
             int numberOfPorts, double? cableHankMeterage)
         {
-            db.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
-            db.SaveChanges();
+            applicationContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
+            Task.Run(applicationContext.SaveChanges);
+        }
+
+        public void DeleteAllConfigurations()
+        {
+            
+        }
+
+        public void DeleteConfiguration(Configuration configuration)
+        {
+            applicationContext.Configurations.Remove(configuration);
+            Task.Run(applicationContext.SaveChanges);
         }
 
         //Сброс до заводских параметров расчёта конфигураций скс
@@ -264,6 +273,22 @@ namespace SCS_Calc_2._0
                     IsRecommendationsAvailability = false
                 };
                 SCSCalcParameters.ParametersSerializer(parameters, settingsDocPath);
+            }
+        }
+
+        //Метод для загрузки коллекции конфигураций СКС
+        private void DBLoad()
+        {
+            try
+            {
+                applicationContext = new();
+                applicationContext.Database.EnsureCreated();
+                applicationContext.Configurations.Load();
+                configurations = applicationContext.Configurations.Local.ToObservableCollection();
+            }
+            catch (Exception ex)
+            {
+                initializeExceptions.Add($"Ошибка считывания истории записей конфигураций СКС:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
             }
         }
     }

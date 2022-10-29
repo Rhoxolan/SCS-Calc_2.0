@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SCSCalc;
+using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace SCS_Calc_2._0
 {
@@ -40,6 +42,23 @@ namespace SCS_Calc_2._0
             if (SelectedConfiguration != null)
             {
                 SelectedConfiguration.SaveToTXT();
+            }
+        }
+
+        [RelayCommand]
+        private void DeleteConfiguration()
+        {
+            if (SelectedConfiguration != null)
+            {
+                if (MessageBox.Show(
+                    $"Вы действительно хотите удалить выбранную конфигурацию СКС?{Environment.NewLine}" +
+                    $"({SelectedConfiguration.RecordTime.ToShortDateString()} {SelectedConfiguration.RecordTime.ToLongTimeString()}, " +
+                    $"мин. - {SelectedConfiguration.MinPermanentLink:F0} м, макс. - {SelectedConfiguration.MaxPermanentLink:F0} м, всего - " +
+                    $"{SelectedConfiguration.TotalСableQuantity:F0} м)",
+                    "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    model.DeleteConfiguration(SelectedConfiguration);
+                }
             }
         }
     }

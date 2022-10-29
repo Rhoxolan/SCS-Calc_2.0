@@ -75,11 +75,13 @@
             </ListBox>
 
             <StackPanel Grid.Row="0" Grid.Column="1">
-                
-                <Button Margin="5" HorizontalAlignment="Stretch" Content="Сохранить в TXT" Command="{Binding SaveToTXTCommand}"
+
+                <Button Command="{Binding SaveToTXTCommand}"
+                        Margin="5" HorizontalAlignment="Stretch" Content="Сохранить в TXT"
                         ToolTip="Сохранить конфигурацию в текстовый документ (.txt)"/>
-                
-                <Button Margin="5" HorizontalAlignment="Stretch" Content="Удалить"
+
+                <Button Command="{Binding DeleteConfigurationCommand}"
+                        Margin="5" HorizontalAlignment="Stretch" Content="Удалить"
                         ToolTip="Удалить выбранную конфигурацию"/>
                 
                 <Button Margin="5" HorizontalAlignment="Stretch" Content="Удалить всё"
