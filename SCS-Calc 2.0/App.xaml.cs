@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SCS_Calc_2._0
@@ -30,7 +32,11 @@ namespace SCS_Calc_2._0
             Resources["historyPageViewModel"] = historyPageViewModel;
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
+            Task.Run(InitializeExceptionsShow);
+        }
 
+        private void InitializeExceptionsShow()
+        {
             if (applicationModel.InitializeExceptions.Length > 0)
             {
                 StringBuilder stringBuilder = new();
