@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using SCSCalc.WindowsDesktop;
+using SCSCalc;
 using System;
 using System.IO;
 using System.Text;

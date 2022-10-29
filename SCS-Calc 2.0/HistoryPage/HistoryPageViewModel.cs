@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using SCSCalc.WindowsDesktop;
+using SCSCalc;
 using System.Collections.ObjectModel;
 
 namespace SCS_Calc_2._0

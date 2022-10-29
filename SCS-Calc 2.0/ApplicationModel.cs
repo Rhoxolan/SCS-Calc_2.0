@@ -1,6 +1,7 @@
-﻿using SCSCalc.Parameters;
+﻿using Microsoft.EntityFrameworkCore;
+using SCSCalc;
+using SCSCalc.Parameters;
 using SCSCalc.Parameters.WindowsDesktop;
-using SCSCalc.WindowsDesktop;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +11,7 @@ namespace SCS_Calc_2._0
 {
     public class ApplicationModel
     {
+        ApplicationContext db;
         private ObservableCollection<Configuration> configurations;
         private string settingsDocPath;
         private SCSCalcParameters parameters;
@@ -17,7 +19,10 @@ namespace SCS_Calc_2._0
 
         public ApplicationModel()
         {
-            configurations = new();
+            db = new();
+            db.Database.EnsureCreated();
+            db.Configurations.Load();
+            configurations = db.Configurations.Local.ToObservableCollection();
             Configurations = new(configurations);
             settingsDocPath = "SCS-CalcParametersData.json";
             initializeExceptions = new();
@@ -213,7 +218,8 @@ namespace SCS_Calc_2._0
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
             int numberOfPorts, double? cableHankMeterage)
         {
-            configurations.Add(Configuration.Calculate(configurations, parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
+            db.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
+            db.SaveChanges();
         }
 
         //Сброс до заводских параметров расчёта конфигураций скс
