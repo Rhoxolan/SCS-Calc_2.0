@@ -60,7 +60,7 @@ namespace SCSCalc.WindowsDesktop
                 }
                 return new Configuration()
                 {
-                    Id = GetId(new ObservableCollection<ConfigurationBase>(configurations)),
+                    Id = GetId(new List<ConfigurationBase>(configurations)),
                     RecordTime = DateTime.Now,
                     MinPermanentLink = minPermanentLink,
                     MaxPermanentLink = maxPermanentLink,
@@ -102,7 +102,7 @@ namespace SCSCalc.WindowsDesktop
                 }
                 return new Configuration()
                 {
-                    Id = GetId(new ObservableCollection<ConfigurationBase>(configurations)),
+                    Id = GetId(new List<ConfigurationBase>(configurations)),
                     RecordTime = DateTime.Now,
                     MinPermanentLink = minPermanentLink,
                     MaxPermanentLink = maxPermanentLink,
