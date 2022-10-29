@@ -145,7 +145,6 @@ namespace SCS_Calc_2._0
             }
         }
 
-
         public SCSCalcDiapasons Diapasons
         {
             get => parameters.Diapasons;
