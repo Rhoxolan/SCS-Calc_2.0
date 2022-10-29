@@ -24,6 +24,7 @@ namespace SCS_Calc_2._0
             historyPageViewModel = new(applicationModel);
             calculatePageViewModel = new(applicationModel);
             advancedParametersPageViewModel = new(applicationModel);
+            this.Activated += App_Activated;
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)
@@ -32,10 +33,9 @@ namespace SCS_Calc_2._0
             Resources["historyPageViewModel"] = historyPageViewModel;
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
-            Task.Run(InitializeExceptionsShow);
         }
 
-        private void InitializeExceptionsShow()
+        private void App_Activated(object? sender, EventArgs e)
         {
             if (applicationModel.InitializeExceptions.Length > 0)
             {
@@ -47,6 +47,7 @@ namespace SCS_Calc_2._0
                 }
                 MessageBox.Show(stringBuilder.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            (sender as Application)!.Activated -= App_Activated;
         }
     }
 }

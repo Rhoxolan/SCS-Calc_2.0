@@ -233,7 +233,6 @@ namespace SCS_Calc_2._0
             {
                 try
                 {
-                    throw new Exception();
                     parameters = SCSCalcParameters.ParametersDeserializer(settingsDocPath);
                 }
                 catch (Exception ex)
