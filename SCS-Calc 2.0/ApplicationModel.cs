@@ -213,22 +213,23 @@ namespace SCS_Calc_2._0
             }
         }
 
-        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
+        public async void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
             int numberOfPorts, double? cableHankMeterage)
         {
             applicationContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
-            Task.Run(applicationContext.SaveChanges);
+            await applicationContext.SaveChangesAsync();
         }
 
-        public void DeleteAllConfigurations()
+        public async void DeleteAllConfigurations()
         {
-            
+            applicationContext.RemoveRange(applicationContext.Configurations);
+            await applicationContext.SaveChangesAsync();
         }
 
-        public void DeleteConfiguration(Configuration configuration)
+        public async void DeleteConfiguration(Configuration configuration)
         {
             applicationContext.Configurations.Remove(configuration);
-            Task.Run(applicationContext.SaveChanges);
+            await applicationContext.SaveChangesAsync();
         }
 
         //Сброс до заводских параметров расчёта конфигураций скс

@@ -61,5 +61,18 @@ namespace SCS_Calc_2._0
                 }
             }
         }
+
+        [RelayCommand]
+        private void DeleteAllConfigurations()
+        {
+            if (Configurations.Count > 0)
+            {
+                if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({Configurations.Count} конфигураций){Environment.NewLine}" +
+                    $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+                {
+                    model.DeleteAllConfigurations();
+                }
+            }
+        }
     }
 }
