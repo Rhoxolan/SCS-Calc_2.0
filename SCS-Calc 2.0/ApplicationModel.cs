@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SCS_Calc_2._0
 {
@@ -213,20 +215,20 @@ namespace SCS_Calc_2._0
             }
         }
 
-        public async void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, 
+        public async Task СalculateConfigurationAsync(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
             applicationContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
             await applicationContext.SaveChangesAsync();
         }
 
-        public async void DeleteAllConfigurations()
+        public async Task DeleteAllConfigurationsAsync()
         {
             applicationContext.RemoveRange(applicationContext.Configurations);
             await applicationContext.SaveChangesAsync();
         }
 
-        public async void DeleteConfiguration(Configuration configuration)
+        public async Task DeleteConfigurationAsync(Configuration configuration)
         {
             applicationContext.Configurations.Remove(configuration);
             await applicationContext.SaveChangesAsync();
