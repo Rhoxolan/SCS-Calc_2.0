@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Text.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
 
@@ -22,6 +26,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SCSCalcClassLibrary\SCSCalcClassLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Text.txt" />
   </ItemGroup>
 
 </Project>
