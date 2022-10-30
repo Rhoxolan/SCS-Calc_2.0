@@ -7,6 +7,7 @@
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       xmlns:converters="clr-namespace:SCS_Calc_2._0.Converters"
       mc:Ignorable="d"
+      x:Name="historyPage"
       d:DesignHeight="700" d:DesignWidth="600" DataContext="{DynamicResource historyPageViewModel}">
 
     <Page.Resources>
@@ -69,6 +70,15 @@
 
                             <TextBlock  FontSize="13" FontWeight="Medium" Text="{Binding StringFormat=Необходимое количество кабеля: {0} м., Path=TotalСableQuantity}"/>
 
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Сохранить в TXT" Command="{Binding DataContext.SaveToTXTCommand, Source={x:Reference historyPage}}"
+                                              ToolTip="Сохранить конфигурацию в текстовый документ (.txt)"/>
+                                    <MenuItem Header="Удалить" Command="{Binding DataContext.DeleteConfigurationCommand, Source={x:Reference historyPage}}"
+                                              ToolTip="Удалить выбранную конфигурацию"/>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                            
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
