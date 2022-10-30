@@ -1,18 +1,15 @@
 ﻿namespace SCSCalc.Parameters
 {
-    //Класс имеет неполную реализацию. Наследники должны содержать методы по считыванию/сохранению данных настраиваемых параметров
-    //вводимых значений конфигураций СКС, нацеленных на определенную платформу.
-
     /// <summary>
-    /// Абстрактный класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
+    /// Класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
     /// </summary>
-    public abstract class SCSCalcParametersBase
+    public class SCSCalcParameters
     {
         private DiapasonLocator diapasonLocator;
         private ValueLocator valueLocator;
         private RecommendationLocator recommendationLocator;
 
-        public SCSCalcParametersBase()
+        public SCSCalcParameters()
         {
             diapasonLocator = new();
             valueLocator = new();

@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SCSCalcClassLibraryForWindowsDesktop\SCSCalcClassLibraryForWindowsDesktop.csproj" />
     <ProjectReference Include="..\SCSCalcClassLibrary\SCSCalcClassLibrary.csproj" />
   </ItemGroup>
 

@@ -1,13 +1,13 @@
-﻿using System.Text.Json;
+﻿using SCSCalc.Parameters;
+using System.IO;
+using System.Text.Json;
 
-namespace SCSCalc.Parameters.WindowsDesktop
+namespace SCS_Calc_2._0
 {
-    //Реализация класса содержит методы для сериализации данных настраиваемых параметров вводимых значений конфигураций СКС.
-
     /// <summary>
-    /// Класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
+    /// Расширание класса SCSCalc.Parameters.SCSCalcParameters, представляющее методы сериализации/десериализации
     /// </summary>
-    public class SCSCalcParameters : SCSCalcParametersBase
+    public class Parameters : SCSCalcParameters
     {
         /// <summary>
         /// Сериализация настраеваемых параметров расчёта конфигураций СКС
@@ -43,7 +43,7 @@ namespace SCSCalc.Parameters.WindowsDesktop
         /// </summary>
         /// <param name="parametersDocPath"></param>
         /// <returns></returns>
-        public static SCSCalcParameters ParametersDeserializer(string parametersDocPath)
+        public static Parameters ParametersDeserializer(string parametersDocPath)
         {
             (bool? IsStrictСomplianceWithTheStandart,
                 bool? IsAnArbitraryNumberOfPorts,
@@ -51,7 +51,7 @@ namespace SCSCalc.Parameters.WindowsDesktop
                 bool? IsRecommendationsAvailability,
                 double TechnologicalReserve,
                 RecommendationsArguments RecommendationsArguments) parameters;
-            SCSCalcParameters parametersPresent = new();
+            Parameters parametersPresent = new();
             using FileStream fs = new(parametersDocPath, FileMode.Open);
             JsonSerializerOptions options = new()
             {
@@ -60,7 +60,7 @@ namespace SCSCalc.Parameters.WindowsDesktop
             parameters = JsonSerializer.Deserialize<(bool?, bool?, bool?, bool?, double, RecommendationsArguments)>(fs, options);
             parametersPresent.IsStrictСomplianceWithTheStandart = parameters.IsStrictСomplianceWithTheStandart;
             parametersPresent.IsAnArbitraryNumberOfPorts = parameters.IsAnArbitraryNumberOfPorts;
-            if(Equals(parameters.IsTechnologicalReserveAvailability, true))
+            if (Equals(parameters.IsTechnologicalReserveAvailability, true))
             {
                 parametersPresent.IsTechnologicalReserveAvailability = true;
                 parametersPresent.TechnologicalReserve = parameters.TechnologicalReserve;

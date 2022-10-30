@@ -83,7 +83,7 @@ namespace SCSCalc
         /// <param name="cableHankMeterage"></param>
         /// <returns></returns>
         /// <exception cref="SCSCalcException"></exception>
-        public static Configuration Calculate(SCSCalcParametersBase parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+        public static Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
             if (cableHankMeterage != null)
