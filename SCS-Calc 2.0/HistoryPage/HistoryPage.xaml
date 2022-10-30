@@ -78,8 +78,9 @@
                                               ToolTip="Удалить выбранную конфигурацию"/>
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
-                            
+
                         </StackPanel>
+
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
