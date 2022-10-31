@@ -23,6 +23,7 @@
     <Style TargetType="Border" BasedOn="{StaticResource styleViewElementBorder}" x:Key="styleViewBorderForExpander">
         <Setter Property="BorderBrush" Value="MediumBlue"/>
         <Setter Property="BorderThickness" Value="0.8"/>
+        <Setter Property="CornerRadius" Value="0.5"/>
     </Style>
 
     <Style TargetType="StackPanel" x:Key="styleViewStackPanelForExpander">
