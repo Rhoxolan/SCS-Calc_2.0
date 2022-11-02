@@ -6,15 +6,7 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:local="clr-namespace:SCS_Calc_2._0"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="600" Loaded="Page_Loaded">
-
-    <x:Code>
-        <![CDATA[
-        private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            textBoxInformation.Text = new System.IO.StreamReader(System.Windows.Application.GetResourceStream(new System.Uri("/Text.txt", System.UriKind.Relative)).Stream).ReadToEnd();
-        }]]>
-    </x:Code>
+      d:DesignHeight="700" d:DesignWidth="600">
 
     <Page.Resources>
         <ResourceDictionary Source="InformationPageDictionary.xaml"/>
@@ -46,10 +38,22 @@
             </Grid.RowDefinitions>
 
             <Grid x:Name="gridTextBoxInformation" MinHeight="350" MinWidth="350" Grid.Row="0" Margin="5">
-                <TextBox x:Name="textBoxInformation" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                <TextBox Loaded="textBoxInformation_Loaded"
+                         x:Name="textBoxInformation" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
                          Width="{Binding ActualWidth, ElementName=gridTextBoxInformation, Mode=OneWay}"
-                         Height="{Binding ActualHeight, ElementName=gridTextBoxInformation, Mode=OneWay}"
-                         />
+                         Height="{Binding ActualHeight, ElementName=gridTextBoxInformation, Mode=OneWay}">
+
+                    <x:Code>
+                        <![CDATA[
+                        private void textBoxInformation_Loaded(object sender, System.Windows.RoutedEventArgs e)
+                        {
+                            using System.IO.Stream textStream = System.Windows.Application.GetResourceStream(new System.Uri("/Text.txt", System.UriKind.Relative)).Stream;
+                            using System.IO.StreamReader textReader = new(textStream);
+                            (sender as System.Windows.Controls.TextBox).Text = textReader.ReadToEnd();
+                        }]]>
+                    </x:Code>
+                    
+                </TextBox>
             </Grid>
 
             <Label Margin="0,-8,7,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1"
