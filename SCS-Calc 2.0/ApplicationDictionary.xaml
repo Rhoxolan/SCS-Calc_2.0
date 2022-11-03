@@ -3,6 +3,8 @@
                     xmlns:hc="https://handyorg.github.io/handycontrol"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
 
+    <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
+    
     <Style TargetType="ToolTip" BasedOn="{StaticResource ToolTipBaseStyle}">
         <Setter Property="MaxWidth" Value="500"/>
         <Style.Resources>

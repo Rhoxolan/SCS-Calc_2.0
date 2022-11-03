@@ -3,8 +3,6 @@
                     xmlns:hc="https://handyorg.github.io/handycontrol"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
 
-    <Style TargetType="ScrollViewer" BasedOn="{x:Null}"/>
-
     <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}">
         <Setter Property="MaxWidth" Value="175"/>
         <Setter Property="MinWidth" Value="150"/>
