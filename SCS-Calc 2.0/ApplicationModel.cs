@@ -220,21 +220,18 @@ namespace SCS_Calc_2._0
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
-
             applicationContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
             DBSaveChangesAsync();
         }
 
         public void DeleteAllConfigurations()
         {
-
             applicationContext.RemoveRange(applicationContext.Configurations);
             DBSaveChangesAsync();
         }
 
         public void DeleteConfiguration(Configuration configuration)
         {
-
             applicationContext.Configurations.Remove(configuration);
             DBSaveChangesAsync();
         }
