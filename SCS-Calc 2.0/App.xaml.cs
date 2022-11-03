@@ -22,6 +22,7 @@ namespace SCS_Calc_2._0
             advancedParametersPageViewModel = new(applicationModel);
             this.Startup += Application_Startup;
             this.Activated += App_Activated;
+            applicationModel.ModelExceptionOccurrence += ModelExceptionOccurrence;
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)
@@ -44,6 +45,15 @@ namespace SCS_Calc_2._0
                 MessageBox.Show(stringBuilder.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             (sender as Application)!.Activated -= App_Activated;
+        }
+
+        private void ModelExceptionOccurrence(string str)
+        {
+            MessageBox.Show(str, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if(MessageBox.Show("Продолжить выводить сообщения об ошибках в работе приложения?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            {
+                applicationModel.ModelExceptionOccurrence -= ModelExceptionOccurrence;
+            }
         }
     }
 }

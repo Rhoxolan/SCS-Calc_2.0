@@ -93,9 +93,9 @@ namespace SCS_Calc_2._0
         }
 
         [RelayCommand]
-        private async void СalculateConfiguration()
+        private void СalculateConfiguration()
         {
-            await model.СalculateConfigurationAsync(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
+            model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
             LatestConfiguration = Configurations[^1];
             OnPropertyChanged(nameof(LatestConfiguration));
         }

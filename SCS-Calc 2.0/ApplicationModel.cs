@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace SCS_Calc_2._0
 {
@@ -21,22 +20,28 @@ namespace SCS_Calc_2._0
         {
             settingsDocPath = "SCS-CalcParametersData.json";
             initializeExceptions = new();
-            DBLoad();
+            applicationContext = new();
+            applicationContext.Database.EnsureCreated();
+            applicationContext.Configurations.Load();
+            configurations = applicationContext.Configurations.Local.ToObservableCollection();
             Configurations = new(configurations);
             Loader();
         }
 
         //Изменение параметров расчёта конфигураций СКС
-        public event EventHandler ParametersChanged;
+        public event EventHandler? ParametersChanged;
 
         //Изменение значения даипазонов вводимых параметров расчёта конфигураций СКС
-        public event EventHandler DiapasonsChanged;
+        public event EventHandler? DiapasonsChanged;
 
         //Изменение значения коэффициента технологического запаса
-        public event EventHandler TechnologicalReserveChanged;
+        public event EventHandler? TechnologicalReserveChanged;
 
         //Изменение значения аргументов получения рекомендаций по побдору кабеля
-        public event EventHandler RecommendationsArgumentsChanged;
+        public event EventHandler? RecommendationsArgumentsChanged;
+
+        //Возникновение ошибок в работе модели
+        public event Action<string>? ModelExceptionOccurrence;
 
         //Ошибки, произошедшие при инициализации модели
         public string[] InitializeExceptions
@@ -59,7 +64,7 @@ namespace SCS_Calc_2._0
             {
                 parameters.TechnologicalReserve = value;
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                TechnologicalReserveChanged.Invoke(null!, null!);
+                TechnologicalReserveChanged?.Invoke(null!, null!);
             }
         }
 
@@ -80,7 +85,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
                 }
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
+                RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -101,7 +106,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
                 }
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
+                RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -122,7 +127,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
                 }
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
+                RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -143,7 +148,7 @@ namespace SCS_Calc_2._0
                     parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
                 }
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                RecommendationsArgumentsChanged.Invoke(null!, null!);
+                RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -162,8 +167,8 @@ namespace SCS_Calc_2._0
             {
                 parameters.IsStrictСomplianceWithTheStandart = value;
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                ParametersChanged.Invoke(null!, null!);
-                DiapasonsChanged.Invoke(null!, null!);
+                ParametersChanged?.Invoke(null!, null!);
+                DiapasonsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -177,7 +182,7 @@ namespace SCS_Calc_2._0
             {
                 parameters.IsRecommendationsAvailability = value;
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                ParametersChanged.Invoke(null!, null!);
+                ParametersChanged?.Invoke(null!, null!);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
@@ -192,8 +197,8 @@ namespace SCS_Calc_2._0
             {
                 parameters.IsAnArbitraryNumberOfPorts = value;
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                ParametersChanged.Invoke(null!, null!);
-                DiapasonsChanged.Invoke(null!, null!);
+                ParametersChanged?.Invoke(null!, null!);
+                DiapasonsChanged?.Invoke(null!, null!);
             }
         }
 
@@ -207,28 +212,31 @@ namespace SCS_Calc_2._0
             {
                 parameters.IsTechnologicalReserveAvailability = value;
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-                ParametersChanged.Invoke(null!, null!);
-                TechnologicalReserveChanged.Invoke(null!, null!);
+                ParametersChanged?.Invoke(null!, null!);
+                TechnologicalReserveChanged?.Invoke(null!, null!);
             }
         }
 
-        public async Task СalculateConfigurationAsync(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
+
             applicationContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
-            await applicationContext.SaveChangesAsync();
+            DBSaveChangesAsync();
         }
 
-        public async Task DeleteAllConfigurationsAsync()
+        public void DeleteAllConfigurations()
         {
+
             applicationContext.RemoveRange(applicationContext.Configurations);
-            await applicationContext.SaveChangesAsync();
+            DBSaveChangesAsync();
         }
 
-        public async Task DeleteConfigurationAsync(Configuration configuration)
+        public void DeleteConfiguration(Configuration configuration)
         {
+
             applicationContext.Configurations.Remove(configuration);
-            await applicationContext.SaveChangesAsync();
+            DBSaveChangesAsync();
         }
 
         //Сброс до заводских параметров расчёта конфигураций скс
@@ -238,6 +246,19 @@ namespace SCS_Calc_2._0
             IsAnArbitraryNumberOfPorts = true;
             IsTechnologicalReserveAvailability = true;
             IsRecommendationsAvailability = false;
+        }
+
+        //Сохранение данных в БД
+        private async void DBSaveChangesAsync()
+        {
+            try
+            {
+                await applicationContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                ModelExceptionOccurrence?.Invoke($"Ошибка сохранения данных:{Environment.NewLine}{ex.Message}");
+            }
         }
 
         //Метод для загрузки параметров расчёта конфигураций СКС
@@ -273,22 +294,6 @@ namespace SCS_Calc_2._0
                     IsRecommendationsAvailability = false
                 };
                 Parameters.ParametersSerializer(parameters, settingsDocPath);
-            }
-        }
-
-        //Метод для загрузки коллекции конфигураций СКС
-        private void DBLoad()
-        {
-            try
-            {
-                applicationContext = new();
-                applicationContext.Database.EnsureCreated();
-                applicationContext.Configurations.Load();
-                configurations = applicationContext.Configurations.Local.ToObservableCollection();
-            }
-            catch (Exception ex)
-            {
-                initializeExceptions.Add($"Ошибка считывания истории записей конфигураций СКС:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
             }
         }
     }

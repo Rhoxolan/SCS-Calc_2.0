@@ -46,7 +46,7 @@ namespace SCS_Calc_2._0
         }
 
         [RelayCommand]
-        private async void DeleteConfiguration()
+        private void DeleteConfiguration()
         {
             if (SelectedConfiguration != null)
             {
@@ -57,20 +57,20 @@ namespace SCS_Calc_2._0
                     $"{SelectedConfiguration.TotalСableQuantity:F0} м)",
                     "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    await model.DeleteConfigurationAsync(SelectedConfiguration);
+                    model.DeleteConfiguration(SelectedConfiguration);
                 }
             }
         }
 
         [RelayCommand]
-        private async void DeleteAllConfigurations()
+        private void DeleteAllConfigurations()
         {
             if (Configurations.Count > 0)
             {
                 if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({Configurations.Count} конфигураций){Environment.NewLine}" +
                     $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
                 {
-                    await model.DeleteAllConfigurationsAsync();
+                    model.DeleteAllConfigurations();
                 }
             }
         }
