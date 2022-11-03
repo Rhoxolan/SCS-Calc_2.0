@@ -11,7 +11,9 @@
       d:DesignHeight="700" d:DesignWidth="600" DataContext="{DynamicResource historyPageViewModel}">
 
     <Page.Resources>
-        <ResourceDictionary Source="HistoryPageDictionary.xaml"/>
+        
+        <Style TargetType="Button" BasedOn="{StaticResource styleViewButtonPage}"/>
+        
     </Page.Resources>
 
     <ScrollViewer>

@@ -39,18 +39,17 @@
 
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}" x:Key="styleViewTextBox">
         <Setter Property="BorderBrush" Value="DarkBlue"/>
-        <Setter Property="Background" Value="#FFFFFD"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
     <Style TargetType="FlowDocumentScrollViewer">
         <Setter Property="BorderBrush" Value="DarkBlue"/>
-        <Setter Property="Background" Value="#FFFFFD"/>
         <Setter Property="BorderThickness" Value="0.5"/>
     </Style>
 
     <Style TargetType="FlowDocument">
-        <Setter Property="Background" Value="#FFFFFD"/>
+        <Setter Property="Background" Value="White"/>
     </Style>
 
     <Style TargetType="Run">
@@ -60,8 +59,14 @@
 
     <Style TargetType="mah:NumericUpDown" x:Key="styleViewNumericUpDown">
         <Setter Property="HideUpDownButtons" Value="True"/>
-        <Setter Property="Background" Value="#FFFFFD"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style TargetType="ListBox" BasedOn="{StaticResource ListBoxBaseStyle}">
+        <Setter Property="BorderBrush" Value="DarkBlue"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="0.7"/>
     </Style>
 
     <Style TargetType="Border" x:Key="styleViewElementBorder">
