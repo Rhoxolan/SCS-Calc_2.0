@@ -53,7 +53,7 @@ namespace SCS_Calc_2._0.Converters
                 flowDocument.Blocks.Add(paragraph);
                 return flowDocument;
             }
-            return default!;
+            return new FlowDocument();
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

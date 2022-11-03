@@ -118,11 +118,11 @@
 
                         <x:Code>
                             <![CDATA[
-                            private void numericUpDownCableHankMeterageEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                            private void numericUpDownCableHankMeterageEnabledChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
                             {
                                 if (Equals(e.NewValue, false))
                                 {
-                                    ((MahApps.Metro.Controls.NumericUpDown)sender).Value = null;
+                                    (sender as MahApps.Metro.Controls.NumericUpDown).Value = null;
                                 }
                             }]]>
                         </x:Code>
@@ -151,11 +151,11 @@
 
                     <x:Code>
                         <![CDATA[
-                        private void expanderCableHankMeterageStandartValuesEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                        private void expanderCableHankMeterageStandartValuesEnabledChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
                         {
                             if (Equals(e.NewValue, false))
                             {
-                                ((Expander)sender).IsExpanded = false;
+                                (sender as System.Windows.Controls.Expander).IsExpanded = false;
                             }
                         }]]>
                     </x:Code>
