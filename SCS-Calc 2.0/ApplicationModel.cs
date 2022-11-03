@@ -236,6 +236,11 @@ namespace SCS_Calc_2._0
             DBSaveChangesAsync();
         }
 
+        public void SaveToTXT(Configuration configuration)
+        {
+            configuration.SaveToTXT();
+        }
+
         //Сброс до заводских параметров расчёта конфигураций скс
         public void SetDefaultsParameters()
         {

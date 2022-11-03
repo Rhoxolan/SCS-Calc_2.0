@@ -112,7 +112,7 @@ namespace SCS_Calc_2._0
         {
             if(LatestConfiguration != null)
             {
-                LatestConfiguration.SaveToTXT();
+                model.SaveToTXT(LatestConfiguration);
             }
         }
 

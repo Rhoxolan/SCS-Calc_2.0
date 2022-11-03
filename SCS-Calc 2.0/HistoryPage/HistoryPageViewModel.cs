@@ -41,7 +41,7 @@ namespace SCS_Calc_2._0
         {
             if (SelectedConfiguration != null)
             {
-                SelectedConfiguration.SaveToTXT();
+                model.SaveToTXT(SelectedConfiguration);
             }
         }
 
