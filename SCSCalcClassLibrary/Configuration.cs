@@ -114,7 +114,7 @@ namespace SCSCalc
                     }
                     if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationShieldedType}");
                     }
                     recommendations = recommendationsBuilder.ToString();
                 }
@@ -155,7 +155,7 @@ namespace SCSCalc
                     }
                     if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
                     {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
+                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationShieldedType}");
                     }
                     recommendations = recommendationsBuilder.ToString();
                 }
