@@ -20,11 +20,11 @@ namespace SCS_Calc_2._0.Converters
                     $"{configuration.RecordTime.ToLongTimeString()}"));
                 paragraph.Inlines.Add(new LineBreak());
                 paragraph.Inlines.Add(new LineBreak());
-                paragraph.Inlines.Add(new Run($"Наименьшая длина постоянного линка: {configuration.MinPermanentLink} м."));
+                paragraph.Inlines.Add(new Run($"Наименьшая длина постоянного линка: {configuration.MinPermanentLink:F2} м."));
                 paragraph.Inlines.Add(new LineBreak());
-                paragraph.Inlines.Add(new Run($"Наибольшая длина постоянного линка: {configuration.MaxPermanentLink} м."));
+                paragraph.Inlines.Add(new Run($"Наибольшая длина постоянного линка: {configuration.MaxPermanentLink:F2} м."));
                 paragraph.Inlines.Add(new LineBreak());
-                paragraph.Inlines.Add(new Run($"Средняя длина постоянного линка: {configuration.AveragePermanentLink} м."));
+                paragraph.Inlines.Add(new Run($"Средняя длина постоянного линка: {configuration.AveragePermanentLink:F2} м."));
                 paragraph.Inlines.Add(new LineBreak());
                 paragraph.Inlines.Add(new Run($"Количество рабочих мест: {configuration.NumberOfWorkplaces}"));
                 paragraph.Inlines.Add(new LineBreak());
@@ -32,15 +32,15 @@ namespace SCS_Calc_2._0.Converters
                 paragraph.Inlines.Add(new LineBreak());
                 if (configuration.CableHankMeterage != null)
                 {
-                    paragraph.Inlines.Add(new Run($"Необходимое количество кабеля: {configuration.СableQuantity}"));
+                    paragraph.Inlines.Add(new Run($"Необходимое количество кабеля: {configuration.СableQuantity:F2}"));
                     paragraph.Inlines.Add(new LineBreak());
-                    paragraph.Inlines.Add(new Run($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage}"));
+                    paragraph.Inlines.Add(new Run($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage:F2}"));
                     paragraph.Inlines.Add(new LineBreak());
                     paragraph.Inlines.Add(new Run($"Необходимое количество бухт кабеля: {configuration.HankQuantity}"));
                     paragraph.Inlines.Add(new LineBreak());
                 }
                 paragraph.Inlines.Add(new LineBreak());
-                paragraph.Inlines.Add(new Run($"Итоговое необходимое количество кабеля: {configuration.TotalСableQuantity} м.") { FontWeight = FontWeights.Medium });
+                paragraph.Inlines.Add(new Run($"Итоговое необходимое количество кабеля: {configuration.TotalСableQuantity:F2} м.") { FontWeight = FontWeights.Medium });
                 if (!String.IsNullOrEmpty(configuration.Recommendations))
                 {
                     paragraph.Inlines.Add(new LineBreak());

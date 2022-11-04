@@ -54,9 +54,9 @@
 
                             <TextBlock FontSize="14" Text="{Binding RecordTime, Converter={x:Static converters:DateTimeToStringConverter.Instance}}"/>
 
-                            <TextBlock FontSize="13" Text="{Binding StringFormat=Наименьшая длина постоянного линка: {0} м., Path=MinPermanentLink}"/>
+                            <TextBlock FontSize="13" Text="{Binding StringFormat=Наименьшая длина постоянного линка: {0:F2} м., Path=MinPermanentLink}"/>
 
-                            <TextBlock FontSize="13" Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0} м., Path=MaxPermanentLink}"/>
+                            <TextBlock FontSize="13" Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0:F2} м., Path=MaxPermanentLink}"/>
 
                             <TextBlock FontSize="13" Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0} м., Path=CableHankMeterage}">
                                 <TextBlock.Style>
@@ -70,7 +70,7 @@
                                 </TextBlock.Style>
                             </TextBlock>
 
-                            <TextBlock  FontSize="13" FontWeight="Medium" Text="{Binding StringFormat=Необходимое количество кабеля: {0} м., Path=TotalСableQuantity}"/>
+                            <TextBlock  FontSize="13" FontWeight="Medium" Text="{Binding StringFormat=Необходимое количество кабеля: {0:F2} м., Path=TotalСableQuantity}"/>
 
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
