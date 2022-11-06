@@ -1,31 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SCSCalc;
+﻿using SCSCalc;
 using SCSCalc.Parameters;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 
 namespace SCS_Calc_2._0
 {
     public class ApplicationModel
     {
-        ApplicationContext applicationContext;
         private ObservableCollection<Configuration> configurations;
-        private string settingsDocPath;
-        private Parameters parameters;
-        private List<string> initializeExceptions;
+        private SCSCalcParameters parameters;
 
-        public ApplicationModel()
+        public ApplicationModel(Action<Configuration>? saveToTXTAction, Action<SCSCalcParameters>? parametersSerializeAction, Func<SCSCalcParameters>? parametersDeserializeFunc,
+            Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc, Action<SCSCalcParameters, double, double, int, int, double?> calculateConfigurationAction,
+            Action deleteAllConfigurationsAction, Action<Configuration> deleteConfigurationAction)
         {
-            settingsDocPath = "SCS-CalcParametersData.json";
-            initializeExceptions = new();
-            applicationContext = new();
-            applicationContext.Database.EnsureCreated();
-            applicationContext.Configurations.Load();
-            configurations = applicationContext.Configurations.Local.ToObservableCollection();
+            SaveToTXTAction = saveToTXTAction;
+            ParametersSerializeAction = parametersSerializeAction;
+            ParametersDeserializeFunc = parametersDeserializeFunc;
+            ConfigurationDBLoadFunc = сonfigurationDBLoadFunc;
+            СalculateConfigurationAction = calculateConfigurationAction;
+            DeleteAllConfigurationsAction = deleteAllConfigurationsAction;
+            DeleteConfigurationAction = deleteConfigurationAction;
+            configurations = ConfigurationDBLoadFunc.Invoke();
             Configurations = new(configurations);
-            Loader();
+            parameters = ParametersDeserializeFunc?.Invoke()!;
+            if (parameters == null)
+            {
+                parameters = new()
+                {
+                    IsStrictСomplianceWithTheStandart = true,
+                    IsAnArbitraryNumberOfPorts = true,
+                    IsTechnologicalReserveAvailability = true,
+                    IsRecommendationsAvailability = false
+                };
+                ParametersSerializeAction?.Invoke(parameters);
+            }
         }
 
         //Изменение параметров расчёта конфигураций СКС
@@ -40,17 +49,26 @@ namespace SCS_Calc_2._0
         //Изменение значения аргументов получения рекомендаций по побдору кабеля
         public event EventHandler? RecommendationsArgumentsChanged;
 
-        //Возникновение ошибок в работе модели
-        public event Action<string>? ModelExceptionOccurrence;
+        //Сохранение конфигурации в текстовый документ
+        private event Action<Configuration>? SaveToTXTAction;
 
-        //Ошибки, произошедшие при инициализации модели
-        public string[] InitializeExceptions
-        {
-            get
-            {
-                return initializeExceptions.ToArray();
-            }
-        }
+        //Сериализация настраеваемых параметров расчёта конфигураций СКС
+        private event Action<SCSCalcParameters>? ParametersSerializeAction;
+
+        //Десериализация настраеваемых параметров расчёта конфигураций СКС
+        private event Func<SCSCalcParameters>? ParametersDeserializeFunc;
+
+        //Загрузка БД конфигураций СКС
+        private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
+
+        //Расчет конфигурации СКС и сохранение данных в БД
+        private event Action<SCSCalcParameters, double, double, int, int, double?> СalculateConfigurationAction;
+
+        //Удаление всех записей конфигураций СКС
+        private event Action DeleteAllConfigurationsAction;
+
+        //Удаление записи конфигурации
+        private event Action<Configuration> DeleteConfigurationAction;
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
 
@@ -63,7 +81,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.TechnologicalReserve = value;
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 TechnologicalReserveChanged?.Invoke(null!, null!);
             }
         }
@@ -84,7 +102,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
                 }
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
@@ -105,7 +123,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
                 }
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
@@ -126,7 +144,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
                 }
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
@@ -147,7 +165,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
                 }
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
         }
@@ -166,7 +184,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsStrictСomplianceWithTheStandart = value;
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 ParametersChanged?.Invoke(null!, null!);
                 DiapasonsChanged?.Invoke(null!, null!);
             }
@@ -181,7 +199,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsRecommendationsAvailability = value;
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 ParametersChanged?.Invoke(null!, null!);
                 RecommendationsArgumentsChanged?.Invoke(null!, null!);
             }
@@ -196,7 +214,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsAnArbitraryNumberOfPorts = value;
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 ParametersChanged?.Invoke(null!, null!);
                 DiapasonsChanged?.Invoke(null!, null!);
             }
@@ -211,35 +229,21 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsTechnologicalReserveAvailability = value;
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
+                ParametersSerializeAction?.Invoke(parameters);
                 ParametersChanged?.Invoke(null!, null!);
                 TechnologicalReserveChanged?.Invoke(null!, null!);
             }
         }
 
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage)
-        {
-            applicationContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
-            DBSaveChangesAsync();
-        }
+            int numberOfPorts, double? cableHankMeterage) => СalculateConfigurationAction(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces,
+                numberOfPorts, cableHankMeterage);
 
-        public void DeleteAllConfigurations()
-        {
-            applicationContext.RemoveRange(applicationContext.Configurations);
-            DBSaveChangesAsync();
-        }
+        public void DeleteAllConfigurations() => DeleteAllConfigurationsAction();
 
-        public void DeleteConfiguration(Configuration configuration)
-        {
-            applicationContext.Configurations.Remove(configuration);
-            DBSaveChangesAsync();
-        }
+        public void DeleteConfiguration(Configuration configuration) => DeleteConfigurationAction(configuration);
 
-        public void SaveToTXT(Configuration configuration)
-        {
-            configuration.SaveToTXT();
-        }
+        public void SaveToTXT(Configuration configuration) => SaveToTXTAction?.Invoke(configuration);
 
         //Сброс до заводских параметров расчёта конфигураций скс
         public void SetDefaultsParameters()
@@ -248,55 +252,6 @@ namespace SCS_Calc_2._0
             IsAnArbitraryNumberOfPorts = true;
             IsTechnologicalReserveAvailability = true;
             IsRecommendationsAvailability = false;
-        }
-
-        //Сохранение данных в БД
-        private async void DBSaveChangesAsync()
-        {
-            try
-            {
-                await applicationContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                ModelExceptionOccurrence?.Invoke($"Ошибка сохранения данных:{Environment.NewLine}{ex.Message}");
-            }
-        }
-
-        //Метод для загрузки параметров расчёта конфигураций СКС
-        private void Loader()
-        {
-            if (File.Exists(settingsDocPath))
-            {
-                try
-                {
-                    parameters = Parameters.ParametersDeserializer(settingsDocPath);
-                }
-                catch (Exception ex)
-                {
-                    initializeExceptions.Add($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
-                    parameters = new()
-                    {
-                        IsStrictСomplianceWithTheStandart = true,
-                        IsAnArbitraryNumberOfPorts = true,
-                        IsTechnologicalReserveAvailability = true,
-                        IsRecommendationsAvailability = false
-                    };
-                    Parameters.ParametersSerializer(parameters, settingsDocPath);
-                }
-            }
-            else
-            {
-                //Первичная настройка
-                parameters = new()
-                {
-                    IsStrictСomplianceWithTheStandart = true,
-                    IsAnArbitraryNumberOfPorts = true,
-                    IsTechnologicalReserveAvailability = true,
-                    IsRecommendationsAvailability = false
-                };
-                Parameters.ParametersSerializer(parameters, settingsDocPath);
-            }
         }
     }
 }
