@@ -245,7 +245,6 @@ namespace SCS_Calc_2._0
 
         public void SaveToTXT(Configuration configuration) => SaveToTXTAction?.Invoke(configuration);
 
-        //Сброс до заводских параметров расчёта конфигураций скс
         public void SetDefaultsParameters()
         {
             IsStrictСomplianceWithTheStandart = true;
