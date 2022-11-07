@@ -12,7 +12,7 @@ namespace SCS_Calc_2._0
 
         public ApplicationModel(Action<Configuration> saveToTXTAction, Action<SCSCalcParameters> parametersSerializeAction, Func<SCSCalcParameters> parametersDeserializeFunc,
             Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc, Action<SCSCalcParameters, double, double, int, int, double?> calculateConfigurationAction,
-            Action deleteAllConfigurationsAction, Action<Configuration> deleteConfigurationAction)
+            Action deleteAllConfigurationsAction, Action<Configuration> deleteConfigurationAction, Func<bool> resetParametersFunc)
         {
             SaveToTXTAction = saveToTXTAction;
             ParametersSerializeAction = parametersSerializeAction;
@@ -21,6 +21,7 @@ namespace SCS_Calc_2._0
             СalculateConfigurationAction = calculateConfigurationAction;
             DeleteAllConfigurationsAction = deleteAllConfigurationsAction;
             DeleteConfigurationAction = deleteConfigurationAction;
+            ResetParametersFunc = resetParametersFunc;
             configurations = ConfigurationDBLoadFunc();
             Configurations = new(configurations);
             parameters = ParametersDeserializeFunc();
@@ -69,6 +70,9 @@ namespace SCS_Calc_2._0
 
         //Удаление записи конфигурации
         private event Action<Configuration> DeleteConfigurationAction;
+
+        //Сброс настраиваемых параметров приложения до заводских
+        private event Func<bool> ResetParametersFunc;
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
 
@@ -247,10 +251,13 @@ namespace SCS_Calc_2._0
 
         public void SetDefaultsParameters()
         {
-            IsStrictСomplianceWithTheStandart = true;
-            IsAnArbitraryNumberOfPorts = true;
-            IsTechnologicalReserveAvailability = true;
-            IsRecommendationsAvailability = false;
+            if (ResetParametersFunc())
+            {
+                IsStrictСomplianceWithTheStandart = true;
+                IsAnArbitraryNumberOfPorts = true;
+                IsTechnologicalReserveAvailability = true;
+                IsRecommendationsAvailability = false;
+            }
         }
     }
 }

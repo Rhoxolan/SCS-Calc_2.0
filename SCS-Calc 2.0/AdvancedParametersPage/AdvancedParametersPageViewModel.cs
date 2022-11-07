@@ -79,12 +79,8 @@ namespace SCS_Calc_2._0
         }
 
         [RelayCommand]
-        private void SetDefaultsParameters()
-        {
-            if(MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
-                MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            model.SetDefaultsParameters();
-        }
+        private void SetDefaultsParameters() => model.SetDefaultsParameters();
+        
 
         //Обработчик для изменения значения коэффициента технологического запаса
         private void TechnologicalReserveChanged()

@@ -31,7 +31,8 @@ namespace SCS_Calc_2._0
             dBContext = new();
             parametersDocPath = "SCS-CalcParametersData.json";
             initializeExceptions = new();
-            applicationModel = new(SaveToTXT, ParametersSerialize, ParametersDeserialize, ConfigurationDBLoad, СalculateConfiguration, DeleteAllConfigurations, DeleteConfiguration);
+            applicationModel = new(SaveToTXT, ParametersSerialize, ParametersDeserialize, ConfigurationDBLoad, СalculateConfiguration, DeleteAllConfigurations,
+                DeleteConfiguration, ResetParameters);
             historyPageViewModel = new(applicationModel);
             calculatePageViewModel = new(applicationModel);
             advancedParametersPageViewModel = new(applicationModel);
@@ -227,6 +228,17 @@ namespace SCS_Calc_2._0
                 dBContext.Configurations.Remove(configuration);
                 DBSaveChangesAsync();
             }
+        }
+
+        //Сброс настраиваемых параметров приложения до заводских
+        private bool ResetParameters()
+        {
+            if (MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
+                MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                return true;
+            }
+            return false;
         }
 
         //Сохранение данных в БД
