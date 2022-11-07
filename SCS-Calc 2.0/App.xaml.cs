@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
@@ -205,15 +206,27 @@ namespace SCS_Calc_2._0
         //Удаление всех записей конфигураций СКС
         private void DeleteAllConfigurations()
         {
-            dBContext.RemoveRange(dBContext.Configurations);
-            DBSaveChangesAsync();
+            if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({dBContext.Configurations.Count()} конфигураций){Environment.NewLine}" +
+                    $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+            {
+                dBContext.RemoveRange(dBContext.Configurations);
+                DBSaveChangesAsync();
+            }
         }
 
         //Удаление записи конфигурации
         private void DeleteConfiguration(Configuration configuration)
         {
-            dBContext.Configurations.Remove(configuration);
-            DBSaveChangesAsync();
+            if (MessageBox.Show(
+                    $"Вы действительно хотите удалить выбранную конфигурацию СКС?{Environment.NewLine}" +
+                    $"({configuration.RecordTime.ToShortDateString()} {configuration.RecordTime.ToLongTimeString()}, " +
+                    $"мин. - {configuration.MinPermanentLink:F0} м, макс. - {configuration.MaxPermanentLink:F0} м, всего - " +
+                    $"{configuration.TotalСableQuantity:F0} м)",
+                    "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                dBContext.Configurations.Remove(configuration);
+                DBSaveChangesAsync();
+            }
         }
 
         //Сохранение данных в БД
