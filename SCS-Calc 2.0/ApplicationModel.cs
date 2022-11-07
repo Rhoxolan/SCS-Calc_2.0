@@ -10,7 +10,7 @@ namespace SCS_Calc_2._0
         private ObservableCollection<Configuration> configurations;
         private SCSCalcParameters parameters;
 
-        public ApplicationModel(Action<Configuration>? saveToTXTAction, Action<SCSCalcParameters>? parametersSerializeAction, Func<SCSCalcParameters>? parametersDeserializeFunc,
+        public ApplicationModel(Action<Configuration> saveToTXTAction, Action<SCSCalcParameters> parametersSerializeAction, Func<SCSCalcParameters> parametersDeserializeFunc,
             Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc, Action<SCSCalcParameters, double, double, int, int, double?> calculateConfigurationAction,
             Action deleteAllConfigurationsAction, Action<Configuration> deleteConfigurationAction)
         {
@@ -21,9 +21,9 @@ namespace SCS_Calc_2._0
             СalculateConfigurationAction = calculateConfigurationAction;
             DeleteAllConfigurationsAction = deleteAllConfigurationsAction;
             DeleteConfigurationAction = deleteConfigurationAction;
-            configurations = ConfigurationDBLoadFunc.Invoke();
+            configurations = ConfigurationDBLoadFunc();
             Configurations = new(configurations);
-            parameters = ParametersDeserializeFunc?.Invoke()!;
+            parameters = ParametersDeserializeFunc();
             if (parameters == null)
             {
                 parameters = new()
@@ -33,30 +33,30 @@ namespace SCS_Calc_2._0
                     IsTechnologicalReserveAvailability = true,
                     IsRecommendationsAvailability = false
                 };
-                ParametersSerializeAction?.Invoke(parameters);
+                ParametersSerializeAction(parameters);
             }
         }
 
         //Изменение параметров расчёта конфигураций СКС
-        public event EventHandler? ParametersChanged;
+        public event Action? ParametersChanged;
 
         //Изменение значения даипазонов вводимых параметров расчёта конфигураций СКС
-        public event EventHandler? DiapasonsChanged;
+        public event Action? DiapasonsChanged;
 
         //Изменение значения коэффициента технологического запаса
-        public event EventHandler? TechnologicalReserveChanged;
+        public event Action? TechnologicalReserveChanged;
 
         //Изменение значения аргументов получения рекомендаций по побдору кабеля
-        public event EventHandler? RecommendationsArgumentsChanged;
+        public event Action? RecommendationsArgumentsChanged;
 
         //Сохранение конфигурации в текстовый документ
-        private event Action<Configuration>? SaveToTXTAction;
+        private event Action<Configuration> SaveToTXTAction;
 
         //Сериализация настраеваемых параметров расчёта конфигураций СКС
-        private event Action<SCSCalcParameters>? ParametersSerializeAction;
+        private event Action<SCSCalcParameters> ParametersSerializeAction;
 
         //Десериализация настраеваемых параметров расчёта конфигураций СКС
-        private event Func<SCSCalcParameters>? ParametersDeserializeFunc;
+        private event Func<SCSCalcParameters> ParametersDeserializeFunc;
 
         //Загрузка БД конфигураций СКС
         private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
@@ -81,8 +81,8 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.TechnologicalReserve = value;
-                ParametersSerializeAction?.Invoke(parameters);
-                TechnologicalReserveChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                TechnologicalReserveChanged?.Invoke();
             }
         }
 
@@ -102,8 +102,8 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
                 }
-                ParametersSerializeAction?.Invoke(parameters);
-                RecommendationsArgumentsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                RecommendationsArgumentsChanged?.Invoke();
             }
         }
 
@@ -123,8 +123,8 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
                 }
-                ParametersSerializeAction?.Invoke(parameters);
-                RecommendationsArgumentsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                RecommendationsArgumentsChanged?.Invoke();
             }
         }
 
@@ -144,8 +144,8 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
                 }
-                ParametersSerializeAction?.Invoke(parameters);
-                RecommendationsArgumentsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                RecommendationsArgumentsChanged?.Invoke();
             }
         }
 
@@ -165,8 +165,8 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
                 }
-                ParametersSerializeAction?.Invoke(parameters);
-                RecommendationsArgumentsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                RecommendationsArgumentsChanged?.Invoke();
             }
         }
 
@@ -184,9 +184,9 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsStrictСomplianceWithTheStandart = value;
-                ParametersSerializeAction?.Invoke(parameters);
-                ParametersChanged?.Invoke(null!, null!);
-                DiapasonsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                ParametersChanged?.Invoke();
+                DiapasonsChanged?.Invoke();
             }
         }
 
@@ -199,9 +199,9 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsRecommendationsAvailability = value;
-                ParametersSerializeAction?.Invoke(parameters);
-                ParametersChanged?.Invoke(null!, null!);
-                RecommendationsArgumentsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                ParametersChanged?.Invoke();
+                RecommendationsArgumentsChanged?.Invoke();
             }
         }
 
@@ -214,9 +214,9 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsAnArbitraryNumberOfPorts = value;
-                ParametersSerializeAction?.Invoke(parameters);
-                ParametersChanged?.Invoke(null!, null!);
-                DiapasonsChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                ParametersChanged?.Invoke();
+                DiapasonsChanged?.Invoke();
             }
         }
 
@@ -229,9 +229,9 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsTechnologicalReserveAvailability = value;
-                ParametersSerializeAction?.Invoke(parameters);
-                ParametersChanged?.Invoke(null!, null!);
-                TechnologicalReserveChanged?.Invoke(null!, null!);
+                ParametersSerializeAction(parameters);
+                ParametersChanged?.Invoke();
+                TechnologicalReserveChanged?.Invoke();
             }
         }
 
@@ -243,7 +243,7 @@ namespace SCS_Calc_2._0
 
         public void DeleteConfiguration(Configuration configuration) => DeleteConfigurationAction(configuration);
 
-        public void SaveToTXT(Configuration configuration) => SaveToTXTAction?.Invoke(configuration);
+        public void SaveToTXT(Configuration configuration) => SaveToTXTAction(configuration);
 
         public void SetDefaultsParameters()
         {

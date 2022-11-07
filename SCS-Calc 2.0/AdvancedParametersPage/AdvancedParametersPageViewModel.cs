@@ -87,20 +87,20 @@ namespace SCS_Calc_2._0
         }
 
         //Обработчик для изменения значения коэффициента технологического запаса
-        private void TechnologicalReserveChanged(object? sender = null, object? args = null)
+        private void TechnologicalReserveChanged()
         {
             OnPropertyChanged(nameof(TechnologicalReserve));
         }
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
-        private void DiapasonsChanged(object? sender = null, object? args = null)
+        private void DiapasonsChanged()
         {
             OnPropertyChanged(nameof(Diapasons));
             OnPropertyChanged(nameof(Diapasons));
         }
 
         //Обработчик для изменения параметров расчёта конфигураций СКС
-        private void ParametersChanged(object? sender = null, object? args = null)
+        private void ParametersChanged()
         {
             OnPropertyChanged(nameof(IsStrictСomplianceWithTheStandart));
             OnPropertyChanged(nameof(IsTechnologicalReserveAvailability));
@@ -108,7 +108,7 @@ namespace SCS_Calc_2._0
         }
 
         //Обработчик для изменения аргументов получения рекомендаций по побдору кабеля
-        private void RecommendationsArgumentsChanged(object? sender = null, object? args = null)
+        private void RecommendationsArgumentsChanged()
         {
             OnPropertyChanged(nameof(IsolationType));
             OnPropertyChanged(nameof(IsolationMaterial));

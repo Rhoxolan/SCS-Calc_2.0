@@ -124,13 +124,13 @@ namespace SCS_Calc_2._0
         }
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
-        private void DiapasonsChanged(object? sender = null, object? args = null)
+        private void DiapasonsChanged()
         {
             OnPropertyChanged(nameof(Diapasons));
         }
 
         //Обработчик для изменения значения коэффициента технологического запаса
-        private void TechnologicalReserveChanged(object? sender = null, object? args = null)
+        private void TechnologicalReserveChanged()
         {
             OnPropertyChanged(nameof(TechnologicalReserve));
             OnPropertyChanged(nameof(CeiledAveragePermanentLink));
