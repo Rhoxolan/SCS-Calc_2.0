@@ -233,12 +233,8 @@ namespace SCS_Calc_2._0
         //Сброс настраиваемых параметров приложения до заводских
         private bool ResetParameters()
         {
-            if (MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
-                MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                return true;
-            }
-            return false;
+            return MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
+                MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes;
         }
 
         //Сохранение данных в БД
