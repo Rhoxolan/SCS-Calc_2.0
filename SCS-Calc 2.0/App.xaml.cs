@@ -40,7 +40,7 @@ namespace SCS_Calc_2._0
         }
 
         //Возникновение ошибок в логике приложения
-        private Action<string> ExceptionOccurrenceAction;
+        private Action<string>? ExceptionOccurrenceAction;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
