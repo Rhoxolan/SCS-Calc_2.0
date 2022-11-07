@@ -135,11 +135,11 @@ namespace SCS_Calc_2._0
         }
 
         //Десериализация настраеваемых параметров расчёта конфигураций СКС
-        private SCSCalcParameters ParametersDeserialize()
+        private SCSCalcParameters? ParametersDeserialize()
         {
             if (!File.Exists(parametersDocPath))
             {
-                return null!;
+                return null;
             }
             try
             {
@@ -184,7 +184,7 @@ namespace SCS_Calc_2._0
             catch (Exception ex)
             {
                 initializeExceptions.Add($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
-                return null!;
+                return null;
             }
         }
 

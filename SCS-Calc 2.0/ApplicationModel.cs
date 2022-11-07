@@ -10,7 +10,7 @@ namespace SCS_Calc_2._0
         private ObservableCollection<Configuration> configurations;
         private SCSCalcParameters parameters;
 
-        public ApplicationModel(Action<Configuration> saveToTXTAction, Action<SCSCalcParameters> parametersSerializeAction, Func<SCSCalcParameters> parametersDeserializeFunc,
+        public ApplicationModel(Action<Configuration> saveToTXTAction, Action<SCSCalcParameters> parametersSerializeAction, Func<SCSCalcParameters?> parametersDeserializeFunc,
             Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc, Action<SCSCalcParameters, double, double, int, int, double?> calculateConfigurationAction,
             Action deleteAllConfigurationsAction, Action<Configuration> deleteConfigurationAction, Func<bool> resetParametersFunc)
         {
@@ -24,7 +24,7 @@ namespace SCS_Calc_2._0
             ResetParametersFunc = resetParametersFunc;
             configurations = ConfigurationDBLoadFunc();
             Configurations = new(configurations);
-            parameters = ParametersDeserializeFunc();
+            parameters = ParametersDeserializeFunc()!;
             if (parameters == null)
             {
                 parameters = new()
@@ -57,7 +57,7 @@ namespace SCS_Calc_2._0
         private event Action<SCSCalcParameters> ParametersSerializeAction;
 
         //Десериализация настраеваемых параметров расчёта конфигураций СКС
-        private event Func<SCSCalcParameters> ParametersDeserializeFunc;
+        private event Func<SCSCalcParameters?> ParametersDeserializeFunc;
 
         //Загрузка БД конфигураций СКС
         private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
