@@ -1,5 +1,4 @@
 ﻿using SCSCalc.Parameters;
-using System.Text;
 
 namespace SCSCalc
 {
@@ -86,91 +85,16 @@ namespace SCSCalc
         public static Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage)
         {
-            if (cableHankMeterage != null)
+            IConfigurationCalculator configurationCalculator;
+            if(cableHankMeterage is not null)
             {
-                double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
-                if (averagePermanentLink > cableHankMeterage)
-                {
-                    throw new SCSCalcException("Расчет провести невозможно! Значение средней длины постояного линка превышает значение метража кабеля в бухте.");
-                }
-                double? cableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
-                int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)(cableHankMeterage / averagePermanentLink)));
-                double totalСableQuantity = (double)(hankQuantity * cableHankMeterage);
-                string? recommendations = null;
-                if (Equals(parameters.IsRecommendationsAvailability, true))
-                {
-                    StringBuilder recommendationsBuilder = new();
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationType}");
-                    }
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
-                    }
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
-                    }
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationShieldedType}");
-                    }
-                    recommendations = recommendationsBuilder.ToString();
-                }
-                return new Configuration()
-                {
-                    RecordTime = DateTime.Now,
-                    MinPermanentLink = minPermanentLink,
-                    MaxPermanentLink = maxPermanentLink,
-                    AveragePermanentLink = averagePermanentLink,
-                    NumberOfWorkplaces = numberOfWorkplaces,
-                    NumberOfPorts = numberOfPorts,
-                    СableQuantity = cableQuantity,
-                    CableHankMeterage = cableHankMeterage,
-                    HankQuantity = hankQuantity,
-                    TotalСableQuantity = totalСableQuantity,
-                    Recommendations = recommendations
-                };
+                configurationCalculator = new ConfigurationCalculatorWithHankMeterage();
             }
             else
             {
-                double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
-                double totalСableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
-                string? recommendations = null;
-                if (Equals(parameters.IsRecommendationsAvailability, true))
-                {
-                    StringBuilder recommendationsBuilder = new();
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationType}");
-                    }
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
-                    }
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
-                    }
-                    if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
-                    {
-                        recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationShieldedType}");
-                    }
-                    recommendations = recommendationsBuilder.ToString();
-                }
-                return new Configuration()
-                {
-                    RecordTime = DateTime.Now,
-                    MinPermanentLink = minPermanentLink,
-                    MaxPermanentLink = maxPermanentLink,
-                    AveragePermanentLink = averagePermanentLink,
-                    NumberOfWorkplaces = numberOfWorkplaces,
-                    NumberOfPorts = numberOfPorts,
-                    TotalСableQuantity = totalСableQuantity,
-                    Recommendations = recommendations
-                };
+                configurationCalculator = new ConfigurationCalculatorWithoutHankMeterage();
             }
+            return configurationCalculator.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
         }
     }
 }
