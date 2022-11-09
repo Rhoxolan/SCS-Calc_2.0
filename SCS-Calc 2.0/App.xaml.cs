@@ -197,10 +197,10 @@ namespace SCS_Calc_2._0
         }
 
         //Расчет конфигурации СКС и сохранение данных в БД
-        private void СalculateConfiguration(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage)
+        private void СalculateConfiguration(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
+            double maxPermanentLink, int numberOfWorkplaces,int numberOfPorts, double? cableHankMeterage)
         {
-            dBContext.Configurations.Add(Configuration.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
+            dBContext.Configurations.Add(Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
             DBSaveChangesAsync();
         }
 

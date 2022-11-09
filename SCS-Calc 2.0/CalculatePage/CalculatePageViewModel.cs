@@ -92,6 +92,11 @@ namespace SCS_Calc_2._0
             get => model.Diapasons;
         }
 
+        public bool? IsCableHankMeterageAvailability
+        {
+            set => model.IsCableHankMeterageAvailability = value;
+        }
+
         [RelayCommand]
         private void СalculateConfiguration()
         {

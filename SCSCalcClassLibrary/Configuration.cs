@@ -82,19 +82,10 @@ namespace SCSCalc
         /// <param name="cableHankMeterage"></param>
         /// <returns></returns>
         /// <exception cref="SCSCalcException"></exception>
-        public static Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage)
+        public static Configuration Calculate(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink, double maxPermanentLink,
+            int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
-            IConfigurationCalculator configurationCalculator;
-            if(cableHankMeterage is not null)
-            {
-                configurationCalculator = new ConfigurationCalculatorWithHankMeterage();
-            }
-            else
-            {
-                configurationCalculator = new ConfigurationCalculatorWithoutHankMeterage();
-            }
-            return configurationCalculator.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
+            return calculateParameters.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
         }
     }
 }

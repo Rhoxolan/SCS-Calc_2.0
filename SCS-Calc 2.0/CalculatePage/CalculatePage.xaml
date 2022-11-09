@@ -102,6 +102,7 @@
 
             <CheckBox Grid.Row="1" x:Name="checkBoxCableHankMeterage"
                       HorizontalAlignment="Left" Margin="5" Content="Учитывать метраж кабеля в бухте"
+                      IsChecked="{Binding IsCableHankMeterageAvailability, Mode=OneWayToSource}"
                       ToolTip="Отметьте, если хотите ввести метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты"/>
 
             <StackPanel Grid.Row="2" Grid.RowSpan="3" Margin="0" Panel.ZIndex="1" HorizontalAlignment="Left" Orientation="Horizontal">
@@ -123,6 +124,11 @@
                                 if (Equals(e.NewValue, false))
                                 {
                                     (sender as MahApps.Metro.Controls.NumericUpDown).Value = null;
+                                    return;
+                                }
+                                if (Equals(e.NewValue, true))
+                                {
+                                    (sender as MahApps.Metro.Controls.NumericUpDown).Value = 305;
                                 }
                             }]]>
                         </x:Code>

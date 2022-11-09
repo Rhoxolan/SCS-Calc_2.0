@@ -9,10 +9,16 @@ namespace SCS_Calc_2._0
     {
         private ObservableCollection<Configuration> configurations;
         private SCSCalcParameters parameters;
+        private ConfigurationCalculateParameters calculateParameters;
 
-        public ApplicationModel(Action<Configuration> saveToTXTAction, Action<SCSCalcParameters> parametersSerializeAction, Func<SCSCalcParameters?> parametersDeserializeFunc,
-            Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc, Action<SCSCalcParameters, double, double, int, int, double?> calculateConfigurationAction,
-            Action deleteAllConfigurationsAction, Action<Configuration> deleteConfigurationAction, Func<bool> resetParametersFunc)
+        public ApplicationModel(
+            Action<Configuration> saveToTXTAction,
+            Action<SCSCalcParameters> parametersSerializeAction,
+            Func<SCSCalcParameters?> parametersDeserializeFunc,
+            Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc,
+            Action<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?> calculateConfigurationAction,
+            Action deleteAllConfigurationsAction,
+            Action<Configuration> deleteConfigurationAction, Func<bool> resetParametersFunc)
         {
             SaveToTXTAction = saveToTXTAction;
             ParametersSerializeAction = parametersSerializeAction;
@@ -36,6 +42,7 @@ namespace SCS_Calc_2._0
                 };
                 ParametersSerializeAction(parameters);
             }
+            calculateParameters = new();
         }
 
         //Изменение параметров расчёта конфигураций СКС
@@ -63,7 +70,7 @@ namespace SCS_Calc_2._0
         private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
 
         //Расчет конфигурации СКС и сохранение данных в БД
-        private event Action<SCSCalcParameters, double, double, int, int, double?> СalculateConfigurationAction;
+        private event Action<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?> СalculateConfigurationAction;
 
         //Удаление всех записей конфигураций СКС
         private event Action DeleteAllConfigurationsAction;
@@ -239,8 +246,13 @@ namespace SCS_Calc_2._0
             }
         }
 
+        public bool? IsCableHankMeterageAvailability
+        {
+            set => calculateParameters.IsCableHankMeterageAvailability = value;
+        }
+
         public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage) => СalculateConfigurationAction(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces,
+            int numberOfPorts, double? cableHankMeterage) => СalculateConfigurationAction(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces,
                 numberOfPorts, cableHankMeterage);
 
         public void DeleteAllConfigurations() => DeleteAllConfigurationsAction();
