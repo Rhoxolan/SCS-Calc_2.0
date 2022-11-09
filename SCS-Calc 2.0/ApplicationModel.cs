@@ -251,9 +251,8 @@ namespace SCS_Calc_2._0
             set => calculateParameters.IsCableHankMeterageAvailability = value;
         }
 
-        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage) => СalculateConfigurationAction(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces,
-                numberOfPorts, cableHankMeterage);
+        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
+            => СalculateConfigurationAction(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
 
         public void DeleteAllConfigurations() => DeleteAllConfigurationsAction();
 
