@@ -15,32 +15,32 @@ namespace SCSCalc
         /// <summary>
         /// Дата записи конфигурации СКС
         /// </summary>
-        public DateTime RecordTime { get; init; }
+        public required DateTime RecordTime { get; init; }
 
         /// <summary>
         /// Значение минимальной длины постоянного линка в записи конфигурации СКС
         /// </summary>
-        public double MinPermanentLink { get; init; }
+        public required double MinPermanentLink { get; init; }
 
         /// <summary>
         /// Значение максимальной длины постоянного линка в записи конфигурации СКС
         /// </summary>
-        public double MaxPermanentLink { get; init; }
+        public required double MaxPermanentLink { get; init; }
 
         /// <summary>
         /// Значение средней длины постоянного линка в записи конфигурации СКС
         /// </summary>
-        public double AveragePermanentLink { get; init; }
+        public required double AveragePermanentLink { get; init; }
 
         /// <summary>
         /// Значение количества рабочих мест в записи конфигурации СКС
         /// </summary>
-        public int NumberOfWorkplaces { get; init; }
+        public required int NumberOfWorkplaces { get; init; }
 
         /// <summary>
         /// Значение количества портов на 1 рабочее место в записи конфигурации СКС
         /// </summary>
-        public int NumberOfPorts { get; init; }
+        public required int NumberOfPorts { get; init; }
 
         /// <summary>
         /// Значение необходимого количества кабеля в записи конфигурации СКС.
@@ -63,7 +63,7 @@ namespace SCSCalc
         /// <summary>
         /// Значение общего количества необходимого метража кабеля в записи конфигурации СКС.
         /// </summary>
-        public double TotalСableQuantity { get; init; }
+        public required double TotalСableQuantity { get; init; }
 
         /// <summary>
         /// Рекомендации по побдору кабеля в в записи конфигурации СКС.
