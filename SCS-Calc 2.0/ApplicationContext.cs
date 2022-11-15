@@ -8,8 +8,6 @@ namespace SCS_Calc_2._0
         public DbSet<Configuration> Configurations { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Data Source=configurations.db");
-        }
+            => optionsBuilder.UseSqlite("Data Source=configurations.db");
     }
 }

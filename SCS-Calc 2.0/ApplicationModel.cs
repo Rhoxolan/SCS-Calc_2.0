@@ -12,25 +12,27 @@ namespace SCS_Calc_2._0
         private ConfigurationCalculateParameters calculateParameters;
 
         public ApplicationModel(
-            Action<Configuration> saveToTXTAction,
-            Action<SCSCalcParameters> parametersSerializeAction,
-            Func<SCSCalcParameters?> parametersDeserializeFunc,
-            Func<ObservableCollection<Configuration>> сonfigurationDBLoadFunc,
-            Action<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?> calculateConfigurationAction,
-            Action deleteAllConfigurationsAction,
-            Action<Configuration> deleteConfigurationAction, Func<bool> resetParametersFunc)
+            Action<Configuration> SaveToTXTAction,
+            Action<SCSCalcParameters> ParametersSerializeAction,
+            Func<SCSCalcParameters?> ParametersDeserializeFunc,
+            Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc,
+            Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Configuration> СalculateConfigurationFunc,
+            Func<bool> DeleteAllConfigurationsFunc,
+            Func<Configuration, bool> DeleteConfigurationFunc,
+            Func<bool> ResetParametersFunc
+            )
         {
-            SaveToTXTAction = saveToTXTAction;
-            ParametersSerializeAction = parametersSerializeAction;
-            ParametersDeserializeFunc = parametersDeserializeFunc;
-            ConfigurationDBLoadFunc = сonfigurationDBLoadFunc;
-            СalculateConfigurationAction = calculateConfigurationAction;
-            DeleteAllConfigurationsAction = deleteAllConfigurationsAction;
-            DeleteConfigurationAction = deleteConfigurationAction;
-            ResetParametersFunc = resetParametersFunc;
-            configurations = ConfigurationDBLoadFunc();
+            this.SaveToTXTAction = SaveToTXTAction;
+            this.ParametersSerializeAction = ParametersSerializeAction;
+            this.ParametersDeserializeFunc = ParametersDeserializeFunc;
+            this.ConfigurationDBLoadFunc = ConfigurationDBLoadFunc;
+            this.СalculateConfigurationFunc = СalculateConfigurationFunc;
+            this.DeleteAllConfigurationsFunc = DeleteAllConfigurationsFunc;
+            this.DeleteConfigurationFunc = DeleteConfigurationFunc;
+            this.ResetParametersFunc = ResetParametersFunc;
+            configurations = this.ConfigurationDBLoadFunc();
             Configurations = new(configurations);
-            parameters = ParametersDeserializeFunc()!;
+            parameters = this.ParametersDeserializeFunc()!;
             if (parameters == null)
             {
                 parameters = new()
@@ -66,17 +68,17 @@ namespace SCS_Calc_2._0
         //Десериализация настраеваемых параметров расчёта конфигураций СКС
         private event Func<SCSCalcParameters?> ParametersDeserializeFunc;
 
+        //Удаление всех записей конфигураций СКС
+        private event Func<bool> DeleteAllConfigurationsFunc;
+
         //Загрузка БД конфигураций СКС
         private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
 
         //Расчет конфигурации СКС и сохранение данных в БД
-        private event Action<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?> СalculateConfigurationAction;
-
-        //Удаление всех записей конфигураций СКС
-        private event Action DeleteAllConfigurationsAction;
+        private event Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Configuration> СalculateConfigurationFunc;
 
         //Удаление записи конфигурации
-        private event Action<Configuration> DeleteConfigurationAction;
+        private event Func<Configuration, bool> DeleteConfigurationFunc;
 
         //Сброс настраиваемых параметров приложения до заводских
         private event Func<bool> ResetParametersFunc;
@@ -251,12 +253,24 @@ namespace SCS_Calc_2._0
             set => calculateParameters.IsCableHankMeterageAvailability = value;
         }
 
-        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
-            => СalculateConfigurationAction(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
+        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage) 
+            => configurations.Add(СalculateConfigurationFunc(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));   
 
-        public void DeleteAllConfigurations() => DeleteAllConfigurationsAction();
+        public void DeleteAllConfigurations()
+        {
+            if (DeleteAllConfigurationsFunc())
+            {
+                configurations.Clear();
+            }
+        }
 
-        public void DeleteConfiguration(Configuration configuration) => DeleteConfigurationAction(configuration);
+        public void DeleteConfiguration(Configuration configuration)
+        {
+            if(DeleteConfigurationFunc(configuration))
+            {
+                configurations.Remove(configuration);
+            }
+        }
 
         public void SaveToTXT(Configuration configuration) => SaveToTXTAction(configuration);
 

@@ -22,17 +22,21 @@ namespace SCS_Calc_2._0
         private readonly HistoryPageViewModel historyPageViewModel;
         private readonly CalculatePageViewModel calculatePageViewModel;
         private readonly AdvancedParametersPageViewModel advancedParametersPageViewModel;
-        private string parametersDocPath;
-        private List<string> initializeExceptions;
-        private ApplicationContext dBContext;
+        private string parametersDocPath = "SCS-CalcParametersData.json";
+        private List<string> initializeExceptions = new();
 
         public App()
         {
-            dBContext = new();
-            parametersDocPath = "SCS-CalcParametersData.json";
-            initializeExceptions = new();
-            applicationModel = new(SaveToTXT, ParametersSerialize, ParametersDeserialize, ConfigurationDBLoad, СalculateConfiguration, DeleteAllConfigurations,
-                DeleteConfiguration, ResetParameters);
+            applicationModel = new(
+                SaveToTXTAction: SaveToTXT,
+                ParametersSerializeAction: ParametersSerialize,
+                ParametersDeserializeFunc: ParametersDeserialize,
+                ConfigurationDBLoadFunc: ConfigurationDBLoad,
+                СalculateConfigurationFunc: СalculateConfiguration,
+                DeleteAllConfigurationsFunc: DeleteAllConfigurations,
+                DeleteConfigurationFunc: DeleteConfiguration,
+                ResetParametersFunc: ResetParametersСonfirm
+                );
             historyPageViewModel = new(applicationModel);
             calculatePageViewModel = new(applicationModel);
             advancedParametersPageViewModel = new(applicationModel);
@@ -191,32 +195,40 @@ namespace SCS_Calc_2._0
         //Загрузка БД конфигураций СКС
         private ObservableCollection<Configuration> ConfigurationDBLoad()
         {
-            dBContext.Database.EnsureCreated();
-            dBContext.Configurations.Load();
-            return dBContext.Configurations.Local.ToObservableCollection();
+            using ApplicationContext context= new();
+            context.Database.EnsureCreated();
+            context.Configurations.Load();
+            return new ObservableCollection<Configuration>(context.Configurations.Local.ToObservableCollection());
         }
 
         //Расчет конфигурации СКС и сохранение данных в БД
-        private void СalculateConfiguration(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
+        private Configuration СalculateConfiguration(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
             double maxPermanentLink, int numberOfWorkplaces,int numberOfPorts, double? cableHankMeterage)
         {
-            dBContext.Configurations.Add(Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
-            DBSaveChangesAsync();
+            Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
+            using ApplicationContext context = new();
+            context.Configurations.LoadAsync();
+            context.Configurations.Add(configuration);
+            DBSaveChangesAsync(context);
+            return configuration;
         }
 
         //Удаление всех записей конфигураций СКС
-        private void DeleteAllConfigurations()
+        private bool DeleteAllConfigurations()
         {
-            if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({dBContext.Configurations.Count()} конфигураций){Environment.NewLine}" +
+            using ApplicationContext context = new();
+            if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({context.Configurations.Count()} конфигураций){Environment.NewLine}" +
                     $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
             {
-                dBContext.RemoveRange(dBContext.Configurations);
-                DBSaveChangesAsync();
+                context.Configurations.RemoveRange(context.Configurations);
+                DBSaveChangesAsync(context);
+                return true;
             }
+            return false;
         }
 
         //Удаление записи конфигурации
-        private void DeleteConfiguration(Configuration configuration)
+        private bool DeleteConfiguration(Configuration configuration)
         {
             if (MessageBox.Show(
                     $"Вы действительно хотите удалить выбранную конфигурацию СКС?{Environment.NewLine}" +
@@ -225,24 +237,27 @@ namespace SCS_Calc_2._0
                     $"{configuration.TotalСableQuantity:F0} м)",
                     "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                dBContext.Configurations.Remove(configuration);
-                DBSaveChangesAsync();
+                using ApplicationContext context = new();
+                context.Configurations.Remove(configuration);
+                DBSaveChangesAsync(context);
+                return true;
             }
+            return false;
         }
 
-        //Сброс настраиваемых параметров приложения до заводских
-        private bool ResetParameters()
+        //Подтверждение сброса настраиваемых параметров приложения до заводских
+        private bool ResetParametersСonfirm()
         {
             return MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
                 MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes;
         }
 
         //Сохранение данных в БД
-        private async void DBSaveChangesAsync()
+        private async void DBSaveChangesAsync(DbContext context)
         {
             try
             {
-                await dBContext.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
