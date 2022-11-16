@@ -44,7 +44,7 @@ namespace SCSCalc
                 }
                 recommendations = recommendationsBuilder.ToString();
             }
-            return new Configuration()
+            return new Configuration
             {
                 RecordTime = DateTime.Now,
                 MinPermanentLink = minPermanentLink,
