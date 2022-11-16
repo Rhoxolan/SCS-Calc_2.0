@@ -32,14 +32,38 @@
                 {
                     throw new SCSCalcException("Ошибка инициализации параметров значений конфигураций");
                 }
-                return new()
+                return new SCSCalcDiapasons
                 {
-                    MinPermanentLinkDiapason = new(complianceWithTheStandart.MinPermanentLinkDiapason),
-                    MaxPermanentLinkDiapason = new(complianceWithTheStandart.MaxPermanentLinkDiapason),
-                    NumberOfPortsDiapason = new(numberOfPorts.NumberOfPortsDiapason),
-                    NumberOfWorkplacesDiapason = new(standartValues.NumberOfWorkplacesDiapason),
-                    CableHankMeterageDiapason = new(standartValues.CableHankMeterageDiapason),
-                    TechnologicalReserveDiapason = new(standartValues.TechnologicalReserveDiapason)
+                    MinPermanentLinkDiapason = new SCSCalcInputDiapason
+                    {
+                        Min = complianceWithTheStandart.MinPermanentLinkDiapason.Min,
+                        Max = complianceWithTheStandart.MinPermanentLinkDiapason.Max
+                    },
+                    MaxPermanentLinkDiapason = new SCSCalcInputDiapason
+                    {
+                        Min = complianceWithTheStandart.MaxPermanentLinkDiapason.Min,
+                        Max = complianceWithTheStandart.MaxPermanentLinkDiapason.Max
+                    },
+                    NumberOfPortsDiapason = new SCSCalcInputDiapason
+                    {
+                        Min = numberOfPorts.NumberOfPortsDiapason.Min,
+                        Max = numberOfPorts.NumberOfPortsDiapason.Max
+                    },
+                    NumberOfWorkplacesDiapason = new SCSCalcInputDiapason
+                    {
+                        Min = standartValues.NumberOfWorkplacesDiapason.Min,
+                        Max = standartValues.NumberOfWorkplacesDiapason.Max
+                    },
+                    CableHankMeterageDiapason = new SCSCalcInputDiapason
+                    {
+                        Min = standartValues.CableHankMeterageDiapason.Min,
+                        Max = standartValues.CableHankMeterageDiapason.Max
+                    },
+                    TechnologicalReserveDiapason = new SCSCalcInputDiapason
+                    {
+                        Min = standartValues.TechnologicalReserveDiapason.Min,
+                        Max = standartValues.TechnologicalReserveDiapason.Max
+                    }
                 };
             }
         }

@@ -22,7 +22,7 @@
             {
                 if (recommendations != null)
                 {
-                    return new()
+                    return new CableSelectionRecommendations
                     {
                         RecommendationIsolationType = recommendations.RecommendationIsolationType,
                         RecommendationIsolationMaterial = recommendations.RecommendationIsolationMaterial,
