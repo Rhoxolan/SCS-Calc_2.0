@@ -10,7 +10,7 @@ namespace SCSCalc
         /// <summary>
         /// Id текущей записи конфигурации СКС
         /// </summary>
-        public int Id { get; init; }
+        public uint Id { get; init; }
 
         /// <summary>
         /// Дата записи конфигурации СКС
