@@ -25,7 +25,7 @@ namespace SCS_Calc_2._0
         private event Func<Task<bool>> DeleteAllConfigurationsFuncAsync;
 
         //Загрузка БД конфигураций СКС
-        private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
+        private event Func<ObservableCollection<Configuration>> ConfigurationsLoadFunc;
 
         //Расчет конфигурации СКС и сохранение данных в БД
         private event Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Task<Configuration>> СalculateConfigurationFuncAsync;
@@ -40,7 +40,7 @@ namespace SCS_Calc_2._0
             Action<Configuration> SaveToTXTAction,
             Action<SCSCalcParameters> ParametersSaveAction,
             Func<SCSCalcParameters?> ParametersLoadFunc,
-            Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc,
+            Func<ObservableCollection<Configuration>> ConfigurationsLoadFunc,
             Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Task<Configuration>> СalculateConfigurationFuncAsync,
             Func<Task<bool>> DeleteAllConfigurationsFuncAsync,
             Func<Configuration, Task<bool>> DeleteConfigurationFuncAsync,
@@ -50,13 +50,13 @@ namespace SCS_Calc_2._0
             this.SaveToTXTAction = SaveToTXTAction;
             this.ParametersSaveAction = ParametersSaveAction;
             this.ParametersLoadFunc = ParametersLoadFunc;
-            this.ConfigurationDBLoadFunc = ConfigurationDBLoadFunc;
+            this.ConfigurationsLoadFunc = ConfigurationsLoadFunc;
             this.СalculateConfigurationFuncAsync = СalculateConfigurationFuncAsync;
             this.DeleteAllConfigurationsFuncAsync = DeleteAllConfigurationsFuncAsync;
             this.DeleteConfigurationFuncAsync = DeleteConfigurationFuncAsync;
             this.ResetParametersFunc = ResetParametersFunc;
 
-            configurations = this.ConfigurationDBLoadFunc();
+            configurations = this.ConfigurationsLoadFunc();
             Configurations = new(configurations);
             parameters = this.ParametersLoadFunc()!;
             if (parameters == null)

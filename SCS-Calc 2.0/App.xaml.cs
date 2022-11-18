@@ -32,7 +32,7 @@ namespace SCS_Calc_2._0
                 SaveToTXTAction: SaveToTXT,
                 ParametersSaveAction: ParametersSerialize,
                 ParametersLoadFunc: ParametersDeserialize,
-                ConfigurationDBLoadFunc: ConfigurationDBLoad,
+                ConfigurationsLoadFunc: ConfigurationDBLoad,
                 СalculateConfigurationFuncAsync: СalculateConfigurationAsync,
                 DeleteAllConfigurationsFuncAsync: DeleteAllConfigurationsAsync,
                 DeleteConfigurationFuncAsync: DeleteConfigurationAsync,
