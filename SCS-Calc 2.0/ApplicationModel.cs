@@ -2,6 +2,7 @@
 using SCSCalc.Parameters;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace SCS_Calc_2._0
 {
@@ -11,28 +12,53 @@ namespace SCS_Calc_2._0
         private SCSCalcParameters parameters;
         private ConfigurationCalculateParameters calculateParameters;
 
+        //Сохранение конфигурации в текстовый документ
+        private event Action<Configuration> SaveToTXTAction;
+
+        //Сохранение настраеваемых параметров расчёта конфигураций СКС
+        private event Action<SCSCalcParameters> ParametersSaveAction;
+
+        //Загрузка настраеваемых параметров расчёта конфигураций СКС
+        private event Func<SCSCalcParameters?> ParametersLoadFunc;
+
+        //Удаление всех записей конфигураций СКС
+        private event Func<Task<bool>> DeleteAllConfigurationsFuncAsync;
+
+        //Загрузка БД конфигураций СКС
+        private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
+
+        //Расчет конфигурации СКС и сохранение данных в БД
+        private event Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Task<Configuration>> СalculateConfigurationFuncAsync;
+
+        //Удаление записи конфигурации
+        private event Func<Configuration, Task<bool>> DeleteConfigurationFuncAsync;
+
+        //Сброс настраиваемых параметров приложения до заводских
+        private event Func<bool> ResetParametersFunc;
+
         public ApplicationModel(
             Action<Configuration> SaveToTXTAction,
-            Action<SCSCalcParameters> ParametersSerializeAction,
-            Func<SCSCalcParameters?> ParametersDeserializeFunc,
+            Action<SCSCalcParameters> ParametersSaveAction,
+            Func<SCSCalcParameters?> ParametersLoadFunc,
             Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc,
-            Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Configuration> СalculateConfigurationFunc,
-            Func<bool> DeleteAllConfigurationsFunc,
-            Func<Configuration, bool> DeleteConfigurationFunc,
+            Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Task<Configuration>> СalculateConfigurationFuncAsync,
+            Func<Task<bool>> DeleteAllConfigurationsFuncAsync,
+            Func<Configuration, Task<bool>> DeleteConfigurationFuncAsync,
             Func<bool> ResetParametersFunc
             )
         {
             this.SaveToTXTAction = SaveToTXTAction;
-            this.ParametersSerializeAction = ParametersSerializeAction;
-            this.ParametersDeserializeFunc = ParametersDeserializeFunc;
+            this.ParametersSaveAction = ParametersSaveAction;
+            this.ParametersLoadFunc = ParametersLoadFunc;
             this.ConfigurationDBLoadFunc = ConfigurationDBLoadFunc;
-            this.СalculateConfigurationFunc = СalculateConfigurationFunc;
-            this.DeleteAllConfigurationsFunc = DeleteAllConfigurationsFunc;
-            this.DeleteConfigurationFunc = DeleteConfigurationFunc;
+            this.СalculateConfigurationFuncAsync = СalculateConfigurationFuncAsync;
+            this.DeleteAllConfigurationsFuncAsync = DeleteAllConfigurationsFuncAsync;
+            this.DeleteConfigurationFuncAsync = DeleteConfigurationFuncAsync;
             this.ResetParametersFunc = ResetParametersFunc;
+
             configurations = this.ConfigurationDBLoadFunc();
             Configurations = new(configurations);
-            parameters = this.ParametersDeserializeFunc()!;
+            parameters = this.ParametersLoadFunc()!;
             if (parameters == null)
             {
                 parameters = new()
@@ -42,12 +68,14 @@ namespace SCS_Calc_2._0
                     IsTechnologicalReserveAvailability = true,
                     IsRecommendationsAvailability = false
                 };
-                ParametersSerializeAction(parameters);
+                this.ParametersSaveAction(parameters);
             }
             calculateParameters = new();
         }
 
-        //Изменение параметров расчёта конфигураций СКС
+        /// <summary>
+        /// Изменение параметров расчёта конфигураций СКС
+        /// </summary>
         public event Action? ParametersChanged;
 
         //Изменение значения даипазонов вводимых параметров расчёта конфигураций СКС
@@ -58,30 +86,6 @@ namespace SCS_Calc_2._0
 
         //Изменение значения аргументов получения рекомендаций по побдору кабеля
         public event Action? RecommendationsArgumentsChanged;
-
-        //Сохранение конфигурации в текстовый документ
-        private event Action<Configuration> SaveToTXTAction;
-
-        //Сериализация настраеваемых параметров расчёта конфигураций СКС
-        private event Action<SCSCalcParameters> ParametersSerializeAction;
-
-        //Десериализация настраеваемых параметров расчёта конфигураций СКС
-        private event Func<SCSCalcParameters?> ParametersDeserializeFunc;
-
-        //Удаление всех записей конфигураций СКС
-        private event Func<bool> DeleteAllConfigurationsFunc;
-
-        //Загрузка БД конфигураций СКС
-        private event Func<ObservableCollection<Configuration>> ConfigurationDBLoadFunc;
-
-        //Расчет конфигурации СКС и сохранение данных в БД
-        private event Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Configuration> СalculateConfigurationFunc;
-
-        //Удаление записи конфигурации
-        private event Func<Configuration, bool> DeleteConfigurationFunc;
-
-        //Сброс настраиваемых параметров приложения до заводских
-        private event Func<bool> ResetParametersFunc;
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
 
@@ -94,7 +98,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.TechnologicalReserve = value;
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 TechnologicalReserveChanged?.Invoke();
             }
         }
@@ -115,7 +119,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
                 }
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
         }
@@ -136,7 +140,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
                 }
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
         }
@@ -157,7 +161,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
                 }
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
         }
@@ -178,7 +182,7 @@ namespace SCS_Calc_2._0
                 {
                     parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
                 }
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
         }
@@ -197,7 +201,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsStrictСomplianceWithTheStandart = value;
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 ParametersChanged?.Invoke();
                 DiapasonsChanged?.Invoke();
             }
@@ -212,7 +216,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsRecommendationsAvailability = value;
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 ParametersChanged?.Invoke();
                 RecommendationsArgumentsChanged?.Invoke();
             }
@@ -227,7 +231,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsAnArbitraryNumberOfPorts = value;
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 ParametersChanged?.Invoke();
                 DiapasonsChanged?.Invoke();
             }
@@ -242,7 +246,7 @@ namespace SCS_Calc_2._0
             set
             {
                 parameters.IsTechnologicalReserveAvailability = value;
-                ParametersSerializeAction(parameters);
+                ParametersSaveAction(parameters);
                 ParametersChanged?.Invoke();
                 TechnologicalReserveChanged?.Invoke();
             }
@@ -253,20 +257,22 @@ namespace SCS_Calc_2._0
             set => calculateParameters.IsCableHankMeterageAvailability = value;
         }
 
-        public void СalculateConfiguration(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
-            => configurations.Add(СalculateConfigurationFunc(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
+        public async Task СalculateConfigurationAsync(double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
+            => configurations.Add(
+                await СalculateConfigurationFuncAsync(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
 
-        public void DeleteAllConfigurations()
+
+        public async Task DeleteAllConfigurationsAsync()
         {
-            if (DeleteAllConfigurationsFunc())
+            if (await DeleteAllConfigurationsFuncAsync())
             {
                 configurations.Clear();
             }
         }
 
-        public void DeleteConfiguration(Configuration configuration)
+        public async Task DeleteConfigurationAsync(Configuration configuration)
         {
-            if(DeleteConfigurationFunc(configuration))
+            if (await DeleteConfigurationFuncAsync(configuration))
             {
                 configurations.Remove(configuration);
             }

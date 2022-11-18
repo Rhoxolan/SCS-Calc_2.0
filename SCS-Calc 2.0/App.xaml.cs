@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
@@ -29,12 +30,12 @@ namespace SCS_Calc_2._0
         {
             applicationModel = new(
                 SaveToTXTAction: SaveToTXT,
-                ParametersSerializeAction: ParametersSerialize,
-                ParametersDeserializeFunc: ParametersDeserialize,
+                ParametersSaveAction: ParametersSerialize,
+                ParametersLoadFunc: ParametersDeserialize,
                 ConfigurationDBLoadFunc: ConfigurationDBLoad,
-                СalculateConfigurationFunc: СalculateConfiguration,
-                DeleteAllConfigurationsFunc: DeleteAllConfigurations,
-                DeleteConfigurationFunc: DeleteConfiguration,
+                СalculateConfigurationFuncAsync: СalculateConfigurationAsync,
+                DeleteAllConfigurationsFuncAsync: DeleteAllConfigurationsAsync,
+                DeleteConfigurationFuncAsync: DeleteConfigurationAsync,
                 ResetParametersFunc: ResetParametersСonfirm
                 );
             historyPageViewModel = new(applicationModel);
@@ -202,33 +203,32 @@ namespace SCS_Calc_2._0
         }
 
         //Расчет конфигурации СКС и сохранение данных в БД
-        private Configuration СalculateConfiguration(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
+        private async Task<Configuration> СalculateConfigurationAsync(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
             double maxPermanentLink, int numberOfWorkplaces,int numberOfPorts, double? cableHankMeterage)
         {
             Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
             using ApplicationContext context = new();
-            context.Configurations.LoadAsync();
-            context.Configurations.Add(configuration);
-            DBSaveChangesAsync(context);
+            await Task.Run(() => context.Configurations.Add(configuration));
+            await Task.Run(() => DBSaveChanges(context));
             return configuration;
         }
 
         //Удаление всех записей конфигураций СКС
-        private bool DeleteAllConfigurations()
+        private async Task<bool> DeleteAllConfigurationsAsync()
         {
             using ApplicationContext context = new();
             if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({context.Configurations.Count()} конфигураций){Environment.NewLine}" +
                     $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
             {
                 context.Configurations.RemoveRange(context.Configurations);
-                DBSaveChangesAsync(context);
+                await Task.Run(() => DBSaveChanges(context));
                 return true;
             }
             return false;
         }
 
         //Удаление записи конфигурации
-        private bool DeleteConfiguration(Configuration configuration)
+        private async Task<bool> DeleteConfigurationAsync(Configuration configuration)
         {
             if (MessageBox.Show(
                     $"Вы действительно хотите удалить выбранную конфигурацию СКС?{Environment.NewLine}" +
@@ -239,7 +239,7 @@ namespace SCS_Calc_2._0
             {
                 using ApplicationContext context = new();
                 context.Configurations.Remove(configuration);
-                DBSaveChangesAsync(context);
+                await Task.Run(() => DBSaveChanges(context));
                 return true;
             }
             return false;
@@ -253,15 +253,15 @@ namespace SCS_Calc_2._0
         }
 
         //Сохранение данных в БД
-        private async void DBSaveChangesAsync(DbContext context)
+        private void DBSaveChanges(DbContext context)
         {
             try
             {
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }
             catch (Exception ex)
             {
-                ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения данных:{Environment.NewLine}{ex.Message}");
+                Dispatcher.Invoke(() => ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения данных:{Environment.NewLine}{ex.Message}"));
             }
         }
 

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using SCSCalc;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace SCS_Calc_2._0
 {
@@ -44,20 +45,20 @@ namespace SCS_Calc_2._0
         }
 
         [RelayCommand]
-        private void DeleteConfiguration()
+        private async Task DeleteConfigurationAsync()
         {
             if (SelectedConfiguration != null)
             {
-                model.DeleteConfiguration(SelectedConfiguration);
+                await model.DeleteConfigurationAsync(SelectedConfiguration);
             }
         }
 
         [RelayCommand]
-        private void DeleteAllConfigurations()
+        private async Task DeleteAllConfigurationsAsync()
         {
             if (Configurations.Count > 0)
             {
-                model.DeleteAllConfigurations();
+                await model.DeleteAllConfigurationsAsync();
             }
         }
     }

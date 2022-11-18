@@ -4,6 +4,7 @@ using SCSCalc.Parameters;
 using SCSCalc;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace SCS_Calc_2._0
 {
@@ -98,9 +99,9 @@ namespace SCS_Calc_2._0
         }
 
         [RelayCommand]
-        private void СalculateConfiguration()
+        private async Task СalculateConfigurationAsync()
         {
-            model.СalculateConfiguration(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
+            await model.СalculateConfigurationAsync(MinPermanentLink, MaxPermanentLink, Convert.ToInt32(NumberOfWorkplaces), Convert.ToInt32(NumberOfPorts), CableHankMeterage);
             LatestConfiguration = Configurations[^1];
             OnPropertyChanged(nameof(LatestConfiguration));
         }

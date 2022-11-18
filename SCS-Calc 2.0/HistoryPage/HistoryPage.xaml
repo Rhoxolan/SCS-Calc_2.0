@@ -89,7 +89,7 @@
 
             <StackPanel Grid.Row="0" Grid.Column="1">
 
-                <Button Command="{Binding SaveToTXTCommand}"
+                <Button Command="{Binding SaveToTXTAsyncCommand}"
                         Margin="5" HorizontalAlignment="Stretch" Content="Сохранить в TXT"
                         ToolTip="Сохранить конфигурацию в текстовый документ (.txt)"/>
 
