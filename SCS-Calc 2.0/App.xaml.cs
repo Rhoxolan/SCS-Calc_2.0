@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,9 @@ namespace SCS_Calc_2._0
     /// </summary>
     public partial class App : Application
     {
+        private SplashScreen splashScreen = new("SplashScreen.png");
+        private ManualResetEvent waitHandle = new(false);
+        System.Threading.Timer timer; //Таймер для минимального времени отображения экрана-заставки
         private readonly ApplicationModel applicationModel;
         private readonly HistoryPageViewModel historyPageViewModel;
         private readonly CalculatePageViewModel calculatePageViewModel;
@@ -28,6 +32,12 @@ namespace SCS_Calc_2._0
 
         public App()
         {
+            splashScreen.Show(false);
+            TimerCallback timerCallback = (s) => {
+                waitHandle.Set();
+                timer!.Dispose();
+            };
+            timer = new Timer(timerCallback, 0, 2075, 0);
             applicationModel = new(
                 SaveToTXTAction: SaveToTXT,
                 ParametersSaveAction: ParametersSerialize,
@@ -54,6 +64,8 @@ namespace SCS_Calc_2._0
             Resources["historyPageViewModel"] = historyPageViewModel;
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
+            waitHandle.WaitOne(); //Ожидание завершения минимального времени для отображения экрана-заставки.
+            splashScreen.Close(new(0, 0, 0, 0, 500));
         }
 
         private void App_Activated(object? sender, EventArgs e)
