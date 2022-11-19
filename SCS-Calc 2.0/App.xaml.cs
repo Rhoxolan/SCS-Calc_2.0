@@ -37,7 +37,7 @@ namespace SCS_Calc_2._0
                 waitHandle.Set();
                 timer!.Dispose();
             };
-            timer = new Timer(timerCallback, default, 2075, default); //Таймер для минимального времени отображения экрана-заставки
+            timer = new Timer(timerCallback, default, 2075, Timeout.Infinite); //Таймер для минимального времени отображения экрана-заставки
             applicationModel = new(
                 SaveToTXTAction: SaveToTXT,
                 ParametersSaveAction: ParametersSerialize,
