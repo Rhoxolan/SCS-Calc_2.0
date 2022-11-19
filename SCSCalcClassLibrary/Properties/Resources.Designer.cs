@@ -232,7 +232,7 @@ namespace SCSCalc.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 6 (Cat 6), 7 (Cat 7) ,7a (Cat 7a).
+        ///   Ищет локализованную строку, похожую на 6 (Cat 6), 7 (Cat 7), 7a (Cat 7a).
         /// </summary>
         internal static string RecommendationsAvailability_RecommendationCableStandart_TenGE {
             get {

@@ -175,7 +175,7 @@
     <value>3 (Cat 3), 5 (Cat 5), 5e (Cat 5e)</value>
   </data>
   <data name="RecommendationsAvailability.RecommendationCableStandart.TenGE" xml:space="preserve">
-    <value>6 (Cat 6), 7 (Cat 7) ,7a (Cat 7a)</value>
+    <value>6 (Cat 6), 7 (Cat 7), 7a (Cat 7a)</value>
   </data>
   <data name="RecommendationsAvailability.RecommendationCableStandart.TwoPointFiveGBASE_T" xml:space="preserve">
     <value>5e (Cat 5e)</value>

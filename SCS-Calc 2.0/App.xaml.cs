@@ -92,15 +92,15 @@ namespace SCS_Calc_2._0
             saveStringBuilder.AppendLine();
             saveStringBuilder.AppendLine($"Дата и время записи конфигурации СКС: {configuration.RecordTime.ToShortDateString()} " +
                     $"{configuration.RecordTime.ToLongTimeString()}");
-            saveStringBuilder.AppendLine($"Наименьшая длина постоянного линка: {configuration.MinPermanentLink} м.");
-            saveStringBuilder.AppendLine($"Наибольшая длина постоянного линка: {configuration.MaxPermanentLink} м.");
-            saveStringBuilder.AppendLine($"Средняя длина постоянного линка: {configuration.AveragePermanentLink} м.");
+            saveStringBuilder.AppendLine($"Наименьшая длина постоянного линка: {configuration.MinPermanentLink:F2} м.");
+            saveStringBuilder.AppendLine($"Наибольшая длина постоянного линка: {configuration.MaxPermanentLink:F2} м.");
+            saveStringBuilder.AppendLine($"Средняя длина постоянного линка: {configuration.AveragePermanentLink:F2} м.");
             saveStringBuilder.AppendLine($"Количество рабочих мест: {configuration.NumberOfWorkplaces}");
             saveStringBuilder.AppendLine($"Количество портов на 1 рабочее место: {configuration.NumberOfPorts}");
             if (configuration.CableHankMeterage != null)
             {
-                saveStringBuilder.AppendLine($"Количество портов на 1 рабочее место: {configuration.NumberOfPorts}");
-                saveStringBuilder.AppendLine($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage}");
+                saveStringBuilder.AppendLine($"Необходимое количество кабеля: {configuration.СableQuantity:F2} м.");
+                saveStringBuilder.AppendLine($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage:F2} м.");
                 saveStringBuilder.AppendLine($"Необходимое количество бухт кабеля: {configuration.HankQuantity}");
             }
             saveStringBuilder.AppendLine($"Итоговое необходимое количество кабеля: {configuration.TotalСableQuantity} м.");

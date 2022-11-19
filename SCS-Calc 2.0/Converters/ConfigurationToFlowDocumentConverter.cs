@@ -32,9 +32,9 @@ namespace SCS_Calc_2._0.Converters
                 paragraph.Inlines.Add(new LineBreak());
                 if (configuration.CableHankMeterage != null)
                 {
-                    paragraph.Inlines.Add(new Run($"Необходимое количество кабеля: {configuration.СableQuantity:F2}"));
+                    paragraph.Inlines.Add(new Run($"Необходимое количество кабеля: {configuration.СableQuantity:F2} м."));
                     paragraph.Inlines.Add(new LineBreak());
-                    paragraph.Inlines.Add(new Run($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage:F2}"));
+                    paragraph.Inlines.Add(new Run($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage:F2} м."));
                     paragraph.Inlines.Add(new LineBreak());
                     paragraph.Inlines.Add(new Run($"Необходимое количество бухт кабеля: {configuration.HankQuantity}"));
                     paragraph.Inlines.Add(new LineBreak());
