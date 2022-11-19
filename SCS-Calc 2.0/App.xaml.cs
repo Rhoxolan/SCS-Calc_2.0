@@ -22,7 +22,7 @@ namespace SCS_Calc_2._0
     {
         private SplashScreen splashScreen = new("SplashScreen.png");
         private ManualResetEvent waitHandle = new(false);
-        System.Threading.Timer timer; //Таймер для минимального времени отображения экрана-заставки
+        private System.Threading.Timer timer;
         private readonly ApplicationModel applicationModel;
         private readonly HistoryPageViewModel historyPageViewModel;
         private readonly CalculatePageViewModel calculatePageViewModel;
@@ -37,7 +37,7 @@ namespace SCS_Calc_2._0
                 waitHandle.Set();
                 timer!.Dispose();
             };
-            timer = new Timer(timerCallback, 0, 2075, 0);
+            timer = new Timer(timerCallback, default, 2075, 0); //Таймер для минимального времени отображения экрана-заставки
             applicationModel = new(
                 SaveToTXTAction: SaveToTXT,
                 ParametersSaveAction: ParametersSerialize,
@@ -220,8 +220,8 @@ namespace SCS_Calc_2._0
         {
             Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
             using ApplicationContext context = new();
-            await Task.Run(() => context.Configurations.Add(configuration));
-            await Task.Run(() => DBSaveChanges(context));
+            await Task.Run(() => context.Configurations.Add(configuration)); //Синхронные методы используются из-за ограничений SQLite
+            await Task.Run(() => DBSaveChanges(context));                    //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
             return configuration;
         }
 
@@ -233,8 +233,8 @@ namespace SCS_Calc_2._0
                     $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
             {
                 context.Configurations.RemoveRange(context.Configurations);
-                await Task.Run(() => DBSaveChanges(context));
-                return true;
+                await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
+                return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
             }
             return false;
         }
@@ -251,8 +251,8 @@ namespace SCS_Calc_2._0
             {
                 using ApplicationContext context = new();
                 context.Configurations.Remove(configuration);
-                await Task.Run(() => DBSaveChanges(context));
-                return true;
+                await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
+                return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
             }
             return false;
         }
@@ -269,8 +269,8 @@ namespace SCS_Calc_2._0
         {
             try
             {
-                context.SaveChanges();
-            }
+                context.SaveChanges(); //Синхронные методы используются из-за ограничений SQLite
+            }                          //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
             catch (Exception ex)
             {
                 Dispatcher.Invoke(() => ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения данных:{Environment.NewLine}{ex.Message}"));
