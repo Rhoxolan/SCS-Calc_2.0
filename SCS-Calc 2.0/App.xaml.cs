@@ -63,7 +63,7 @@ namespace SCS_Calc_2._0
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
             waitHandle.WaitOne(); //Ожидание завершения минимального времени для отображения экрана-заставки.
-            TimeSpan delay = new(0, 0, 0, 0, 250); //Время закрытия экрана-заставки.
+            TimeSpan delay = new(0, 0, 0, 0, 500); //Время закрытия экрана-заставки.
             splashScreen.Close(delay);
             MainWindow = new MainWindow();
             MainWindow.ContentRendered += (s, e) => LoadExceptionOccurrence();
