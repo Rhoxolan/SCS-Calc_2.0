@@ -85,6 +85,7 @@ namespace SCS_Calc_2._0
                 }
                 MessageBox.Show(stringBuilder.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            waitHandle.Dispose();
         }
 
         //Сохранение конфигурации в текстовый документ
