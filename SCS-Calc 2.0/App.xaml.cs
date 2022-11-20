@@ -51,16 +51,11 @@ namespace SCS_Calc_2._0
             historyPageViewModel = new(applicationModel);
             calculatePageViewModel = new(applicationModel);
             advancedParametersPageViewModel = new(applicationModel);
-            this.Startup += Application_Startup;
-            this.LoadExceptionOccurrenceAction += LoadExceptionOccurrence;
             this.ExceptionOccurrenceAction += ExceptionOccurrence;
         }
 
         //Возникновение ошибок в логике приложения
         private event Action<string>? ExceptionOccurrenceAction;
-
-        //Возникновение ошибок при загрузке приложения
-        private event Action? LoadExceptionOccurrenceAction;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -68,12 +63,18 @@ namespace SCS_Calc_2._0
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
             waitHandle.WaitOne(); //Ожидание завершения минимального времени для отображения экрана-заставки.
-            splashScreen.Close(new(0, 0, 0, 0, 500));
-            Task.Delay(new TimeSpan(0, 0, 0, 0, 700)).ContinueWith((t) => Dispatcher.Invoke(() => LoadExceptionOccurrenceAction?.Invoke()));
+            TimeSpan delay = new(0, 0, 0, 0, 250); //Время закрытия экрана-заставки.
+            splashScreen.Close(delay);
+            MainWindow = new MainWindow();
+            MainWindow.ContentRendered += (s, e) => LoadExceptionOccurrence();
+            waitHandle.Reset();
+            Task.Delay(delay).ContinueWith((obj) => waitHandle.Set());  //Ожидание закрытия экрана-заставки
+            MainWindow.Show();
         }
 
         private void LoadExceptionOccurrence()
         {
+            waitHandle.WaitOne(); //Ожидание закрытия экрана-заставки
             if (initializeExceptions.Count > 0)
             {
                 StringBuilder stringBuilder = new();
