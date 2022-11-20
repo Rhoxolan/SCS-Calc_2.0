@@ -208,7 +208,7 @@ namespace SCS_Calc_2._0
         //Загрузка БД конфигураций СКС
         private ObservableCollection<Configuration> ConfigurationDBLoad()
         {
-            using ApplicationContext context= new();
+            using ApplicationContext context = new();
             context.Database.EnsureCreated();
             context.Configurations.Load();
             return new ObservableCollection<Configuration>(context.Configurations.Local.ToObservableCollection());
@@ -216,7 +216,7 @@ namespace SCS_Calc_2._0
 
         //Расчет конфигурации СКС и сохранение данных в БД
         private async Task<Configuration> СalculateConfigurationAsync(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
-            double maxPermanentLink, int numberOfWorkplaces,int numberOfPorts, double? cableHankMeterage)
+            double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
             Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
             using ApplicationContext context = new();
