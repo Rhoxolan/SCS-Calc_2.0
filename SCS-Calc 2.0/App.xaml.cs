@@ -62,19 +62,18 @@ namespace SCS_Calc_2._0
             Resources["historyPageViewModel"] = historyPageViewModel;
             Resources["calculatePageViewModel"] = calculatePageViewModel;
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
-            waitHandle.WaitOne(); //Ожидание завершения минимального времени для отображения экрана-заставки.
-            TimeSpan delay = new(0, 0, 0, 0, 500); //Время закрытия экрана-заставки.
-            splashScreen.Close(delay);
             MainWindow = new MainWindow();
-            MainWindow.ContentRendered += (s, e) => LoadExceptionOccurrence();
-            waitHandle.Reset();
-            Task.Delay(delay).ContinueWith((obj) => waitHandle.Set());  //Ожидание закрытия экрана-заставки
+            MainWindow.ContentRendered += (s, e) => MainWindow_ContentRendered();
+            waitHandle.WaitOne(); //Ожидание завершения минимального времени для отображения экрана-заставки.
+            waitHandle.Dispose();
             MainWindow.Show();
         }
 
-        private void LoadExceptionOccurrence()
+        private void MainWindow_ContentRendered()
         {
-            waitHandle.WaitOne(); //Ожидание закрытия экрана-заставки
+            //Внимание! Не рекоменуется выставлять время закрытия splashScreen, например так: splashScreen.Close(new(0, 0, 0, 0, 500));
+            //Не-мнгновенное закрытие splashScreen приведет к закрытию всех диалоговых окон, и предполагаемое сообщение об ошибке (initializeExceptions) не выведется.
+            splashScreen.Close(Timeout.InfiniteTimeSpan);
             if (initializeExceptions.Count > 0)
             {
                 StringBuilder stringBuilder = new();
@@ -85,7 +84,6 @@ namespace SCS_Calc_2._0
                 }
                 MessageBox.Show(stringBuilder.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            waitHandle.Dispose();
         }
 
         //Сохранение конфигурации в текстовый документ
