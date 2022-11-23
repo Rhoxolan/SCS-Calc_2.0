@@ -1,4 +1,4 @@
-﻿<Page x:Class="SCS_Calc_2._0.AdvancedParametersPage"
+﻿<Page x:Class="SCSCalc_2_0.AdvancedParametersPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,8 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:scscalcparams="clr-namespace:SCSCalc.Parameters;assembly=SCSCalcClassLibrary"
-      xmlns:converters="clr-namespace:SCS_Calc_2._0.Converters"
-      xmlns:local="clr-namespace:SCS_Calc_2._0"
+      xmlns:converters="clr-namespace:SCSCalc_2_0.Converters"
+      xmlns:local="clr-namespace:SCSCalc_2_0"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="600" DataContext="{DynamicResource advancedParametersPageViewModel}">
 

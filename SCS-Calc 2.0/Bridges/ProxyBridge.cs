@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SCS_Calc_2._0.Bridges
+namespace SCSCalc_2_0.Bridges
 {
     public class ProxyBridge : Freezable
     {

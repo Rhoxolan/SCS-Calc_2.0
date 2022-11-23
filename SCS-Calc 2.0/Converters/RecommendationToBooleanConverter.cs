@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace SCS_Calc_2._0.Converters
+namespace SCSCalc_2_0.Converters
 {
     public class RecommendationToBooleanConverter : IValueConverter
     {

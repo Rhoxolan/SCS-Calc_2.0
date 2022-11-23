@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using SCSCalc.Parameters;
 
-namespace SCS_Calc_2._0
+namespace SCSCalc_2_0
 {
     [INotifyPropertyChanged]
     public partial class AdvancedParametersPageViewModel
@@ -79,13 +79,10 @@ namespace SCS_Calc_2._0
 
         [RelayCommand]
         private void SetDefaultsParameters() => model.SetDefaultsParameters();
-        
+
 
         //Обработчик для изменения значения коэффициента технологического запаса
-        private void TechnologicalReserveChanged()
-        {
-            OnPropertyChanged(nameof(TechnologicalReserve));
-        }
+        private void TechnologicalReserveChanged() => OnPropertyChanged(nameof(TechnologicalReserve));
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
         private void DiapasonsChanged()

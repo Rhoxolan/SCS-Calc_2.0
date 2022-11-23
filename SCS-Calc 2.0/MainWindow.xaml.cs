@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SCS_Calc_2._0
+namespace SCSCalc_2_0
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -4,7 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
-namespace SCS_Calc_2._0
+namespace SCSCalc_2_0
 {
     public class ApplicationModel
     {

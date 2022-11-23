@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Documents;
 
-namespace SCS_Calc_2._0.Converters
+namespace SCSCalc_2_0.Converters
 {
     public class ConfigurationToFlowDocumentConverter : IValueConverter
     {

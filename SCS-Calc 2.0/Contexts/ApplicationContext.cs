@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SCSCalc;
 
-namespace SCS_Calc_2._0.DB
+namespace SCSCalc_2_0.DB
 {
     public class ApplicationContext : DbContext
     {

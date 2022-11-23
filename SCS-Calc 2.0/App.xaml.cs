@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
-using SCS_Calc_2._0.DB;
+using SCSCalc_2_0.DB;
 using SCSCalc;
 using SCSCalc.Parameters;
 
-namespace SCS_Calc_2._0
+namespace SCSCalc_2_0
 {
     /// <summary>
     /// Interaction logic for App.xaml

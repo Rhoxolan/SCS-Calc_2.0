@@ -1,15 +1,12 @@
 ﻿using System.Windows.Controls;
 
-namespace SCS_Calc_2._0
+namespace SCSCalc_2_0
 {
     /// <summary>
     /// Логика взаимодействия для InformationPage.xaml
     /// </summary>
     public partial class InformationPage : Page
     {
-        public InformationPage()
-        {
-            InitializeComponent();
-        }
+        public InformationPage() => InitializeComponent();
     }
 }
