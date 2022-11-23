@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
+using SCS_Calc_2._0.DB;
 using SCSCalc;
 using SCSCalc.Parameters;
 
@@ -23,6 +24,7 @@ namespace SCS_Calc_2._0
         private SplashScreen splashScreen = new("SplashScreen.png");
         private ManualResetEvent waitHandle = new(false);
         private System.Threading.Timer timer;
+        private SemaphoreSlim locker = new(1, 1);
         private readonly ApplicationModel applicationModel;
         private readonly HistoryPageViewModel historyPageViewModel;
         private readonly CalculatePageViewModel calculatePageViewModel;
@@ -33,11 +35,12 @@ namespace SCS_Calc_2._0
         public App()
         {
             splashScreen.Show(false);
-            TimerCallback timerCallback = (s) => {
+            TimerCallback timerCallback = (s) =>
+            {
                 waitHandle.Set();
                 timer!.Dispose();
             };
-            timer = new Timer(timerCallback, default, 2075, Timeout.Infinite); //Таймер для минимального времени отображения экрана-заставки
+            timer = new(timerCallback, default, 2075, Timeout.Infinite); //Таймер для минимального времени отображения экрана-заставки
             applicationModel = new(
                 SaveToTXTAction: SaveToTXT,
                 ParametersSaveAction: ParametersSerialize,
@@ -73,6 +76,7 @@ namespace SCS_Calc_2._0
         {
             //Внимание! Не рекоменуется выставлять время закрытия splashScreen, например так: splashScreen.Close(new(0, 0, 0, 0, 500));
             //Не-мнгновенное закрытие splashScreen приведет к закрытию всех диалоговых окон, и предполагаемое сообщение об ошибке (initializeExceptions) не выведется.
+
             splashScreen.Close(Timeout.InfiniteTimeSpan);
             if (initializeExceptions.Count > 0)
             {
@@ -221,43 +225,67 @@ namespace SCS_Calc_2._0
         private async Task<Configuration> СalculateConfigurationAsync(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
             double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
-            Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
-            using ApplicationContext context = new();
-            await Task.Run(() => context.Configurations.Add(configuration)); //Синхронные методы используются из-за ограничений SQLite
-            await Task.Run(() => DBSaveChanges(context));                    //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
-            return configuration;
+            await locker.WaitAsync();
+            try
+            {
+                Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
+                using ApplicationContext context = new();
+                await Task.Run(() => context.Configurations.Add(configuration)); //Синхронные методы используются из-за ограничений SQLite
+                await Task.Run(() => DBSaveChanges(context));                    //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                return configuration;
+            }
+            finally
+            {
+                locker.Release();
+            }
         }
 
         //Удаление всех записей конфигураций СКС
         private async Task<bool> DeleteAllConfigurationsAsync()
         {
-            using ApplicationContext context = new();
-            if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({context.Configurations.Count()} конфигураций){Environment.NewLine}" +
-                    $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+            await locker.WaitAsync();
+            try
             {
-                context.Configurations.RemoveRange(context.Configurations);
-                await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
-                return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                using ApplicationContext context = new();
+                if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({context.Configurations.Count()} конфигураций){Environment.NewLine}" +
+                        $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+                {
+                    context.Configurations.RemoveRange(context.Configurations);
+                    await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
+                    return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                }
+                return false;
             }
-            return false;
+            finally
+            {
+                locker.Release();
+            }
         }
 
         //Удаление записи конфигурации
         private async Task<bool> DeleteConfigurationAsync(Configuration configuration)
         {
-            if (MessageBox.Show(
+            await locker.WaitAsync();
+            try
+            {
+                if (MessageBox.Show(
                     $"Вы действительно хотите удалить выбранную конфигурацию СКС?{Environment.NewLine}" +
                     $"({configuration.RecordTime.ToShortDateString()} {configuration.RecordTime.ToLongTimeString()}, " +
                     $"мин. - {configuration.MinPermanentLink:F0} м, макс. - {configuration.MaxPermanentLink:F0} м, всего - " +
                     $"{configuration.TotalСableQuantity:F0} м)",
                     "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                using ApplicationContext context = new();
-                context.Configurations.Remove(configuration);
-                await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
-                return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                {
+                    using ApplicationContext context = new();
+                    context.Configurations.Remove(configuration);
+                    await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
+                    return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                }
+                return false;
             }
-            return false;
+            finally
+            {
+                locker.Release();
+            }
         }
 
         //Подтверждение сброса настраиваемых параметров приложения до заводских
@@ -289,13 +317,5 @@ namespace SCS_Calc_2._0
                 this.ExceptionOccurrenceAction -= ExceptionOccurrence;
             }
         }
-    }
-
-    file class ApplicationContext : DbContext
-    {
-        public DbSet<Configuration> Configurations { get; set; } = null!;
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlite("Data Source=configurations.db");
     }
 }
