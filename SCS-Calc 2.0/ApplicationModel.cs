@@ -73,9 +73,7 @@ namespace SCSCalc_2_0
             calculateParameters = new();
         }
 
-        /// <summary>
-        /// Изменение параметров расчёта конфигураций СКС
-        /// </summary>
+        // Изменение параметров расчёта конфигураций СКС
         public event Action? ParametersChanged;
 
         //Изменение значения даипазонов вводимых параметров расчёта конфигураций СКС

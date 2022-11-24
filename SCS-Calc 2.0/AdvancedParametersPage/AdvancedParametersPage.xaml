@@ -94,11 +94,13 @@
                           IsEnabled="{Binding ElementName=checkBoxRecommendations, Path=IsChecked}"
                           IsExpanded="True" 
                           ToolTip="Отметьте, какие интерфейсы подключений предполагаются к использованию, например Fast Ethernet или Gigabit Ethernet. Вы получите рекомендацию о необходимой категории кабеля.">
+                    
                     <Expander.Header>
                         <TextBlock TextWrapping="Wrap" Text="Используемые интерфейсы подключений" FontSize="12.5"/>
                     </Expander.Header>
+
                     <StackPanel>
-                        
+
                         <CheckBox Margin="5" Content="10BASE-T"
                                   Style="{StaticResource styleViewCheckBox}"
                                   IsChecked="{Binding ConnectionInterfaceStandard, Converter={x:Static converters:RecommendationToBooleanConverter.Instance}, ConverterParameter={x:Static scscalcparams:ConnectionInterfaceStandard.TenBASE_T}}"
@@ -135,6 +137,7 @@
                                   ToolTip="Отметьте, если предполагается использование интерфейса подключений 10GE (10GBASE-T). Вы получите рекомендацию о необходимой категории кабеля."/>
                     
                     </StackPanel>
+                
                 </Expander>
                 
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5"
