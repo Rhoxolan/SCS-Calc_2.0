@@ -139,7 +139,7 @@
                     </StackPanel>
                 
                 </Expander>
-                
+
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5"
                           Style="{StaticResource styleViewCheckBox}"
                           IsChecked="{Binding ShieldedType, Converter={x:Static converters:RecommendationToBooleanConverter.Instance}, ConverterParameter={x:Static scscalcparams:ShieldedType.FTP}}"
