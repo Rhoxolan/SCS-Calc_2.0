@@ -1,6 +1,7 @@
 ﻿using SCSCalc;
 using SCSCalc.Parameters;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -61,12 +62,19 @@ namespace SCSCalc_2_0
             parameters = this.ParametersLoadFunc()!;
             if (parameters == null)
             {
-                parameters = new()
+                parameters = new SCSCalcParameters
                 {
                     IsStrictСomplianceWithTheStandart = true,
                     IsAnArbitraryNumberOfPorts = true,
                     IsTechnologicalReserveAvailability = true,
-                    IsRecommendationsAvailability = false
+                    IsRecommendationsAvailability = false,
+                };
+                parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
+                parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
+                parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
+                parameters.RecommendationsArguments.ConnectionInterfaces = new List<ConnectionInterfaceStandard>
+                {
+                    ConnectionInterfaceStandard.None
                 };
                 this.ParametersSaveAction(parameters);
             }
@@ -109,14 +117,7 @@ namespace SCSCalc_2_0
             }
             set
             {
-                if (parameters.RecommendationsArguments.IsolationType == IsolationType.Indoor)
-                {
-                    parameters.RecommendationsArguments.IsolationType = IsolationType.Outdoor;
-                }
-                else
-                {
-                    parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
-                }
+                parameters.RecommendationsArguments.IsolationType = value;
                 ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
@@ -130,14 +131,7 @@ namespace SCSCalc_2_0
             }
             set
             {
-                if (parameters.RecommendationsArguments.IsolationMaterial == IsolationMaterial.PVC)
-                {
-                    parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.LSZH;
-                }
-                else
-                {
-                    parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.PVC;
-                }
+                parameters.RecommendationsArguments.IsolationMaterial = value;
                 ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
@@ -151,20 +145,13 @@ namespace SCSCalc_2_0
             }
             set
             {
-                if (parameters.RecommendationsArguments.ShieldedType == ShieldedType.UTP)
-                {
-                    parameters.RecommendationsArguments.ShieldedType = ShieldedType.FTP;
-                }
-                else
-                {
-                    parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
-                }
+                parameters.RecommendationsArguments.ShieldedType = value;
                 ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
         }
 
-        public object ConnectionInterfaceStandard
+        public List<ConnectionInterfaceStandard> ConnectionInterfaces
         {
             get
             {
@@ -172,14 +159,7 @@ namespace SCSCalc_2_0
             }
             set
             {
-                if (parameters.RecommendationsArguments.ConnectionInterfaces.Contains((ConnectionInterfaceStandard)value))
-                {
-                    parameters.RecommendationsArguments.ConnectionInterfaces.Remove((ConnectionInterfaceStandard)value);
-                }
-                else
-                {
-                    parameters.RecommendationsArguments.ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
-                }
+                parameters.RecommendationsArguments.ConnectionInterfaces = value;
                 ParametersSaveAction(parameters);
                 RecommendationsArgumentsChanged?.Invoke();
             }
@@ -213,7 +193,28 @@ namespace SCSCalc_2_0
             }
             set
             {
+                if (Equals(value, false))
+                {
+                    IsolationType = IsolationType.Indoor;
+                    IsolationMaterial = IsolationMaterial.PVC;
+                    ShieldedType = ShieldedType.UTP;
+                    ConnectionInterfaces = new List<ConnectionInterfaceStandard>
+                    {
+                        ConnectionInterfaceStandard.None
+                    };
+                }
+                RecommendationsArguments currentRecommendationsArguments = new RecommendationsArguments
+                {
+                    IsolationType = parameters.RecommendationsArguments.IsolationType,
+                    IsolationMaterial = parameters.RecommendationsArguments.IsolationMaterial,
+                    ConnectionInterfaces = parameters.RecommendationsArguments.ConnectionInterfaces,
+                    ShieldedType = parameters.RecommendationsArguments.ShieldedType
+                };
                 parameters.IsRecommendationsAvailability = value;
+                parameters.RecommendationsArguments.IsolationType = currentRecommendationsArguments.IsolationType;
+                parameters.RecommendationsArguments.IsolationMaterial = currentRecommendationsArguments.IsolationMaterial;
+                parameters.RecommendationsArguments.ConnectionInterfaces = currentRecommendationsArguments.ConnectionInterfaces;
+                parameters.RecommendationsArguments.ShieldedType = currentRecommendationsArguments.ShieldedType;
                 ParametersSaveAction(parameters);
                 ParametersChanged?.Invoke();
                 RecommendationsArgumentsChanged?.Invoke();
@@ -259,7 +260,6 @@ namespace SCSCalc_2_0
             => configurations.Add(
                 await СalculateConfigurationFuncAsync(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage));
 
-
         public async Task DeleteAllConfigurationsAsync()
         {
             if (await DeleteAllConfigurationsFuncAsync())
@@ -286,6 +286,13 @@ namespace SCSCalc_2_0
                 IsAnArbitraryNumberOfPorts = true;
                 IsTechnologicalReserveAvailability = true;
                 IsRecommendationsAvailability = false;
+                IsolationType = IsolationType.Indoor;
+                IsolationMaterial = IsolationMaterial.PVC;
+                ShieldedType = ShieldedType.UTP;
+                ConnectionInterfaces = new List<ConnectionInterfaceStandard>
+                {
+                    ConnectionInterfaceStandard.None
+                };
             }
         }
     }

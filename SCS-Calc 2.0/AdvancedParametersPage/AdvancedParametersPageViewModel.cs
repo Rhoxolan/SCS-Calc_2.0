@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SCSCalc.Parameters;
+using System.Collections.Generic;
 
 namespace SCSCalc_2_0
 {
@@ -26,26 +27,81 @@ namespace SCSCalc_2_0
 
         public IsolationType IsolationType
         {
-            get => model.IsolationType;
-            set => model.IsolationType = value;
+            get
+            {
+                return model.IsolationType;
+            }
+            set
+            {
+                if (model.IsolationType == IsolationType.Indoor)
+                {
+                    model.IsolationType = IsolationType.Outdoor;
+                }
+                else
+                {
+                    model.IsolationType = IsolationType.Indoor;
+                }
+            }
         }
 
         public IsolationMaterial IsolationMaterial
         {
-            get => model.IsolationMaterial;
-            set => model.IsolationMaterial = value;
+            get
+            {
+                return model.IsolationMaterial;
+            }
+            set
+            {
+                if (model.IsolationMaterial == IsolationMaterial.PVC)
+                {
+                    model.IsolationMaterial = IsolationMaterial.LSZH;
+                }
+                else
+                {
+                    model.IsolationMaterial = IsolationMaterial.PVC;
+                }
+            }
         }
 
         public ShieldedType ShieldedType
         {
-            get => model.ShieldedType;
-            set => model.ShieldedType = value;
+            get
+            {
+                return model.ShieldedType;
+            }
+            set
+            {
+                if (model.ShieldedType == ShieldedType.UTP)
+                {
+                    model.ShieldedType = ShieldedType.FTP;
+                }
+                else
+                {
+                    model.ShieldedType = ShieldedType.UTP;
+                }
+            }
         }
 
         public object ConnectionInterfaceStandard
         {
-            get => model.ConnectionInterfaceStandard;
-            set => model.ConnectionInterfaceStandard = value;
+            get
+            {
+                return model.ConnectionInterfaces;
+            }
+            set
+            {
+                List<ConnectionInterfaceStandard> ConnectionInterfaces = new(model.ConnectionInterfaces);
+                if (ConnectionInterfaces.Contains((ConnectionInterfaceStandard)value))
+                {
+                    ConnectionInterfaces.Remove((ConnectionInterfaceStandard)value);
+                    model.ConnectionInterfaces = ConnectionInterfaces;
+                }
+                else
+                {
+                    ConnectionInterfaces.Add((ConnectionInterfaceStandard)value);
+                    model.ConnectionInterfaces = ConnectionInterfaces;
+                }
+            }
         }
 
         public SCSCalcDiapasons Diapasons

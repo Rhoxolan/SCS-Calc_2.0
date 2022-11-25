@@ -194,15 +194,15 @@ namespace SCSCalc_2_0
                 if (Equals(parameters.IsRecommendationsAvailability, true))
                 {
                     parametersPresent.IsRecommendationsAvailability = true;
-                    parametersPresent.RecommendationsArguments.IsolationType = parameters.RecommendationsArguments.IsolationType;
-                    parametersPresent.RecommendationsArguments.IsolationMaterial = parameters.RecommendationsArguments.IsolationMaterial;
-                    parametersPresent.RecommendationsArguments.ConnectionInterfaces = parameters.RecommendationsArguments.ConnectionInterfaces;
-                    parametersPresent.RecommendationsArguments.ShieldedType = parameters.RecommendationsArguments.ShieldedType;
                 }
                 else
                 {
                     parametersPresent.IsRecommendationsAvailability = false;
                 }
+                parametersPresent.RecommendationsArguments.IsolationType = parameters.RecommendationsArguments.IsolationType;
+                parametersPresent.RecommendationsArguments.IsolationMaterial = parameters.RecommendationsArguments.IsolationMaterial;
+                parametersPresent.RecommendationsArguments.ConnectionInterfaces = parameters.RecommendationsArguments.ConnectionInterfaces;
+                parametersPresent.RecommendationsArguments.ShieldedType = parameters.RecommendationsArguments.ShieldedType;
                 return parametersPresent;
             }
             catch (Exception ex)
