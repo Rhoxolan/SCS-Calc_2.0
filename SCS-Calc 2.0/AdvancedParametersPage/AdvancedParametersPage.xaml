@@ -41,11 +41,11 @@
 
                     <x:Code>
                         <![CDATA[
-                        private void checkBoxAnArbitraryNumberOfPortsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+                        private void checkBoxAnArbitraryNumberOfPortsEnabledChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
                         {
                             if (Equals(e.NewValue, false))
                             {
-                                ((CheckBox)sender).IsChecked = true;
+                                (sender as System.Windows.Controls.CheckBox).IsChecked = true;
                             }
                         }]]>
                     </x:Code>
