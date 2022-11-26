@@ -109,14 +109,19 @@ namespace SCSCalc_2_0
         [RelayCommand]
         private void SetCableHankMeterage(string value)
         {
-            CableHankMeterage = Convert.ToDouble(value);
+            double doubleValue = Convert.ToDouble(value);
+            if (doubleValue < CeiledAveragePermanentLink)
+            {
+                doubleValue = CeiledAveragePermanentLink;
+            }
+            CableHankMeterage = doubleValue;
             OnPropertyChanged(nameof(CableHankMeterage));
         }
 
         [RelayCommand]
         private void SaveToTXT()
         {
-            if(LatestConfiguration != null)
+            if (LatestConfiguration != null)
             {
                 model.SaveToTXT(LatestConfiguration);
             }
