@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
-using SCSCalc_2_0.DB;
 using SCSCalc;
 using SCSCalc.Parameters;
 
@@ -330,5 +329,13 @@ namespace SCSCalc_2_0
                 this.ExceptionOccurrenceAction -= ExceptionOccurrence;
             }
         }
+    }
+
+    file class ApplicationContext : DbContext
+    {
+        public DbSet<Configuration> Configurations { get; set; } = null!;
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseSqlite("Data Source=configurations.db");
     }
 }
