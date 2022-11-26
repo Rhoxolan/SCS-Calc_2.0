@@ -33,10 +33,7 @@ namespace SCSCalc_2_0
         //Необходимо для определения нижнего диапазона ввода значения метража кабеля в бухте
         public int CeiledAveragePermanentLink
         {
-            get
-            {
-                return Convert.ToInt32(Math.Ceiling((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve));
-            }
+            get => Convert.ToInt32(Math.Ceiling((minPermanentLink + maxPermanentLink) / 2 * TechnologicalReserve));
         }
 
         public double MinPermanentLink
@@ -109,12 +106,7 @@ namespace SCSCalc_2_0
         [RelayCommand]
         private void SetCableHankMeterage(string value)
         {
-            double doubleValue = Convert.ToDouble(value);
-            if (doubleValue < CeiledAveragePermanentLink)
-            {
-                doubleValue = CeiledAveragePermanentLink;
-            }
-            CableHankMeterage = doubleValue;
+            CableHankMeterage = Convert.ToDouble(value);
             OnPropertyChanged(nameof(CableHankMeterage));
         }
 

@@ -136,16 +136,11 @@ namespace SCSCalc_2_0
         [RelayCommand]
         private void SetDefaultsParameters() => model.SetDefaultsParameters();
 
-
         //Обработчик для изменения значения коэффициента технологического запаса
         private void TechnologicalReserveChanged() => OnPropertyChanged(nameof(TechnologicalReserve));
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
-        private void DiapasonsChanged()
-        {
-            OnPropertyChanged(nameof(Diapasons));
-            OnPropertyChanged(nameof(Diapasons));
-        }
+        private void DiapasonsChanged() => OnPropertyChanged(nameof(Diapasons));
 
         //Обработчик для изменения параметров расчёта конфигураций СКС
         private void ParametersChanged()
