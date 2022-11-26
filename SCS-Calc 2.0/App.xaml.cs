@@ -35,8 +35,7 @@ namespace SCSCalc_2_0
         public App()
         {
             splashScreen.Show(false);
-            TimerCallback timerCallback = (s) =>
-            {
+            TimerCallback timerCallback = (s) => {
                 waitHandle.Set();
                 timer!.Dispose();
             };
@@ -136,26 +135,40 @@ namespace SCSCalc_2_0
         //Сериализация настраеваемых параметров расчёта конфигураций СКС
         private void ParametersSerialize(SCSCalcParameters actualParameters)
         {
-            (bool? IsStrictСomplianceWithTheStandart,
-                bool? IsAnArbitraryNumberOfPorts,
-                bool? IsTechnologicalReserveAvailability,
-                bool? IsRecommendationsAvailability,
-                double TechnologicalReserve,
-                RecommendationsArguments RecommendationsArguments) parameters = new()
-                {
-                    IsStrictСomplianceWithTheStandart = actualParameters.IsStrictСomplianceWithTheStandart,
-                    IsAnArbitraryNumberOfPorts = actualParameters.IsAnArbitraryNumberOfPorts,
-                    IsTechnologicalReserveAvailability = actualParameters.IsTechnologicalReserveAvailability,
-                    IsRecommendationsAvailability = actualParameters.IsRecommendationsAvailability,
-                    TechnologicalReserve = actualParameters.TechnologicalReserve,
-                    RecommendationsArguments = actualParameters.RecommendationsArguments
-                };
-            using FileStream fs = new(parametersDocPath, FileMode.Create);
-            JsonSerializerOptions options = new()
+            try
             {
-                IncludeFields = true
-            };
-            JsonSerializer.Serialize(fs, parameters, options);
+                (bool? IsStrictСomplianceWithTheStandart,
+                    bool? IsAnArbitraryNumberOfPorts,
+                    bool? IsTechnologicalReserveAvailability,
+                    bool? IsRecommendationsAvailability,
+                    double TechnologicalReserve,
+                    RecommendationsArguments RecommendationsArguments) parameters = new()
+                    {
+                        IsStrictСomplianceWithTheStandart = actualParameters.IsStrictСomplianceWithTheStandart,
+                        IsAnArbitraryNumberOfPorts = actualParameters.IsAnArbitraryNumberOfPorts,
+                        IsTechnologicalReserveAvailability = actualParameters.IsTechnologicalReserveAvailability,
+                        IsRecommendationsAvailability = actualParameters.IsRecommendationsAvailability,
+                        TechnologicalReserve = actualParameters.TechnologicalReserve,
+                        RecommendationsArguments = actualParameters.RecommendationsArguments
+                    };
+                using FileStream fs = new(parametersDocPath, FileMode.Create);
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    IncludeFields = true
+                };
+                JsonSerializer.Serialize(fs, parameters, options);
+            }
+            catch (Exception ex)
+            {
+                if (MainWindow is null || Equals(MainWindow?.IsLoaded, false))
+                {
+                    initializeExceptions.Add($"Ошибка сохранения настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
+                }
+                else
+                {
+                    ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
+                }
+            }
         }
 
         //Десериализация настраеваемых параметров расчёта конфигураций СКС
