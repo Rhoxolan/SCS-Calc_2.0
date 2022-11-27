@@ -127,10 +127,7 @@ namespace SCSCalc_2_0
         }
 
         //Обработчик для изменения значения даипазонов вводимых параметров расчёта конфигураций СКС
-        private void DiapasonsChanged()
-        {
-            OnPropertyChanged(nameof(Diapasons));
-        }
+        private void DiapasonsChanged() => OnPropertyChanged(nameof(Diapasons));
 
         //Обработчик для изменения значения коэффициента технологического запаса
         private void TechnologicalReserveChanged()

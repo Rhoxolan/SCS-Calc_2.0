@@ -112,6 +112,7 @@
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,5,5"
                         ToolTip="Введите метраж кабеля в 1-й кабельной катушке (бухте). Необходимое количество кабеля будет рассчитано с учетом количества кабельных пробросов, которые можно сделать с 1-й бухты">
                     <mah:NumericUpDown StringFormat="F0" NumericInputMode="Numbers"
+                                       x:Name="numericUpDownCableHankMeterage"
                                        IsEnabledChanged="numericUpDownCableHankMeterageEnabledChanged"
                                        Minimum="{Binding CeiledAveragePermanentLink}"
                                        Maximum="{Binding Diapasons.CableHankMeterageDiapason.Max}"
