@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using SCSCalc;
 using SCSCalc.Parameters;
+using SCSCalc_2_0.DataBase;
+using static System.Environment;
 
 namespace SCSCalc_2_0
 {
@@ -28,7 +30,9 @@ namespace SCSCalc_2_0
         private readonly HistoryPageViewModel historyPageViewModel;
         private readonly CalculatePageViewModel calculatePageViewModel;
         private readonly AdvancedParametersPageViewModel advancedParametersPageViewModel;
-        private string parametersDocPath = "SCS-CalcParametersData.json";
+        private readonly string dataFolderPath = Path.Combine(GetFolderPath(SpecialFolder.MyDocuments), "SCS-Calc 2.0 Data Folder");
+        private readonly string parametersDocPath;
+        private readonly string dataBaseConnectionString;
         private List<string> initializeExceptions = new();
 
         public App()
@@ -38,7 +42,9 @@ namespace SCSCalc_2_0
                 waitHandle.Set();
                 timer!.Dispose();
             };
-            timer = new(timerCallback, default, 2075, Timeout.Infinite); //Таймер для минимального времени отображения экрана-заставки
+            timer = new(timerCallback, default, 2075, Timeout.Infinite);  //Таймер для минимального времени отображения экрана-заставки
+            parametersDocPath = Path.Combine(dataFolderPath, "SCS-CalcParametersData.json");
+            dataBaseConnectionString = $"Data Source={Path.Combine(dataFolderPath, "configutarions.db")}";
             applicationModel = new(
                 SaveToTXTAction: SaveToTXT,
                 ParametersSaveAction: ParametersSerialize,
@@ -79,7 +85,7 @@ namespace SCSCalc_2_0
             if (initializeExceptions.Count > 0)
             {
                 StringBuilder stringBuilder = new();
-                stringBuilder.AppendLine($"Внимание! При запуске приложения SCS-Calc 2.0 произошли следующие ошибки:{Environment.NewLine}");
+                stringBuilder.AppendLine($"Внимание! При запуске приложения SCS-Calc 2.0 произошли следующие ошибки:{NewLine}");
                 foreach (var exception in initializeExceptions)
                 {
                     stringBuilder.AppendLine(exception);
@@ -161,11 +167,11 @@ namespace SCSCalc_2_0
             {
                 if (MainWindow is null || Equals(MainWindow?.IsLoaded, false))
                 {
-                    initializeExceptions.Add($"Ошибка сохранения настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
+                    initializeExceptions.Add($"Ошибка сохранения настроек параметров расчёта конфигураций:{NewLine}{ex.Message}{NewLine}");
                 }
                 else
                 {
-                    ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
+                    ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения настроек параметров расчёта конфигураций:{NewLine}{ex.Message}{NewLine}");
                 }
             }
         }
@@ -219,7 +225,7 @@ namespace SCSCalc_2_0
             }
             catch (Exception ex)
             {
-                initializeExceptions.Add($"Ошибка считывания настроек параметров расчёта конфигураций:{Environment.NewLine}{ex.Message}{Environment.NewLine}");
+                initializeExceptions.Add($"Ошибка считывания настроек параметров расчёта конфигураций:{NewLine}{ex.Message}{NewLine}");
                 return null;
             }
         }
@@ -227,10 +233,19 @@ namespace SCSCalc_2_0
         //Загрузка БД конфигураций СКС
         private ObservableCollection<Configuration> ConfigurationDBLoad()
         {
-            using ApplicationContext context = new();
-            context.Database.EnsureCreated();
-            context.Configurations.Load();
-            return new ObservableCollection<Configuration>(context.Configurations.Local.ToObservableCollection());
+            try
+            {
+                using ApplicationContext context = new(dataBaseConnectionString);
+                context.Database.EnsureCreated();
+                context.Configurations.Load();
+                return new ObservableCollection<Configuration>(context.Configurations.Local.ToObservableCollection());
+            }
+            catch (Exception ex)
+            {
+                initializeExceptions.Add($"Ошибка загрузки базы данных конфигураций:{NewLine}{ex.Message}{NewLine}" +
+                    $"{NewLine}Конфигурации, рассчитанные во время работы текущей сессии, могут не сохраниться{NewLine}");
+                return new();
+            }
         }
 
         //Расчет конфигурации СКС и сохранение данных в БД
@@ -241,7 +256,7 @@ namespace SCSCalc_2_0
             try
             {
                 Configuration configuration = Configuration.Calculate(parameters, calculateParameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
-                using ApplicationContext context = new();
+                using ApplicationContext context = new(dataBaseConnectionString);
                 await Task.Run(() => context.Configurations.Add(configuration)); //Синхронные методы используются из-за ограничений SQLite
                 await Task.Run(() => DBSaveChanges(context));                    //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
                 return configuration;
@@ -258,8 +273,8 @@ namespace SCSCalc_2_0
             await locker.WaitAsync();
             try
             {
-                using ApplicationContext context = new();
-                if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({context.Configurations.Count()} конфигураций){Environment.NewLine}" +
+                using ApplicationContext context = new(dataBaseConnectionString);
+                if (MessageBox.Show($"Вы действительно хотите удалить ВСЕ конфигурации СКС? ({context.Configurations.Count()} конфигураций){NewLine}" +
                         $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
                 {
                     context.Configurations.RemoveRange(context.Configurations);
@@ -281,13 +296,13 @@ namespace SCSCalc_2_0
             try
             {
                 if (MessageBox.Show(
-                    $"Вы действительно хотите удалить выбранную конфигурацию СКС?{Environment.NewLine}" +
+                    $"Вы действительно хотите удалить выбранную конфигурацию СКС?{NewLine}" +
                     $"({configuration.RecordTime.ToShortDateString()} {configuration.RecordTime.ToLongTimeString()}, " +
                     $"мин. - {configuration.MinPermanentLink:F0} м, макс. - {configuration.MaxPermanentLink:F0} м, всего - " +
                     $"{configuration.TotalСableQuantity:F0} м)",
                     "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    using ApplicationContext context = new();
+                    using ApplicationContext context = new(dataBaseConnectionString);
                     context.Configurations.Remove(configuration);
                     await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
                     return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
@@ -316,7 +331,7 @@ namespace SCSCalc_2_0
             }                          //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
             catch (Exception ex)
             {
-                Dispatcher.Invoke(() => ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения данных:{Environment.NewLine}{ex.Message}"));
+                Dispatcher.Invoke(() => ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения данных:{NewLine}{ex.Message}"));
             }
         }
 
@@ -329,13 +344,5 @@ namespace SCSCalc_2_0
                 this.ExceptionOccurrenceAction -= ExceptionOccurrence;
             }
         }
-    }
-
-    file class ApplicationContext : DbContext
-    {
-        public DbSet<Configuration> Configurations { get; set; } = null!;
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlite("Data Source=configurations.db");
     }
 }
