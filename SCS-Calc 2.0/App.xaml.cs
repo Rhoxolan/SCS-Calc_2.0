@@ -42,7 +42,8 @@ namespace SCSCalc_2_0
                 waitHandle.Set();
                 timer!.Dispose();
             };
-            timer = new(timerCallback, default, 2075, Timeout.Infinite);  //Таймер для минимального времени отображения экрана-заставки
+            timer = new(timerCallback, default, 2075, Timeout.Infinite); //Таймер для минимального времени отображения экрана-заставки
+            this.DataFolderEnsureCreated();
             parametersDocPath = Path.Combine(dataFolderPath, "SCS-CalcParametersData.json");
             dataBaseConnectionString = $"Data Source={Path.Combine(dataFolderPath, "configutarions.db")}";
             applicationModel = new(
@@ -63,6 +64,15 @@ namespace SCSCalc_2_0
 
         //Возникновение ошибок в логике приложения
         private event Action<string>? ExceptionOccurrenceAction;
+
+        //Создание папки с данными приложения
+        private void DataFolderEnsureCreated()
+        {
+            if (!Directory.Exists(dataFolderPath))
+            {
+                Directory.CreateDirectory(dataFolderPath);
+            }
+        }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
