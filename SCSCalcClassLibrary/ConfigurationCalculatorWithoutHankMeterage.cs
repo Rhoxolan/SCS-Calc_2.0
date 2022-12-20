@@ -11,13 +11,6 @@ namespace SCSCalc
         /// <summary>
         /// Расчёт конфигурации СКС без учета метража кабеля в 1-й кабельной катушке
         /// </summary>
-        /// <param name="parameters"></param>
-        /// <param name="minPermanentLink"></param>
-        /// <param name="maxPermanentLink"></param>
-        /// <param name="numberOfWorkplaces"></param>
-        /// <param name="numberOfPorts"></param>
-        /// <param name="cableHankMeterage"></param>
-        /// <returns></returns>
         public Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
             double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
