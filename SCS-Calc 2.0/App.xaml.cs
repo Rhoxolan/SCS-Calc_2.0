@@ -68,9 +68,16 @@ namespace SCSCalc_2_0
         //Создание папки с данными приложения
         private void DataFolderEnsureCreated()
         {
-            if (!Directory.Exists(dataFolderPath))
+            try
             {
-                Directory.CreateDirectory(dataFolderPath);
+                if (!Directory.Exists(dataFolderPath))
+                {
+                    Directory.CreateDirectory(dataFolderPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                initializeExceptions.Add($"Ошибка создания папки с данными приложения:{NewLine}{ex.Message}{NewLine}");
             }
         }
 
