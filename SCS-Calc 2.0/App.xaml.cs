@@ -88,7 +88,7 @@ namespace SCSCalc_2_0
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
             MainWindow = new MainWindow();
             MainWindow.ContentRendered += (s, e) => MainWindow_ContentRendered();
-            waitHandle.WaitOne(); //Ожидание завершения минимального времени для отображения экрана-заставки.
+            waitHandle.WaitOne(new TimeSpan(0, 0, 10)); //Ожидание завершения минимального времени для отображения экрана-заставки.
             waitHandle.Dispose();
             MainWindow.Show();
         }
