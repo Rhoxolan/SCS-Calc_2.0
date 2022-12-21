@@ -1,6 +1,4 @@
-﻿using SCSCalc.Parameters;
-
-namespace SCSCalc
+﻿namespace SCSCalc
 {
     /// <summary>
     /// Запись конфигурации СКС
@@ -70,15 +68,5 @@ namespace SCSCalc
         /// Присутствует, если указана необходимость получения соответствующих рекомендаций.
         /// </summary>
         public string? Recommendations { get; init; }
-
-        /// <summary>
-        /// Расчёт конфигурации СКС
-        /// </summary>
-        /// <exception cref="SCSCalcException"></exception>
-        public static Configuration Calculate(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink, double maxPermanentLink,
-            int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
-        {
-            return calculateParameters.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
-        }
     }
 }

@@ -6,7 +6,7 @@ namespace SCSCalc
     /// <summary>
     /// Класс, описывающий метод расчёта конфигурации СКС с учетом метража кабеля в 1-й кабельной катушке
     /// </summary>
-    internal class ConfigurationCalculatorWithHankMeterage : IConfigurationCalculator
+    internal class ConfigurationCalculatorWithHankMeterage : IConfigurationCalculatorStrategy
     {
         /// <summary>
         /// Расчёт конфигурации СКС с учетом метража кабеля в 1-й кабельной катушке

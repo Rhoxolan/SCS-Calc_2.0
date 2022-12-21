@@ -5,7 +5,7 @@ namespace SCSCalc
     /// <summary>
     /// Интерфейс, предоставляющий метод расчёта конфигурации СКС
     /// </summary>
-    internal interface IConfigurationCalculator
+    internal interface IConfigurationCalculatorStrategy
     {
         /// <summary>
         /// Расчёт конфигурации СКС
