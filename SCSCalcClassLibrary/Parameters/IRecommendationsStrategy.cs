@@ -3,7 +3,7 @@
     /// <summary>
     /// Интерфейс для получения рекомендаций по побдору кабеля
     /// </summary>
-    internal interface IRecommendations
+    internal interface IRecommendationsStrategy
     {
         /// <summary>
         /// Аргументы для получения рекомендаций по побдору кабеля

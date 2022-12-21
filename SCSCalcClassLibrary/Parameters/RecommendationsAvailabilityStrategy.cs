@@ -5,7 +5,7 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Класс для получения рекомендаций по побдору кабеля при включенном получении рекомендаций
     /// </summary>
-    internal class RecommendationsAvailability : IRecommendations
+    internal class RecommendationsAvailabilityStrategy : IRecommendationsStrategy
     {
         /// <summary>
         /// Аргументы для получения рекомендаций по побдору кабеля

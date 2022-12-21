@@ -5,12 +5,12 @@
     /// </summary>
     internal class RecommendationContext
     {
-        private IRecommendations? recommendations;
+        private IRecommendationsStrategy? recommendationsStrategy;
 
         public RecommendationContext()
         {
             IsRecommendationsAvailability = null;
-            recommendations = null;
+            recommendationsStrategy = null;
         }
 
         /// <summary>
@@ -20,14 +20,14 @@
         {
             get
             {
-                if (recommendations != null)
+                if (recommendationsStrategy != null)
                 {
                     return new CableSelectionRecommendations
                     {
-                        RecommendationIsolationType = recommendations.RecommendationIsolationType,
-                        RecommendationIsolationMaterial = recommendations.RecommendationIsolationMaterial,
-                        RecommendationCableStandart = recommendations.RecommendationCableStandart,
-                        RecommendationShieldedType = recommendations.RecommendationShieldedType
+                        RecommendationIsolationType = recommendationsStrategy.RecommendationIsolationType,
+                        RecommendationIsolationMaterial = recommendationsStrategy.RecommendationIsolationMaterial,
+                        RecommendationCableStandart = recommendationsStrategy.RecommendationCableStandart,
+                        RecommendationShieldedType = recommendationsStrategy.RecommendationShieldedType
                     };
                 }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
@@ -41,9 +41,9 @@
         {
             get
             {
-                if (recommendations != null)
+                if (recommendationsStrategy != null)
                 {
-                    return recommendations.RecommendationsArguments;
+                    return recommendationsStrategy.RecommendationsArguments;
                 }
                 throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
             }
@@ -56,11 +56,11 @@
         {
             get
             {
-                if (recommendations is RecommendationsAvailability)
+                if (recommendationsStrategy is RecommendationsAvailabilityStrategy)
                 {
                     return true;
                 }
-                if (recommendations is NonRecommendations)
+                if (recommendationsStrategy is NonRecommendationsStrategy)
                 {
                     return false;
                 }
@@ -70,11 +70,11 @@
             {
                 if (Equals(value, true))
                 {
-                    recommendations = new RecommendationsAvailability();
+                    recommendationsStrategy = new RecommendationsAvailabilityStrategy();
                 }
                 else
                 {
-                    recommendations = new NonRecommendations();
+                    recommendationsStrategy = new NonRecommendationsStrategy();
                 }
             }
         }

@@ -5,7 +5,7 @@
     /// <summary>
     /// Интерфейс для работы со значением коэффициента технологического запаса.
     /// </summary>
-    internal interface ITechnologicalReserve
+    internal interface ITechnologicalReserveStrategy
     {
         /// <summary>
         /// Значение коэффициента технологического запаса

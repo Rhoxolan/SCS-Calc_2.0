@@ -1,24 +1,24 @@
 ﻿namespace SCSCalc.Parameters
 {
     //Класс, инкапсулирующий объекты, предназначенные для определения диапазона вводимых значений параметров конфигураций СКС, реализующие
-    //интерфейсы IStrictСomplianceWithTheStandart, IAnArbitraryNumberOfPorts и IStandartValues.
+    //интерфейсы IStrictСomplianceWithTheStandartStrategy, IAnArbitraryNumberOfPortsStrategy и IStandartValuesStrategy.
 
     /// <summary>
     /// Класс, инкапсулирующий объекты, предназначенные для определения диапазона вводимых значений параметров конфигураций СКС
     /// </summary>
     internal class DiapasonContext
     {
-        private IStrictСomplianceWithTheStandart? complianceWithTheStandart;
-        private IAnArbitraryNumberOfPorts? numberOfPorts;
-        private IStandartValues? standartValues;
+        private IStrictСomplianceWithTheStandartStrategy? complianceWithTheStandartStrategy;
+        private IAnArbitraryNumberOfPortsStrategy? numberOfPortsStrategy;
+        private IStandartValuesStrategy? standartValuesStrategy;
 
         public DiapasonContext()
         {
             IsStrictСomplianceWithTheStandart = null;
             IsAnArbitraryNumberOfPorts = null;
-            complianceWithTheStandart = null;
-            numberOfPorts = null;
-            standartValues = new StandartValues();
+            complianceWithTheStandartStrategy = null;
+            numberOfPortsStrategy = null;
+            standartValuesStrategy = new StandartValuesStrategy();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@
         {
             get
             {
-                if (standartValues == null || complianceWithTheStandart == null || numberOfPorts == null)
+                if (standartValuesStrategy == null || complianceWithTheStandartStrategy == null || numberOfPortsStrategy == null)
                 {
                     throw new SCSCalcException("Ошибка инициализации параметров значений конфигураций");
                 }
@@ -36,33 +36,33 @@
                 {
                     MinPermanentLinkDiapason = new SCSCalcInputDiapason
                     {
-                        Min = complianceWithTheStandart.MinPermanentLinkDiapason.Min,
-                        Max = complianceWithTheStandart.MinPermanentLinkDiapason.Max
+                        Min = complianceWithTheStandartStrategy.MinPermanentLinkDiapason.Min,
+                        Max = complianceWithTheStandartStrategy.MinPermanentLinkDiapason.Max
                     },
                     MaxPermanentLinkDiapason = new SCSCalcInputDiapason
                     {
-                        Min = complianceWithTheStandart.MaxPermanentLinkDiapason.Min,
-                        Max = complianceWithTheStandart.MaxPermanentLinkDiapason.Max
+                        Min = complianceWithTheStandartStrategy.MaxPermanentLinkDiapason.Min,
+                        Max = complianceWithTheStandartStrategy.MaxPermanentLinkDiapason.Max
                     },
                     NumberOfPortsDiapason = new SCSCalcInputDiapason
                     {
-                        Min = numberOfPorts.NumberOfPortsDiapason.Min,
-                        Max = numberOfPorts.NumberOfPortsDiapason.Max
+                        Min = numberOfPortsStrategy.NumberOfPortsDiapason.Min,
+                        Max = numberOfPortsStrategy.NumberOfPortsDiapason.Max
                     },
                     NumberOfWorkplacesDiapason = new SCSCalcInputDiapason
                     {
-                        Min = standartValues.NumberOfWorkplacesDiapason.Min,
-                        Max = standartValues.NumberOfWorkplacesDiapason.Max
+                        Min = standartValuesStrategy.NumberOfWorkplacesDiapason.Min,
+                        Max = standartValuesStrategy.NumberOfWorkplacesDiapason.Max
                     },
                     CableHankMeterageDiapason = new SCSCalcInputDiapason
                     {
-                        Min = standartValues.CableHankMeterageDiapason.Min,
-                        Max = standartValues.CableHankMeterageDiapason.Max
+                        Min = standartValuesStrategy.CableHankMeterageDiapason.Min,
+                        Max = standartValuesStrategy.CableHankMeterageDiapason.Max
                     },
                     TechnologicalReserveDiapason = new SCSCalcInputDiapason
                     {
-                        Min = standartValues.TechnologicalReserveDiapason.Min,
-                        Max = standartValues.TechnologicalReserveDiapason.Max
+                        Min = standartValuesStrategy.TechnologicalReserveDiapason.Min,
+                        Max = standartValuesStrategy.TechnologicalReserveDiapason.Max
                     }
                 };
             }
@@ -75,11 +75,11 @@
         {
             get
             {
-                if (complianceWithTheStandart is StrictСomplianceWithTheStandart)
+                if (complianceWithTheStandartStrategy is StrictСomplianceWithTheStandartStrategy)
                 {
                     return true;
                 }
-                if (complianceWithTheStandart is NonStrictСomplianceWithTheStandart)
+                if (complianceWithTheStandartStrategy is NonStrictСomplianceWithTheStandartStrategy)
                 {
                     return false;
                 }
@@ -89,11 +89,11 @@
             {
                 if (Equals(value, true))
                 {
-                    complianceWithTheStandart = new StrictСomplianceWithTheStandart();
+                    complianceWithTheStandartStrategy = new StrictСomplianceWithTheStandartStrategy();
                 }
                 else
                 {
-                    complianceWithTheStandart = new NonStrictСomplianceWithTheStandart();
+                    complianceWithTheStandartStrategy = new NonStrictСomplianceWithTheStandartStrategy();
                 }
             }
         }
@@ -105,11 +105,11 @@
         {
             get
             {
-                if (numberOfPorts is AnArbitraryNumberOfPorts)
+                if (numberOfPortsStrategy is AnArbitraryNumberOfPortsStrategy)
                 {
                     return true;
                 }
-                if (numberOfPorts is NotAnArbitraryNumberOfPorts)
+                if (numberOfPortsStrategy is NotAnArbitraryNumberOfPortsStrategy)
                 {
                     return false;
                 }
@@ -119,11 +119,11 @@
             {
                 if (Equals(value, true))
                 {
-                    numberOfPorts = new AnArbitraryNumberOfPorts();
+                    numberOfPortsStrategy = new AnArbitraryNumberOfPortsStrategy();
                 }
                 else
                 {
-                    numberOfPorts = new NotAnArbitraryNumberOfPorts();
+                    numberOfPortsStrategy = new NotAnArbitraryNumberOfPortsStrategy();
                 }
             }
         }

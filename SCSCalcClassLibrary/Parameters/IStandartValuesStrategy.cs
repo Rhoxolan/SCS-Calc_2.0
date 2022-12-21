@@ -5,7 +5,7 @@
     /// <summary>
     /// Интерфейс для определения диапазона стандартных вводимых параметров конфигураций СКС.
     /// </summary>
-    internal interface IStandartValues
+    internal interface IStandartValuesStrategy
     {
         /// <summary>
         /// Определяет диапазон ввода количества рабочих мест

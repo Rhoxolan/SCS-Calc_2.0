@@ -5,7 +5,7 @@
     /// <summary>
     /// Интерфейс для определения диапазона вводимых значений параметров расчёта конфигураций в соответствии стандарту ISO/IEC 11801.
     /// </summary>
-    internal interface IStrictСomplianceWithTheStandart
+    internal interface IStrictСomplianceWithTheStandartStrategy
     {
         /// <summary>
         /// Определяет диапазон вводимых значений минимальной длины постоянного линка

@@ -7,7 +7,7 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Класс для работы со значением коэффициента технологического запаса без его учёта
     /// </summary>
-    internal class NonTechnologicalReserve : ITechnologicalReserve
+    internal class NonTechnologicalReserveStrategy : ITechnologicalReserveStrategy
     {
         /// <summary>
         /// Значение коэффициента технологического запаса

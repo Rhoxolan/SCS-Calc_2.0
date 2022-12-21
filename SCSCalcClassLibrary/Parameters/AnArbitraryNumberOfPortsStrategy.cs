@@ -7,7 +7,7 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Класс для определения диапазона допустимого вводимого значения количества портов на 1 рабочее место при допустимом произвольном количестве.
     /// </summary>
-    internal class AnArbitraryNumberOfPorts : IAnArbitraryNumberOfPorts
+    internal class AnArbitraryNumberOfPortsStrategy : IAnArbitraryNumberOfPortsStrategy
     {
         /// <summary>
         /// Определяет диапазон допустимого вводимого значения количества портов на 1 рабочее место при допустимом произвольном количестве.

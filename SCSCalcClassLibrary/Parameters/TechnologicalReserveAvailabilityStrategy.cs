@@ -7,11 +7,11 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Класс для работы со значением коэффициента технологического запаса с его учётом
     /// </summary>
-    internal class TechnologicalReserveAvailability : ITechnologicalReserve
+    internal class TechnologicalReserveAvailabilityStrategy : ITechnologicalReserveStrategy
     {
         private double? technologicalReserve;
 
-        public TechnologicalReserveAvailability()
+        public TechnologicalReserveAvailabilityStrategy()
         {
             technologicalReserve = null;
         }

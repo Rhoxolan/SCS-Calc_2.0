@@ -7,7 +7,7 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Класс для определения диапазона стандартных вводимых параметров конфигураций СКС.
     /// </summary>
-    internal class StandartValues : IStandartValues
+    internal class StandartValuesStrategy : IStandartValuesStrategy
     {
         /// <summary>
         /// Определяет диапазон ввода количества рабочих мест

@@ -7,7 +7,7 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Класс для определения диапазона вводимых значений параметров расчёта конфигураций без строгого соответствия стандарту ISO/IEC 11801.
     /// </summary>
-    internal class NonStrictСomplianceWithTheStandart : IStrictСomplianceWithTheStandart
+    internal class NonStrictСomplianceWithTheStandartStrategy : IStrictСomplianceWithTheStandartStrategy
     {
         /// <summary>
         /// Определяет диапазон вводимых значений минимальной длины постоянного линка без строгого соответствия стандарту ISO/IEC 11801.

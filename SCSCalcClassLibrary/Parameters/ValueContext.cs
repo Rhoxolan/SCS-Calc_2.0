@@ -5,12 +5,12 @@
     /// </summary>
     internal class ValueContext
     {
-        private ITechnologicalReserve? technologicalReserve;
+        private ITechnologicalReserveStrategy? technologicalReserveStrategy;
 
         public ValueContext()
         {
             IsTechnologicalReserveAvailability = null;
-            technologicalReserve = null;
+            technologicalReserveStrategy = null;
         }
 
         /// <summary>
@@ -20,17 +20,17 @@
         {
             get
             {
-                if (technologicalReserve != null)
+                if (technologicalReserveStrategy != null)
                 {
-                    return technologicalReserve.TechnologicalReserve;
+                    return technologicalReserveStrategy.TechnologicalReserve;
                 }
                 throw new SCSCalcException("Значение необходимости учёта технологического запаса не инициализировано. Пожалуйста, проверьте настройки.");
             }
             set
             {
-                if (technologicalReserve != null)
+                if (technologicalReserveStrategy != null)
                 {
-                    technologicalReserve.TechnologicalReserve = value;
+                    technologicalReserveStrategy.TechnologicalReserve = value;
                 }
                 else
                 {
@@ -46,11 +46,11 @@
         {
             get
             {
-                if (technologicalReserve is TechnologicalReserveAvailability)
+                if (technologicalReserveStrategy is TechnologicalReserveAvailabilityStrategy)
                 {
                     return true;
                 }
-                if (technologicalReserve is NonTechnologicalReserve)
+                if (technologicalReserveStrategy is NonTechnologicalReserveStrategy)
                 {
                     return false;
                 }
@@ -60,11 +60,11 @@
             {
                 if (Equals(value, true))
                 {
-                    technologicalReserve = new TechnologicalReserveAvailability();
+                    technologicalReserveStrategy = new TechnologicalReserveAvailabilityStrategy();
                 }
                 else
                 {
-                    technologicalReserve = new NonTechnologicalReserve();
+                    technologicalReserveStrategy = new NonTechnologicalReserveStrategy();
                 }
             }
         }

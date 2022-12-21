@@ -5,7 +5,7 @@
     /// <summary>
     /// Интерфейс для определения диапазона допустимого вводимого значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801.
     /// </summary>
-    internal interface IAnArbitraryNumberOfPorts
+    internal interface IAnArbitraryNumberOfPortsStrategy
     {
         /// <summary>
         /// Определяет диапазон допустимого вводимого значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801. 
