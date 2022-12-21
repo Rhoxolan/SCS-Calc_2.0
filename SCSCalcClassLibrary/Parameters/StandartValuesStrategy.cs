@@ -2,7 +2,7 @@
 
 namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в класс SettingsLocator.
+    //Инкапсулирован в класс DiapasonContext.
 
     /// <summary>
     /// Класс для определения диапазона стандартных вводимых параметров конфигураций СКС.

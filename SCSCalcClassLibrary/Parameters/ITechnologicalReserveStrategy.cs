@@ -1,6 +1,6 @@
 ﻿namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в класс SettingsLocator.
+    //Инкапсулирован в класс ValueContext.
 
     /// <summary>
     /// Интерфейс для работы со значением коэффициента технологического запаса.
