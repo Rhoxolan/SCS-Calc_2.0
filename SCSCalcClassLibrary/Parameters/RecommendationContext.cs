@@ -3,11 +3,11 @@
     /// <summary>
     /// //Класс, инкапсулирующий объекты для работы с получением рекомендаций по побдору кабеля
     /// </summary>
-    internal class RecommendationLocator
+    internal class RecommendationContext
     {
         private IRecommendations? recommendations;
 
-        public RecommendationLocator()
+        public RecommendationContext()
         {
             IsRecommendationsAvailability = null;
             recommendations = null;

@@ -3,11 +3,11 @@
     /// <summary>
     /// //Класс, инкапсулирующий объекты для работы со значениями расчета конфигураций СКС
     /// </summary>
-    internal class ValueLocator
+    internal class ValueContext
     {
         private ITechnologicalReserve? technologicalReserve;
 
-        public ValueLocator()
+        public ValueContext()
         {
             IsTechnologicalReserveAvailability = null;
             technologicalReserve = null;

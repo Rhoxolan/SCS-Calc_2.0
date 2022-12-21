@@ -5,15 +5,15 @@
     /// </summary>
     public class SCSCalcParameters
     {
-        private DiapasonLocator diapasonLocator;
-        private ValueLocator valueLocator;
-        private RecommendationLocator recommendationLocator;
+        private DiapasonContext diapasonContext;
+        private ValueContext valueContext;
+        private RecommendationContext recommendationContext;
 
         public SCSCalcParameters()
         {
-            diapasonLocator = new();
-            valueLocator = new();
-            recommendationLocator = new();
+            diapasonContext = new();
+            valueContext = new();
+            recommendationContext = new();
         }
 
         /// <summary>
@@ -21,7 +21,7 @@
         /// </summary>
         public SCSCalcDiapasons Diapasons
         {
-            get => diapasonLocator.Diapasons;
+            get => diapasonContext.Diapasons;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@
         /// </summary>
         public CableSelectionRecommendations CableSelectionRecommendations
         {
-            get => recommendationLocator.CableSelectionRecommendations;
+            get => recommendationContext.CableSelectionRecommendations;
         }
 
         /// <summary>
@@ -37,8 +37,8 @@
         /// </summary>
         public double TechnologicalReserve
         {
-            get => valueLocator.TechnologicalReserve;
-            set => valueLocator.TechnologicalReserve = value;
+            get => valueContext.TechnologicalReserve;
+            set => valueContext.TechnologicalReserve = value;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@
         /// </summary>
         public RecommendationsArguments RecommendationsArguments
         {
-            get => recommendationLocator.RecommendationsArguments;
+            get => recommendationContext.RecommendationsArguments;
         }
 
         /// <summary>
@@ -54,8 +54,8 @@
         /// </summary>
         public bool? IsRecommendationsAvailability
         {
-            get => recommendationLocator.IsRecommendationsAvailability;
-            set => recommendationLocator.IsRecommendationsAvailability = value;
+            get => recommendationContext.IsRecommendationsAvailability;
+            set => recommendationContext.IsRecommendationsAvailability = value;
         }
 
         /// <summary>
@@ -63,8 +63,8 @@
         /// </summary>
         public bool? IsStrictСomplianceWithTheStandart
         {
-            get => diapasonLocator.IsStrictСomplianceWithTheStandart;
-            set => diapasonLocator.IsStrictСomplianceWithTheStandart = value;
+            get => diapasonContext.IsStrictСomplianceWithTheStandart;
+            set => diapasonContext.IsStrictСomplianceWithTheStandart = value;
         }
 
         /// <summary>
@@ -72,8 +72,8 @@
         /// </summary>
         public bool? IsAnArbitraryNumberOfPorts
         {
-            get => diapasonLocator.IsAnArbitraryNumberOfPorts;
-            set => diapasonLocator.IsAnArbitraryNumberOfPorts = value;
+            get => diapasonContext.IsAnArbitraryNumberOfPorts;
+            set => diapasonContext.IsAnArbitraryNumberOfPorts = value;
         }
 
         /// <summary>
@@ -81,8 +81,8 @@
         /// </summary>
         public bool? IsTechnologicalReserveAvailability
         {
-            get => valueLocator.IsTechnologicalReserveAvailability;
-            set => valueLocator.IsTechnologicalReserveAvailability = value;
+            get => valueContext.IsTechnologicalReserveAvailability;
+            set => valueContext.IsTechnologicalReserveAvailability = value;
         }
     }
 }

@@ -6,13 +6,13 @@
     /// <summary>
     /// Класс, инкапсулирующий объекты, предназначенные для определения диапазона вводимых значений параметров конфигураций СКС
     /// </summary>
-    internal class DiapasonLocator
+    internal class DiapasonContext
     {
         private IStrictСomplianceWithTheStandart? complianceWithTheStandart;
         private IAnArbitraryNumberOfPorts? numberOfPorts;
         private IStandartValues? standartValues;
 
-        public DiapasonLocator()
+        public DiapasonContext()
         {
             IsStrictСomplianceWithTheStandart = null;
             IsAnArbitraryNumberOfPorts = null;
