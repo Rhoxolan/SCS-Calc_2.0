@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using static SCSCalc.Properties.Resources;
+
+namespace SCSCalc.Parameters
 {
     //Инкапсулирован в класс SettingsLocator.
 
@@ -14,8 +16,8 @@
         {
             get
             {
-                decimal min = Convert.ToDecimal(Properties.Resources.StandartValues_NumberOfWorkplacesDiapason_Min);
-                decimal max = Convert.ToDecimal(Properties.Resources.StandartValues_NumberOfWorkplacesDiapason_Max);
+                decimal min = Convert.ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Min);
+                decimal max = Convert.ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Max);
                 return (min, max);
             }
         }
@@ -27,8 +29,8 @@
         {
             get
             {
-                decimal min = Convert.ToDecimal(Properties.Resources.StandartValues_CableHankMeterageDiapason_Min);
-                decimal max = Convert.ToDecimal(Properties.Resources.StandartValues_CableHankMeterageDiapason_Max);
+                decimal min = Convert.ToDecimal(StandartValues_CableHankMeterageDiapason_Min);
+                decimal max = Convert.ToDecimal(StandartValues_CableHankMeterageDiapason_Max);
                 return (min, max);
             }
         }
@@ -40,8 +42,8 @@
         {
             get
             {
-                decimal min = Convert.ToDecimal(Properties.Resources.StandartValues_TechnologicalReserveDiapason_Min);
-                decimal max = Convert.ToDecimal(Properties.Resources.StandartValues_TechnologicalReserveDiapason_Max);
+                decimal min = Convert.ToDecimal(StandartValues_TechnologicalReserveDiapason_Min);
+                decimal max = Convert.ToDecimal(StandartValues_TechnologicalReserveDiapason_Max);
                 return (min, max);
             }
         }

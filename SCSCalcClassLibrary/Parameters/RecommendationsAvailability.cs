@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using static SCSCalc.Properties.Resources;
+
+namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Класс для получения рекомендаций по побдору кабеля при включенном получении рекомендаций
@@ -19,15 +21,15 @@
             {
                 if (RecommendationsArguments.IsolationType == IsolationType.Indoor)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationIsolationType_Indoor;
+                    return RecommendationsAvailability_RecommendationIsolationType_Indoor;
                 }
                 if (RecommendationsArguments.IsolationType == IsolationType.Outdoor)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationIsolationType_Outdoor;
+                    return RecommendationsAvailability_RecommendationIsolationType_Outdoor;
                 }
                 if (RecommendationsArguments.IsolationType == IsolationType.None)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationIsolationType_None;
+                    return RecommendationsAvailability_RecommendationIsolationType_None;
                 }
                 throw new SCSCalcException("Соответствие типу изоляции не установлено. Пожалуйста, проверьте настройки.");
             }
@@ -42,15 +44,15 @@
             {
                 if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.None)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationIsolationMaterial_None;
+                    return RecommendationsAvailability_RecommendationIsolationMaterial_None;
                 }
                 if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.LSZH)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationIsolationMaterial_LSZH;
+                    return RecommendationsAvailability_RecommendationIsolationMaterial_LSZH;
                 }
                 if (RecommendationsArguments.IsolationMaterial == IsolationMaterial.PVC)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationIsolationMaterial_PVC;
+                    return RecommendationsAvailability_RecommendationIsolationMaterial_PVC;
                 }
                 throw new SCSCalcException("Соответствие материалу изоляции не установлено. Пожалуйста, проверьте настройки.");
             }
@@ -65,15 +67,15 @@
             {
                 if (RecommendationsArguments.ShieldedType == ShieldedType.None)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationShieldedType_None;
+                    return RecommendationsAvailability_RecommendationShieldedType_None;
                 }
                 if (RecommendationsArguments.ShieldedType == ShieldedType.UTP)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationShieldedType_UTP;
+                    return RecommendationsAvailability_RecommendationShieldedType_UTP;
                 }
                 if (RecommendationsArguments.ShieldedType == ShieldedType.FTP)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationShieldedType_FTP;
+                    return RecommendationsAvailability_RecommendationShieldedType_FTP;
                 }
                 throw new SCSCalcException("Соответствие типу экранизации не установлено. Пожалуйста, проверьте настройки.");
             }
@@ -88,35 +90,35 @@
             {
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.None)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_None;
+                    return RecommendationsAvailability_RecommendationCableStandart_None;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.TenBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_TenBASE_T;
+                    return RecommendationsAvailability_RecommendationCableStandart_TenBASE_T;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.FastEthernet)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_FastEthernet;
+                    return RecommendationsAvailability_RecommendationCableStandart_FastEthernet;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.GigabitBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_T;
+                    return RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_T;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.GigabitBASE_TX)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_TX;
+                    return RecommendationsAvailability_RecommendationCableStandart_GigabitBASE_TX;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.TwoPointFiveGBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_TwoPointFiveGBASE_T;
+                    return RecommendationsAvailability_RecommendationCableStandart_TwoPointFiveGBASE_T;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.FiveGBASE_T)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_FiveGBASE_T;
+                    return RecommendationsAvailability_RecommendationCableStandart_FiveGBASE_T;
                 }
                 if (RecommendationsArguments.ConnectionInterfaces.Max() == ConnectionInterfaceStandard.TenGE)
                 {
-                    return Properties.Resources.RecommendationsAvailability_RecommendationCableStandart_TenGE;
+                    return RecommendationsAvailability_RecommendationCableStandart_TenGE;
                 }
                 throw new SCSCalcException("Значение интерфейса подключения не инициализировано. Пожалуйста, проверьте настройки.");
             }

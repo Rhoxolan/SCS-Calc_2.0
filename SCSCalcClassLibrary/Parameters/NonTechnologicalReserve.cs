@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using static SCSCalc.Properties.Resources;
+
+namespace SCSCalc.Parameters
 {
     //Инкапсулирован в класс SettingsLocator.
 
@@ -12,14 +14,9 @@
         /// </summary>
         public double TechnologicalReserve
         {
-            get
-            {
-                return Convert.ToDouble(Properties.Resources.NonTechnologicalReserve_TechnologicalReserve);
-            }
-            set
-            {
-                throw new SCSCalcException("Учёт технологичегского запаса отключён. Пожалуйста, проверьте настройки.");
-            }
+            get => Convert.ToDouble(NonTechnologicalReserve_TechnologicalReserve);
+
+            set => throw new SCSCalcException("Учёт технологичегского запаса отключён. Пожалуйста, проверьте настройки.");
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using static SCSCalc.Properties.Resources;
+
+namespace SCSCalc.Parameters
 {
     //Инкапсулирован в класс SettingsLocator.
 
@@ -27,7 +29,7 @@
                 }
                 else
                 {
-                    technologicalReserve = Convert.ToDouble(Properties.Resources.TechnologicalReserveAvailability_TechnologicalReserve_Default);
+                    technologicalReserve = Convert.ToDouble(TechnologicalReserveAvailability_TechnologicalReserve_Default);
                     return (double)technologicalReserve;
                 }
             }

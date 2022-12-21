@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using static SCSCalc.Properties.Resources;
+
+namespace SCSCalc.Parameters
 {
     /// <summary>
     /// Класс для получения рекомендаций по побдору кабеля при отключенном получении рекомендаций
@@ -14,44 +16,24 @@
         /// Рекомендация по типу изоляции кабеля
         /// </summary>
         public string RecommendationIsolationType
-        {
-            get
-            {
-                return Properties.Resources.NonRecommendations_RecommendationIsolationType;
-            }
-        }
+            => NonRecommendations_RecommendationIsolationType;
 
         /// <summary>
         /// Рекомендация по материалу изоляции кабеля
         /// </summary>
         public string RecommendationIsolationMaterial
-        {
-            get
-            {
-                return Properties.Resources.NonRecommendations_RecommendationIsolationMaterial;
-            }
-        }
+            => NonRecommendations_RecommendationIsolationMaterial;
 
         /// <summary>
         /// Рекомендация по типу экранизации кабеля
         /// </summary>
         public string RecommendationShieldedType
-        {
-            get
-            {
-                return Properties.Resources.NonRecommendations_RecommendationShieldedType;
-            }
-        }
+            => NonRecommendations_RecommendationShieldedType;
 
         /// <summary>
         /// Рекомендация по стандарту кабеля
         /// </summary>
         public string RecommendationCableStandart
-        {
-            get
-            {
-                return Properties.Resources.NonRecommendations_RecommendationCableStandart;
-            }
-        }
+            => NonRecommendations_RecommendationCableStandart;
     }
 }

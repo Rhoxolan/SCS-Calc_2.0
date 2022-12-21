@@ -1,4 +1,6 @@
-﻿namespace SCSCalc.Parameters
+﻿using static SCSCalc.Properties.Resources;
+
+namespace SCSCalc.Parameters
 {
     //Инкапсулирован в DiapasonLocator.
 
@@ -14,8 +16,8 @@
         {
             get
             {
-                decimal min = Convert.ToDecimal(Properties.Resources.NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min);
-                decimal max = Convert.ToDecimal(Properties.Resources.NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max);
+                decimal min = Convert.ToDecimal(NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min);
+                decimal max = Convert.ToDecimal(NotAnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max);
                 return (min, max);
             }
         }
