@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-      xmlns:scscalcparams="clr-namespace:SCSCalc.Parameters;assembly=SCSCalcClassLibrary"
+      xmlns:scscalcparams="clr-namespace:SCSCalc.Parameters;assembly=SCSCalcParametersClassLibrary"
       xmlns:converters="clr-namespace:SCSCalc_2_0.Converters"
       xmlns:local="clr-namespace:SCSCalc_2_0"
       mc:Ignorable="d" 

@@ -1,6 +1,6 @@
 ﻿using SCSCalc.Parameters;
 
-namespace SCSCalc
+namespace SCSCalc.Calculate
 {
     /// <summary>
     /// //Класс, инкапсулирующий объекты для работы с параметрами расчёта конфигураций СКС
@@ -20,7 +20,7 @@ namespace SCSCalc
         /// <exception cref="SCSCalcException"></exception>
         public Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
-            if(configurationCalculatorStrategy != null)
+            if (configurationCalculatorStrategy != null)
             {
                 return configurationCalculatorStrategy.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
             }

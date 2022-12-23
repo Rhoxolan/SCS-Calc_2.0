@@ -1,4 +1,4 @@
-﻿using static SCSCalc.Properties.Resources;
+﻿using static SCSCalc.Parameters.Properties.Resources;
 
 namespace SCSCalc.Parameters
 {

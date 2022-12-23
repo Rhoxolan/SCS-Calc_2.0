@@ -1,7 +1,7 @@
 ﻿using SCSCalc.Parameters;
 using System.Text;
 
-namespace SCSCalc
+namespace SCSCalc.Calculate
 {
     /// <summary>
     /// Класс, описывающий метод расчёта конфигурации СКС без учета метража кабеля в 1-й кабельной катушке
@@ -19,19 +19,19 @@ namespace SCSCalc
             if (Equals(parameters.IsRecommendationsAvailability, true))
             {
                 StringBuilder recommendationsBuilder = new();
-                if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
+                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
                 {
                     recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationType}");
                 }
-                if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
+                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
                 {
                     recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
                 }
-                if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
+                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
                 {
                     recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
                 }
-                if (!String.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
+                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
                 {
                     recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationShieldedType}");
                 }

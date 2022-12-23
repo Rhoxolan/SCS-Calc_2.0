@@ -1,6 +1,6 @@
 ﻿using SCSCalc.Parameters;
 
-namespace SCSCalc
+namespace SCSCalc.Calculate
 {
     /// <summary>
     /// Интерфейс, предоставляющий метод расчёта конфигурации СКС

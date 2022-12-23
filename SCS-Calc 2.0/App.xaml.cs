@@ -11,6 +11,7 @@ using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using SCSCalc;
+using SCSCalc.Calculate;
 using SCSCalc.Parameters;
 using SCSCalc_2_0.DataBase;
 using static System.Environment;

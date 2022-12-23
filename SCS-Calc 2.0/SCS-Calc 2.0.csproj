@@ -26,7 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SCSCalcCalculateClassLibrary\SCSCalcCalculateClassLibrary.csproj" />
     <ProjectReference Include="..\SCSCalcClassLibrary\SCSCalcClassLibrary.csproj" />
+    <ProjectReference Include="..\SCSCalcParametersClassLibrary\SCSCalcParametersClassLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

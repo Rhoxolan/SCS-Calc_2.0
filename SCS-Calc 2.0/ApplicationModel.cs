@@ -1,4 +1,5 @@
 ﻿using SCSCalc;
+using SCSCalc.Calculate;
 using SCSCalc.Parameters;
 using System;
 using System.Collections.Generic;
