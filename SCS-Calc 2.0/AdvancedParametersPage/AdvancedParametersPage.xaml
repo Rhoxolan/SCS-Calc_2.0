@@ -28,16 +28,27 @@
 
                 <CheckBox Style="{StaticResource styleViewCheckBox}" x:Name="checkBoxStrictСomplianceWithTheStandart"
                           IsChecked="{Binding IsStrictСomplianceWithTheStandart}" HorizontalAlignment="Left"
-                          Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801"
-                          ToolTip="Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру, согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel) не должна превышать 100 м."/>
+                          Margin="5" Content="Строгое соответствие стандарту ISO/IEC 11801">
+
+                    <CheckBox.ToolTip>
+                        Ограничивать или нет ввод параметров конфигурации СКС соответствием международному стандарту. К примеру,
+                        согласно стандарту ISO/IEC 11801, длина постоянного линка не должна превышать 90 м, длина канала (Channel)
+                        не должна превышать 100 м.
+                    </CheckBox.ToolTip>
+                    
+                </CheckBox>
 
                 <CheckBox HorizontalAlignment="Left"
                           Style="{StaticResource styleViewCheckBox}"
                           IsEnabled="{Binding ElementName=checkBoxStrictСomplianceWithTheStandart, Path=IsChecked}"
                           IsEnabledChanged="checkBoxAnArbitraryNumberOfPortsEnabledChanged"
                           IsChecked="{Binding IsAnArbitraryNumberOfPorts}" Margin="15,5,5,5"
-                          Content="Разрешить произвольное количество портов на 1 рабочее место"
-                          ToolTip="Разрешить произврльный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений конфигурации СКС согласно международному стандарту ISO/IEC 11801">
+                          Content="Разрешить произвольное количество портов на 1 рабочее место">
+
+                    <CheckBox.ToolTip>
+                        Разрешить произвольный ввод параметра количества рабочих мест при отмеченном ограничении ввода значений 
+                        конфигурации СКС согласно международному стандарту ISO/IEC 11801
+                    </CheckBox.ToolTip>
 
                     <x:Code>
                         <![CDATA[
@@ -79,8 +90,15 @@
                           Style="{StaticResource styleViewCheckBox}"
                           IsChecked="{Binding IsolationType, Converter={x:Static converters:RecommendationToBooleanConverter.Instance}, ConverterParameter={x:Static scscalcparams:IsolationType.Outdoor}}"
                           IsEnabled="{Binding ElementName=checkBoxRecommendations, Path=IsChecked}"
-                          Content="Будут ли участки кабельной трассы проходить вне помещения"
-                          ToolTip="Укажите, если участки кабельной трассы будут проходить на на улице, например по фасаду здания, либо же в помещениях с нестандартными климатическими условиями, например на чердаках или в подвалах. Вы получите рекомендацию о необходимым типе кабеля."/>
+                          Content="Будут ли участки кабельной трассы проходить вне помещения">
+
+                    <CheckBox.ToolTip>
+                        Укажите, если участки кабельной трассы будут проходить на на улице, например по фасаду здания,
+                        либо же в помещениях с нестандартными климатическими условиями, например на чердаках или в подвалах.
+                        Вы получите рекомендацию о необходимым типе кабеля.
+                    </CheckBox.ToolTip>
+                    
+                </CheckBox>
 
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5"
                           Style="{StaticResource styleViewCheckBox}"
@@ -88,12 +106,16 @@
                           IsEnabled="{Binding ElementName=checkBoxRecommendations, Path=IsChecked}"
                           Content="Учитывать стандартные требования к пожарной безопасности"
                           ToolTip="Получить рекомендацию о необходимым типе изоляции для кабеля"/>
-                
+
                 <Expander HorizontalAlignment="Left" Margin="15,5,5,5"
                           Style="{StaticResource styleViewExpanderForAdvancedParametersPage}"
                           IsEnabled="{Binding ElementName=checkBoxRecommendations, Path=IsChecked}"
-                          IsExpanded="True" 
-                          ToolTip="Отметьте, какие интерфейсы подключений предполагаются к использованию, например Fast Ethernet или Gigabit Ethernet. Вы получите рекомендацию о необходимой категории кабеля.">
+                          IsExpanded="True">
+
+                    <Expander.ToolTip>
+                        Отметьте, какие интерфейсы подключений предполагаются к использованию, например Fast Ethernet или Gigabit Ethernet.
+                        Вы получите рекомендацию о необходимой категории кабеля.
+                    </Expander.ToolTip>
                     
                     <Expander.Header>
                         <TextBlock TextWrapping="Wrap" Text="Используемые интерфейсы подключений" FontSize="12.5"/>
@@ -143,8 +165,14 @@
                 <CheckBox HorizontalAlignment="Left" Margin="15,5,5,5"
                           Style="{StaticResource styleViewCheckBox}"
                           IsChecked="{Binding ShieldedType, Converter={x:Static converters:RecommendationToBooleanConverter.Instance}, ConverterParameter={x:Static scscalcparams:ShieldedType.FTP}}"
-                          IsEnabled="{Binding ElementName=checkBoxRecommendations, Path=IsChecked}" Content="Учитывать необходимость экранизации кабеля"
-                          ToolTip="Отметьте, если необходимо использовать экранированный кабель. Такая необходимость может возникнуть в результате пересечения телекомуникационных и силовых кабелей."/>
+                          IsEnabled="{Binding ElementName=checkBoxRecommendations, Path=IsChecked}" Content="Учитывать необходимость экранизации кабеля">
+
+                    <CheckBox.ToolTip>
+                        Отметьте, если необходимо использовать экранированный кабель. Такая необходимость 
+                        может возникнуть в результате пересечения телекомуникационных и силовых кабелей.
+                    </CheckBox.ToolTip>
+                    
+                </CheckBox>
 
             </StackPanel>
 
