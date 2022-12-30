@@ -14,19 +14,19 @@ namespace SCSCalc_2_0
         private SCSCalcParameters parameters;
         private ConfigurationCalculateParameters calculateParameters;
 
-        //Сохранение конфигурации в текстовый документ
+        //Saving structured cabling configuration to text document
         private event Action<Configuration> SaveToTXTAction;
 
-        //Сохранение настраеваемых параметров расчёта конфигураций СКС
+        //Saving configurable parameters of structured cabling configuration calculating
         private event Action<SCSCalcParameters> ParametersSaveAction;
 
-        //Загрузка настраеваемых параметров расчёта конфигураций СКС
+        //Loading the configurable parameters of structured cabling configuration calculating
         private event Func<SCSCalcParameters?> ParametersLoadFunc;
 
-        //Удаление всех записей конфигураций СКС
+        //Deletion the all structured cabling configuration records
         private event Func<Task<bool>> DeleteAllConfigurationsFuncAsync;
 
-        //Загрузка БД конфигураций СКС
+        //Loading the structured cabling configuration data base
         private event Func<ObservableCollection<Configuration>> ConfigurationsLoadFunc;
 
         //Расчет конфигурации СКС и сохранение данных в БД
