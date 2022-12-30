@@ -43,7 +43,7 @@ namespace SCSCalc_2_0
                 waitHandle.Set();
                 timer!.Dispose();
             };
-            timer = new(timerCallback, default, 2075, Timeout.Infinite); //Таймер для минимального времени отображения экрана-заставки
+            timer = new(timerCallback, default, 2075, Timeout.Infinite); //Timer for splash-screen minimum display time
             this.DataFolderEnsureCreated();
             parametersDocPath = Path.Combine(dataFolderPath, "SCS-CalcParametersData.json");
             dataBaseConnectionString = $"Data Source={Path.Combine(dataFolderPath, "configutarions.db")}";
@@ -63,10 +63,10 @@ namespace SCSCalc_2_0
             this.ExceptionOccurrenceAction += ExceptionOccurrence;
         }
 
-        //Возникновение ошибок в логике приложения
+        //Exception occurrence in runtime logic
         private event Action<string>? ExceptionOccurrenceAction;
 
-        //Создание папки с данными приложения
+        //Creating folder with application data
         private void DataFolderEnsureCreated()
         {
             try
@@ -89,15 +89,15 @@ namespace SCSCalc_2_0
             Resources["advancedParametersPageViewModel"] = advancedParametersPageViewModel;
             MainWindow = new MainWindow();
             MainWindow.ContentRendered += (s, e) => MainWindow_ContentRendered();
-            waitHandle.WaitOne(new TimeSpan(0, 0, 10)); //Ожидание завершения минимального времени для отображения экрана-заставки.
+            waitHandle.WaitOne(new TimeSpan(0, 0, 10)); //Waiting to splash-screen minimum display time
             waitHandle.Dispose();
             MainWindow.Show();
         }
 
         private void MainWindow_ContentRendered()
         {
-            //Внимание! Не рекоменуется выставлять время закрытия splashScreen, например так: splashScreen.Close(new(0, 0, 0, 0, 500));
-            //Не-мнгновенное закрытие splashScreen приведет к закрытию всех диалоговых окон, и предполагаемое сообщение об ошибке (initializeExceptions) не выведется.
+            //Warning! Not recommended to input splash-screen closing parameter, as example - splashScreen.Close(new(0, 0, 0, 0, 500));
+            //Not-immediately splash-screen closing will trigger to close all dialog boxes, and allegend error message will not display. 
 
             splashScreen.Close(Timeout.InfiniteTimeSpan);
             if (initializeExceptions.Count > 0)
@@ -112,7 +112,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Сохранение конфигурации в текстовый документ
+        //Saving structured cabling configuration to txt
         private void SaveToTXT(Configuration configuration)
         {
             StringBuilder saveStringBuilder = new();
@@ -155,7 +155,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Сериализация настраеваемых параметров расчёта конфигураций СКС
+        //Serialization of configurable structured cabling calculating parameters
         private void ParametersSerialize(SCSCalcParameters actualParameters)
         {
             try
@@ -194,7 +194,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Десериализация настраеваемых параметров расчёта конфигураций СКС
+        //Deserialization of configurable structured cabling calculating parameters
         private SCSCalcParameters? ParametersDeserialize()
         {
             if (!File.Exists(parametersDocPath))
@@ -248,7 +248,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Загрузка БД конфигураций СКС
+        //Loading structured cabling configurations data base
         private ObservableCollection<Configuration> ConfigurationDBLoad()
         {
             try
@@ -266,7 +266,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Расчет конфигурации СКС и сохранение данных в БД
+        //Calculation of structured cabling configuration and saving data to DB
         private async Task<Configuration> СalculateConfigurationAsync(SCSCalcParameters parameters, ConfigurationCalculateParameters calculateParameters, double minPermanentLink,
             double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
@@ -275,8 +275,8 @@ namespace SCSCalc_2_0
             {
                 Configuration configuration = calculateParameters.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
                 using ApplicationContext context = new(dataBaseConnectionString);
-                await Task.Run(() => context.Configurations.Add(configuration)); //Синхронные методы используются из-за ограничений SQLite
-                await Task.Run(() => DBSaveChanges(context));                    //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                await Task.Run(() => context.Configurations.Add(configuration)); //Syncronous methods are used due to SQLite async limitations
+                await Task.Run(() => DBSaveChanges(context));                    //https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/async
                 return configuration;
             }
             finally
@@ -285,7 +285,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Удаление всех записей конфигураций СКС
+        //Deletion of all structured cabling configurations records
         private async Task<bool> DeleteAllConfigurationsAsync()
         {
             await locker.WaitAsync();
@@ -296,8 +296,8 @@ namespace SCSCalc_2_0
                         $"Отменить это действие будет невозможно", "Удаление ВСЕХ конфигураций СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
                 {
                     context.Configurations.RemoveRange(context.Configurations);
-                    await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
-                    return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                    await Task.Run(() => DBSaveChanges(context)); //Syncronous methods are used due to SQLite async limitations
+                    return true;                                  //https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/async
                 }
                 return false;
             }
@@ -307,7 +307,7 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Удаление записи конфигурации
+        //Deletion of structured cabling configuration record
         private async Task<bool> DeleteConfigurationAsync(Configuration configuration)
         {
             await locker.WaitAsync();
@@ -322,8 +322,8 @@ namespace SCSCalc_2_0
                 {
                     using ApplicationContext context = new(dataBaseConnectionString);
                     context.Configurations.Remove(configuration);
-                    await Task.Run(() => DBSaveChanges(context)); //Синхронные методы используются из-за ограничений SQLite
-                    return true;                                  //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                    await Task.Run(() => DBSaveChanges(context)); //Syncronous methods are used due to SQLite async limitations
+                    return true;                                  //https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/async
                 }
                 return false;
             }
@@ -333,27 +333,27 @@ namespace SCSCalc_2_0
             }
         }
 
-        //Подтверждение сброса настраиваемых параметров приложения до заводских
+        //Confirm for reset to default parameters
         private bool ResetParametersСonfirm()
         {
             return MessageBox.Show("Вы действительно хотите вернуть параметры по умолчанию?", "Внимание!",
                 MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes;
         }
 
-        //Сохранение данных в БД
+        //Saving to data base
         private void DBSaveChanges(DbContext context)
         {
             try
             {
-                context.SaveChanges(); //Синхронные методы используются из-за ограничений SQLite
-            }                          //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+                context.SaveChanges(); //Syncronous methods are used due to SQLite async limitations
+            }                          //https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/async
             catch (Exception ex)
             {
                 Dispatcher.Invoke(() => ExceptionOccurrenceAction?.Invoke($"Ошибка сохранения данных:{NewLine}{ex.Message}"));
             }
         }
 
-        //Возникновение ошибок в логике приложения
+        //Exception occurrence in runtime logic
         private void ExceptionOccurrence(string str)
         {
             MessageBox.Show(str, "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
