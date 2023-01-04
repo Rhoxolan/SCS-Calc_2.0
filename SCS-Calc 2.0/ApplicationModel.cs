@@ -82,16 +82,16 @@ namespace SCSCalc_2_0
             calculateParameters = new();
         }
 
-        // Изменение параметров расчёта конфигураций СКС
+        //Changing the parameters of structured cabling configuration calculating
         public event Action? ParametersChanged;
 
-        //Изменение значения даипазонов вводимых параметров расчёта конфигураций СКС
+        //Changing the values of the diapasons of structured cabling configuration input parameters
         public event Action? DiapasonsChanged;
 
-        //Изменение значения коэффициента технологического запаса
+        //Changing of the value of technological reserve coefficient
         public event Action? TechnologicalReserveChanged;
 
-        //Изменение значения аргументов получения рекомендаций по побдору кабеля
+        //Changing of the value of arguments of getting cable selection recommendations
         public event Action? RecommendationsArgumentsChanged;
 
         public ReadOnlyObservableCollection<Configuration> Configurations { get; }
