@@ -29,13 +29,13 @@ namespace SCSCalc_2_0
         //Loading the structured cabling configuration data base
         private event Func<ObservableCollection<Configuration>> ConfigurationsLoadFunc;
 
-        //Расчет конфигурации СКС и сохранение данных в БД
+        //Calculating the structured cabling configuration and saving it to data base
         private event Func<SCSCalcParameters, ConfigurationCalculateParameters, double, double, int, int, double?, Task<Configuration>> СalculateConfigurationFuncAsync;
 
-        //Удаление записи конфигурации
+        //Deletion of structured cabling configuration record
         private event Func<Configuration, Task<bool>> DeleteConfigurationFuncAsync;
 
-        //Сброс настраиваемых параметров приложения до заводских
+        //Reset to default parameters
         private event Func<bool> ResetParametersFunc;
 
         public ApplicationModel(
