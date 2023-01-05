@@ -4,12 +4,12 @@ using System.Text;
 namespace SCSCalc.Calculate
 {
     /// <summary>
-    /// Класс, описывающий метод расчёта конфигурации СКС без учета метража кабеля в 1-й кабельной катушке
+    /// Presents the calculate method of structured cabling configuration without cable hank meterage
     /// </summary>
     internal class ConfigurationCalculatorWithoutHankMeterage : IConfigurationCalculatorStrategy
     {
         /// <summary>
-        /// Расчёт конфигурации СКС без учета метража кабеля в 1-й кабельной катушке
+        /// Calculate method of structured cabling configuration without cable hank meterage
         /// </summary>
         public Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {

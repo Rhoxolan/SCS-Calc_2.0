@@ -3,12 +3,12 @@
 namespace SCSCalc.Calculate
 {
     /// <summary>
-    /// Интерфейс, предоставляющий метод расчёта конфигурации СКС
+    /// Presents the calculate method of structured cabling configuration
     /// </summary>
     internal interface IConfigurationCalculatorStrategy
     {
         /// <summary>
-        /// Расчёт конфигурации СКС
+        /// Calculate method of structured cabling configuration
         /// </summary>
         Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
             int numberOfPorts, double? cableHankMeterage);
