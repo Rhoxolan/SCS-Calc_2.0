@@ -1,71 +1,71 @@
 ﻿namespace SCSCalc
 {
     /// <summary>
-    /// Запись конфигурации СКС
+    /// Record of structured cabling configuration
     /// </summary>
     public record Configuration
     {
         /// <summary>
-        /// Id текущей записи конфигурации СКС
+        /// Id of the structured cabling configuration record
         /// </summary>
         public uint Id { get; init; }
 
         /// <summary>
-        /// Дата записи конфигурации СКС
+        /// Record time of the structured cabling configuration record
         /// </summary>
         public required DateTime RecordTime { get; init; }
 
         /// <summary>
-        /// Значение минимальной длины постоянного линка в записи конфигурации СКС
+        /// Value of permanent link minimum length in the structured cabling configuration record
         /// </summary>
         public required double MinPermanentLink { get; init; }
 
         /// <summary>
-        /// Значение максимальной длины постоянного линка в записи конфигурации СКС
+        /// Value of permanent link maximum length in the structured cabling configuration record
         /// </summary>
         public required double MaxPermanentLink { get; init; }
 
         /// <summary>
-        /// Значение средней длины постоянного линка в записи конфигурации СКС
+        /// Value of permanent link average length in the structured cabling configuration record
         /// </summary>
         public required double AveragePermanentLink { get; init; }
 
         /// <summary>
-        /// Значение количества рабочих мест в записи конфигурации СКС
+        /// Value of workplaces count in the structured cabling configuration record
         /// </summary>
         public required int NumberOfWorkplaces { get; init; }
 
         /// <summary>
-        /// Значение количества портов на 1 рабочее место в записи конфигурации СКС
+        /// Value of ports count per 1 workplace in the structured cabling configuration record
         /// </summary>
         public required int NumberOfPorts { get; init; }
 
         /// <summary>
-        /// Значение необходимого количества кабеля в записи конфигурации СКС.
-        /// Присутствует, если конфигурация СКС расчитывалась с учётом количества кабеля в 1-й бухте.
+        /// Value of necessary cable meterage for structured cabling installation, in the structured cabling configuration record.
+        /// Is present if structured cabling configuration was calculated with cable hank meterage
         /// </summary>
         public double? СableQuantity { get; init; } = null;
 
         /// <summary>
-        /// Значение метража кабеля в 1-й кабельной катушке (бухте) в записи конфигурации СКС.
-        /// Присутствует, если конфигурация СКС расчитывалась с учётом количества кабеля в 1-й бухте.
+        /// Value of cable hank meterage in the structured cabling configuration record
+        /// Is present if structured cabling configuration was calculated with cable hank meterage
         /// </summary>
         public double? CableHankMeterage { get; init; } = null;
 
         /// <summary>
-        /// Значение количества кабельных катушек в записи конфигурации СКС.
-        /// Присутствует, если конфигурация СКС расчитывалась с учётом количества кабеля в 1-й бухте.
+        /// Value of cable hank count in the structured cabling configuration record
+        /// Is present if structured cabling configuration was calculated with cable hank meterage
         /// </summary>
         public int? HankQuantity { get; init; } = null;
 
         /// <summary>
-        /// Значение общего количества необходимого метража кабеля в записи конфигурации СКС.
+        /// Value of the total necessary cable meterage for structured cabling installation, in the structured cabling configuration record.
         /// </summary>
         public required double TotalСableQuantity { get; init; }
 
         /// <summary>
-        /// Рекомендации по побдору кабеля в в записи конфигурации СКС.
-        /// Присутствует, если указана необходимость получения соответствующих рекомендаций.
+        /// Recommendations for cable selection in the structured cabling configuration record.
+        /// Is present if necessity of getting cable selection recommendations is indicated
         /// </summary>
         public string? Recommendations { get; init; }
     }

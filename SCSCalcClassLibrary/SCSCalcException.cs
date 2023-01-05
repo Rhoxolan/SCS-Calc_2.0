@@ -6,7 +6,7 @@
     // ИСКЛЮЧЕНИЯ НЕ ДОЛЖНЫ ОБРАБАТЫВАТЬСЯ В ПРИЛОЖЕНИИ!
 
     /// <summary>
-    /// Обработка ошибок в логике приложения SCSCalc
+    /// Exceptions in SCSCalc application logic
     /// </summary>
     public class SCSCalcException : Exception
     {
