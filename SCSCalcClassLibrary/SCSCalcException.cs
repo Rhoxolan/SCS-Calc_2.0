@@ -1,9 +1,8 @@
 ﻿namespace SCSCalc
 {
-    // Класс, предназначенный для сообщения о возникновении исключений, вызванных несоответствиями вводимых значений и прочими ошибками в логике прложения.
-    // Пример - превышение допустимой длины постоянного линка (Permanent link).
+    // Exceptions in SCSCalc application logic. As example - overflow of permissible permanent link length.
     //
-    // ИСКЛЮЧЕНИЯ НЕ ДОЛЖНЫ ОБРАБАТЫВАТЬСЯ В ПРИЛОЖЕНИИ!
+    // Exceptions should not be handled in the app!
 
     /// <summary>
     /// Exceptions in SCSCalc application logic
