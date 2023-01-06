@@ -1,6 +1,6 @@
 ﻿namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в DiapasonContext.
+    //Encapsulates in DiapasonContext class
 
     /// <summary>
     /// Интерфейс для определения диапазона допустимого вводимого значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801.

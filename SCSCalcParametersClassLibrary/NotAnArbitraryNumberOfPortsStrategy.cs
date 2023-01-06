@@ -2,15 +2,15 @@
 
 namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в DiapasonContext.
+    //Encapsulates in DiapasonContext class
 
     /// <summary>
-    /// //Класс для определения диапазона ввода значения количества портов на 1 рабочее место с учетом требований стандарта ISO/IEC 11801.
+    /// Class for determination of allowable ports count input value at ISO/IEC 11801 standard compliance
     /// </summary>
     internal class NotAnArbitraryNumberOfPortsStrategy : IAnArbitraryNumberOfPortsStrategy
     {
         /// <summary>
-        /// Определяет диапазон ввода значения количества портов на 1 рабочее место с учетом требований стандарта ISO/IEC 11801.
+        /// Determinationes of allowable ports count input value at ISO/IEC 11801 standard compliance
         /// </summary>
         public (decimal Min, decimal Max) NumberOfPortsDiapason
         {
