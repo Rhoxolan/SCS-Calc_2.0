@@ -10,7 +10,7 @@ namespace SCSCalc.Parameters
     internal class NotAnArbitraryNumberOfPortsStrategy : IAnArbitraryNumberOfPortsStrategy
     {
         /// <summary>
-        /// Determinationes of allowable ports count input value at ISO/IEC 11801 standard compliance
+        /// Determines of allowable ports count input value at ISO/IEC 11801 standard compliance
         /// </summary>
         public (decimal Min, decimal Max) NumberOfPortsDiapason
         {

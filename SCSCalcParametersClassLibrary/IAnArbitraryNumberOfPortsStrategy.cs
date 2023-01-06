@@ -3,12 +3,12 @@
     //Encapsulates in DiapasonContext class
 
     /// <summary>
-    /// Интерфейс для определения диапазона допустимого вводимого значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801.
+    /// Interface for determination of allowable ports count input value in ISO/IEC 11801 standard accordance
     /// </summary>
     internal interface IAnArbitraryNumberOfPortsStrategy
     {
         /// <summary>
-        /// Определяет диапазон допустимого вводимого значения количества портов на 1 рабочее место в соответствии стандарту ISO/IEC 11801. 
+        /// Determines of allowable ports count input value in ISO/IEC 11801 standard accordance
         /// </summary>
         public (decimal Min, decimal Max) NumberOfPortsDiapason { get; }
     }
