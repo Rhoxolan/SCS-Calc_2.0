@@ -1,28 +1,28 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Класс, представляющий рекомендации по подбору кабеля
+    /// Presents cable selection recommendations
     /// </summary>
     public class CableSelectionRecommendations
     {
         /// <summary>
-        /// Рекомендация по типу изоляции кабеля
+        /// Сable insulation type recommendation
         /// </summary>
         public required string RecommendationIsolationType { get; init; }
 
         /// <summary>
-        /// Рекомендация по материалу изоляции кабеля
+        /// Cable insulation material recommendation
         /// </summary>
         public required string RecommendationIsolationMaterial { get; init; }
 
         /// <summary>
-        /// Рекомендация по типу экранизации кабеля
+        /// Cable shielding type recommendation
         /// </summary>
         public required string RecommendationShieldedType { get; init; }
 
         /// <summary>
-        /// Рекомендация по стандарту кабеля
+        /// Cable standard recommendation
         /// </summary>
-        public required string RecommendationCableStandart { get; init; }
+        public required string RecommendationCableStandard { get; init; }
     }
 }

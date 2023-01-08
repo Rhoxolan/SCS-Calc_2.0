@@ -1,7 +1,7 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Стандарты интерфейсов подключений
+    /// Enum of connection interfaces standards
     /// </summary>
     public enum ConnectionInterfaceStandard
     {

@@ -1,37 +1,37 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Класс, представляющий диапазоны ввода параметров расчёта конфигурации СКС
+    /// Presents input diapasons of structured cabling configuration calculate parameters
     /// </summary>
     public class SCSCalcDiapasons
     {
         /// <summary>
-        /// Диапазон ввода значения минимальной длины постоянного линка
+        /// Input diapason of permanent link minimum value
         /// </summary>
         public required SCSCalcInputDiapason MinPermanentLinkDiapason { get; init; }
 
         /// <summary>
-        /// Диапазон ввода значения максимальной длины постоянного линка
+        /// Input diapason of permanent link maximum value
         /// </summary>
         public required SCSCalcInputDiapason MaxPermanentLinkDiapason { get; init; }
 
         /// <summary>
-        /// Диапазон ввода значения количества портов на 1 рабочее место
+        /// Input diapason of ports count per 1 workplace
         /// </summary>
         public required SCSCalcInputDiapason NumberOfPortsDiapason { get; init; }
 
         /// <summary>
-        /// Диапазон ввода значения количества рабочих мест
+        /// Input diapason of workplaces count
         /// </summary>
         public required SCSCalcInputDiapason NumberOfWorkplacesDiapason { get; init; }
 
         /// <summary>
-        /// Диапазон ввода метража кабеля в бухте
+        /// Input diapason of cable hank meterage
         /// </summary>
         public required SCSCalcInputDiapason CableHankMeterageDiapason { get; init; }
 
         /// <summary>
-        /// Диапазон ввода значения технологического запаса
+        /// Input diapason of technological reserve value
         /// </summary>
         public required SCSCalcInputDiapason TechnologicalReserveDiapason { get; init; }
     }

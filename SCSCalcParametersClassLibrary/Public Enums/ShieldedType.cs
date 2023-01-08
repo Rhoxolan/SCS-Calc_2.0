@@ -1,7 +1,7 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Тип экранизации рекомендуемого кабеля
+    /// Shielding type of recommended cable
     /// </summary>
     public enum ShieldedType
     {

@@ -1,7 +1,7 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Материал изоляции рекомендуемого кабеля
+    /// Insulation material of recommended cable
     /// </summary>
     public enum IsolationMaterial
     {

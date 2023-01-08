@@ -26,7 +26,7 @@
                     {
                         RecommendationIsolationType = recommendationsStrategy.RecommendationIsolationType,
                         RecommendationIsolationMaterial = recommendationsStrategy.RecommendationIsolationMaterial,
-                        RecommendationCableStandart = recommendationsStrategy.RecommendationCableStandart,
+                        RecommendationCableStandard = recommendationsStrategy.RecommendationCableStandart,
                         RecommendationShieldedType = recommendationsStrategy.RecommendationShieldedType
                     };
                 }

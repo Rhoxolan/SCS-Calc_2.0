@@ -38,9 +38,9 @@ namespace SCSCalc.Calculate
                 {
                     recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
                 }
-                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandart))
+                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandard))
                 {
-                    recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandart}");
+                    recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandard}");
                 }
                 if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
                 {
