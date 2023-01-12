@@ -1,19 +1,19 @@
 ﻿namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в DiapasonContext.
+    //Encapsulates in DiapasonContext class
 
     /// <summary>
-    /// Интерфейс для определения диапазона вводимых значений параметров расчёта конфигураций в соответствии стандарту ISO/IEC 11801.
+    /// Intarface for determine of calculate structured cabling configuration input parameters diapasons in accordance with the ISO/IEC 11801 standard.
     /// </summary>
     internal interface IStrictСomplianceWithTheStandartStrategy
     {
         /// <summary>
-        /// Определяет диапазон вводимых значений минимальной длины постоянного линка
+        /// Determines diapason of minimal permanent link input value
         /// </summary>
         public (decimal Min, decimal Max) MinPermanentLinkDiapason { get; }
 
         /// <summary>
-        /// Определяет диапазон вводимых значений максималньой длины постоянного линка
+        /// Determines diapason of maximal permanent link input value
         /// </summary>
         public (decimal Min, decimal Max) MaxPermanentLinkDiapason { get; }
     }

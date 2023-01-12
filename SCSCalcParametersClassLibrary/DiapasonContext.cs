@@ -1,10 +1,10 @@
 ﻿namespace SCSCalc.Parameters
 {
-    //Класс, инкапсулирующий объекты, предназначенные для определения диапазона вводимых значений параметров конфигураций СКС, реализующие
-    //интерфейсы IStrictСomplianceWithTheStandartStrategy, IAnArbitraryNumberOfPortsStrategy и IStandartValuesStrategy.
+    //Encapsulates objects which is intended for determine of structured cabling configuration parameters input diapason; these objects are implements
+    //IStrictСomplianceWithTheStandartStrategy, IAnArbitraryNumberOfPortsStrategy and IStandartValuesStrategy interfaces
 
     /// <summary>
-    /// Класс, инкапсулирующий объекты, предназначенные для определения диапазона вводимых значений параметров конфигураций СКС
+    /// Encapsulates objects which is intended for determine of structured cabling configuration parameters input diapason
     /// </summary>
     internal class DiapasonContext
     {
@@ -22,7 +22,7 @@
         }
 
         /// <summary>
-        /// Диапазоны вводимых значений параметров расчёта конфигураций СКС
+        /// Input diapasons of structured cabling configuration calculate parameters
         /// </summary>
         public SCSCalcDiapasons Diapasons
         {
@@ -69,7 +69,7 @@
         }
 
         /// <summary>
-        /// Разрешен или нет ввод значений в соответствии стандарту ISO/IEC 11801
+        /// Allowed or not to enter values according to ISO/IEC 11801
         /// </summary>
         public bool? IsStrictСomplianceWithTheStandart
         {
@@ -99,7 +99,7 @@
         }
 
         /// <summary>
-        /// Разрешен или нет произвольный ввод значений количества портов на 1 рабочее место
+        /// Allowed or not to enter arbitrary values of ports count per 1 workplace
         /// </summary>
         public bool? IsAnArbitraryNumberOfPorts
         {

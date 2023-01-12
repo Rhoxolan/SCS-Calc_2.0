@@ -1,17 +1,17 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Класс, определяющий диапазон ввода определённого параметра расчёта конфигурации СКС
+    /// Determines the input diapason of structured cabling configuration calculate parameter
     /// </summary>
     public class SCSCalcInputDiapason
     {
         /// <summary>
-        /// Минимальное значение ввода параметра расчёта конфигурации СКС
+        /// Minimum input value of structured cabling configuration calculate parameter
         /// </summary>
         public required decimal Min { get; init; }
 
         /// <summary>
-        /// Максимальное значение ввода параметра расчёта конфигурации СКС
+        /// Maximum input value of structured cabling configuration calculate parameter
         /// </summary>
         public required decimal Max { get; init; }
     }

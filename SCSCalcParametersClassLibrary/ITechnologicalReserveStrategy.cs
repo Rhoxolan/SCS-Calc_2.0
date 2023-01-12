@@ -1,14 +1,14 @@
 ﻿namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в класс ValueContext.
+    //Encapsulates in ValueContext class.
 
     /// <summary>
-    /// Интерфейс для работы со значением коэффициента технологического запаса.
+    /// Intarface for working with technological reserve coefficient value
     /// </summary>
     internal interface ITechnologicalReserveStrategy
     {
         /// <summary>
-        /// Значение коэффициента технологического запаса
+        /// Value of technological reserve coefficient
         /// </summary>
         public double TechnologicalReserve { get; set; }
     }
