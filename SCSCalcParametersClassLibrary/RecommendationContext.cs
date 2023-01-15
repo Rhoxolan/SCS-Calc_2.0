@@ -1,7 +1,7 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// //Класс, инкапсулирующий объекты для работы с получением рекомендаций по побдору кабеля
+    /// Encapsulates objects which intended for work with getting of cable selection recommendations
     /// </summary>
     internal class RecommendationContext
     {
@@ -14,7 +14,7 @@
         }
 
         /// <summary>
-        /// Рекомендации по подбору кабеля
+        /// Cable selection recommandations
         /// </summary>
         public CableSelectionRecommendations CableSelectionRecommendations
         {
@@ -35,7 +35,7 @@
         }
 
         /// <summary>
-        /// Аргументы для получения рекомендаций по побдору кабеля
+        /// Arguments for getting of cable selection recommendations
         /// </summary>
         public RecommendationsArguments RecommendationsArguments
         {
@@ -50,7 +50,7 @@
         }
 
         /// <summary>
-        /// Включено или выключено получение рекомендаций по побдору кабеля
+        /// Enabled or disabled getting cable selection recommendations
         /// </summary>
         public bool? IsRecommendationsAvailability
         {

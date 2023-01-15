@@ -1,7 +1,7 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Класс, предоставляющий для других классов приложения доступ к настраиваемым параметрам вводимых значений конфигураций СКС.
+    /// Class which presents access to configurable parameters of structured cabling configurations input values, for other application classes.
     /// </summary>
     public class SCSCalcParameters
     {
@@ -17,7 +17,7 @@
         }
 
         /// <summary>
-        /// Диапазоны вводимых значений параметров расчёта конфигураций СКС
+        /// Input diapasons of structured cabling configuration
         /// </summary>
         public SCSCalcDiapasons Diapasons
         {
@@ -25,7 +25,7 @@
         }
 
         /// <summary>
-        /// Рекомендации по подбору кабеля
+        /// Cable selection recommendations
         /// </summary>
         public CableSelectionRecommendations CableSelectionRecommendations
         {
@@ -33,7 +33,7 @@
         }
 
         /// <summary>
-        /// Значение коэффициента технологического запаса
+        /// Technological reserve coefficient value
         /// </summary>
         public double TechnologicalReserve
         {
@@ -42,7 +42,7 @@
         }
 
         /// <summary>
-        /// Аргументы для получения рекомендаций по побдору кабеля
+        /// Arguments for getting of cable selection recommendations
         /// </summary>
         public RecommendationsArguments RecommendationsArguments
         {
@@ -50,7 +50,7 @@
         }
 
         /// <summary>
-        /// Включено или выключено получение рекомендаций по побдору кабеля
+        /// Enabled or disabled getting cable selection recommendations
         /// </summary>
         public bool? IsRecommendationsAvailability
         {
@@ -59,7 +59,7 @@
         }
 
         /// <summary>
-        /// Разрешен или нет ввод значений в соответствии стандарту ISO/IEC 11801
+        /// Allowed or not to enter values according to ISO/IEC 11801
         /// </summary>
         public bool? IsStrictСomplianceWithTheStandart
         {
@@ -68,7 +68,7 @@
         }
 
         /// <summary>
-        /// Разрешен или нет произвольный ввод значений количества портов на 1 рабочее место
+        /// Allowed or not to enter values of ports count per 1 workplace
         /// </summary>
         public bool? IsAnArbitraryNumberOfPorts
         {
@@ -77,7 +77,7 @@
         }
 
         /// <summary>
-        /// Учитывается или нет коэффициент технологического запаса
+        /// Is technological reserve coefficient value availability enabled or disabled
         /// </summary>
         public bool? IsTechnologicalReserveAvailability
         {

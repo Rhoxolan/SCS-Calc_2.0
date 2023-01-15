@@ -3,17 +3,17 @@
 namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// Класс для получения рекомендаций по побдору кабеля при включенном получении рекомендаций
+    /// Class for getting cable selection recommendations if getting recommendations is enabled
     /// </summary>
     internal class RecommendationsAvailabilityStrategy : IRecommendationsStrategy
     {
         /// <summary>
-        /// Аргументы для получения рекомендаций по побдору кабеля
+        /// Arguments for getting cable selection recommendations
         /// </summary>
         public RecommendationsArguments RecommendationsArguments { get; } = new();
 
         /// <summary>
-        /// Рекомендация по типу изоляции кабеля
+        /// Cable insulation type recommendation
         /// </summary>
         public string RecommendationIsolationType
         {
@@ -36,7 +36,7 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
-        /// Рекомендация по материалу изоляции кабеля
+        /// Cable insulation material recommendation
         /// </summary>
         public string RecommendationIsolationMaterial
         {
@@ -59,7 +59,7 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
-        /// Рекомендация по типу экранизации кабеля
+        /// Cable shielding type recommendation
         /// </summary>
         public string RecommendationShieldedType
         {
@@ -82,7 +82,7 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
-        /// Рекомендация по стандарту кабеля
+        /// Cable standart recommendation
         /// </summary>
         public string RecommendationCableStandart
         {

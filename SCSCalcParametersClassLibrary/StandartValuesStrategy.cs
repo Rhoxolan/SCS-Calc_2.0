@@ -2,15 +2,15 @@
 
 namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в класс DiapasonContext.
+    //Encapsulates in DiapasonContext class
 
     /// <summary>
-    /// Класс для определения диапазона стандартных вводимых параметров конфигураций СКС.
+    /// Class for determine of structured cabling configuration input standard parameters diapasons
     /// </summary>
     internal class StandartValuesStrategy : IStandartValuesStrategy
     {
         /// <summary>
-        /// Определяет диапазон ввода количества рабочих мест
+        /// Determines of workplaces count input diapason
         /// </summary>
         public (decimal Min, decimal Max) NumberOfWorkplacesDiapason
         {
@@ -23,7 +23,7 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
-        /// Определяет диапазон ввода метража кабеля в бухте
+        /// Determines diapason of cable hank meterage input
         /// </summary>
         public (decimal Min, decimal Max) CableHankMeterageDiapason
         {
@@ -36,7 +36,7 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
-        /// Определяет диапазон ввода значения технологического запаса
+        /// Determines diapason of technological reserve value input
         /// </summary>
         public (decimal Min, decimal Max) TechnologicalReserveDiapason
         {

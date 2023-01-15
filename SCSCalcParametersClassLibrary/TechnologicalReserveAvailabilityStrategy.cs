@@ -2,10 +2,10 @@
 
 namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в класс ValueContext.
+    //Encapsulates in ValueContext class
 
     /// <summary>
-    /// Класс для работы со значением коэффициента технологического запаса с его учётом
+    /// Class for work with technological reserve coefficient value, if it availability is enabled
     /// </summary>
     internal class TechnologicalReserveAvailabilityStrategy : ITechnologicalReserveStrategy
     {
@@ -17,7 +17,7 @@ namespace SCSCalc.Parameters
         }
 
         /// <summary>
-        /// Значение коэффициента технологического запаса
+        /// Value of technological reserve coefficient
         /// </summary>
         public double TechnologicalReserve
         {

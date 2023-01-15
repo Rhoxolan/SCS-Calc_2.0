@@ -1,7 +1,7 @@
 ﻿namespace SCSCalc.Parameters
 {
     /// <summary>
-    /// //Класс, инкапсулирующий объекты для работы со значениями расчета конфигураций СКС
+    /// Class which encapsulates objects for work with structured cabling configuration calculation values
     /// </summary>
     internal class ValueContext
     {
@@ -14,7 +14,7 @@
         }
 
         /// <summary>
-        /// Значение коэффициента технологического запаса
+        /// Value of technological reserve coefficient
         /// </summary>
         public double TechnologicalReserve
         {
@@ -40,7 +40,7 @@
         }
 
         /// <summary>
-        /// Учитывается или нет коэффициент технологического запаса
+        /// Is technological reserve coefficient value availability enabled or disabled
         /// </summary>
         public bool? IsTechnologicalReserveAvailability
         {

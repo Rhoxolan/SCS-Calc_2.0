@@ -2,15 +2,15 @@
 
 namespace SCSCalc.Parameters
 {
-    //Инкапсулирован в класс DiapasonContext.
+    //Encapsulates in DiapasonContext class.
 
     /// <summary>
-    /// Класс для работы со значением коэффициента технологического запаса без его учёта
+    /// Class for work with technological reserve coefficient value if it availability is disabled
     /// </summary>
     internal class NonTechnologicalReserveStrategy : ITechnologicalReserveStrategy
     {
         /// <summary>
-        /// Значение коэффициента технологического запаса
+        /// Technological reserve coefficient value
         /// </summary>
         public double TechnologicalReserve
         {
