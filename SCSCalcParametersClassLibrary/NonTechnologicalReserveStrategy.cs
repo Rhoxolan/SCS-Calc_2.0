@@ -1,4 +1,5 @@
 ﻿using static SCSCalc.Parameters.Properties.Resources;
+using static System.Convert;
 
 namespace SCSCalc.Parameters
 {
@@ -9,12 +10,19 @@ namespace SCSCalc.Parameters
     /// </summary>
     internal class NonTechnologicalReserveStrategy : ITechnologicalReserveStrategy
     {
+        private double technologicalReserve;
+
+        public NonTechnologicalReserveStrategy()
+        {
+            technologicalReserve = ToDouble(NonTechnologicalReserve_TechnologicalReserve);
+        }
+
         /// <summary>
         /// Technological reserve coefficient value
         /// </summary>
         public double TechnologicalReserve
         {
-            get => Convert.ToDouble(NonTechnologicalReserve_TechnologicalReserve);
+            get => technologicalReserve;
 
             set => throw new SCSCalcException("Учёт технологичегского запаса отключён. Пожалуйста, проверьте настройки.");
         }

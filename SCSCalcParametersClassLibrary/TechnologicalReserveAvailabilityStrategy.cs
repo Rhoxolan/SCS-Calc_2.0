@@ -1,4 +1,5 @@
 ﻿using static SCSCalc.Parameters.Properties.Resources;
+using static System.Convert;
 
 namespace SCSCalc.Parameters
 {
@@ -29,7 +30,7 @@ namespace SCSCalc.Parameters
                 }
                 else
                 {
-                    technologicalReserve = Convert.ToDouble(TechnologicalReserveAvailability_TechnologicalReserve_Default);
+                    technologicalReserve = ToDouble(TechnologicalReserveAvailability_TechnologicalReserve_Default);
                     return (double)technologicalReserve;
                 }
             }

@@ -6,11 +6,14 @@
     internal class ValueContext
     {
         private ITechnologicalReserveStrategy? technologicalReserveStrategy;
+        private TechnologicalReserveAvailabilityStrategy technologicalReserveAvailability;
+        private NonTechnologicalReserveStrategy nonTechnologicalReserve;
 
         public ValueContext()
         {
-            IsTechnologicalReserveAvailability = null;
             technologicalReserveStrategy = null;
+            technologicalReserveAvailability = new();
+            nonTechnologicalReserve = new();
         }
 
         /// <summary>
@@ -60,11 +63,11 @@
             {
                 if (Equals(value, true))
                 {
-                    technologicalReserveStrategy = new TechnologicalReserveAvailabilityStrategy();
+                    technologicalReserveStrategy = technologicalReserveAvailability;
                 }
                 else
                 {
-                    technologicalReserveStrategy = new NonTechnologicalReserveStrategy();
+                    technologicalReserveStrategy = nonTechnologicalReserve;
                 }
             }
         }
