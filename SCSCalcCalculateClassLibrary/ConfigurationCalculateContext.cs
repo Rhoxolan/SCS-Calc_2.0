@@ -8,10 +8,14 @@ namespace SCSCalc.Calculate
     internal class ConfigurationCalculateContext
     {
         private IConfigurationCalculatorStrategy? configurationCalculatorStrategy;
+        private ConfigurationCalculatorWithHankMeterage calculatorWithHankMeterage;
+        private ConfigurationCalculatorWithoutHankMeterage calculatorWithoutHankMeterage;
 
         public ConfigurationCalculateContext()
         {
             configurationCalculatorStrategy = null;
+            calculatorWithHankMeterage = new();
+            calculatorWithoutHankMeterage = new();
         }
 
         /// <summary>
@@ -41,12 +45,12 @@ namespace SCSCalc.Calculate
                 }
                 if (Equals(value, true))
                 {
-                    configurationCalculatorStrategy = new ConfigurationCalculatorWithHankMeterage();
+                    configurationCalculatorStrategy = calculatorWithHankMeterage;
                     return;
                 }
                 if (Equals(value, false))
                 {
-                    configurationCalculatorStrategy = new ConfigurationCalculatorWithoutHankMeterage();
+                    configurationCalculatorStrategy = calculatorWithoutHankMeterage;
                 }
             }
         }
