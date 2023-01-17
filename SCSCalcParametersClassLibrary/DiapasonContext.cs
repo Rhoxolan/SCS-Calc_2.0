@@ -9,15 +9,25 @@
     internal class DiapasonContext
     {
         private IStrictСomplianceWithTheStandartStrategy? complianceWithTheStandartStrategy;
+        private StrictСomplianceWithTheStandartStrategy strictСomplianceWithTheStandart;
+        private NonStrictСomplianceWithTheStandartStrategy nonStrictСomplianceWithTheStandart;
+
         private IAnArbitraryNumberOfPortsStrategy? numberOfPortsStrategy;
+        private AnArbitraryNumberOfPortsStrategy anArbitraryNumberOfPorts;
+        private NotAnArbitraryNumberOfPortsStrategy notAnArbitraryNumberOfPorts;
+
         private IStandartValuesStrategy? standartValuesStrategy;
 
         public DiapasonContext()
         {
-            IsStrictСomplianceWithTheStandart = null;
-            IsAnArbitraryNumberOfPorts = null;
             complianceWithTheStandartStrategy = null;
+            strictСomplianceWithTheStandart = new();
+            nonStrictСomplianceWithTheStandart = new();
+
             numberOfPortsStrategy = null;
+            anArbitraryNumberOfPorts = new();
+            notAnArbitraryNumberOfPorts = new();
+
             standartValuesStrategy = new StandartValuesStrategy();
         }
 
@@ -89,11 +99,11 @@
             {
                 if (Equals(value, true))
                 {
-                    complianceWithTheStandartStrategy = new StrictСomplianceWithTheStandartStrategy();
+                    complianceWithTheStandartStrategy = strictСomplianceWithTheStandart;
                 }
                 else
                 {
-                    complianceWithTheStandartStrategy = new NonStrictСomplianceWithTheStandartStrategy();
+                    complianceWithTheStandartStrategy = nonStrictСomplianceWithTheStandart;
                 }
             }
         }
@@ -119,11 +129,11 @@
             {
                 if (Equals(value, true))
                 {
-                    numberOfPortsStrategy = new AnArbitraryNumberOfPortsStrategy();
+                    numberOfPortsStrategy = anArbitraryNumberOfPorts;
                 }
                 else
                 {
-                    numberOfPortsStrategy = new NotAnArbitraryNumberOfPortsStrategy();
+                    numberOfPortsStrategy = notAnArbitraryNumberOfPorts;
                 }
             }
         }
