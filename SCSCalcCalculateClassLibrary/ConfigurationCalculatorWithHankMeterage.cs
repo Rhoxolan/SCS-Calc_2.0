@@ -16,12 +16,12 @@ namespace SCSCalc.Calculate
         {
             if (cableHankMeterage is null)
             {
-                throw new SCSCalcException("Ошибка расчёта конфигурации! Значение метража кабеля в 1-й кабельной катушке не определено.");
+                throw new SCSCalcException("Structured cabling configuration calculating error! The value of cable meterage in 1 hank is not determined");
             }
             double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
             if (averagePermanentLink > cableHankMeterage)
             {
-                throw new SCSCalcException("Расчет провести невозможно! Значение средней длины постояного линка превышает значение метража кабеля в бухте.");
+                throw new SCSCalcException("Calculation is impossible! The value of average permanent link length more than the value of cable hank meterage");
             }
             double? cableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
             int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)(cableHankMeterage / averagePermanentLink)));

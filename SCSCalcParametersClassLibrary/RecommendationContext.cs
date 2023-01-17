@@ -33,7 +33,7 @@
                         RecommendationShieldedType = recommendationsStrategy.RecommendationShieldedType
                     };
                 }
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                throw new SCSCalcException("The value of getting cable selection recommendations necessity is not initialized. Please check the settings");
             }
         }
 
@@ -48,7 +48,7 @@
                 {
                     return recommendationsStrategy.RecommendationsArguments;
                 }
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                throw new SCSCalcException("The value of getting cable selection recommendations necessity is not initialized. Please check the settings");
             }
         }
 
@@ -67,7 +67,7 @@
                 {
                     return false;
                 }
-                throw new SCSCalcException("Значение получения рекомендаций по подбору кабеля не инициализировано. Пожалуйста, проверьте настройки");
+                throw new SCSCalcException("The value of getting cable selection recommendations necessity is not initialized. Please check the settings");
             }
             set
             {

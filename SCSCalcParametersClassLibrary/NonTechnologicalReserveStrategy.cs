@@ -24,7 +24,7 @@ namespace SCSCalc.Parameters
         {
             get => technologicalReserve;
 
-            set => throw new SCSCalcException("Учёт технологичегского запаса отключён. Пожалуйста, проверьте настройки.");
+            set => throw new SCSCalcException("Technological reserve coefficient is not taken into account. Please check the settings.");
         }
     }
 }

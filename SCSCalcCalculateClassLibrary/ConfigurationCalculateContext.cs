@@ -28,7 +28,7 @@ namespace SCSCalc.Calculate
             {
                 return configurationCalculatorStrategy.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
             }
-            throw new SCSCalcException("Значение учёта метража кабеля в 1-й кабельной катушке не инициализировано. Пожалуйста, проверьте параметры расчёта.");
+            throw new SCSCalcException("Value of the need to consider of cable meterage in 1 hank is not initialized. Please check the parameters of calculation.");
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace SCSCalc.Parameters
                 {
                     return RecommendationsAvailability_RecommendationIsolationType_None;
                 }
-                throw new SCSCalcException("Соответствие типу изоляции не установлено. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("Conformity to cable insulation type isn't determine. Please check the settings.");
             }
         }
 
@@ -54,7 +54,7 @@ namespace SCSCalc.Parameters
                 {
                     return RecommendationsAvailability_RecommendationIsolationMaterial_PVC;
                 }
-                throw new SCSCalcException("Соответствие материалу изоляции не установлено. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("Conformity to cable insulation material isn't determine. Please check the settings.");
             }
         }
 
@@ -77,7 +77,7 @@ namespace SCSCalc.Parameters
                 {
                     return RecommendationsAvailability_RecommendationShieldedType_FTP;
                 }
-                throw new SCSCalcException("Соответствие типу экранизации не установлено. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("Conformity to cable shielding type isn't determine. Please check the settings.");
             }
         }
 
@@ -120,7 +120,7 @@ namespace SCSCalc.Parameters
                 {
                     return RecommendationsAvailability_RecommendationCableStandart_TenGE;
                 }
-                throw new SCSCalcException("Значение интерфейса подключения не инициализировано. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("The value of connection interface is not determine. Please check the settings");
             }
         }
     }

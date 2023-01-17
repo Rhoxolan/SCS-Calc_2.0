@@ -27,7 +27,7 @@
                 {
                     return technologicalReserveStrategy.TechnologicalReserve;
                 }
-                throw new SCSCalcException("Значение необходимости учёта технологического запаса не инициализировано. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("The need to consider of technological reserve coefficient value is not initialized. Please check the settings.");
             }
             set
             {
@@ -37,7 +37,7 @@
                 }
                 else
                 {
-                    throw new SCSCalcException("Значение необходимости учёта технологического запаса не инициализировано. Пожалуйста, проверьте настройки.");
+                    throw new SCSCalcException("The need to consider of technological reserve coefficient value is not initialized. Please check the settings.");
                 }
             }
         }
@@ -57,7 +57,7 @@
                 {
                     return false;
                 }
-                throw new SCSCalcException("Значение необходимости учёта технологического запаса не инициализировано. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("The need to consider of technological reserve coefficient value is not initialized. Please check the settings.");
             }
             set
             {

@@ -11,11 +11,9 @@
         private IStrictСomplianceWithTheStandartStrategy? complianceWithTheStandartStrategy;
         private StrictСomplianceWithTheStandartStrategy strictСomplianceWithTheStandart;
         private NonStrictСomplianceWithTheStandartStrategy nonStrictСomplianceWithTheStandart;
-
         private IAnArbitraryNumberOfPortsStrategy? numberOfPortsStrategy;
         private AnArbitraryNumberOfPortsStrategy anArbitraryNumberOfPorts;
         private NotAnArbitraryNumberOfPortsStrategy notAnArbitraryNumberOfPorts;
-
         private IStandartValuesStrategy? standartValuesStrategy;
 
         public DiapasonContext()
@@ -23,11 +21,9 @@
             complianceWithTheStandartStrategy = null;
             strictСomplianceWithTheStandart = new();
             nonStrictСomplianceWithTheStandart = new();
-
             numberOfPortsStrategy = null;
             anArbitraryNumberOfPorts = new();
             notAnArbitraryNumberOfPorts = new();
-
             standartValuesStrategy = new StandartValuesStrategy();
         }
 
@@ -40,7 +36,7 @@
             {
                 if (standartValuesStrategy == null || complianceWithTheStandartStrategy == null || numberOfPortsStrategy == null)
                 {
-                    throw new SCSCalcException("Ошибка инициализации параметров значений конфигураций");
+                    throw new SCSCalcException("Structured cabling configuration parameters value initialize error");
                 }
                 return new SCSCalcDiapasons
                 {
@@ -93,7 +89,7 @@
                 {
                     return false;
                 }
-                throw new SCSCalcException("Значение соответствия стандарту ISO/IEC 11801 не инициализировано. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("The value of compliance with the ISO/IEC 11801 standard isn't initialized. Please check the settings.");
             }
             set
             {
@@ -123,7 +119,7 @@
                 {
                     return false;
                 }
-                throw new SCSCalcException("Значение соответствия стандарту ISO/IEC 11801 не инициализировано. Пожалуйста, проверьте настройки.");
+                throw new SCSCalcException("The value of compliance with the ISO/IEC 11801 standard isn't initialized. Please check the settings.");
             }
             set
             {
