@@ -1,4 +1,5 @@
 ﻿using static SCSCalc.Parameters.Properties.Resources;
+using static System.Convert;
 
 namespace SCSCalc.Parameters
 {
@@ -9,17 +10,26 @@ namespace SCSCalc.Parameters
     /// </summary>
     internal class StandartValuesStrategy : IStandartValuesStrategy
     {
+        private (decimal Min, decimal Max) numberOfWorkplacesDiapason;
+        private (decimal Min, decimal Max) cableHankMeterageDiapason;
+        private (decimal Min, decimal Max) technologicalReserveDiapason;
+
+        public StandartValuesStrategy()
+        {
+            numberOfWorkplacesDiapason = (ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Min),
+                ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Max));
+            cableHankMeterageDiapason = (ToDecimal(StandartValues_CableHankMeterageDiapason_Min),
+                ToDecimal(StandartValues_CableHankMeterageDiapason_Max));
+            technologicalReserveDiapason = (ToDecimal(StandartValues_TechnologicalReserveDiapason_Min),
+                ToDecimal(StandartValues_TechnologicalReserveDiapason_Max));
+        }
+
         /// <summary>
         /// Determines of workplaces count input diapason
         /// </summary>
         public (decimal Min, decimal Max) NumberOfWorkplacesDiapason
         {
-            get
-            {
-                decimal min = Convert.ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Min);
-                decimal max = Convert.ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Max);
-                return (min, max);
-            }
+            get => numberOfWorkplacesDiapason;
         }
 
         /// <summary>
@@ -27,12 +37,7 @@ namespace SCSCalc.Parameters
         /// </summary>
         public (decimal Min, decimal Max) CableHankMeterageDiapason
         {
-            get
-            {
-                decimal min = Convert.ToDecimal(StandartValues_CableHankMeterageDiapason_Min);
-                decimal max = Convert.ToDecimal(StandartValues_CableHankMeterageDiapason_Max);
-                return (min, max);
-            }
+            get => cableHankMeterageDiapason;
         }
 
         /// <summary>
@@ -40,12 +45,7 @@ namespace SCSCalc.Parameters
         /// </summary>
         public (decimal Min, decimal Max) TechnologicalReserveDiapason
         {
-            get
-            {
-                decimal min = Convert.ToDecimal(StandartValues_TechnologicalReserveDiapason_Min);
-                decimal max = Convert.ToDecimal(StandartValues_TechnologicalReserveDiapason_Max);
-                return (min, max);
-            }
+            get => technologicalReserveDiapason;
         }
     }
 }

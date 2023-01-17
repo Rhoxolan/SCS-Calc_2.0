@@ -1,4 +1,5 @@
 ﻿using static SCSCalc.Parameters.Properties.Resources;
+using static System.Convert;
 
 namespace SCSCalc.Parameters
 {
@@ -9,17 +10,23 @@ namespace SCSCalc.Parameters
     /// </summary>
     internal class StrictСomplianceWithTheStandartStrategy : IStrictСomplianceWithTheStandartStrategy
     {
+        private (decimal Min, decimal Max) minPermanentLinkDiapason;
+        private (decimal Min, decimal Max) maxPermanentLinkDiapason;
+
+        public StrictСomplianceWithTheStandartStrategy()
+        {
+            minPermanentLinkDiapason = (ToDecimal(StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min),
+                ToDecimal(StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Max));
+            maxPermanentLinkDiapason = (ToDecimal(StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min),
+                ToDecimal(StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max));
+        }
+
         /// <summary>
         /// Determines the diapason of minimal permanent link length input values in strict accordance to ISO/IEC 11801 standard
         /// </summary>
         public (decimal Min, decimal Max) MinPermanentLinkDiapason
         {
-            get
-            {
-                decimal min = Convert.ToDecimal(StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min);
-                decimal max = Convert.ToDecimal(StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Max);
-                return (min, max);
-            }
+            get => minPermanentLinkDiapason;
         }
 
         /// <summary>
@@ -27,12 +34,7 @@ namespace SCSCalc.Parameters
         /// </summary>
         public (decimal Min, decimal Max) MaxPermanentLinkDiapason
         {
-            get
-            {
-                decimal min = Convert.ToDecimal(StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min);
-                decimal max = Convert.ToDecimal(StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max);
-                return (min, max);
-            }
+            get => maxPermanentLinkDiapason;
         }
     }
 }
