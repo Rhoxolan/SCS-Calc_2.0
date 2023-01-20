@@ -6,14 +6,10 @@
     internal class RecommendationContext
     {
         private IRecommendationsStrategy? recommendationsStrategy;
-        private RecommendationsAvailabilityStrategy recommendationsAvailability;
-        private NonRecommendationsStrategy nonRecommendations;
 
         public RecommendationContext()
         {
             recommendationsStrategy = null;
-            recommendationsAvailability = new();
-            nonRecommendations = new();
         }
 
         /// <summary>
@@ -73,11 +69,11 @@
             {
                 if (Equals(value, true))
                 {
-                    recommendationsStrategy = recommendationsAvailability;
+                    recommendationsStrategy = new RecommendationsAvailabilityStrategy();
                 }
                 else
                 {
-                    recommendationsStrategy = nonRecommendations;
+                    recommendationsStrategy = new NonRecommendationsStrategy();
                 }
             }
         }
