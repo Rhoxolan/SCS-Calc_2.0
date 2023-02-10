@@ -21,7 +21,7 @@
     <ScrollViewer>
 
         <ScrollViewer.Resources>
-            <!--Необходимо для корректного отображения полос прокрутки при уменьшении размера страницы-->
+            <!--It is necessary for correct display of scrollbars when page size decreases-->
             <Style TargetType="ScrollViewer">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
