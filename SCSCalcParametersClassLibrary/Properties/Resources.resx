@@ -135,16 +135,16 @@
   <data name="NonRecommendations.RecommendationShieldedType" xml:space="preserve">
     <value />
   </data>
-  <data name="NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
+  <data name="NonStrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
     <value>1000</value>
   </data>
-  <data name="NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Min" xml:space="preserve">
+  <data name="NonStrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Min" xml:space="preserve">
     <value>0,01</value>
   </data>
-  <data name="NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Max" xml:space="preserve">
+  <data name="NonStrictComplianceWithTheStandart.MinPermanentLinkDiapason.Max" xml:space="preserve">
     <value>1000</value>
   </data>
-  <data name="NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
+  <data name="NonStrictComplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
     <value>0,01</value>
   </data>
   <data name="NonTechnologicalReserve.TechnologicalReserve" xml:space="preserve">
@@ -225,16 +225,16 @@
   <data name="StandartValues.TechnologicalReserveDiapason.Min" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="StrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
+  <data name="StrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Max" xml:space="preserve">
     <value>90</value>
   </data>
-  <data name="StrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Min" xml:space="preserve">
+  <data name="StrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Min" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="StrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Max" xml:space="preserve">
+  <data name="StrictComplianceWithTheStandart.MinPermanentLinkDiapason.Max" xml:space="preserve">
     <value>90</value>
   </data>
-  <data name="StrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
+  <data name="StrictComplianceWithTheStandart.MinPermanentLinkDiapason.Min" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="TechnologicalReserveAvailability.TechnologicalReserve.Default" xml:space="preserve">

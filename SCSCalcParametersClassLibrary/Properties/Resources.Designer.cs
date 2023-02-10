@@ -117,36 +117,36 @@ namespace SCSCalc.Parameters.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 1000.
         /// </summary>
-        internal static string NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max {
+        internal static string NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Max {
             get {
-                return ResourceManager.GetString("NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max", resourceCulture);
+                return ResourceManager.GetString("NonStrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Max", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 0,01.
         /// </summary>
-        internal static string NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min {
+        internal static string NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Min {
             get {
-                return ResourceManager.GetString("NonStrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Min", resourceCulture);
+                return ResourceManager.GetString("NonStrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Min", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 1000.
         /// </summary>
-        internal static string NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Max {
+        internal static string NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Max {
             get {
-                return ResourceManager.GetString("NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Max", resourceCulture);
+                return ResourceManager.GetString("NonStrictComplianceWithTheStandart.MinPermanentLinkDiapason.Max", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 0,01.
         /// </summary>
-        internal static string NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min {
+        internal static string NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min {
             get {
-                return ResourceManager.GetString("NonStrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min", resourceCulture);
+                return ResourceManager.GetString("NonStrictComplianceWithTheStandart.MinPermanentLinkDiapason.Min", resourceCulture);
             }
         }
         
@@ -387,36 +387,36 @@ namespace SCSCalc.Parameters.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 90.
         /// </summary>
-        internal static string StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max {
+        internal static string StrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Max {
             get {
-                return ResourceManager.GetString("StrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Max", resourceCulture);
+                return ResourceManager.GetString("StrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Max", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 1.
         /// </summary>
-        internal static string StrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min {
+        internal static string StrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Min {
             get {
-                return ResourceManager.GetString("StrictСomplianceWithTheStandart.MaxPermanentLinkDiapason.Min", resourceCulture);
+                return ResourceManager.GetString("StrictComplianceWithTheStandart.MaxPermanentLinkDiapason.Min", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 90.
         /// </summary>
-        internal static string StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Max {
+        internal static string StrictComplianceWithTheStandart_MinPermanentLinkDiapason_Max {
             get {
-                return ResourceManager.GetString("StrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Max", resourceCulture);
+                return ResourceManager.GetString("StrictComplianceWithTheStandart.MinPermanentLinkDiapason.Max", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 1.
         /// </summary>
-        internal static string StrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min {
+        internal static string StrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min {
             get {
-                return ResourceManager.GetString("StrictСomplianceWithTheStandart.MinPermanentLinkDiapason.Min", resourceCulture);
+                return ResourceManager.GetString("StrictComplianceWithTheStandart.MinPermanentLinkDiapason.Min", resourceCulture);
             }
         }
         

@@ -1,14 +1,14 @@
 ﻿namespace SCSCalc.Parameters
 {
     //Encapsulates objects which is intended for determine of structured cabling configuration parameters input diapason; these objects are implements
-    //IStrictСomplianceWithTheStandartStrategy, IAnArbitraryNumberOfPortsStrategy and IStandartValuesStrategy interfaces
+    //IStrictComplianceWithTheStandartStrategy, IAnArbitraryNumberOfPortsStrategy and IStandartValuesStrategy interfaces
 
     /// <summary>
     /// Encapsulates objects which is intended for determine of structured cabling configuration parameters input diapason
     /// </summary>
     internal class DiapasonContext
     {
-        private IStrictСomplianceWithTheStandartStrategy? complianceWithTheStandartStrategy;
+        private IStrictComplianceWithTheStandartStrategy? complianceWithTheStandartStrategy;
         private IAnArbitraryNumberOfPortsStrategy? numberOfPortsStrategy;
         private IStandartValuesStrategy? standartValuesStrategy;
 
@@ -73,11 +73,11 @@
         {
             get
             {
-                if (complianceWithTheStandartStrategy is StrictСomplianceWithTheStandartStrategy)
+                if (complianceWithTheStandartStrategy is StrictComplianceWithTheStandartStrategy)
                 {
                     return true;
                 }
-                if (complianceWithTheStandartStrategy is NonStrictСomplianceWithTheStandartStrategy)
+                if (complianceWithTheStandartStrategy is NonStrictComplianceWithTheStandartStrategy)
                 {
                     return false;
                 }
@@ -87,11 +87,11 @@
             {
                 if (Equals(value, true))
                 {
-                    complianceWithTheStandartStrategy = new StrictСomplianceWithTheStandartStrategy();
+                    complianceWithTheStandartStrategy = new StrictComplianceWithTheStandartStrategy();
                 }
                 else
                 {
-                    complianceWithTheStandartStrategy = new NonStrictСomplianceWithTheStandartStrategy();
+                    complianceWithTheStandartStrategy = new NonStrictComplianceWithTheStandartStrategy();
                 }
             }
         }

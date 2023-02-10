@@ -8,17 +8,17 @@ namespace SCSCalc.Parameters
     /// <summary>
     /// Class for determine of calculate structured cabling configuration input parameters diapasons if compliance with ISO/IEC 11801 standard is not strict
     /// </summary>
-    internal class NonStrictСomplianceWithTheStandartStrategy : IStrictСomplianceWithTheStandartStrategy
+    internal class NonStrictComplianceWithTheStandartStrategy : IStrictComplianceWithTheStandartStrategy
     {
         private (decimal Min, decimal Max) minPermanentLinkDiapason;
         private (decimal Min, decimal Max) maxPermanentLinkDiapason;
 
-        public NonStrictСomplianceWithTheStandartStrategy()
+        public NonStrictComplianceWithTheStandartStrategy()
         {
-            minPermanentLinkDiapason = (ToDecimal(NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Min), 
-                ToDecimal(NonStrictСomplianceWithTheStandart_MinPermanentLinkDiapason_Max));
-            maxPermanentLinkDiapason = (ToDecimal(NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Min),
-                ToDecimal(NonStrictСomplianceWithTheStandart_MaxPermanentLinkDiapason_Max));
+            minPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min), 
+                ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Max));
+            maxPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Min),
+                ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Max));
         }
 
         /// <summary>
