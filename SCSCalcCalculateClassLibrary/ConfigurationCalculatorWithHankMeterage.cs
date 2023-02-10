@@ -25,7 +25,7 @@ namespace SCSCalc.Calculate
             }
             double? cableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
             int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)(cableHankMeterage / averagePermanentLink)));
-            double totalСableQuantity = (double)(hankQuantity * cableHankMeterage);
+            double totalCableQuantity = (double)(hankQuantity * cableHankMeterage);
             string? recommendations = null;
             if (Equals(parameters.IsRecommendationsAvailability, true))
             {
@@ -56,10 +56,10 @@ namespace SCSCalc.Calculate
                 AveragePermanentLink = averagePermanentLink,
                 NumberOfWorkplaces = numberOfWorkplaces,
                 NumberOfPorts = numberOfPorts,
-                СableQuantity = cableQuantity,
+                CableQuantity = cableQuantity,
                 CableHankMeterage = cableHankMeterage,
                 HankQuantity = hankQuantity,
-                TotalСableQuantity = totalСableQuantity,
+                TotalCableQuantity = totalCableQuantity,
                 Recommendations = recommendations
             };
         }

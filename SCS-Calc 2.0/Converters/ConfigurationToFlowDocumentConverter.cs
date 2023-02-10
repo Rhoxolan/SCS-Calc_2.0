@@ -32,7 +32,7 @@ namespace SCSCalc_2_0.Converters
                 paragraph.Inlines.Add(new LineBreak());
                 if (configuration.CableHankMeterage != null)
                 {
-                    paragraph.Inlines.Add(new Run($"Необходимое количество кабеля: {configuration.СableQuantity:F2} м."));
+                    paragraph.Inlines.Add(new Run($"Необходимое количество кабеля: {configuration.CableQuantity:F2} м."));
                     paragraph.Inlines.Add(new LineBreak());
                     paragraph.Inlines.Add(new Run($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage:F2} м."));
                     paragraph.Inlines.Add(new LineBreak());
@@ -40,7 +40,7 @@ namespace SCSCalc_2_0.Converters
                     paragraph.Inlines.Add(new LineBreak());
                 }
                 paragraph.Inlines.Add(new LineBreak());
-                paragraph.Inlines.Add(new Run($"Итоговое необходимое количество кабеля: {configuration.TotalСableQuantity:F2} м.") { FontWeight = FontWeights.Medium });
+                paragraph.Inlines.Add(new Run($"Итоговое необходимое количество кабеля: {configuration.TotalCableQuantity:F2} м.") { FontWeight = FontWeights.Medium });
                 if (!String.IsNullOrEmpty(configuration.Recommendations))
                 {
                     paragraph.Inlines.Add(new LineBreak());

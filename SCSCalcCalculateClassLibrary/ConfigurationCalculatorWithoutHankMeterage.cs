@@ -14,7 +14,7 @@ namespace SCSCalc.Calculate
         public Configuration Calculate(SCSCalcParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
         {
             double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
-            double totalСableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
+            double totalCableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
             string? recommendations = null;
             if (Equals(parameters.IsRecommendationsAvailability, true))
             {
@@ -45,7 +45,7 @@ namespace SCSCalc.Calculate
                 AveragePermanentLink = averagePermanentLink,
                 NumberOfWorkplaces = numberOfWorkplaces,
                 NumberOfPorts = numberOfPorts,
-                TotalСableQuantity = totalСableQuantity,
+                TotalCableQuantity = totalCableQuantity,
                 Recommendations = recommendations
             };
         }

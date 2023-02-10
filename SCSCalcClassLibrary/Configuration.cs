@@ -44,7 +44,7 @@
         /// Value of necessary cable meterage for structured cabling installation, in the structured cabling configuration record.
         /// Is present if structured cabling configuration was calculated with cable hank meterage
         /// </summary>
-        public double? СableQuantity { get; init; } = null;
+        public double? CableQuantity { get; init; } = null;
 
         /// <summary>
         /// Value of cable hank meterage in the structured cabling configuration record
@@ -61,7 +61,7 @@
         /// <summary>
         /// Value of the total necessary cable meterage for structured cabling installation, in the structured cabling configuration record.
         /// </summary>
-        public required double TotalСableQuantity { get; init; }
+        public required double TotalCableQuantity { get; init; }
 
         /// <summary>
         /// Recommendations for cable selection in the structured cabling configuration record.

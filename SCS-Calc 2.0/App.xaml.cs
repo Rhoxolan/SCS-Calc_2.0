@@ -128,11 +128,11 @@ namespace SCSCalc_2_0
             saveStringBuilder.AppendLine($"Количество портов на 1 рабочее место: {configuration.NumberOfPorts}");
             if (configuration.CableHankMeterage != null)
             {
-                saveStringBuilder.AppendLine($"Необходимое количество кабеля: {configuration.СableQuantity:F2} м.");
+                saveStringBuilder.AppendLine($"Необходимое количество кабеля: {configuration.CableQuantity:F2} м.");
                 saveStringBuilder.AppendLine($"Метраж кабеля в 1-й бухте: {configuration.CableHankMeterage:F2} м.");
                 saveStringBuilder.AppendLine($"Необходимое количество бухт кабеля: {configuration.HankQuantity}");
             }
-            saveStringBuilder.AppendLine($"Итоговое необходимое количество кабеля: {configuration.TotalСableQuantity} м.");
+            saveStringBuilder.AppendLine($"Итоговое необходимое количество кабеля: {configuration.TotalCableQuantity} м.");
             if (!String.IsNullOrEmpty(configuration.Recommendations))
             {
                 saveStringBuilder.AppendLine();
@@ -317,7 +317,7 @@ namespace SCSCalc_2_0
                     $"Вы действительно хотите удалить выбранную конфигурацию СКС?{NewLine}" +
                     $"({configuration.RecordTime.ToShortDateString()} {configuration.RecordTime.ToLongTimeString()}, " +
                     $"мин. - {configuration.MinPermanentLink:F0} м, макс. - {configuration.MaxPermanentLink:F0} м, всего - " +
-                    $"{configuration.TotalСableQuantity:F0} м)",
+                    $"{configuration.TotalCableQuantity:F0} м)",
                     "Удаление конфигурации СКС", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     using ApplicationContext context = new(dataBaseConnectionString);

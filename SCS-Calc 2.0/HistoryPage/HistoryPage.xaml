@@ -70,7 +70,7 @@
                                 </TextBlock.Style>
                             </TextBlock>
 
-                            <TextBlock  FontSize="13" FontWeight="Medium" Text="{Binding StringFormat=Необходимое количество кабеля: {0:F2} м., Path=TotalСableQuantity}"/>
+                            <TextBlock  FontSize="13" FontWeight="Medium" Text="{Binding StringFormat=Необходимое количество кабеля: {0:F2} м., Path=TotalCableQuantity}"/>
 
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
