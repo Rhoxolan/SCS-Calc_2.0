@@ -1,4 +1,6 @@
 ## SCS-Calc 2.0
+SCS-Calc 2.0 - приложение, предназначенное для подсчёта метража необходимого кабеля для построения структурированной кабельной системы (СКС) с учетом требований международного стандарта ISO/IEC 11801.<br>
+##
 SCS-Calc 2.0 - desktop application for calculation of structured cabling installation necessary cable meterage, into account the requirements of the ISO/IEC 11801 standard.<br><br>
 Language: C#<br>
 Development framework: WPF, .NET 7<br>
