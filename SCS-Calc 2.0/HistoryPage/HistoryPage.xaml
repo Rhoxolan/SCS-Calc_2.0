@@ -58,7 +58,7 @@
 
                             <TextBlock FontSize="13" Text="{Binding StringFormat=Наибольшая длина постоянного линка: {0:F2} м., Path=MaxPermanentLink}"/>
 
-                            <TextBlock FontSize="13" Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0} м., Path=CableHankMeterage}">
+                            <TextBlock FontSize="13" Text="{Binding StringFormat=Необходимое количество бухт кабеля: {0}, Path=HankQuantity}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Style.Triggers>
